@@ -1,0 +1,31 @@
+#!/bin/sh
+
+cc -c trydirent.c >/dev/null 2>&1
+if [ $? -eq 0 ]
+then
+  cat <<EOF
+#ifndef DIRENTRY_H
+#define DIRENTRY_H
+
+#include <sys/types.h>
+#include <dirent.h>
+#define direntry struct dirent
+
+#endif
+EOF
+  echo "direntry:struct dirent" 1>&2
+else
+  cat <<EOF
+#ifndef DIRENTRY_H
+#define DIRENTRY_H
+
+#include <sys/types.h>
+#include <sys/dir.h>
+#define direntry struct direct
+
+#endif
+EOF
+  echo "direntry:struct direct" 1>&2
+fi
+
+rm -f trydirent.o

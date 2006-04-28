@@ -1,0 +1,11 @@
+dstring_cpyb.o
+dstring_cpys.o
+dstring_copy.o
+dstring_cat.o
+dstring_catb.o
+dstring_cats.o
+dstring_cat0.o
+dstring_0.o
+dstring_chop.o
+dstring_init.o
+dstring_trunc.o

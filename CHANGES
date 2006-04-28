@@ -1,0 +1,75 @@
+20060219 code: basic setup
+20060219 code: basic alloc test
+20060220 code: alloc test updated
+20060220 code: bin test
+20060220 code: array added, integers (+sysdep) added
+20060220 code: buffer added (added error and str as dependencies)
+20060222 code: str tests
+20060222 code: closeonexec added
+20060222 code: close added
+20060222 code: dstring added (no tests yet)
+20060222 code: direntry added (sysdep)
+20060224 code: darwin and sunOS compatibility (makelib, makeso)
+20060226 code: fmt added (no tests yet)
+20060226 code: dstring tests added, but dstring_chop needs examining;
+               should it take a numeric index or a 'length' as an
+               argument? potential for dangerous off-by-one errors.
+20060226 code: fmt tests added
+20060228 code: fd added (no tests)
+20060228 code: fd tests added
+20060228 code: added missing array_copy function and tested
+20060228 code: CHANGES format changed to help sorting (YYYYMMDD)
+20060228 code: hashtable added with tests
+20060228 code: uint packing routines added (no tests yet)
+20060228 code: uint tests added
+20060228 code: int added with tests
+20060228 code: nonblock added (it's not clear how to test this)
+20060301 code: open added (no tests)
+20060301 code: open tests added
+20060301 code: scan added (no tests)
+20060301 code: floats and endian sysdeps added as dependencies (no tests)
+20060301 code: float tests added
+20060301 code: scan tests added. Planning to add non-specific sized
+               scan_float and scan_double functions due to the number of
+               varying float implementations. Also plan to seperate
+               the scan_float functions into their own header file as
+               some machines may not have 32 bit and 64 bit floats.
+20060301 code: seperated scan.h and scan_float.h (tests updated)
+20060302 code: added scan_float and scan_double with test
+20060302 code: seek added (no tests)
+20060302 code: seek tests added
+20060302 code: sstring added (no tests)
+20060302 code: sstring tests added
+20060302 code: dir_array added (no tests)
+20060302 code: dir_array tests added
+20060303 code: sys_err added (no tests)
+20060303 code: sgetline added (no tests)
+20060303 code: basic sgetline test added
+20060303 code: bug fix in ht_destroy
+20060303 code: sunOS + darwin compatibility (passed all tests)
+20060303 code: alloc now uses void *, not char *
+20060304 code: another bug fix in ht_destroy thanks to electric fence!
+20060312 code: UNIT_TESTS makefile now cleans up tools
+20060312 code: added stalloc
+20060312 code: added stalloc tests
+20060312 code: static allocator is now no longer the default. alloc
+               calls calloc() by default. there is also no longer any
+               need for allocmalloc, so it is being removed.
+20060319 version: corelib-0.01 (first public release)
+20060319 code: corrected CFLAGS
+20060319 version: corelib-0.011
+20060320 code: cleaned up buffer_get and buffer_put function pointers
+20060320 code: general compiler warning squashes. casts.
+20060321 code: sys_err now takes const char * strings instead of char *.
+20060324 code: added array_data()
+20060325 code: hashtable.h HASH_BUCKETS == 2048 like the documentation
+               says!
+20060329 code: minor style nit in sstring_trunc.c
+20060330 doc: LICENSE added
+20060422 code: dstring rewritten to avoid leaks. slight changes to
+               interface and behaviour. updated tests.
+20060422 code: sys_err renamed to syserr.
+20060422 note: now totally incompatible with corelib-0.1.
+20060422 version: corelib-0.2
+20060428 code: moved SYS_DEPS to SYSDEPS for upcoming coreproject
+               updates.

@@ -1,0 +1,10 @@
+sstring_0.o
+sstring_cat.o
+sstring_catb.o
+sstring_cats.o
+sstring_copy.o
+sstring_cpyb.o
+sstring_cpys.o
+sstring_init.o
+sstring_trunc.o
+sstring_chop.o

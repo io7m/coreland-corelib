@@ -1,0 +1,11 @@
+scan_chars.o
+scan_newline.o
+scan_space.o
+scan_u32.o
+scan_u32o.o
+scan_u32x.o
+scan_u64.o
+scan_u64o.o
+scan_u64x.o
+scan_float.o
+scan_double.o
