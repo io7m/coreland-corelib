@@ -73,3 +73,4 @@
 20060422 version: corelib-0.2
 20060428 code: moved SYS_DEPS to SYSDEPS for upcoming coreproject
                updates.
+20060428 version: corelib-0.3 (no release)
