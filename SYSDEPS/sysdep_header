@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cat VERSION
-date +"%H:%M:%S %d/%m/%Y"
