@@ -982,7 +982,7 @@ sysdeps_clean: sysdep_clean
 sysdep_dir=SYSDEPS
 sysdep_out=sysdeps.out
 sysdeps.out:
-	${sysdep_dir}/sysdep_header >>${sysdep_out}
+	${sysdep_dir}/sysdep-header ${sysdep_out}
 	( cd ${sysdep_dir} && make )
 sysdep_clean:
 	( cd ${sysdep_dir} && make clean )

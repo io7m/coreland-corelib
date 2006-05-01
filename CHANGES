@@ -78,3 +78,4 @@
                if it ever really becomes necessary to check if an array
                is allocated in the future, there'll be an
                array_allocated() macro.
+20060501 code: updated to latest sysdeps.
