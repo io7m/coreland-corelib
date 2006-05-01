@@ -25,7 +25,6 @@ uint64 array_size(array *);
 uint64 array_bytes(array *);
 void *array_data(array *);
 
-#define array_INIT {0,0,0,0}
 #define array_SIZE(a) ((a)->u)
 #define array_BYTES(a) ((a)->u * (a)->es)
 #define array_DATA(a) ((a)->x)

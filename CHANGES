@@ -74,6 +74,7 @@
 20060428 code: moved SYS_DEPS to SYSDEPS for upcoming coreproject
                updates.
 20060428 version: corelib-0.3 (no release)
-20060501 code: removed 'new_array' and added array_INIT macro to
-               array.h. This allows array structures to be created
-               on the stack.
+20060501 code: array_init no longer returns 2 if the array is allocated.
+               if it ever really becomes necessary to check if an array
+               is allocated in the future, there'll be an
+               array_allocated() macro.

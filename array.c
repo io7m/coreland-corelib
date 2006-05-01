@@ -10,20 +10,16 @@
 
 int array_init(array *a, uint64 n, uint32 es)
 {
-  char *x = a->x;
+  char *x;
   n += ARRAY_OVERALLOC;
 
-  if (!x) {
-    x = alloc(n * es);
-    if (!x) return 0;
-    a->a = n;
-    a->u = 0;
-    a->es = es;
-    a->x = x;
-    return 1;
-  } else {
-    return 2;
-  }
+  x = alloc(n * es);
+  if (!x) return 0;
+  a->a = n;
+  a->u = 0;
+  a->es = es;
+  a->x = x;
+  return 1;
 }
 
 void array_free(array *a)
