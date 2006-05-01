@@ -74,3 +74,6 @@
 20060428 code: moved SYS_DEPS to SYSDEPS for upcoming coreproject
                updates.
 20060428 version: corelib-0.3 (no release)
+20060501 code: removed 'new_array' and added array_INIT macro to
+               array.h. This allows array structures to be created
+               on the stack.
