@@ -83,14 +83,14 @@ int copy_test(array *arr)
   array_free(&brr);
   return 1;
 }
-int trunc_test(array *arr)
+int chop_test(array *arr)
 {
   uint32 u;
 
-  array_trunc(arr, 10);
+  array_chop(arr, 10);
   u = array_size(arr);
   if (u != 10) {
-    printf("trunc_test: u == %u\n", u);
+    printf("chop_test: u == %u\n", u);
     return 0;
   }
   return 1;
@@ -156,7 +156,7 @@ int main()
   if (!cat_test1(&arr)) return 1;
   if (!index_test1(&arr)) return 1;
   if (!copy_test(&arr)) return 1;
-  if (!trunc_test(&arr)) return 1;
+  if (!chop_test(&arr)) return 1;
   if (!free_test(&arr)) return 1;
 
   if (!retrieve_test(&arr)) return 1;

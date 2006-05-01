@@ -24,6 +24,9 @@ void array_trunc(array *, uint64);
 uint64 array_size(array *);
 uint64 array_bytes(array *);
 void *array_data(array *);
+void array_chop(array *, uint64);
+
+#define array_trunc(a) array_chop((a),0)
 
 #define array_SIZE(a) ((a)->u)
 #define array_BYTES(a) ((a)->u * (a)->es)

@@ -79,3 +79,5 @@
                is allocated in the future, there'll be an
                array_allocated() macro.
 20060501 code: updated to latest sysdeps.
+20060501 code: array_trunc is now equivalent to array_chop(a, 0);
+               trying to make things a little more unified.
