@@ -81,3 +81,6 @@
 20060501 code: updated to latest sysdeps.
 20060501 code: array_trunc is now equivalent to array_chop(a, 0);
                trying to make things a little more unified.
+20060502 code: renamed makefile-local to Mkfile-local and restructured
+               slightly due to cpj-genmk updates.
+20060502 code: further restructuring for cpj-genmk changes.
