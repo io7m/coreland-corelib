@@ -1,3 +1,4 @@
+t_sgetline.o
 ../sgetline.a
 ../sstring.a
 ../buffer.a

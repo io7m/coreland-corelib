@@ -84,3 +84,5 @@
 20060502 code: renamed makefile-local to Mkfile-local and restructured
                slightly due to cpj-genmk updates.
 20060502 code: further restructuring for cpj-genmk changes.
+20060507 code: updated to cpj-genmk-0.6
+20060507 code: added sysmath-libs and conf-ldfflist
