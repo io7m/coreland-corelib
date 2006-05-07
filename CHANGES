@@ -86,3 +86,4 @@
 20060502 code: further restructuring for cpj-genmk changes.
 20060507 code: updated to cpj-genmk-0.6
 20060507 code: added sysmath-libs and conf-ldfflist
+20060507 version: corelib-0.31
