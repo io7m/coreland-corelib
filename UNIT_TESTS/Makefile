@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.60
+# cpj-genmk-0.70
 
 SHELL=/bin/sh
 default: all
