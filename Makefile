@@ -405,6 +405,9 @@ str_len.o:\
 str_ncopy.o:\
 	compile str_ncopy.c str.h 
 	./compile str_ncopy str_ncopy.c 
+str_ndiff.o:\
+	compile str_ndiff.c str.h 
+	./compile str_ndiff str_ndiff.c 
 str_rchr.o:\
 	compile str_rchr.c str.h 
 	./compile str_rchr str_rchr.c 
@@ -467,7 +470,7 @@ phase_compile:\
 	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
 	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
 	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ncopy.o str_rchr.o str_starts.o \
+	str_ends.o str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o 
@@ -496,7 +499,7 @@ phase_compile_clean:
 	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
 	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
 	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ncopy.o str_rchr.o str_starts.o \
+	str_ends.o str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o 
@@ -617,11 +620,11 @@ stalloc.a:\
 	./makelib stalloc stalloc.o 
 str.a:\
 	makelib str.sld str_chr.o str_copy.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ncopy.o str_rchr.o str_starts.o \
+	str_ends.o str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o 
 	./makelib str str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_rchr.o str_starts.o str_tolower.o \
-	str_toupper.o 
+	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o 
 syserr.a:\
 	makelib syserr.sld syserr_die.o syserr_init.o 
 	./makelib syserr syserr_die.o syserr_init.o 

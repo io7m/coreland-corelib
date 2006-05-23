@@ -97,3 +97,6 @@
 20060523 code: changed dir_array so that it no longer relies on uint32.
 20060523 code: added dir_hash and test.
 20060523 code: added dir_name, base_name and tests.
+20060524 code: added str_ndiff and changed str_same, str_nsame to
+               macros.
+20060524 code: fixed t_base_name and t_dir_name tests for the above.

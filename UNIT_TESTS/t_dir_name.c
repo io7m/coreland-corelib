@@ -1,5 +1,6 @@
 #include "../buffer.h"
 #include "../dir_name.h"
+#include "../str.h"
 #include "../syserr.h"
 
 struct exp {

@@ -5,3 +5,6 @@ Add non fixed-size fmt, non fixed-size scan,
 Document dir_hash, base_name, dir_name.
 
 Change documentation for buffer (no uint32).
+Change documentation for str.h (str_ndiff, str_same is now a macro etc)
+
+str_ndiff test.

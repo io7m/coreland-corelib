@@ -25,8 +25,10 @@ signed int str_diff(register const char *s,
  returns 0 if s != t
 */
 
+/*
 unsigned int str_same(register const char *s,
                       register const char *t)
 {
   return (str_diff(s, t) == 0);
 }
+*/
