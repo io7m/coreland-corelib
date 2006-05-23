@@ -1,1 +1,3 @@
 Audit inter-dependencies (does buffer REALLY need uint32?)
+
+Add dir_hash, non fixed-size fmt, non fixed-size scan.
