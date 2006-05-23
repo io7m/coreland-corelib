@@ -89,3 +89,7 @@
 20060507 version: corelib-0.31
 20060510 code: updated to cpj-genmk-0.7
 20060510 code: updated to latest sysdeps
+20060523 code: buffer no longer uses uint32, but uses unsigned int.
+               this may break binary compatibility, but this is no
+               problem as corelib is currently totally incompatible
+               with earlier versions anyway.

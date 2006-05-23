@@ -1,8 +1,7 @@
 #include "buffer.h"
-#include "uint32.h"
 
 void buffer_init(buffer *b, int (*op)(int, char *, unsigned int),
-                 int fd, char *s, uint32 len)
+                 int fd, char *s, unsigned int len)
 {
   b->size = len;
   b->pos = 0;
