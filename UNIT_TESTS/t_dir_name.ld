@@ -1,0 +1,9 @@
+t_dir_name.o
+../dir_name.a
+../dir_array.a
+../alloc.a
+../syserr.a
+../buffer.a
+../error.a
+../bin.a
+../str.a

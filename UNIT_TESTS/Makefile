@@ -20,6 +20,9 @@ t_alloc.o:\
 t_array.o:\
 	compile t_array.c ../array.h 
 	./compile t_array t_array.c 
+t_base_name.o:\
+	compile t_base_name.c ../buffer.h ../base_name.h ../syserr.h 
+	./compile t_base_name t_base_name.c 
 t_bin.o:\
 	compile t_bin.c ../bin.h 
 	./compile t_bin t_bin.c 
@@ -29,6 +32,12 @@ t_buffer.o:\
 t_dir_array.o:\
 	compile t_dir_array.c ../dir_array.h 
 	./compile t_dir_array t_dir_array.c 
+t_dir_hash.o:\
+	compile t_dir_hash.c ../dir_hash.h ../syserr.h 
+	./compile t_dir_hash t_dir_hash.c 
+t_dir_name.o:\
+	compile t_dir_name.c ../buffer.h ../dir_name.h ../syserr.h 
+	./compile t_dir_name t_dir_name.c 
 t_dstring.o:\
 	compile t_dstring.c ../dstring.h 
 	./compile t_dstring t_dstring.c 
@@ -83,15 +92,17 @@ t_uint.o:\
 	./compile t_uint t_uint.c 
 
 phase_compile:\
-	t_alloc.o t_array.o t_bin.o t_buffer.o t_dir_array.o t_dstring.o \
-	t_fd.o t_float.o t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o \
-	t_scan.o t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_sstring.o \
-	t_stalloc.o t_str.o t_uint.o 
+	t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o t_dir_array.o \
+	t_dir_hash.o t_dir_name.o t_dstring.o t_fd.o t_float.o t_fmt.o \
+	t_get_opt.o t_hashtable.o t_int.o t_open.o t_scan.o t_scan2.o \
+	t_scan_float.o t_seek.o t_sgetline.o t_sstring.o t_stalloc.o t_str.o \
+	t_uint.o 
 phase_compile_clean:
-	rm -f t_alloc.o t_array.o t_bin.o t_buffer.o t_dir_array.o \
-	t_dstring.o t_fd.o t_float.o t_fmt.o t_get_opt.o t_hashtable.o \
-	t_int.o t_open.o t_scan.o t_scan2.o t_scan_float.o t_seek.o \
-	t_sgetline.o t_sstring.o t_stalloc.o t_str.o t_uint.o 
+	rm -f t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o \
+	t_dir_array.o t_dir_hash.o t_dir_name.o t_dstring.o t_fd.o t_float.o \
+	t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o t_scan.o \
+	t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_sstring.o \
+	t_stalloc.o t_str.o t_uint.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -107,6 +118,11 @@ t_alloc:\
 t_array:\
 	link t_array.ld t_array.o ../array.a ../bin.a ../alloc.a 
 	./link t_array t_array.o ../array.a ../bin.a ../alloc.a 
+t_base_name:\
+	link t_base_name.ld t_base_name.o ../base_name.a ../syserr.a \
+	../buffer.a ../error.a ../bin.a ../str.a 
+	./link t_base_name t_base_name.o ../base_name.a ../syserr.a \
+	../buffer.a ../error.a ../bin.a ../str.a 
 t_bin:\
 	link t_bin.ld t_bin.o ../bin.a 
 	./link t_bin t_bin.o ../bin.a 
@@ -119,6 +135,16 @@ t_dir_array:\
 	../bin.a ../str.a 
 	./link t_dir_array t_dir_array.o ../dir_array.a ../alloc.a ../bin.a \
 	../str.a 
+t_dir_hash:\
+	link t_dir_hash.ld t_dir_hash.o ../dir_hash.a ../dir_array.a \
+	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
+	./link t_dir_hash t_dir_hash.o ../dir_hash.a ../dir_array.a \
+	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
+t_dir_name:\
+	link t_dir_name.ld t_dir_name.o ../dir_name.a ../dir_array.a \
+	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
+	./link t_dir_name t_dir_name.o ../dir_name.a ../dir_array.a \
+	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
 t_dstring:\
 	link t_dstring.ld t_dstring.o ../dstring.a ../alloc.a ../bin.a \
 	../str.a 
@@ -180,13 +206,15 @@ t_uint:\
 	./link t_uint t_uint.o ../uint16.a ../uint32.a ../uint64.a 
 
 phase_link:\
-	t_alloc t_array t_bin t_buffer t_dir_array t_dstring t_fd t_float \
-	t_fmt t_get_opt t_hashtable t_int t_open t_scan t_scan2 t_scan_float \
-	t_seek t_sgetline t_sstring t_stalloc t_str t_uint 
+	t_alloc t_array t_base_name t_bin t_buffer t_dir_array t_dir_hash \
+	t_dir_name t_dstring t_fd t_float t_fmt t_get_opt t_hashtable t_int \
+	t_open t_scan t_scan2 t_scan_float t_seek t_sgetline t_sstring \
+	t_stalloc t_str t_uint 
 phase_link_clean:
-	rm -f t_alloc t_array t_bin t_buffer t_dir_array t_dstring t_fd \
-	t_float t_fmt t_get_opt t_hashtable t_int t_open t_scan t_scan2 \
-	t_scan_float t_seek t_sgetline t_sstring t_stalloc t_str t_uint 
+	rm -f t_alloc t_array t_base_name t_bin t_buffer t_dir_array \
+	t_dir_hash t_dir_name t_dstring t_fd t_float t_fmt t_get_opt \
+	t_hashtable t_int t_open t_scan t_scan2 t_scan_float t_seek \
+	t_sgetline t_sstring t_stalloc t_str t_uint 
 
 #--TEST-----------------------------------------------------------------------
 

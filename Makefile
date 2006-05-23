@@ -51,6 +51,9 @@ array_index.o:\
 array_size.o:\
 	compile array_size.c alloc.h array.h bin.h uint32.h uint64.h 
 	./compile array_size array_size.c 
+base_name.o:\
+	compile base_name.c bin.h base_name.h str.h 
+	./compile base_name base_name.c 
 bin_chr.o:\
 	compile bin_chr.c bin.h 
 	./compile bin_chr bin_chr.c 
@@ -108,6 +111,12 @@ closeonexec.o:\
 dir_array.o:\
 	compile dir_array.c alloc.h bin.h dir_array.h direntry.h str.h 
 	./compile dir_array dir_array.c 
+dir_hash.o:\
+	compile dir_hash.c alloc.h bin.h dir_array.h dir_hash.h str.h 
+	./compile dir_hash dir_hash.c 
+dir_name.o:\
+	compile dir_name.c bin.h dir_name.h str.h 
+	./compile dir_name dir_name.c 
 dstring_0.o:\
 	compile dstring_0.c dstring.h 
 	./compile dstring_0 dstring_0.c 
@@ -435,60 +444,60 @@ uint64_unpack.o:\
 
 phase_compile:\
 	alloc.o array.o array_bytes.o array_cat.o array_chop.o array_copy.o \
-	array_data.o array_index.o array_size.o bin_chr.o bin_copy.o \
-	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
+	array_data.o array_index.o array_size.o base_name.o bin_chr.o \
+	bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o buffer2.o \
 	buffer_copy.o buffer_get.o buffer_init.o buffer_put.o closeonexec.o \
-	dir_array.o dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o error.o error_str.o \
-	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
-	float64_pack.o float64_upack.o fmt_byte.o fmt_byteo.o fmt_bytex.o \
-	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
-	get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o int16_pack.o int16_unpack.o \
-	int32_pack.o int32_unpack.o int64_pack.o int64_unpack.o nonblock.o \
-	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
-	open_trunc.o open_wo.o scan_chars.o scan_double.o scan_f32.o \
-	scan_f64.o scan_float.o scan_newline.o scan_space.o scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	seek_cur.o seek_end.o seek_pos.o seek_start.o sgetline.o \
-	sgetline_chop.o sgetline_get.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_rchr.o str_starts.o str_tolower.o \
-	str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
+	dir_array.o dir_hash.o dir_name.o dstring_0.o dstring_cat.o \
+	dstring_cat0.o dstring_catb.o dstring_cats.o dstring_chop.o \
+	dstring_copy.o dstring_cpyb.o dstring_cpys.o dstring_init.o \
+	dstring_trunc.o error.o error_str.o fd_dup.o fd_move.o fd_reset.o \
+	float32_pack.o float32_upack.o float64_pack.o float64_upack.o \
+	fmt_byte.o fmt_byteo.o fmt_bytex.o fmt_u32.o fmt_u32o.o fmt_u32x.o \
+	fmt_u64.o fmt_u64o.o fmt_u64x.o get_opt.o ht_addb.o ht_adds.o \
+	ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_destroy.o \
+	ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o \
+	ht_replaces.o int16_pack.o int16_unpack.o int32_pack.o \
+	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
+	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	scan_chars.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
+	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
+	scan_u64.o scan_u64o.o scan_u64x.o seek_cur.o seek_end.o seek_pos.o \
+	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
+	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
+	str_ends.o str_len.o str_ncopy.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
-	array_copy.o array_data.o array_index.o array_size.o bin_chr.o \
-	bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
-	bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o buffer2.o \
-	buffer_copy.o buffer_get.o buffer_init.o buffer_put.o closeonexec.o \
-	dir_array.o dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o error.o error_str.o \
-	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
-	float64_pack.o float64_upack.o fmt_byte.o fmt_byteo.o fmt_bytex.o \
-	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
-	get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o int16_pack.o int16_unpack.o \
-	int32_pack.o int32_unpack.o int64_pack.o int64_unpack.o nonblock.o \
-	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
-	open_trunc.o open_wo.o scan_chars.o scan_double.o scan_f32.o \
-	scan_f64.o scan_float.o scan_newline.o scan_space.o scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	seek_cur.o seek_end.o seek_pos.o seek_start.o sgetline.o \
-	sgetline_chop.o sgetline_get.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_rchr.o str_starts.o str_tolower.o \
-	str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
+	array_copy.o array_data.o array_index.o array_size.o base_name.o \
+	bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchr.o \
+	bin_set.o bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o \
+	buffer2.o buffer_copy.o buffer_get.o buffer_init.o buffer_put.o \
+	closeonexec.o dir_array.o dir_hash.o dir_name.o dstring_0.o \
+	dstring_cat.o dstring_cat0.o dstring_catb.o dstring_cats.o \
+	dstring_chop.o dstring_copy.o dstring_cpyb.o dstring_cpys.o \
+	dstring_init.o dstring_trunc.o error.o error_str.o fd_dup.o \
+	fd_move.o fd_reset.o float32_pack.o float32_upack.o float64_pack.o \
+	float64_upack.o fmt_byte.o fmt_byteo.o fmt_bytex.o fmt_u32.o \
+	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o get_opt.o \
+	ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
+	ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o \
+	ht_replaceb.o ht_replaces.o int16_pack.o int16_unpack.o int32_pack.o \
+	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
+	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	scan_chars.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
+	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
+	scan_u64.o scan_u64o.o scan_u64x.o seek_cur.o seek_end.o seek_pos.o \
+	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
+	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
+	str_ends.o str_len.o str_ncopy.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o 
 
@@ -502,6 +511,9 @@ array.a:\
 	array_index.o array_size.o array_chop.o 
 	./makelib array array.o array_bytes.o array_cat.o array_copy.o \
 	array_index.o array_size.o array_chop.o 
+base_name.a:\
+	makelib base_name.sld base_name.o 
+	./makelib base_name base_name.o 
 bin.a:\
 	makelib bin.sld bin_chr.o bin_copy.o bin_copyr.o bin_count.o \
 	bin_diff.o bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o \
@@ -520,6 +532,12 @@ closeonexec.a:\
 dir_array.a:\
 	makelib dir_array.sld dir_array.o 
 	./makelib dir_array dir_array.o 
+dir_hash.a:\
+	makelib dir_hash.sld dir_hash.o 
+	./makelib dir_hash dir_hash.o 
+dir_name.a:\
+	makelib dir_name.sld dir_name.o 
+	./makelib dir_name dir_name.o 
 dstring.a:\
 	makelib dstring.sld dstring_cpyb.o dstring_cpys.o dstring_copy.o \
 	dstring_cat.o dstring_catb.o dstring_cats.o dstring_cat0.o \
@@ -618,17 +636,17 @@ uint64.a:\
 	./makelib uint64 uint64_pack.o uint64_unpack.o 
 
 phase_library:\
-	alloc.a array.a bin.a buffer.a closeonexec.a dir_array.a dstring.a \
-	error.a fd.a float32.a float64.a fmt.a get_opt.a hashtable.a int16.a \
-	int32.a int64.a nonblock.a open.a scan.a scan_float.a seek.a \
-	sgetline.a sstring.a stalloc.a str.a syserr.a uint16.a uint32.a \
-	uint64.a 
+	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
+	dir_array.a dir_hash.a dir_name.a dstring.a error.a fd.a float32.a \
+	float64.a fmt.a get_opt.a hashtable.a int16.a int32.a int64.a \
+	nonblock.a open.a scan.a scan_float.a seek.a sgetline.a sstring.a \
+	stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
 phase_library_clean:
-	rm -f alloc.a array.a bin.a buffer.a closeonexec.a dir_array.a \
-	dstring.a error.a fd.a float32.a float64.a fmt.a get_opt.a \
-	hashtable.a int16.a int32.a int64.a nonblock.a open.a scan.a \
-	scan_float.a seek.a sgetline.a sstring.a stalloc.a str.a syserr.a \
-	uint16.a uint32.a uint64.a 
+	rm -f alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
+	dir_array.a dir_hash.a dir_name.a dstring.a error.a fd.a float32.a \
+	float64.a fmt.a get_opt.a hashtable.a int16.a int32.a int64.a \
+	nonblock.a open.a scan.a scan_float.a seek.a sgetline.a sstring.a \
+	stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
 
 #--LINK-----------------------------------------------------------------------
 

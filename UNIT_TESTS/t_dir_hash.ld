@@ -1,0 +1,9 @@
+t_dir_hash.o
+../dir_hash.a
+../dir_array.a
+../alloc.a
+../syserr.a
+../buffer.a
+../error.a
+../bin.a
+../str.a

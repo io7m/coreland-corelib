@@ -94,3 +94,6 @@
                problem as corelib is currently totally incompatible
                with earlier versions anyway.
 20060523 code: buffer_copy and test.
+20060523 code: changed dir_array so that it no longer relies on uint32.
+20060523 code: added dir_hash and test.
+20060523 code: added dir_name, base_name and tests.
