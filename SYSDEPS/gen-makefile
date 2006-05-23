@@ -6,22 +6,22 @@ sdclist=""
 
 for f in `find . -type d -maxdepth 1`
 do
-	g=`echo ${f} | awk -F/ '{print $2}'`
-	if [ "${g}" = "CVS" ]
-	then 
-		continue
-	fi
-	if [ "${g}" = ".svn" ]
-	then 
-		continue
-	fi
-	if [ ${#g} -eq 0 ]
-	then
-		continue
-	fi
-	dlist="${dlist} ${g}"
-	sdlist="${sdlist} sd_${g}"
-	sdclist="${sdclist} sd_${g}_clean"
+  g=`echo ${f} | awk -F/ '{print $2}'`
+  if [ "${g}" = "CVS" ]
+  then 
+    continue
+  fi
+  if [ "${g}" = ".svn" ]
+  then 
+    continue
+  fi
+  if [ ${#g} -eq 0 ]
+  then
+    continue
+  fi
+  dlist="${dlist} ${g}"
+  sdlist="${sdlist} sd_${g}"
+  sdclist="${sdclist} sd_${g}_clean"
 done
 
 echo "default: sysdeps"
@@ -33,13 +33,14 @@ echo
 
 for f in ${dlist}
 do
-	echo "sd_${f}:"
-  echo -e "\t( cd ${f} && make )"
+  echo "sd_${f}:"
+  printf "\t(cd ${f} && make)\n"
   echo "sd_${f}_clean:"
-	echo -e "\t( cd ${f} && make clean)"
-	echo
+  printf "\t(cd ${f} && make clean)\n"
+  echo
 done
 
 echo "regen:"
-echo -e "\t./gen-makefile > Makefile.tmp"
-echo -e "\tmv Makefile.tmp Makefile"
+printf "\t./gen-makefile > Makefile.tmp\n"
+printf "\tmv Makefile.tmp Makefile"
+echo
