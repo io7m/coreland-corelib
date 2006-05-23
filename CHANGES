@@ -93,3 +93,4 @@
                this may break binary compatibility, but this is no
                problem as corelib is currently totally incompatible
                with earlier versions anyway.
+20060523 code: buffer_copy and test.

@@ -1,12 +1,10 @@
 #ifndef DIR_ARRAY_H
 #define DIR_ARRAY_H
 
-#include "uint32.h"
-
 typedef struct {
   char  **a;
-  uint32 p;
-  uint32 n;
+  unsigned int p;
+  unsigned int n;
 } dir_array;
 
 int dir_array_init(dir_array *, const char *);

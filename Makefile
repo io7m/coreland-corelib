@@ -90,14 +90,17 @@ buffer1.o:\
 buffer2.o:\
 	compile buffer2.c buffer.h write.h 
 	./compile buffer2 buffer2.c 
+buffer_copy.o:\
+	compile buffer_copy.c buffer.h 
+	./compile buffer_copy buffer_copy.c 
 buffer_get.o:\
-	compile buffer_get.c bin.h buffer.h error.h uint32.h 
+	compile buffer_get.c bin.h buffer.h error.h 
 	./compile buffer_get buffer_get.c 
 buffer_init.o:\
-	compile buffer_init.c buffer.h uint32.h 
+	compile buffer_init.c buffer.h 
 	./compile buffer_init buffer_init.c 
 buffer_put.o:\
-	compile buffer_put.c bin.h buffer.h error.h str.h uint32.h 
+	compile buffer_put.c bin.h buffer.h error.h str.h 
 	./compile buffer_put buffer_put.c 
 closeonexec.o:\
 	compile closeonexec.c closeonexec.h 
@@ -435,8 +438,8 @@ phase_compile:\
 	array_data.o array_index.o array_size.o bin_chr.o bin_copy.o \
 	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o buffer2.o \
-	buffer_get.o buffer_init.o buffer_put.o closeonexec.o dir_array.o \
-	dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
+	buffer_copy.o buffer_get.o buffer_init.o buffer_put.o closeonexec.o \
+	dir_array.o dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
 	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
 	dstring_cpys.o dstring_init.o dstring_trunc.o error.o error_str.o \
 	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
@@ -464,8 +467,8 @@ phase_compile_clean:
 	array_copy.o array_data.o array_index.o array_size.o bin_chr.o \
 	bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o buffer2.o \
-	buffer_get.o buffer_init.o buffer_put.o closeonexec.o dir_array.o \
-	dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
+	buffer_copy.o buffer_get.o buffer_init.o buffer_put.o closeonexec.o \
+	dir_array.o dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
 	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
 	dstring_cpys.o dstring_init.o dstring_trunc.o error.o error_str.o \
 	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
@@ -508,9 +511,9 @@ bin.a:\
 	bin_zero.o 
 buffer.a:\
 	makelib buffer.sld buffer0.o buffer1.o buffer2.o buffer_get.o \
-	buffer_init.o buffer_put.o 
+	buffer_init.o buffer_put.o buffer_copy.o 
 	./makelib buffer buffer0.o buffer1.o buffer2.o buffer_get.o \
-	buffer_init.o buffer_put.o 
+	buffer_init.o buffer_put.o buffer_copy.o 
 closeonexec.a:\
 	makelib closeonexec.sld closeonexec.o 
 	./makelib closeonexec closeonexec.o 
