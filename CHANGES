@@ -100,3 +100,4 @@
 20060524 code: added str_ndiff and changed str_same, str_nsame to
                macros.
 20060524 code: fixed t_base_name and t_dir_name tests for the above.
+20060524 code: added env and tests.
