@@ -8,3 +8,5 @@ Change documentation for buffer (no uint32).
 Change documentation for str.h (str_ndiff, str_same is now a macro etc)
 
 str_ndiff test.
+
+bin_dup from urlparse.
