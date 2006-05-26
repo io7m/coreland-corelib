@@ -709,7 +709,7 @@ sysdep_clean:
 mkftools: compile makelib sosuffix makeso link 
 compile: conf-shebang conf-cc make-compile 
 	(cat conf-shebang; ./make-compile) > compile; chmod u+x compile;
-link: conf-shebang conf-ld make-link conf-ldfflist sysmath-libs 
+link: conf-shebang conf-ld make-link conf-ldfflist libs-sysmath 
 	(cat conf-shebang; ./make-link) > link; chmod u+x link;
 makelib: conf-shebang make-makelib 
 	(cat conf-shebang; ./make-makelib) > makelib; chmod u+x makelib;
