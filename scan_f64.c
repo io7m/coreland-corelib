@@ -1,11 +1,10 @@
 #include <math.h> /* severe problems on PPC if this is not included */
-#include "scan_float.h"
-#include "float64.h"
+#include "scan_fspec.h"
 
-unsigned int scan_f64(const char *s, float64 *f)
+unsigned int scan_float64(const char *s, float64 *f)
 {
   const char *t;
-  unsigned int c;
+  char c;
   unsigned int pc;
   unsigned int div;
   float64 tf;
@@ -20,21 +19,19 @@ unsigned int scan_f64(const char *s, float64 *f)
 
   if (s[0] == '-') ++s;
 
-  /* before decimal point */
   for (;;) {
     c = s[pc];
     if (!c) goto END;
     if (c == '.') break;
     if ((c < '0') || (c > '9')) goto END;
     c -= '0';
-    tf = (tf * 10) + (float64) c;
+    tf = (tf * 10) + c;
     ++pc;
   }
 
   /* skip '.' */
   ++pc;
 
-  /* after decimal point */
   for (;;) {
     c = s[pc];
     if (!c) break;
@@ -47,8 +44,10 @@ unsigned int scan_f64(const char *s, float64 *f)
   }
 
   tf = df + tf;
+
 END:
   if (t[0] == '-') tf = -tf;
   *f = tf;
+
   return pc;
 }

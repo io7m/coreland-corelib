@@ -1,10 +1,6 @@
 #include "scan.h"
 
-/*
-  skip over spaces, tabs
- */
-
-unsigned int scan_space(const char *s)
+unsigned int scan_whitespace(const char *s)
 {
-  return scan_chars(s, " \t");
+  return scan_charset(s, " \t");
 }

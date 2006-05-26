@@ -101,3 +101,10 @@
                macros.
 20060524 code: fixed t_base_name and t_dir_name tests for the above.
 20060524 code: added env and tests.
+20060526 code: large changes to fmt and scan.
+               fmt and scan functions that operate on specific sized
+               integers have been moved into fmt_spec.h and scan_spec.h
+               respectively. fmt and scan functions that operate on
+               specific sized floats have been moved into fmt_fspec.h
+               and scan_fspec.h respectively. fmt and scan now use
+               standard C integers by default.

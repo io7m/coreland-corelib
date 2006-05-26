@@ -1,9 +1,7 @@
-fmt_byte.o
-fmt_byteo.o
-fmt_bytex.o
-fmt_u32.o
-fmt_u32o.o
-fmt_u32x.o
-fmt_u64.o
-fmt_u64o.o
-fmt_u64x.o
+fmt_ullong.o
+fmt_ulong.o
+fmt_uint.o
+fmt_ushort.o
+fmt_uchar.o
+fmt_str.o
+fmt_nstr.o

@@ -54,6 +54,12 @@ t_float.o:\
 t_fmt.o:\
 	compile t_fmt.c ../fmt.h 
 	./compile t_fmt t_fmt.c 
+t_fmt2.o:\
+	compile t_fmt2.c ../fmt.h ../str.h 
+	./compile t_fmt2 t_fmt2.c 
+t_fmt_spec.o:\
+	compile t_fmt_spec.c ../fmt_spec.h 
+	./compile t_fmt_spec t_fmt_spec.c 
 t_get_opt.o:\
 	compile t_get_opt.c ../get_opt.h 
 	./compile t_get_opt t_get_opt.c 
@@ -67,15 +73,23 @@ t_open.o:\
 	compile t_open.c ../open.h 
 	./compile t_open t_open.c 
 t_scan.o:\
-	compile t_scan.c ../scan.h ../uint32.h ../uint64.h 
+	compile t_scan.c ../scan.h 
 	./compile t_scan t_scan.c 
 t_scan2.o:\
 	compile t_scan2.c ../scan.h 
 	./compile t_scan2 t_scan2.c 
+t_scan3.o:\
+	compile t_scan3.c ../scan.h 
+	./compile t_scan3 t_scan3.c 
 t_scan_float.o:\
-	compile t_scan_float.c ../scan_float.h ../int32.h ../int64.h \
-	../float32.h ../float64.h 
+	compile t_scan_float.c ../scan.h 
 	./compile t_scan_float t_scan_float.c 
+t_scan_fspec.o:\
+	compile t_scan_fspec.c ../scan_fspec.h 
+	./compile t_scan_fspec t_scan_fspec.c 
+t_scan_spec.o:\
+	compile t_scan_spec.c ../scan_spec.h ../uint32.h ../uint64.h 
+	./compile t_scan_spec t_scan_spec.c 
 t_seek.o:\
 	compile t_seek.c ../seek.h ../int64.h 
 	./compile t_seek t_seek.c 
@@ -101,14 +115,16 @@ t_uint.o:\
 phase_compile:\
 	t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o t_dir_array.o \
 	t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o t_float.o \
-	t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o t_scan.o \
-	t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_signal.o \
-	t_sstring.o t_stalloc.o t_str.o t_uint.o 
+	t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable.o t_int.o \
+	t_open.o t_scan.o t_scan2.o t_scan3.o t_scan_float.o t_scan_fspec.o \
+	t_scan_spec.o t_seek.o t_sgetline.o t_signal.o t_sstring.o \
+	t_stalloc.o t_str.o t_uint.o 
 phase_compile_clean:
 	rm -f t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o \
 	t_dir_array.o t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o \
-	t_float.o t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o \
-	t_scan.o t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_signal.o \
+	t_float.o t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable.o \
+	t_int.o t_open.o t_scan.o t_scan2.o t_scan3.o t_scan_float.o \
+	t_scan_fspec.o t_scan_spec.o t_seek.o t_sgetline.o t_signal.o \
 	t_sstring.o t_stalloc.o t_str.o t_uint.o 
 
 #--LIBRARY--------------------------------------------------------------------
@@ -169,6 +185,12 @@ t_float:\
 t_fmt:\
 	link t_fmt.ld t_fmt.o ../fmt.a 
 	./link t_fmt t_fmt.o ../fmt.a 
+t_fmt2:\
+	link t_fmt2.ld t_fmt2.o ../fmt.a ../str.a 
+	./link t_fmt2 t_fmt2.o ../fmt.a ../str.a 
+t_fmt_spec:\
+	link t_fmt_spec.ld t_fmt_spec.o ../fmt_spec.a 
+	./link t_fmt_spec t_fmt_spec.o ../fmt_spec.a 
 t_get_opt:\
 	link t_get_opt.ld t_get_opt.o ../get_opt.a ../buffer.a ../error.a \
 	../bin.a ../str.a 
@@ -191,9 +213,18 @@ t_scan:\
 t_scan2:\
 	link t_scan2.ld t_scan2.o ../scan.a 
 	./link t_scan2 t_scan2.o ../scan.a 
+t_scan3:\
+	link t_scan3.ld t_scan3.o ../scan.a 
+	./link t_scan3 t_scan3.o ../scan.a 
 t_scan_float:\
-	link t_scan_float.ld t_scan_float.o ../scan_float.a 
-	./link t_scan_float t_scan_float.o ../scan_float.a 
+	link t_scan_float.ld t_scan_float.o ../scan.a 
+	./link t_scan_float t_scan_float.o ../scan.a 
+t_scan_fspec:\
+	link t_scan_fspec.ld t_scan_fspec.o ../scan_fspec.a 
+	./link t_scan_fspec t_scan_fspec.o ../scan_fspec.a 
+t_scan_spec:\
+	link t_scan_spec.ld t_scan_spec.o ../scan_spec.a 
+	./link t_scan_spec t_scan_spec.o ../scan_spec.a 
 t_seek:\
 	link t_seek.ld t_seek.o ../seek.a 
 	./link t_seek t_seek.o ../seek.a 
@@ -220,14 +251,16 @@ t_uint:\
 
 phase_link:\
 	t_alloc t_array t_base_name t_bin t_buffer t_dir_array t_dir_hash \
-	t_dir_name t_dstring t_env t_fd t_float t_fmt t_get_opt t_hashtable \
-	t_int t_open t_scan t_scan2 t_scan_float t_seek t_sgetline t_signal \
+	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt_spec \
+	t_get_opt t_hashtable t_int t_open t_scan t_scan2 t_scan3 \
+	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_signal \
 	t_sstring t_stalloc t_str t_uint 
 phase_link_clean:
 	rm -f t_alloc t_array t_base_name t_bin t_buffer t_dir_array \
-	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_get_opt \
-	t_hashtable t_int t_open t_scan t_scan2 t_scan_float t_seek \
-	t_sgetline t_signal t_sstring t_stalloc t_str t_uint 
+	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 \
+	t_fmt_spec t_get_opt t_hashtable t_int t_open t_scan t_scan2 t_scan3 \
+	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_signal \
+	t_sstring t_stalloc t_str t_uint 
 
 #--TEST-----------------------------------------------------------------------
 

@@ -183,33 +183,33 @@ float64_pack.o:\
 float64_upack.o:\
 	compile float64_upack.c endian.h float64.h 
 	./compile float64_upack float64_upack.c 
-fmt_byte.o:\
-	compile fmt_byte.c fmt.h 
-	./compile fmt_byte fmt_byte.c 
-fmt_byteo.o:\
-	compile fmt_byteo.c fmt.h 
-	./compile fmt_byteo fmt_byteo.c 
-fmt_bytex.o:\
-	compile fmt_bytex.c fmt.h 
-	./compile fmt_bytex fmt_bytex.c 
+fmt_nstr.o:\
+	compile fmt_nstr.c fmt.h 
+	./compile fmt_nstr fmt_nstr.c 
+fmt_str.o:\
+	compile fmt_str.c fmt.h 
+	./compile fmt_str fmt_str.c 
 fmt_u32.o:\
-	compile fmt_u32.c fmt.h 
+	compile fmt_u32.c fmt_spec.h uint32.h uint64.h 
 	./compile fmt_u32 fmt_u32.c 
-fmt_u32o.o:\
-	compile fmt_u32o.c fmt.h 
-	./compile fmt_u32o fmt_u32o.c 
-fmt_u32x.o:\
-	compile fmt_u32x.c fmt.h 
-	./compile fmt_u32x fmt_u32x.c 
 fmt_u64.o:\
-	compile fmt_u64.c fmt.h uint64.h 
+	compile fmt_u64.c fmt_spec.h uint64.h 
 	./compile fmt_u64 fmt_u64.c 
-fmt_u64o.o:\
-	compile fmt_u64o.c fmt.h uint64.h 
-	./compile fmt_u64o fmt_u64o.c 
-fmt_u64x.o:\
-	compile fmt_u64x.c fmt.h uint64.h 
-	./compile fmt_u64x fmt_u64x.c 
+fmt_uchar.o:\
+	compile fmt_uchar.c fmt.h 
+	./compile fmt_uchar fmt_uchar.c 
+fmt_uint.o:\
+	compile fmt_uint.c fmt.h 
+	./compile fmt_uint fmt_uint.c 
+fmt_ullong.o:\
+	compile fmt_ullong.c fmt.h 
+	./compile fmt_ullong fmt_ullong.c 
+fmt_ulong.o:\
+	compile fmt_ulong.c fmt.h 
+	./compile fmt_ulong fmt_ulong.c 
+fmt_ushort.o:\
+	compile fmt_ushort.c fmt.h 
+	./compile fmt_ushort fmt_ushort.c 
 get_opt.o:\
 	compile get_opt.c buffer.h get_opt.h 
 	./compile get_opt get_opt.c 
@@ -297,21 +297,24 @@ open_trunc.o:\
 open_wo.o:\
 	compile open_wo.c open.h 
 	./compile open_wo open_wo.c 
-scan_chars.o:\
-	compile scan_chars.c scan.h 
-	./compile scan_chars scan_chars.c 
+scan_charset.o:\
+	compile scan_charset.c scan.h 
+	./compile scan_charset scan_charset.c 
 scan_double.o:\
 	compile scan_double.c scan.h 
 	./compile scan_double scan_double.c 
 scan_f32.o:\
-	compile scan_f32.c scan_float.h float32.h 
+	compile scan_f32.c scan_fspec.h 
 	./compile scan_f32 scan_f32.c 
 scan_f64.o:\
-	compile scan_f64.c scan_float.h float64.h 
+	compile scan_f64.c scan_fspec.h 
 	./compile scan_f64 scan_f64.c 
 scan_float.o:\
 	compile scan_float.c scan.h 
 	./compile scan_float scan_float.c 
+scan_ncharset.o:\
+	compile scan_ncharset.c scan.h 
+	./compile scan_ncharset scan_ncharset.c 
 scan_newline.o:\
 	compile scan_newline.c scan.h 
 	./compile scan_newline scan_newline.c 
@@ -319,23 +322,26 @@ scan_space.o:\
 	compile scan_space.c scan.h 
 	./compile scan_space scan_space.c 
 scan_u32.o:\
-	compile scan_u32.c scan.h uint32.h uint64.h 
+	compile scan_u32.c scan_spec.h uint32.h uint64.h 
 	./compile scan_u32 scan_u32.c 
-scan_u32o.o:\
-	compile scan_u32o.c scan.h uint32.h uint64.h 
-	./compile scan_u32o scan_u32o.c 
-scan_u32x.o:\
-	compile scan_u32x.c scan.h uint32.h 
-	./compile scan_u32x scan_u32x.c 
 scan_u64.o:\
 	compile scan_u64.c scan.h uint64.h 
 	./compile scan_u64 scan_u64.c 
-scan_u64o.o:\
-	compile scan_u64o.c scan.h uint64.h 
-	./compile scan_u64o scan_u64o.c 
-scan_u64x.o:\
-	compile scan_u64x.c scan.h uint64.h 
-	./compile scan_u64x scan_u64x.c 
+scan_uchar.o:\
+	compile scan_uchar.c scan.h 
+	./compile scan_uchar scan_uchar.c 
+scan_uint.o:\
+	compile scan_uint.c scan.h 
+	./compile scan_uint scan_uint.c 
+scan_ullong.o:\
+	compile scan_ullong.c scan.h 
+	./compile scan_ullong scan_ullong.c 
+scan_ulong.o:\
+	compile scan_ulong.c scan.h 
+	./compile scan_ulong scan_ulong.c 
+scan_ushort.o:\
+	compile scan_ushort.c scan.h 
+	./compile scan_ushort scan_ushort.c 
 seek_cur.o:\
 	compile seek_cur.c int64.h seek.h 
 	./compile seek_cur seek_cur.c 
@@ -474,25 +480,25 @@ phase_compile:\
 	dstring_copy.o dstring_cpyb.o dstring_cpys.o dstring_init.o \
 	dstring_trunc.o env.o env_get.o error.o error_str.o fd_dup.o \
 	fd_move.o fd_reset.o float32_pack.o float32_upack.o float64_pack.o \
-	float64_upack.o fmt_byte.o fmt_byteo.o fmt_bytex.o fmt_u32.o \
-	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o get_opt.o \
-	ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
+	float64_upack.o fmt_nstr.o fmt_str.o fmt_u32.o fmt_u64.o fmt_uchar.o \
+	fmt_uint.o fmt_ullong.o fmt_ulong.o fmt_ushort.o get_opt.o ht_addb.o \
+	ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
 	ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o \
 	ht_replaceb.o ht_replaces.o int16_pack.o int16_unpack.o int32_pack.o \
 	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
 	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	scan_chars.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
-	scan_u64.o scan_u64o.o scan_u64x.o seek_cur.o seek_end.o seek_pos.o \
-	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
-	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
-	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
-	uint64_unpack.o 
+	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
+	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u64.o \
+	scan_uchar.o scan_uint.o scan_ullong.o scan_ulong.o scan_ushort.o \
+	seek_cur.o seek_end.o seek_pos.o seek_start.o sgetline.o \
+	sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o sig_pause.o \
+	signal.o sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
+	sstring_init.o sstring_trunc.o stalloc.o str_chr.o str_copy.o \
+	str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o str_ndiff.o \
+	str_rchr.o str_starts.o str_tolower.o str_toupper.o syserr_die.o \
+	syserr_init.o uint16_pack.o uint16_unpack.o uint32_pack.o \
+	uint32_unpack.o uint64_pack.o uint64_unpack.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o base_name.o \
@@ -504,19 +510,20 @@ phase_compile_clean:
 	dstring_chop.o dstring_copy.o dstring_cpyb.o dstring_cpys.o \
 	dstring_init.o dstring_trunc.o env.o env_get.o error.o error_str.o \
 	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
-	float64_pack.o float64_upack.o fmt_byte.o fmt_byteo.o fmt_bytex.o \
-	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
-	get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o int16_pack.o int16_unpack.o \
-	int32_pack.o int32_unpack.o int64_pack.o int64_unpack.o nonblock.o \
-	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
-	open_trunc.o open_wo.o scan_chars.o scan_double.o scan_f32.o \
-	scan_f64.o scan_float.o scan_newline.o scan_space.o scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	seek_cur.o seek_end.o seek_pos.o seek_start.o sgetline.o \
-	sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o sig_pause.o \
-	signal.o sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	float64_pack.o float64_upack.o fmt_nstr.o fmt_str.o fmt_u32.o \
+	fmt_u64.o fmt_uchar.o fmt_uint.o fmt_ullong.o fmt_ulong.o \
+	fmt_ushort.o get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o \
+	ht_deleteb.o ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o \
+	ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
+	int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
+	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
+	open_ro.o open_rw.o open_trunc.o open_wo.o scan_charset.o \
+	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_ncharset.o \
+	scan_newline.o scan_space.o scan_u32.o scan_u64.o scan_uchar.o \
+	scan_uint.o scan_ullong.o scan_ulong.o scan_ushort.o seek_cur.o \
+	seek_end.o seek_pos.o seek_start.o sgetline.o sgetline_chop.o \
+	sgetline_get.o sig_block.o sig_catch.o sig_pause.o signal.o \
+	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
 	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
 	sstring_init.o sstring_trunc.o stalloc.o str_chr.o str_copy.o \
 	str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o str_ndiff.o \
@@ -584,10 +591,13 @@ float64.a:\
 	makelib float64.sld float64_pack.o float64_upack.o 
 	./makelib float64 float64_pack.o float64_upack.o 
 fmt.a:\
-	makelib fmt.sld fmt_byte.o fmt_byteo.o fmt_bytex.o fmt_u32.o \
-	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o 
-	./makelib fmt fmt_byte.o fmt_byteo.o fmt_bytex.o fmt_u32.o \
-	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o 
+	makelib fmt.sld fmt_ullong.o fmt_ulong.o fmt_uint.o fmt_ushort.o \
+	fmt_uchar.o fmt_str.o fmt_nstr.o 
+	./makelib fmt fmt_ullong.o fmt_ulong.o fmt_uint.o fmt_ushort.o \
+	fmt_uchar.o fmt_str.o fmt_nstr.o 
+fmt_spec.a:\
+	makelib fmt_spec.sld fmt_u32.o fmt_u64.o 
+	./makelib fmt_spec fmt_u32.o fmt_u64.o 
 get_opt.a:\
 	makelib get_opt.sld get_opt.o 
 	./makelib get_opt get_opt.o 
@@ -616,15 +626,18 @@ open.a:\
 	./makelib open open_append.o open_creat.o open_excl.o open_ro.o \
 	open_rw.o open_trunc.o open_wo.o 
 scan.a:\
-	makelib scan.sld scan_chars.o scan_newline.o scan_space.o \
-	scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o \
-	scan_u64x.o scan_float.o scan_double.o 
-	./makelib scan scan_chars.o scan_newline.o scan_space.o scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	scan_float.o scan_double.o 
-scan_float.a:\
-	makelib scan_float.sld scan_f32.o scan_f64.o 
-	./makelib scan_float scan_f32.o scan_f64.o 
+	makelib scan.sld scan_ulong.o scan_uint.o scan_ushort.o \
+	scan_ullong.o scan_uchar.o scan_float.o scan_double.o scan_charset.o \
+	scan_ncharset.o scan_space.o scan_newline.o 
+	./makelib scan scan_ulong.o scan_uint.o scan_ushort.o scan_ullong.o \
+	scan_uchar.o scan_float.o scan_double.o scan_charset.o \
+	scan_ncharset.o scan_space.o scan_newline.o 
+scan_fspec.a:\
+	makelib scan_fspec.sld scan_f32.o scan_f64.o 
+	./makelib scan_fspec scan_f32.o scan_f64.o 
+scan_spec.a:\
+	makelib scan_spec.sld scan_u32.o scan_u64.o 
+	./makelib scan_spec scan_u32.o scan_u64.o 
 seek.a:\
 	makelib seek.sld seek_cur.o seek_end.o seek_pos.o seek_start.o 
 	./makelib seek seek_cur.o seek_end.o seek_pos.o seek_start.o 
@@ -667,17 +680,17 @@ uint64.a:\
 phase_library:\
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
-	float32.a float64.a fmt.a get_opt.a hashtable.a int16.a int32.a \
-	int64.a nonblock.a open.a scan.a scan_float.a seek.a sgetline.a \
-	signal.a sstring.a stalloc.a str.a syserr.a uint16.a uint32.a \
-	uint64.a 
+	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a int16.a \
+	int32.a int64.a nonblock.a open.a scan.a scan_fspec.a scan_spec.a \
+	seek.a sgetline.a signal.a sstring.a stalloc.a str.a syserr.a \
+	uint16.a uint32.a uint64.a 
 phase_library_clean:
 	rm -f alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
-	float32.a float64.a fmt.a get_opt.a hashtable.a int16.a int32.a \
-	int64.a nonblock.a open.a scan.a scan_float.a seek.a sgetline.a \
-	signal.a sstring.a stalloc.a str.a syserr.a uint16.a uint32.a \
-	uint64.a 
+	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a int16.a \
+	int32.a int64.a nonblock.a open.a scan.a scan_fspec.a scan_spec.a \
+	seek.a sgetline.a signal.a sstring.a stalloc.a str.a syserr.a \
+	uint16.a uint32.a uint64.a 
 
 #--LINK-----------------------------------------------------------------------
 

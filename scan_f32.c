@@ -1,8 +1,7 @@
 #include <math.h> /* severe problems on PPC if this is not included */
-#include "scan_float.h"
-#include "float32.h"
+#include "scan_fspec.h"
 
-unsigned int scan_f32(const char *s, float32 *f)
+unsigned int scan_float32(const char *s, float32 *f)
 {
   const char *t;
   char c;

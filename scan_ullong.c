@@ -1,11 +1,10 @@
 #include "scan.h"
-#include "uint64.h"
 
-unsigned int scan_u64(const char *s, uint64 *ul)
+unsigned int scan_ulonglong(const char *s, unsigned long long *ul)
 {
-  uint64 p;
-  uint64 r;
-  uint64 c;
+  unsigned long long p;
+  unsigned long long r;
+  unsigned long long c;
 
   p = 0;
   r = 0;
@@ -22,30 +21,10 @@ unsigned int scan_u64(const char *s, uint64 *ul)
   return p;
 }
 
-unsigned int scan_u64o(const char *s, uint64 *ul)
+unsigned int scan_ulonglongx(const char *s, unsigned long long *ul)
 {
-  const char *t;
-  uint64 n;
-  char c;
-
-  t = s;
-  n = 0;
-  for (;;) {
-    c = *t;
-    if (!c) break;
-    if (c >= '0' && c < '8') {
-      c -= '0';
-      n = (n * 8) + c; ++t;
-    } else break;
-  }
-  *ul = n;
-  return t - s;
-}
-
-unsigned int scan_u64x(const char *s, uint64 *ul)
-{
-  uint64 p;
-  uint64 r;
+  unsigned long long p;
+  unsigned long long r;
   char c;
 
   p = 0;
@@ -66,6 +45,26 @@ unsigned int scan_u64x(const char *s, uint64 *ul)
     r = (r << 4) + (unsigned char) c;
     ++p;
   }
-  if (ul) *ul = (uint64) r;
+  if (ul) *ul = (unsigned long long) r;
   return p;
+}
+
+unsigned int scan_ulonglongo(const char *s, unsigned long long *ul)
+{
+  const char *t;
+  unsigned long long n;
+  char c;
+
+  t = s;
+  n = 0;
+  for (;;) {
+    c = *t;
+    if (!c) break;
+    if (c >= '0' && c < '8') {
+      c -= '0';
+      n = (n * 8) + c; ++t;
+    } else break;
+  }
+  *ul = n;
+  return t - s;
 }
