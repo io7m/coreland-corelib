@@ -16,3 +16,6 @@ Change documentation for buffer (no uint32).
 Change documentation for str.h (str_ndiff, str_same is now a macro etc)
 
 bin_dup from urlparse.
+
+fmt_float
+fmt_double
