@@ -86,7 +86,7 @@
 20060502 code: further restructuring for cpj-genmk changes.
 20060507 code: updated to cpj-genmk-0.6
 20060507 code: added sysmath-libs and conf-ldfflist
-20060507 version: corelib-0.31
+20060507 version: corelib-0.31 (no release)
 20060510 code: updated to cpj-genmk-0.7
 20060510 code: updated to latest sysdeps
 20060523 code: buffer no longer uses uint32, but uses unsigned int.
@@ -108,3 +108,4 @@
                specific sized floats have been moved into fmt_fspec.h
                and scan_fspec.h respectively. fmt and scan now use
                standard C integers by default.
+20060526 version: corelib-0.33 (no release)
