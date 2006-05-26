@@ -28,6 +28,8 @@ int main()
 
   i = str_same(s, x);
   if (i != 1) { printf("(str_dup) str_same: i == %d\n", i); return 1; }
+  i = str_nsame(s, x, 8);
+  if (i != 1) { printf("(str_dup) str_nsame: i == %d\n", i); return 1; }
 
   i = str_starts(s, "ABCD");
   if (i != 1) { printf("(1) str_starts: i == %d\n", i); return 1; }

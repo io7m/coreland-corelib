@@ -82,6 +82,9 @@ t_seek.o:\
 t_sgetline.o:\
 	compile t_sgetline.c ../buffer.h ../close.h ../read.h ../sgetline.h 
 	./compile t_sgetline t_sgetline.c 
+t_signal.o:\
+	compile t_signal.c ../signal.h 
+	./compile t_signal t_signal.c 
 t_sstring.o:\
 	compile t_sstring.c ../sstring.h 
 	./compile t_sstring t_sstring.c 
@@ -99,14 +102,14 @@ phase_compile:\
 	t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o t_dir_array.o \
 	t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o t_float.o \
 	t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o t_scan.o \
-	t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_sstring.o \
-	t_stalloc.o t_str.o t_uint.o 
+	t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_signal.o \
+	t_sstring.o t_stalloc.o t_str.o t_uint.o 
 phase_compile_clean:
 	rm -f t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o \
 	t_dir_array.o t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o \
 	t_float.o t_fmt.o t_get_opt.o t_hashtable.o t_int.o t_open.o \
-	t_scan.o t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_sstring.o \
-	t_stalloc.o t_str.o t_uint.o 
+	t_scan.o t_scan2.o t_scan_float.o t_seek.o t_sgetline.o t_signal.o \
+	t_sstring.o t_stalloc.o t_str.o t_uint.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -199,6 +202,9 @@ t_sgetline:\
 	../buffer.a ../error.a ../bin.a ../str.a 
 	./link t_sgetline t_sgetline.o ../sgetline.a ../sstring.a \
 	../buffer.a ../error.a ../bin.a ../str.a 
+t_signal:\
+	link t_signal.ld t_signal.o ../signal.a 
+	./link t_signal t_signal.o ../signal.a 
 t_sstring:\
 	link t_sstring.ld t_sstring.o ../sstring.a 
 	./link t_sstring t_sstring.o ../sstring.a 
@@ -215,13 +221,13 @@ t_uint:\
 phase_link:\
 	t_alloc t_array t_base_name t_bin t_buffer t_dir_array t_dir_hash \
 	t_dir_name t_dstring t_env t_fd t_float t_fmt t_get_opt t_hashtable \
-	t_int t_open t_scan t_scan2 t_scan_float t_seek t_sgetline t_sstring \
-	t_stalloc t_str t_uint 
+	t_int t_open t_scan t_scan2 t_scan_float t_seek t_sgetline t_signal \
+	t_sstring t_stalloc t_str t_uint 
 phase_link_clean:
 	rm -f t_alloc t_array t_base_name t_bin t_buffer t_dir_array \
 	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_get_opt \
 	t_hashtable t_int t_open t_scan t_scan2 t_scan_float t_seek \
-	t_sgetline t_sstring t_stalloc t_str t_uint 
+	t_sgetline t_signal t_sstring t_stalloc t_str t_uint 
 
 #--TEST-----------------------------------------------------------------------
 

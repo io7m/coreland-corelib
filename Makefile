@@ -357,6 +357,18 @@ sgetline_chop.o:\
 sgetline_get.o:\
 	compile sgetline_get.c bin.h buffer.h sgetline.h sstring.h 
 	./compile sgetline_get sgetline_get.c 
+sig_block.o:\
+	compile sig_block.c signal.h sig_pmask.h 
+	./compile sig_block sig_block.c 
+sig_catch.o:\
+	compile sig_catch.c signal.h sig_action.h 
+	./compile sig_catch sig_catch.c 
+sig_pause.o:\
+	compile sig_pause.c signal.h sig_pmask.h 
+	./compile sig_pause sig_pause.c 
+signal.o:\
+	compile signal.c signal.h 
+	./compile signal signal.c 
 sstring_0.o:\
 	compile sstring_0.c sstring.h 
 	./compile sstring_0 sstring_0.c 
@@ -472,11 +484,12 @@ phase_compile:\
 	scan_chars.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
 	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
 	scan_u64.o scan_u64o.o scan_u64x.o seek_cur.o seek_end.o seek_pos.o \
-	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sstring_0.o \
-	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
-	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
-	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
+	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
+	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
+	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
+	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
+	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o 
@@ -502,14 +515,14 @@ phase_compile_clean:
 	scan_f64.o scan_float.o scan_newline.o scan_space.o scan_u32.o \
 	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
 	seek_cur.o seek_end.o seek_pos.o seek_start.o sgetline.o \
-	sgetline_chop.o sgetline_get.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
-	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
-	uint64_unpack.o 
+	sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o sig_pause.o \
+	signal.o sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
+	sstring_init.o sstring_trunc.o stalloc.o str_chr.o str_copy.o \
+	str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o str_ndiff.o \
+	str_rchr.o str_starts.o str_tolower.o str_toupper.o syserr_die.o \
+	syserr_init.o uint16_pack.o uint16_unpack.o uint32_pack.o \
+	uint32_unpack.o uint64_pack.o uint64_unpack.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -618,6 +631,9 @@ seek.a:\
 sgetline.a:\
 	makelib sgetline.sld sgetline.o sgetline_chop.o sgetline_get.o 
 	./makelib sgetline sgetline.o sgetline_chop.o sgetline_get.o 
+signal.a:\
+	makelib signal.sld signal.o sig_block.o sig_catch.o sig_pause.o 
+	./makelib signal signal.o sig_block.o sig_catch.o sig_pause.o 
 sstring.a:\
 	makelib sstring.sld sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
@@ -653,13 +669,15 @@ phase_library:\
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	float32.a float64.a fmt.a get_opt.a hashtable.a int16.a int32.a \
 	int64.a nonblock.a open.a scan.a scan_float.a seek.a sgetline.a \
-	sstring.a stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
+	signal.a sstring.a stalloc.a str.a syserr.a uint16.a uint32.a \
+	uint64.a 
 phase_library_clean:
 	rm -f alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	float32.a float64.a fmt.a get_opt.a hashtable.a int16.a int32.a \
 	int64.a nonblock.a open.a scan.a scan_float.a seek.a sgetline.a \
-	sstring.a stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
+	signal.a sstring.a stalloc.a str.a syserr.a uint16.a uint32.a \
+	uint64.a 
 
 #--LINK-----------------------------------------------------------------------
 
