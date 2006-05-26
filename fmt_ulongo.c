@@ -1,7 +1,5 @@
 #include "fmt.h"
 
-#include "fmt.h"
-
 unsigned int fmt_ulongo(char *s, unsigned long ul)
 {
   unsigned long len; 
