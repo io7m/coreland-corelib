@@ -1,8 +1,7 @@
 #include "fmt.h"
 
-unsigned int fmt_ucharx(char *s, unsigned char uix)
+unsigned int fmt_ucharo(char *s, unsigned char uio)
 {
-  return fmt_ulongx(s, (unsigned long) uix);
+  return fmt_ulongo(s, (unsigned long) uio);
 }
-
 
