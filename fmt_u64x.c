@@ -9,10 +9,7 @@ unsigned int fmt_u64x(char *s, uint64 ul)
   l = 1; q = ul;
   
   /* number of digits */
-  while (q > 15) { 
-    ++l; 
-    q /= 16;
-  }
+  while (q > 15) { ++l; q /= 16; }
   
   /* digits -> ascii base16 */
   if (s) {

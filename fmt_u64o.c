@@ -8,18 +8,12 @@ unsigned int fmt_u64o(char *s, uint64 ul)
   l = 1; q = ul;
   
   /* no. digits */
-  while (q > 7) { 
-    ++l; 
-    q >>= 3;
-  }
+  while (q > 7) { ++l; q >>= 3; }
   
   /* digit -> ascii (base10) */
   if (s) {
     s += l;
-    do { 
-      *--s = '0' + (ul & 7);
-      ul >>= 3;
-    } while (ul);
+    do { *--s = '0' + (ul & 7); ul >>= 3; } while (ul);
   }
   return l;
 }
