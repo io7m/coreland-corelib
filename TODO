@@ -1,16 +1,6 @@
 Audit inter-dependencies.
 
-Add non fixed-size fmt, non fixed-size scan,
-
-Possibly, given that compatibility with older versions is a non-issue,
-the current fmt.h should be moved to fmt_spec.h or something similar
-to denote that fmt.h is now for flexible sizes and the old fmt_spec.h
-is for specific size integers.
-
-The same should be done for scan.h
-
 Document dir_hash, base_name, dir_name.
-Document signal.
 
 Change documentation for buffer (no uint32).
 Change documentation for str.h (str_ndiff, str_same is now a macro etc)

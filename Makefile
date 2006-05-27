@@ -238,7 +238,7 @@ fmt_ulong.o:\
 	compile fmt_ulong.c fmt.h 
 	./compile fmt_ulong fmt_ulong.c 
 fmt_ulongo.o:\
-	compile fmt_ulongo.c fmt.h fmt.h 
+	compile fmt_ulongo.c fmt.h 
 	./compile fmt_ulongo fmt_ulongo.c 
 fmt_ulongx.o:\
 	compile fmt_ulongx.c fmt.h 
@@ -366,9 +366,21 @@ scan_space.o:\
 scan_u32.o:\
 	compile scan_u32.c scan_spec.h uint32.h uint64.h 
 	./compile scan_u32 scan_u32.c 
+scan_u32o.o:\
+	compile scan_u32o.c scan_spec.h uint32.h uint64.h 
+	./compile scan_u32o scan_u32o.c 
+scan_u32x.o:\
+	compile scan_u32x.c scan_spec.h uint32.h uint64.h 
+	./compile scan_u32x scan_u32x.c 
 scan_u64.o:\
 	compile scan_u64.c scan.h uint64.h 
 	./compile scan_u64 scan_u64.c 
+scan_u64o.o:\
+	compile scan_u64o.c scan.h uint64.h 
+	./compile scan_u64o scan_u64o.c 
+scan_u64x.o:\
+	compile scan_u64x.c scan.h uint64.h 
+	./compile scan_u64x scan_u64x.c 
 scan_uchar.o:\
 	compile scan_uchar.c scan.h 
 	./compile scan_uchar scan_uchar.c 
@@ -563,20 +575,20 @@ phase_compile:\
 	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
 	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
 	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u64.o \
-	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
-	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
-	scan_ulong.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushorto.o scan_ushortx.o seek_cur.o seek_end.o seek_pos.o \
-	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
-	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
-	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
-	uint64_unpack.o 
+	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
+	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
+	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
+	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
+	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
+	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
+	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
+	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
+	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
+	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
+	str_copy.o str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o \
+	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
+	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o base_name.o \
@@ -599,20 +611,20 @@ phase_compile_clean:
 	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
 	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
 	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u64.o \
-	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
-	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
-	scan_ulong.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushorto.o scan_ushortx.o seek_cur.o seek_end.o seek_pos.o \
-	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
-	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
-	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
-	uint64_unpack.o 
+	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
+	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
+	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
+	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
+	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
+	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
+	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
+	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
+	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
+	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
+	str_copy.o str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o \
+	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
+	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -731,8 +743,10 @@ scan_fspec.a:\
 	makelib scan_fspec.sld scan_f32.o scan_f64.o 
 	./makelib scan_fspec scan_f32.o scan_f64.o 
 scan_spec.a:\
-	makelib scan_spec.sld scan_u32.o scan_u64.o 
-	./makelib scan_spec scan_u32.o scan_u64.o 
+	makelib scan_spec.sld scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
+	scan_u64o.o scan_u64x.o 
+	./makelib scan_spec scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
+	scan_u64o.o scan_u64x.o 
 seek.a:\
 	makelib seek.sld seek_cur.o seek_end.o seek_pos.o seek_start.o 
 	./makelib seek seek_cur.o seek_end.o seek_pos.o seek_start.o 
