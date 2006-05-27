@@ -80,10 +80,7 @@ static int add(const char *key, const char *val,
 
   if (eused == (esize - 1)) {
     new_env = (char **) alloc((esize + 1 + ENV_OVERALLOC) * sizeof(char *));
-    if (!new_env) {
-      env_clear();
-      return 0;
-    }
+    if (!new_env) return 0;
     for (ind = 0; ind < (esize - 1); ++ind)
       new_env[ind] = environ[ind];
     dealloc(environ);

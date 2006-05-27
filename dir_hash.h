@@ -14,9 +14,7 @@ typedef struct {
 
 int dir_hash_init(dir_hash *, const char *);
 int dir_hash_check(dir_hash *, const char *);
-
 void dir_hash_free(dir_hash *);
-void dir_hash_dump(dir_hash *);
 
 #define dir_hash_array(dh) (&(dh)->da)
 
