@@ -11,8 +11,6 @@ int array_cat(array *a, void* i)
   uint64 new_a;
   uint32 es;
 
-  if (!a->x) return 0;
-
   old_u = a->u;
   old_a = a->a;
   es = a->es;
