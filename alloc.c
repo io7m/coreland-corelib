@@ -1,6 +1,6 @@
 #include "alloc.h"
 
-extern void *calloc();
+extern void *malloc();
 extern void free();
 
 /* pointers to default mem functions */
@@ -12,18 +12,23 @@ static alloc_proto allocfunc = def_alloc;
 static realloc_proto reallocfunc = def_realloc;
 static dealloc_proto deallocfunc = def_dealloc;
 
-static void copy_bytes(const char*, char*, unsigned int);
-
+static void copy_bytes(const char *sc, char *dc, unsigned int n)
+{
+  for (;;) {
+    if (!n) return; *dc++ = *sc++; --n;
+    if (!n) return; *dc++ = *sc++; --n;
+    if (!n) return; *dc++ = *sc++; --n;
+    if (!n) return; *dc++ = *sc++; --n;
+  }
+}
 static void *def_alloc(unsigned int n)
 {
   return malloc(n);
 }
-
 static void def_dealloc(void *p)
 {
   free(p);
 }
-
 static int def_realloc(void **p, unsigned int m, unsigned int n)
 {
   char *q;
@@ -33,16 +38,6 @@ static int def_realloc(void **p, unsigned int m, unsigned int n)
   def_dealloc(*p);
   *p = q;
   return 1;
-}
-
-static void copy_bytes(const char *sc, char *dc, unsigned int n)
-{
-  for (;;) {
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
-  }
 }
 
 /* interface */
