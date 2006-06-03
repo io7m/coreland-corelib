@@ -14,12 +14,9 @@ static dealloc_proto deallocfunc = def_dealloc;
 
 static void copy_bytes(const char*, char*, unsigned int);
 
-/* default 32 bit static allocator, no malloc.
-   only works with static variables */
-
 static void *def_alloc(unsigned int n)
 {
-  return calloc(n, 1);
+  return malloc(n);
 }
 
 static void def_dealloc(void *p)
