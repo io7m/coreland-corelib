@@ -110,3 +110,4 @@
                standard C integers by default.
 20060526 version: corelib-0.33 (no release)
 20060527 code: misc source cleanups everywhere.
+20060603 code: alloc now calls malloc() instead of calloc().
