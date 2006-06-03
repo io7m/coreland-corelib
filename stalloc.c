@@ -1,3 +1,4 @@
+#include "error.h"
 #include "stalloc.h"
 
 typedef union { char x[STALLOC_ALIGN]; double d; } aligned;
@@ -23,6 +24,7 @@ void *stalloc(unsigned int n)
       return space + avail;
     }
   }
+  errno = error_nomem;
   return 0;
 }
 int strealloc(void **p, unsigned int n, unsigned int m)
