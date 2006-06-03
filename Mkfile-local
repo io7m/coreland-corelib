@@ -1,0 +1,28 @@
+phase_sysdeps_local:
+phase_tools_local:
+phase_compile_local:
+phase_library_local:
+phase_link_local:
+phase_local_clean: ctxt_clean
+
+ctxt_clean:
+	rm -f ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c
+	touch ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c
+
+ctxt/ctxt_libdir.c: auto-text conf-libdir
+	rm -f ctxt/ctxt_libdir.c
+	./auto-text ctxt ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+
+ctxt/ctxt_repos.c: auto-text conf-repos
+	rm -f ctxt/ctxt_repos.c
+	./auto-text ctxt ../ctxt < conf-repos > ctxt/ctxt_repos.c
+
+ctxt/ctxt_group.c: auto-text conf-group
+	rm -f ctxt/ctxt_group.c
+	./auto-text ctxt ../ctxt < conf-group > ctxt/ctxt_group.c
+
+ctxt/ctxt_owner.c: auto-text conf-owner
+	rm -f ctxt/ctxt_owner.c
+	./auto-text ctxt ../ctxt < conf-owner > ctxt/ctxt_owner.c
