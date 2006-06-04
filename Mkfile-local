@@ -7,9 +7,13 @@ phase_local_clean: ctxt_clean
 
 ctxt_clean:
 	rm -f ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
 	touch ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
+
+ctxt/ctxt_version.c: auto-text VERSION
+	rm -f ctxt/ctxt_version.c
+	./auto-text ctxt_version ../ctxt < VERSION > ctxt/ctxt_version.c
 
 ctxt/ctxt_libdir.c: auto-text conf-libdir
 	rm -f ctxt/ctxt_libdir.c

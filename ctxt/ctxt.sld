@@ -1,3 +1,4 @@
+ctxt_version.o
 ctxt_group.o
 ctxt_bindir.o
 ctxt_incdir.o
