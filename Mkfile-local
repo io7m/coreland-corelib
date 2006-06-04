@@ -13,16 +13,20 @@ ctxt_clean:
 
 ctxt/ctxt_libdir.c: auto-text conf-libdir
 	rm -f ctxt/ctxt_libdir.c
-	./auto-text ctxt ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+	./auto-text ctxt_libdir ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+
+ctxt/ctxt_incdir.c: auto-text conf-incdir
+	rm -f ctxt/ctxt_incdir.c
+	./auto-text ctxt_incdir ../ctxt < conf-incdir > ctxt/ctxt_incdir.c
 
 ctxt/ctxt_repos.c: auto-text conf-repos
 	rm -f ctxt/ctxt_repos.c
-	./auto-text ctxt ../ctxt < conf-repos > ctxt/ctxt_repos.c
+	./auto-text ctxt_repos ../ctxt < conf-repos > ctxt/ctxt_repos.c
 
 ctxt/ctxt_group.c: auto-text conf-group
 	rm -f ctxt/ctxt_group.c
-	./auto-text ctxt ../ctxt < conf-group > ctxt/ctxt_group.c
+	./auto-text ctxt_group ../ctxt < conf-group > ctxt/ctxt_group.c
 
 ctxt/ctxt_owner.c: auto-text conf-owner
 	rm -f ctxt/ctxt_owner.c
-	./auto-text ctxt ../ctxt < conf-owner > ctxt/ctxt_owner.c
+	./auto-text ctxt_owner ../ctxt < conf-owner > ctxt/ctxt_owner.c

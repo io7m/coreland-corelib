@@ -319,7 +319,7 @@ instchk.o:\
 	str.h sstring.h syserr.h write.h 
 	./compile instchk instchk.c 
 insthier.o:\
-	compile insthier.c install.h 
+	compile insthier.c ctxt.h install.h 
 	./compile insthier insthier.c 
 int16_pack.o:\
 	compile int16_pack.c int16.h 
@@ -579,6 +579,9 @@ uint64_unpack.o:\
 ctxt/ctxt_group.o:\
 	compile ctxt/ctxt_group.c 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
+ctxt/ctxt_incdir.o:\
+	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
+	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
 ctxt/ctxt_libdir.o:\
 	compile ctxt/ctxt_libdir.c 
 	./compile ctxt/ctxt_libdir ctxt/ctxt_libdir.c 
@@ -626,8 +629,8 @@ phase_compile:\
 	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
 	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
 	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
-	ctxt/ctxt_group.o ctxt/ctxt_libdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o 
+	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
+	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
@@ -665,8 +668,8 @@ phase_compile_clean:
 	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
 	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
 	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
-	ctxt/ctxt_group.o ctxt/ctxt_libdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o 
+	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
+	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -752,8 +755,8 @@ hashtable.a:\
 	ht_deleteb.o ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o \
 	ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o 
 insthier.a:\
-	makelib insthier.sld insthier.o ctxt/ctxt.a 
-	./makelib insthier insthier.o ctxt/ctxt.a 
+	makelib insthier.sld insthier.o 
+	./makelib insthier insthier.o 
 int16.a:\
 	makelib int16.sld int16_pack.o int16_unpack.o 
 	./makelib int16 int16_pack.o int16_unpack.o 
@@ -831,10 +834,10 @@ uint64.a:\
 	makelib uint64.sld uint64_pack.o uint64_unpack.o 
 	./makelib uint64 uint64_pack.o uint64_unpack.o 
 ctxt/ctxt.a:\
-	makelib ctxt/ctxt.sld ctxt/ctxt_group.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
-	./makelib ctxt/ctxt ctxt/ctxt_group.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	makelib ctxt/ctxt.sld ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_libdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	./makelib ctxt/ctxt ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_libdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 
 phase_library:\
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
@@ -883,16 +886,16 @@ phase_test:
 
 #--INSTALL--------------------------------------------------------------------
 
-phase_install: install/installer
-	./install/installer
+phase_install: installer
+	./installer
 
-install-dryrun: install/installer
-	./install/installer -n
+install-dryrun: installer
+	./installer -n
 
 #--INSTALL-CHECK--------------------------------------------------------------
 
-phase_install_check: install/instchk
-	./install/instchk
+phase_install_check: instchk
+	./instchk
 
 #--LOCAL----------------------------------------------------------------------
 
@@ -911,19 +914,23 @@ ctxt_clean:
 
 ctxt/ctxt_libdir.c: auto-text conf-libdir
 	rm -f ctxt/ctxt_libdir.c
-	./auto-text ctxt ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+	./auto-text ctxt_libdir ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+
+ctxt/ctxt_incdir.c: auto-text conf-incdir
+	rm -f ctxt/ctxt_incdir.c
+	./auto-text ctxt_incdir ../ctxt < conf-incdir > ctxt/ctxt_incdir.c
 
 ctxt/ctxt_repos.c: auto-text conf-repos
 	rm -f ctxt/ctxt_repos.c
-	./auto-text ctxt ../ctxt < conf-repos > ctxt/ctxt_repos.c
+	./auto-text ctxt_repos ../ctxt < conf-repos > ctxt/ctxt_repos.c
 
 ctxt/ctxt_group.c: auto-text conf-group
 	rm -f ctxt/ctxt_group.c
-	./auto-text ctxt ../ctxt < conf-group > ctxt/ctxt_group.c
+	./auto-text ctxt_group ../ctxt < conf-group > ctxt/ctxt_group.c
 
 ctxt/ctxt_owner.c: auto-text conf-owner
 	rm -f ctxt/ctxt_owner.c
-	./auto-text ctxt ../ctxt < conf-owner > ctxt/ctxt_owner.c
+	./auto-text ctxt_owner ../ctxt < conf-owner > ctxt/ctxt_owner.c
 
 #--SYSDEPS-TARGET-------------------------------------------------------------
 
