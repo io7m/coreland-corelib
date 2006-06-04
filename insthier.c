@@ -5,6 +5,7 @@ const struct install_item insthier[] = {
   {0, 0, ctxt_incdir, 0755, ctxt_owner, ctxt_group},
   {0, 0, ctxt_libdir, 0755, ctxt_owner, ctxt_group},
   {0, 0, ctxt_repos, 0755, ctxt_owner, ctxt_group},
+  {"corelib-conf", "corelib-config", ctxt_bindir, 0755, ctxt_owner, ctxt_group},
   {0, "alloc.c", ctxt_repos, 0444, ctxt_owner, ctxt_group},
   {0, "array.c", ctxt_repos, 0444, ctxt_owner, ctxt_group},
   {0, "array_bytes.c", ctxt_repos, 0444, ctxt_owner, ctxt_group},
