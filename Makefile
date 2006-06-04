@@ -9,6 +9,10 @@ all: phase_sysdeps_local phase_sysdeps phase_tools_local phase_tools \
 
 tests: phase_test 
 
+install: phase_install 
+
+install-check: phase_install_check 
+
 clean: phase_local_clean phase_sysdeps_clean phase_tools_clean \
 	phase_compile_clean phase_library_clean phase_link_clean \
 	phase_test_clean 
@@ -569,6 +573,26 @@ ctxt/ctxt_owner.o:\
 ctxt/ctxt_repos.o:\
 	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
+install/install_ln.o:\
+	compile install/install_ln.c install/../close.h install/install.h \
+	install/../open.h install/../read.h install/../str.h \
+	install/../sstring.h install/../syserr.h 
+	./compile install/install_ln install/install_ln.c 
+install/installer.o:\
+	compile install/installer.c install/../buffer.h install/../error.h \
+	install/../fmt.h install/../get_opt.h install/install.h \
+	install/../open.h install/../read.h install/../str.h \
+	install/../sstring.h install/../syserr.h install/../write.h 
+	./compile install/installer install/installer.c 
+install/instchk.o:\
+	compile install/instchk.c install/../buffer.h install/../error.h \
+	install/../fmt.h install/install.h install/../open.h \
+	install/../read.h install/../str.h install/../sstring.h \
+	install/../syserr.h install/../write.h 
+	./compile install/instchk install/instchk.c 
+install/insthier.o:\
+	compile install/insthier.c install/install.h 
+	./compile install/insthier install/insthier.c 
 
 phase_compile:\
 	alloc.o array.o array_bytes.o array_cat.o array_chop.o array_copy.o \
@@ -607,7 +631,8 @@ phase_compile:\
 	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
 	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
 	ctxt/ctxt_group.o ctxt/ctxt_libdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o 
+	ctxt/ctxt_repos.o install/install_ln.o install/installer.o \
+	install/instchk.o install/insthier.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
@@ -645,7 +670,8 @@ phase_compile_clean:
 	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o ctxt/ctxt_group.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	ctxt/ctxt_owner.o ctxt/ctxt_repos.o install/install_ln.o \
+	install/installer.o install/instchk.o install/insthier.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -811,6 +837,11 @@ ctxt/ctxt.a:\
 	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 	./makelib ctxt/ctxt ctxt/ctxt_group.o ctxt/ctxt_libdir.o \
 	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+install/insthier.a:\
+	makelib install/insthier.sld install/insthier.o \
+	install/../ctxt/ctxt.a 
+	./makelib install/insthier install/insthier.o \
+	install/../ctxt/ctxt.a 
 
 phase_library:\
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
@@ -818,25 +849,47 @@ phase_library:\
 	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a int16.a \
 	int32.a int64.a nonblock.a open.a scan.a scan_fspec.a scan_spec.a \
 	seek.a sgetline.a signal.a sstring.a stalloc.a str.a syserr.a \
-	uint16.a uint32.a uint64.a ctxt/ctxt.a 
+	uint16.a uint32.a uint64.a ctxt/ctxt.a install/insthier.a 
 phase_library_clean:
 	rm -f alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a int16.a \
 	int32.a int64.a nonblock.a open.a scan.a scan_fspec.a scan_spec.a \
 	seek.a sgetline.a signal.a sstring.a stalloc.a str.a syserr.a \
-	uint16.a uint32.a uint64.a ctxt/ctxt.a 
+	uint16.a uint32.a uint64.a ctxt/ctxt.a install/insthier.a 
 
 #--LINK-----------------------------------------------------------------------
 
 auto-text:\
 	link auto-text.ld auto-text.o 
 	./link auto-text auto-text.o 
+install/installer:\
+	link install/installer.ld install/installer.o install/install_ln.o \
+	install/../open.a install/../sstring.a install/../syserr.a \
+	install/../get_opt.a install/insthier.a install/../ctxt/ctxt.a \
+	install/../fmt.a install/../buffer.a install/../str.a \
+	install/../bin.a install/../error.a 
+	./link install/installer install/installer.o install/install_ln.o \
+	install/../open.a install/../sstring.a install/../syserr.a \
+	install/../get_opt.a install/insthier.a install/../ctxt/ctxt.a \
+	install/../fmt.a install/../buffer.a install/../str.a \
+	install/../bin.a install/../error.a 
+install/instchk:\
+	link install/instchk.ld install/instchk.o install/install_ln.o \
+	install/../open.a install/../sstring.a install/../syserr.a \
+	install/../get_opt.a install/insthier.a install/../ctxt/ctxt.a \
+	install/../fmt.a install/../buffer.a install/../str.a \
+	install/../bin.a install/../error.a 
+	./link install/instchk install/instchk.o install/install_ln.o \
+	install/../open.a install/../sstring.a install/../syserr.a \
+	install/../get_opt.a install/insthier.a install/../ctxt/ctxt.a \
+	install/../fmt.a install/../buffer.a install/../str.a \
+	install/../bin.a install/../error.a 
 
 phase_link:\
-	auto-text 
+	auto-text install/installer install/instchk 
 phase_link_clean:
-	rm -f auto-text 
+	rm -f auto-text install/installer install/instchk 
 
 #--TEST-----------------------------------------------------------------------
 
@@ -845,6 +898,19 @@ phase_test_clean:
 
 phase_test:
 	(cd UNIT_TESTS; make && make tests)
+
+#--INSTALL--------------------------------------------------------------------
+
+phase_install: install/installer
+	./install/installer
+
+install-dryrun: install/installer
+	./install/installer -n
+
+#--INSTALL-CHECK--------------------------------------------------------------
+
+phase_install_check: install/instchk
+	./install/instchk
 
 #--LOCAL----------------------------------------------------------------------
 

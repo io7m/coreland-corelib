@@ -1,0 +1,5 @@
+phase_install: install/installer
+	./install/installer
+
+install-dryrun: install/installer
+	./install/installer -n
