@@ -312,7 +312,7 @@ install_ln.o:\
 	./compile install_ln install_ln.c 
 installer.o:\
 	compile installer.c buffer.h error.h fmt.h get_opt.h install.h \
-	open.h read.h str.h sstring.h syserr.h write.h 
+	open.h read.h rmkdir.h str.h sstring.h syserr.h write.h 
 	./compile installer installer.c 
 instchk.o:\
 	compile instchk.c buffer.h error.h fmt.h install.h open.h read.h \
@@ -363,6 +363,9 @@ open_trunc.o:\
 open_wo.o:\
 	compile open_wo.c open.h 
 	./compile open_wo open_wo.c 
+rmkdir.o:\
+	compile rmkdir.c bin.h error.h rmkdir.h str.h 
+	./compile rmkdir rmkdir.c 
 scan_charset.o:\
 	compile scan_charset.c scan.h 
 	./compile scan_charset scan_charset.c 
@@ -577,19 +580,19 @@ uint64_unpack.o:\
 	compile uint64_unpack.c uint64.h 
 	./compile uint64_unpack uint64_unpack.c 
 ctxt/ctxt_group.o:\
-	compile ctxt/ctxt_group.c 
+	compile ctxt/ctxt_group.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
 ctxt/ctxt_incdir.o:\
 	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
 ctxt/ctxt_libdir.o:\
-	compile ctxt/ctxt_libdir.c 
+	compile ctxt/ctxt_libdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_libdir ctxt/ctxt_libdir.c 
 ctxt/ctxt_owner.o:\
-	compile ctxt/ctxt_owner.c 
+	compile ctxt/ctxt_owner.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_owner ctxt/ctxt_owner.c 
 ctxt/ctxt_repos.o:\
-	compile ctxt/ctxt_repos.c 
+	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
 
 phase_compile:\
@@ -613,7 +616,7 @@ phase_compile:\
 	ht_replaceb.o ht_replaces.o install_ln.o installer.o instchk.o \
 	insthier.o int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o \
 	int64_pack.o int64_unpack.o nonblock.o open_append.o open_creat.o \
-	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o rmkdir.o \
 	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
 	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
@@ -653,23 +656,23 @@ phase_compile_clean:
 	instchk.o insthier.o int16_pack.o int16_unpack.o int32_pack.o \
 	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
 	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
-	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
-	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
-	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
-	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
-	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
-	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
-	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
-	str_copy.o str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o \
-	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
-	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
-	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
-	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	rmkdir.o scan_charset.o scan_double.o scan_f32.o scan_f64.o \
+	scan_float.o scan_ncharset.o scan_newline.o scan_space.o scan_u32.o \
+	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
+	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
+	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
+	scan_ulong.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
+	scan_ushorto.o scan_ushortx.o seek_cur.o seek_end.o seek_pos.o \
+	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
+	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
+	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
+	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
+	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
+	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
+	uint64_unpack.o ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_libdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -774,6 +777,9 @@ open.a:\
 	open_rw.o open_trunc.o open_wo.o 
 	./makelib open open_append.o open_creat.o open_excl.o open_ro.o \
 	open_rw.o open_trunc.o open_wo.o 
+rmkdir.a:\
+	makelib rmkdir.sld rmkdir.o 
+	./makelib rmkdir rmkdir.o 
 scan.a:\
 	makelib scan.sld scan_charset.o scan_double.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
@@ -843,14 +849,14 @@ phase_library:\
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a \
-	insthier.a int16.a int32.a int64.a nonblock.a open.a scan.a \
+	insthier.a int16.a int32.a int64.a nonblock.a open.a rmkdir.a scan.a \
 	scan_fspec.a scan_spec.a seek.a sgetline.a signal.a sstring.a \
 	stalloc.a str.a syserr.a uint16.a uint32.a uint64.a ctxt/ctxt.a 
 phase_library_clean:
 	rm -f alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	float32.a float64.a fmt.a fmt_spec.a get_opt.a hashtable.a \
-	insthier.a int16.a int32.a int64.a nonblock.a open.a scan.a \
+	insthier.a int16.a int32.a int64.a nonblock.a open.a rmkdir.a scan.a \
 	scan_fspec.a scan_spec.a seek.a sgetline.a signal.a sstring.a \
 	stalloc.a str.a syserr.a uint16.a uint32.a uint64.a ctxt/ctxt.a 
 
@@ -860,11 +866,12 @@ auto-text:\
 	link auto-text.ld auto-text.o 
 	./link auto-text auto-text.o 
 installer:\
-	link installer.ld installer.o install_ln.o open.a sstring.a \
+	link installer.ld installer.o install_ln.o rmkdir.a open.a \
+	sstring.a syserr.a get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a \
+	str.a bin.a error.a 
+	./link installer installer.o install_ln.o rmkdir.a open.a sstring.a \
 	syserr.a get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a str.a bin.a \
 	error.a 
-	./link installer installer.o install_ln.o open.a sstring.a syserr.a \
-	get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a str.a bin.a error.a 
 instchk:\
 	link instchk.ld instchk.o install_ln.o open.a sstring.a syserr.a \
 	get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a str.a bin.a error.a 

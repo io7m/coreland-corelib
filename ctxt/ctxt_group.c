@@ -1,5 +1,0 @@
-#include "../ctxt.h"
-const char ctxt_group[] = {
-0x77, 0x68, 0x65, 0x65, 0x6c, 0x00, 0x00,
-};
-const unsigned int ctxt_group_len = 6;

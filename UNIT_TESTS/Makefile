@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.70
+# cpj-genmk-0.73
 
 SHELL=/bin/sh
 default: all
@@ -240,8 +240,8 @@ t_sstring:\
 	link t_sstring.ld t_sstring.o ../sstring.a 
 	./link t_sstring t_sstring.o ../sstring.a 
 t_stalloc:\
-	link t_stalloc.ld t_stalloc.o ../alloc.a ../stalloc.a 
-	./link t_stalloc t_stalloc.o ../alloc.a ../stalloc.a 
+	link t_stalloc.ld t_stalloc.o ../alloc.a ../stalloc.a ../error.a 
+	./link t_stalloc t_stalloc.o ../alloc.a ../stalloc.a ../error.a 
 t_str:\
 	link t_str.ld t_str.o ../str.a ../bin.a ../alloc.a 
 	./link t_str t_str.o ../str.a ../bin.a ../alloc.a 
