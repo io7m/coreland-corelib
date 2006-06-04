@@ -1,8 +1,4 @@
-Audit inter-dependencies.
+For release:
 
 Document base_name, dir_name.
-
-bin_dup from urlparse.
-
-fmt_float
-fmt_double
+Uninstaller.
