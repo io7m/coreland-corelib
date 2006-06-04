@@ -1,2 +1,2 @@
-phase_install_check: install/instchk
-	./install/instchk
+phase_install_check: instchk
+	./instchk

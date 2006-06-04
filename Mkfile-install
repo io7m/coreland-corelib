@@ -1,5 +1,5 @@
-phase_install: install/installer
-	./install/installer
+phase_install: installer
+	./installer
 
-install-dryrun: install/installer
-	./install/installer -n
+install-dryrun: installer
+	./installer -n
