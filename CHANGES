@@ -111,3 +111,4 @@
 20060526 version: corelib-0.33 (no release)
 20060527 code: misc source cleanups everywhere.
 20060603 code: alloc now calls malloc() instead of calloc().
+20060604 code: updated error and installer
