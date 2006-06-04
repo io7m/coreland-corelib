@@ -1,10 +1,10 @@
-#include "../close.h"
+#include "close.h"
 #include "install.h"
-#include "../open.h"
-#include "../read.h"
-#include "../str.h"
-#include "../sstring.h"
-#include "../syserr.h"
+#include "open.h"
+#include "read.h"
+#include "str.h"
+#include "sstring.h"
+#include "syserr.h"
 
 /* basic understanding of virtual libs */
 

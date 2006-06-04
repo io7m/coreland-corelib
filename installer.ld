@@ -1,0 +1,13 @@
+installer.o
+install_ln.o
+open.a
+sstring.a
+syserr.a
+get_opt.a
+insthier.a
+ctxt/ctxt.a
+fmt.a
+buffer.a
+str.a
+bin.a
+error.a

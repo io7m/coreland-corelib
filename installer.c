@@ -3,17 +3,17 @@
 #include <sys/types.h>
 #include <pwd.h>
 #include <grp.h>
-#include "../buffer.h"
-#include "../error.h"
-#include "../fmt.h"
-#include "../get_opt.h"
+#include "buffer.h"
+#include "error.h"
+#include "fmt.h"
+#include "get_opt.h"
 #include "install.h"
-#include "../open.h"
-#include "../read.h"
-#include "../str.h"
-#include "../sstring.h"
-#include "../syserr.h"
-#include "../write.h"
+#include "open.h"
+#include "read.h"
+#include "str.h"
+#include "sstring.h"
+#include "syserr.h"
+#include "write.h"
 
 extern int rename(const char *, const char *);
 extern int fsync(int);
