@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.73
+# cpj-genmk-0.74
 
 SHELL=/bin/sh
 default: all
@@ -309,13 +309,16 @@ ht_replaceb.o:\
 ht_replaces.o:\
 	compile ht_replaces.c hashtable.h str.h 
 	./compile ht_replaces ht_replaces.c 
+install.o:\
+	compile install.c buffer.h error.h fmt.h get_opt.h install.h open.h \
+	read.h rmkdir.h str.h sstring.h syserr.h write.h 
+	./compile install install.c 
 install_ln.o:\
 	compile install_ln.c close.h install.h open.h read.h str.h \
 	sstring.h syserr.h 
 	./compile install_ln install_ln.c 
 installer.o:\
-	compile installer.c buffer.h error.h fmt.h get_opt.h install.h \
-	open.h read.h rmkdir.h str.h sstring.h syserr.h write.h 
+	compile installer.c buffer.h get_opt.h install.h syserr.h 
 	./compile installer installer.c 
 instchk.o:\
 	compile instchk.c buffer.h error.h fmt.h install.h open.h read.h \
@@ -622,23 +625,23 @@ phase_compile:\
 	fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o \
 	get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o \
 	ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o install_ln.o installer.o \
-	instchk.o insthier.o int16_pack.o int16_unpack.o int32_pack.o \
-	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
-	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	rmkdir.o scan_charset.o scan_double.o scan_f32.o scan_f64.o \
-	scan_float.o scan_ncharset.o scan_newline.o scan_space.o scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
-	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
-	scan_ulong.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushorto.o scan_ushortx.o seek_cur.o seek_end.o seek_pos.o \
-	seek_start.o sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
-	sig_catch.o sig_pause.o signal.o sstring_0.o sstring_cat.o \
-	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
-	sstring_cpyb.o sstring_cpys.o sstring_init.o sstring_trunc.o \
-	stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
+	ht_init.o ht_replaceb.o ht_replaces.o install.o install_ln.o \
+	installer.o instchk.o insthier.o int16_pack.o int16_unpack.o \
+	int32_pack.o int32_unpack.o int64_pack.o int64_unpack.o nonblock.o \
+	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
+	open_trunc.o open_wo.o rmkdir.o scan_charset.o scan_double.o \
+	scan_f32.o scan_f64.o scan_float.o scan_ncharset.o scan_newline.o \
+	scan_space.o scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
+	scan_u64o.o scan_u64x.o scan_uchar.o scan_ucharo.o scan_ucharx.o \
+	scan_uint.o scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongo.o \
+	scan_ullongx.o scan_ulong.o scan_ulongo.o scan_ulongx.o \
+	scan_ushort.o scan_ushorto.o scan_ushortx.o seek_cur.o seek_end.o \
+	seek_pos.o seek_start.o sgetline.o sgetline_chop.o sgetline_get.o \
+	sig_block.o sig_catch.o sig_pause.o signal.o sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
+	sstring_trunc.o stalloc.o str_chr.o str_copy.o str_diff.o str_dup.o \
+	str_ends.o str_len.o str_ncopy.o str_ndiff.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr_die.o syserr_init.o uint16_pack.o \
 	uint16_unpack.o uint32_pack.o uint32_unpack.o uint64_pack.o \
 	uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_group.o \
@@ -663,27 +666,28 @@ phase_compile_clean:
 	fmt_ushorto.o fmt_ushortx.o get_opt.o ht_addb.o ht_adds.o \
 	ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_destroy.o \
 	ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o \
-	ht_replaces.o install_ln.o installer.o instchk.o insthier.o \
-	int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
-	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
-	open_ro.o open_rw.o open_trunc.o open_wo.o rmkdir.o scan_charset.o \
-	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_ncharset.o \
-	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
-	scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o scan_ucharo.o \
-	scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o scan_ullong.o \
-	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongo.o \
-	scan_ulongx.o scan_ushort.o scan_ushorto.o scan_ushortx.o seek_cur.o \
-	seek_end.o seek_pos.o seek_start.o sgetline.o sgetline_chop.o \
-	sgetline_get.o sig_block.o sig_catch.o sig_pause.o signal.o \
-	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
-	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o sstring_trunc.o stalloc.o str_chr.o str_copy.o \
-	str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o str_ndiff.o \
-	str_rchr.o str_starts.o str_tolower.o str_toupper.o syserr_die.o \
-	syserr_init.o uint16_pack.o uint16_unpack.o uint32_pack.o \
-	uint32_unpack.o uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o \
-	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o ctxt/ctxt_version.o 
+	ht_replaces.o install.o install_ln.o installer.o instchk.o \
+	insthier.o int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o \
+	int64_pack.o int64_unpack.o nonblock.o open_append.o open_creat.o \
+	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o rmkdir.o \
+	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
+	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
+	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
+	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
+	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
+	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
+	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
+	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
+	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
+	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
+	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
+	str_copy.o str_diff.o str_dup.o str_ends.o str_len.o str_ncopy.o \
+	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
+	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
+	ctxt/ctxt_bindir.o ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_libdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o \
+	ctxt/ctxt_version.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -884,11 +888,11 @@ corelib-conf:\
 	./link corelib-conf corelib-conf.o ctxt/ctxt.a get_opt.a syserr.a \
 	buffer.a error.a bin.a str.a 
 installer:\
-	link installer.ld installer.o install_ln.o rmkdir.a open.a \
-	sstring.a syserr.a get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a \
+	link installer.ld installer.o install.o install_ln.o open.a \
+	rmkdir.a sstring.a syserr.a get_opt.a insthier.a fmt.a buffer.a \
 	str.a bin.a error.a 
-	./link installer installer.o install_ln.o rmkdir.a open.a sstring.a \
-	syserr.a get_opt.a insthier.a ctxt/ctxt.a fmt.a buffer.a str.a bin.a \
+	./link installer installer.o install.o install_ln.o open.a rmkdir.a \
+	sstring.a syserr.a get_opt.a insthier.a fmt.a buffer.a str.a bin.a \
 	error.a 
 instchk:\
 	link instchk.ld instchk.o install_ln.o open.a sstring.a syserr.a \
@@ -978,7 +982,7 @@ sysdep_clean:
 
 #--TOOLS----------------------------------------------------------------------
 
-mkftools: compile makelib sosuffix makeso link 
+mkftools: compile makelib libname makeso link 
 compile: sysdeps.out conf-shebang conf-cc make-compile 
 	(cat conf-shebang; ./make-compile) > compile; chmod u+x compile;
 link: sysdeps.out conf-shebang conf-ld make-link conf-ldfflist \
@@ -986,12 +990,12 @@ link: sysdeps.out conf-shebang conf-ld make-link conf-ldfflist \
 	(cat conf-shebang; ./make-link) > link; chmod u+x link;
 makelib: sysdeps.out conf-shebang make-makelib 
 	(cat conf-shebang; ./make-makelib) > makelib; chmod u+x makelib;
-makeso: sysdeps.out conf-shebang sosuffix make-makeso 
+makeso: sysdeps.out conf-shebang libname make-makeso 
 	(cat conf-shebang; ./make-makeso) > makeso; chmod u+x makeso;
-sosuffix: sysdeps.out conf-shebang make-sosuffix 
-	(cat conf-shebang; ./make-sosuffix) > sosuffix; chmod u+x sosuffix;
+libname: sysdeps.out conf-shebang make-libname 
+	(cat conf-shebang; ./make-libname) > libname; chmod u+x libname;
 mkftools_clean: 
-	 rm -f compile makelib makeso sosuffix link 
+	 rm -f compile makelib makeso libname link 
 regen:
 	cpj-genmk > Makefile.tmp
 	mv Makefile.tmp Makefile

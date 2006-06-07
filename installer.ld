@@ -1,12 +1,12 @@
 installer.o
+install.o
 install_ln.o
-rmkdir.a
 open.a
+rmkdir.a
 sstring.a
 syserr.a
 get_opt.a
 insthier.a
-ctxt/ctxt.a
 fmt.a
 buffer.a
 str.a
