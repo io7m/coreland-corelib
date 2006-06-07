@@ -12,8 +12,8 @@ void usage()
 void help()
 {
   syserr_warn1x(
-"  -I: print C includes location\n"
-"  -L: print library location\n"
+"  -I: print C include location compiler flags\n"
+"  -L: print library location compiler flags\n"
 "  -V: print library version\n"
 "  -h: this message\n"
 "  -n: print trailing newline");
