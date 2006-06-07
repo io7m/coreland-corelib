@@ -113,3 +113,4 @@
 20060603 code: alloc now calls malloc() instead of calloc().
 20060604 code: updated error and installer
 20060604 code: corelib-config
+20060608 code: updated to new installer and deinstaller
