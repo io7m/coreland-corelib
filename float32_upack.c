@@ -3,7 +3,7 @@
 
 void float32_unpackl(unsigned const char n[4], float32 *f)
 {
-#if ENDIANNESS == BIG_ENDIAN
+#if ENDIANNESS == E_BIG_ENDIAN
     ((unsigned char *) f)[0] = n[3];
     ((unsigned char *) f)[1] = n[2];
     ((unsigned char *) f)[2] = n[1];
@@ -18,7 +18,7 @@ void float32_unpackl(unsigned const char n[4], float32 *f)
 void float32_unpackb(unsigned const char n[4], float32 *f)
 {
 
-#if ENDIANNESS == BIG_ENDIAN
+#if ENDIANNESS == E_BIG_ENDIAN
     ((unsigned char *) f)[0] = n[0];
     ((unsigned char *) f)[1] = n[1];
     ((unsigned char *) f)[2] = n[2];
