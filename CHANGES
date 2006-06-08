@@ -114,3 +114,5 @@
 20060604 code: updated error and installer
 20060604 code: corelib-config
 20060608 code: updated to new installer and deinstaller
+20060608 code: test adjustments for base_name and dir_name
+20060608 code: modified corelib-config interface
