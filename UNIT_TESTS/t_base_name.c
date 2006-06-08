@@ -9,6 +9,7 @@ struct exp {
 };
 
 static const struct exp explist[] = {
+  {"", "."},
   {"/", "/"},
   {"////////", "/"},
   {"/./././././", "."},

@@ -10,12 +10,18 @@ int dir_name(const char *file, char **out)
   char *s;
 
   len = str_len(file);
-
-  if (!len) return 0;
   if (len >= DIR_NAME_MAX) return 0;
 
+  bin_zero(path, DIR_NAME_MAX);
   bin_copy(file, path, len);
   s = path;
+
+  if (!len) {
+    path[0] = '.';
+    path[1] = 0;
+    *out = path;
+    return 1;
+  }
 
   for (;;) {
     if (!len) break;
