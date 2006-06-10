@@ -20,12 +20,9 @@ int base_name(const char *dir, char **out)
     *out = path;
     return 1;
   }
-
   if (len >= BASE_NAME_MAX) return 0;
 
   s = dir;
-  t = s;
-
   t = s + (len - 1);
   while ((t > s) && (t[0] == '/')) --t;
 
