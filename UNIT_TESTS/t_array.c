@@ -69,7 +69,7 @@ int copy_test(array *arr)
 {
   static array brr;
 
-  if (!array_copy(arr, &brr)) {
+  if (!array_copy(&brr, arr)) {
     printf("copy_test: array_copy\n");
     return 0; 
   }
@@ -132,7 +132,7 @@ int retrieve_test(array *arr)
       return 0;
     }
   }
-  if (!array_copy(arr, &barr)) {
+  if (!array_copy(&barr, arr)) {
     printf("retrieve_test: array_copy\n");
     return 0;
   }

@@ -45,7 +45,7 @@ int main()
 
   if (write(pfds2[1], "WXYZ1234", 8) == -1) { perror("write"); return 2; }
   if (close(pfds2[1]) == -1) { perror("close"); return 2; }
-  if (buffer_copy(&buffer_pr, &buffer_pw)) {
+  if (buffer_copy(&buffer_pw, &buffer_pr)) {
     perror("buffer_copy"); return 2;
   }
 

@@ -1,6 +1,6 @@
 #include "dstring.h"
 
-int dstring_copy(const dstring *a, dstring *b)
+int dstring_copy(dstring *dd, const dstring *sd)
 {
-  return dstring_cpyb(b, a->s, a->len);
+  return dstring_cpyb(dd, sd->s, sd->len);
 }

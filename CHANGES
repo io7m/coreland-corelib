@@ -116,3 +116,5 @@
 20060608 code: updated to new installer and deinstaller
 20060608 code: test adjustments for base_name and dir_name
 20060608 code: modified corelib-config interface
+20060612 code: parameters reordered in some of the older APIs for
+               uniformity.

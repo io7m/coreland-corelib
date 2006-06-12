@@ -4,7 +4,7 @@
 #include "uint32.h"
 #include "uint64.h"
 
-int array_copy(const array* a, array* b)
+int array_copy(array* b, const array* a)
 {
   uint64 u;
   uint32 es;

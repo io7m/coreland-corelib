@@ -17,7 +17,7 @@ int array_init(array *, uint64, uint32);
 char *array_index(array *, uint64);
 int array_cat(array *, void *);
 void array_free(array *);
-int array_copy(const array *, array *);
+int array_copy(array *, const array *);
 int array_resize(array *, uint64);
 void array_trunc(array *, uint64);
 
