@@ -10,11 +10,13 @@ tempf2="sig_pmask.h"
 tempsys="sysdeps.out"
 
 do_signal:
-	./signal ${tempf1} ${tempf2} ${tempsys}
-	cp ${tempf1} ${file1out}
-	cp ${tempf2} ${file2out}
-	cat ${tempsys} >> ${sd_out}
+	@echo SYSDEPS signal run create ${tempf1} ${tempf2} ${tempsys}
+	@./signal ${tempf1} ${tempf2} ${tempsys}
+	@cp ${tempf1} ${file1out}
+	@cp ${tempf2} ${file2out}
+	@cat ${tempsys} >> ${sd_out}
 
 signal_clean:
-	rm -f ${file1out} ${file2out} ${tempf1} ${tempf2} \
+	@echo SYSDEPS signal clean
+	@rm -f ${file1out} ${file2out} ${tempf1} ${tempf2} \
   ${tempsys} trysigact trysigpm
