@@ -4,7 +4,7 @@
 
 void sig_catch(int sig, void (*func)())
 {
-#ifdef HASSIGACTION
+#ifdef HAVE_SIGACTION
   struct sigaction sa;
   sa.sa_handler = func;
   sa.sa_flags = 0;

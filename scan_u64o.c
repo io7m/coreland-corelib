@@ -1,4 +1,4 @@
-#include "scan.h"
+#include "scan_spec.h"
 #include "uint64.h"
 
 unsigned int scan_u64o(const char *s, uint64 *ul)

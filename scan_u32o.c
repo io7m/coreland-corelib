@@ -4,6 +4,10 @@
 
 unsigned int scan_u32o(const char *s, uint32 *ul)
 {
-  return scan_u64o(s, (uint64 *) ul);
+  uint64 u64;
+  unsigned int num;
+  num = scan_u64o(s, &u64);
+  *ul = (uint32) u64;
+  return num;
 }
 

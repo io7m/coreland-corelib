@@ -1,17 +1,17 @@
 #ifndef SIGNAL_H
 #define SIGNAL_H
 
-int sig_alarm;
-int sig_child;
-int sig_cont;
-int sig_hangup;
-int sig_pipe;
-int sig_term;
-int sig_segv;
-int sig_int;
+extern int sig_alarm;
+extern int sig_child;
+extern int sig_cont;
+extern int sig_hangup;
+extern int sig_pipe;
+extern int sig_term;
+extern int sig_segv;
+extern int sig_int;
 
-void (*sig_defaulthandler)();
-void (*sig_ignorehandler)();
+extern void (*sig_defaulthandler)();
+extern void (*sig_ignorehandler)();
 
 void sig_catch(int, void (*)());
 #define sig_ignore(s) (sig_catch((s), sig_ignorehandler))
