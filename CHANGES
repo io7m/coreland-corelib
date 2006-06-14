@@ -118,3 +118,4 @@
 20060608 code: modified corelib-config interface
 20060612 code: parameters reordered in some of the older APIs for
                uniformity.
+20060614 code: portability updates for OS X
