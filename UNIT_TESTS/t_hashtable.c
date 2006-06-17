@@ -25,7 +25,7 @@ int init_test(hashtable *ht)
     return 0;
   }
   n = ht_bytes(ht);
-  if (n != (HASH_BUCKETS * sizeof(table_head)) + 4) {
+  if (n != sizeof(hashtable)) {
     printf("init_test: n == %u\n", n);
     return 0;
   }
@@ -138,7 +138,7 @@ int destroy_test(hashtable *ht)
   uint64 n;
   ht_destroy(ht);
   n = ht_bytes(ht);
-  if (n != (HASH_BUCKETS * sizeof(table_head)) + 4) {
+  if (n != sizeof(hashtable)) {
     printf("destroy_test: n == %u\n", n);
     return 0;
   }
