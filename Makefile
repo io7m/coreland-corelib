@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.74
+# cpj-genmk-0.76
 
 SHELL=/bin/sh
 default: all
@@ -118,7 +118,7 @@ closeonexec.o:\
 	compile closeonexec.c closeonexec.h 
 	./compile closeonexec closeonexec.c 
 corelib-conf.o:\
-	compile corelib-conf.c buffer.h ctxt.h get_opt.h syserr.h 
+	compile corelib-conf.c buffer.h ctxt.h get_opt.h str.h syserr.h 
 	./compile corelib-conf corelib-conf.c 
 deinstaller.o:\
 	compile deinstaller.c buffer.h get_opt.h fmt.h install.h syserr.h 
@@ -401,13 +401,13 @@ scan_u32x.o:\
 	compile scan_u32x.c scan_spec.h uint32.h uint64.h 
 	./compile scan_u32x scan_u32x.c 
 scan_u64.o:\
-	compile scan_u64.c scan.h uint64.h 
+	compile scan_u64.c scan_spec.h uint64.h 
 	./compile scan_u64 scan_u64.c 
 scan_u64o.o:\
-	compile scan_u64o.c scan.h uint64.h 
+	compile scan_u64o.c scan_spec.h uint64.h 
 	./compile scan_u64o scan_u64o.c 
 scan_u64x.o:\
-	compile scan_u64x.c scan.h uint64.h 
+	compile scan_u64x.c scan_spec.h uint64.h 
 	./compile scan_u64x scan_u64x.c 
 scan_uchar.o:\
 	compile scan_uchar.c scan.h 

@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
   int flag_nl;
   int flag_ver;
   int flag_comp;
-  int pos;
   char ch;
 
   flag_comp = 0;
