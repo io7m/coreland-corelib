@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.73
+# cpj-genmk-0.76
 
 SHELL=/bin/sh
 default: all
@@ -40,7 +40,7 @@ t_dir_name.o:\
 	compile t_dir_name.c ../buffer.h ../dir_name.h ../str.h ../syserr.h 
 	./compile t_dir_name t_dir_name.c 
 t_dstring.o:\
-	compile t_dstring.c ../dstring.h 
+	compile t_dstring.c ../alloc.h ../dstring.h 
 	./compile t_dstring t_dstring.c 
 t_env.o:\
 	compile t_env.c ../env.h ../str.h 
