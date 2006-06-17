@@ -1,6 +1,7 @@
 #include "buffer.h"
 #include "ctxt.h"
 #include "get_opt.h"
+#include "str.h"
 #include "syserr.h"
 
 const char progname[] = "corelib-config";
