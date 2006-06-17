@@ -160,9 +160,16 @@ void chop_test(dstring *ds)
     if (!dstring_catb(ds, "X", 1)) die_sys("dstring_catb");
 
   dstring_chop(ds, ds->a);
-
   T_COMPARE(287, ds->len, CHOPTEST" len ", 4);
   T_COMPARE(288, ds->a, CHOPTEST" a", 5);
+
+  dstring_trunc(ds);
+  T_COMPARE(0, ds->len, CHOPTEST" len ", 6);
+  T_COMPARE(288, ds->a, CHOPTEST" a", 7);
+
+  dstring_trunc(ds);
+  T_COMPARE(0, ds->len, CHOPTEST" len ", 6);
+  T_COMPARE(288, ds->a, CHOPTEST" a", 7);
 }
 
 int main()
