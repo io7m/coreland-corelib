@@ -1,6 +1,7 @@
 #include "../alloc.h"
 #include "../dstring.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define BIG_STRING \
 "ABCDEFGH12345678ABCDEFGH12345678ABCDEFGH12345678ABCDEFGH12345678"\
