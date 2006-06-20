@@ -120,3 +120,5 @@
                uniformity.
 20060614 code: portability updates for OS X
 20060614 code: updated sysdeps
+20060620 code: updated sysdeps
+20060620 code: linux-ppc fix for t_get_opt

@@ -7,7 +7,7 @@ static int flags8_1[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 int main()
 {
-  char c;
+  int ch;
   char *opt8_1;
   char *argv8_1[12];
   int argc8_1 = 12;
@@ -27,8 +27,8 @@ int main()
   argv8_1[11] = "file3";
   argc8_1 = 12;
 
-  while ((c = get_opt(argc8_1, argv8_1, opt8_1)) != opteof)
-    switch (c) {
+  while ((ch = get_opt(argc8_1, argv8_1, opt8_1)) != opteof)
+    switch (ch) {
       case 'a': flags8_1[0] = 1; break;
       case 'b': flags8_1[1] = 1; break;
       case 'c': flags8_1[2] = 1; break;
