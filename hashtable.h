@@ -10,22 +10,22 @@
 
 typedef struct table_node {
   struct table_node *next;
-  char              *key;
-  char              *data;
-  uint32            keylen;
-  uint32            datalen;
-  uint32            state;
+  char *key;
+  char *data;
+  uint32 keylen;
+  uint32 datalen;
+  uint32 state;
 } table_node;
 
 typedef struct table_head {
   table_node  *head;
-  uint32      allocd;
-  uint32      used;
+  uint32 allocd;
+  uint32 used;
 } table_head;
 
 typedef struct {
-  table_head    slots[HASH_BUCKETS];
-  uint32        size;
+  table_head slots[HASH_BUCKETS];
+  uint32 size;
 } hashtable;
 
 void ht_init(hashtable *);

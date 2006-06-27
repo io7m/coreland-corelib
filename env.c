@@ -4,15 +4,15 @@
 #include "str.h"
 
 static int inited;
-static unsigned int esize;
-static unsigned int eused;
+static unsigned long esize;
+static unsigned long eused;
 
 static int do_init()
 {
   char *vp;
   char **new_env;
-  unsigned int i;
-  unsigned int j;
+  unsigned long i;
+  unsigned long j;
 
   eused = 0;
   esize = 0;
@@ -43,11 +43,11 @@ static int do_init()
   return inited = 1;
 }
 
-static void delete_all(const char *key, unsigned int klen)
+static void delete_all(const char *key, unsigned long klen)
 {
-  unsigned int len;
-  unsigned int slen;
-  unsigned int i;
+  unsigned long len;
+  unsigned long slen;
+  unsigned long i;
 
   if (!eused) return;
 
@@ -66,12 +66,12 @@ static void delete_all(const char *key, unsigned int klen)
 }
 
 static int add(const char *key, const char *val,
-               unsigned int klen, unsigned int vlen)
+               unsigned long klen, unsigned long vlen)
 {
   char *s;
   char *to_put;
   char **new_env;
-  unsigned int ind;
+  unsigned long ind;
 
   if (!inited)
     if (!do_init()) return 0;
@@ -105,8 +105,8 @@ static int add(const char *key, const char *val,
 
 int env_put(const char *key, const char *val)
 {
-  unsigned int klen;
-  unsigned int vlen;
+  unsigned long klen;
+  unsigned long vlen;
 
   klen = str_len(key);
   vlen = str_len(val);
@@ -117,7 +117,7 @@ int env_put(const char *key, const char *val)
 
 int env_unset(const char *key)
 {
-  unsigned int klen;
+  unsigned long klen;
   const char *dummy;
 
   klen = str_len(key);
@@ -131,7 +131,7 @@ int env_unset(const char *key)
 void env_clear()
 {
   if (inited) {
-    unsigned int ind;
+    unsigned long ind;
     for (ind = 0; ind < esize; ++ind)
       if (environ[ind]) {
         dealloc(environ[ind]);

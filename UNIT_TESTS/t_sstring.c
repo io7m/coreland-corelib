@@ -5,7 +5,7 @@
 
 int main()
 {
-  unsigned int len;
+  unsigned long len;
   static char buf[BSIZE];
   sstring str = sstring_INIT(buf);
 

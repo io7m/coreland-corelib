@@ -9,7 +9,7 @@
 
 void readchar(int fd, char *c)
 {
-  static unsigned int n = 0;
+  static unsigned long n = 0;
   int r;
   r = read(fd, c, 1);
   if (r == -1) { perror("read"); exit(2); }

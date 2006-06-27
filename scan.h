@@ -24,9 +24,9 @@ unsigned int scan_ulonglongo(const char *, unsigned long long *);
 unsigned int scan_float(const char *, float *);
 unsigned int scan_double(const char *, double *);
 
-unsigned int scan_charset(const char *, const char *);
-unsigned int scan_notcharset(const char *, const char *);
-unsigned int scan_whitespace(const char *);
-unsigned int scan_newline(const char *);
+unsigned long scan_charset(const char *, const char *);
+unsigned long scan_notcharset(const char *, const char *);
+unsigned long scan_whitespace(const char *);
+unsigned long scan_newline(const char *);
 
 #endif

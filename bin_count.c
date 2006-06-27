@@ -1,17 +1,17 @@
 #include "bin.h"
 
 /*
- return number of chars c in buffer b of length l
+ return number of chars c in buffer b of length len
  */
 
-unsigned int bin_count(register const char *b, register unsigned int l,
-                       register int c)
+unsigned long bin_count(register const char *b, register unsigned long len,
+                        register int c)
 {
-  register unsigned int n;
+  register unsigned long n;
   for (n = 0;;) {
-    if (!l--) return n; if (*b == c) ++n; ++b;
-    if (!l--) return n; if (*b == c) ++n; ++b;
-    if (!l--) return n; if (*b == c) ++n; ++b;
-    if (!l--) return n; if (*b == c) ++n; ++b;
+    if (!len--) return n; if (*b == c) ++n; ++b;
+    if (!len--) return n; if (*b == c) ++n; ++b;
+    if (!len--) return n; if (*b == c) ++n; ++b;
+    if (!len--) return n; if (*b == c) ++n; ++b;
   }
 }

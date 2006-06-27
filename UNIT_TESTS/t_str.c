@@ -53,22 +53,5 @@ int main()
   str_tolower(x);
   if (x[0] != 'a') { printf("str_tolower: x[0] == %c\n", x[0]); return 1; }
 
-  i = str_ncopy(s, x, str_len(s));
-  if (x[0] != s[0]) { printf("str_ncopy: x[0] == %c\n", x[0]); return 1; }
-  if (x[1] != s[1]) { printf("str_ncopy: x[1] == %c\n", x[1]); return 1; }
-  if (x[2] != s[2]) { printf("str_ncopy: x[2] == %c\n", x[2]); return 1; }
-  if (x[3] != s[3]) { printf("str_ncopy: x[3] == %c\n", x[3]); return 1; }
-  if (x[4] != s[4]) { printf("str_ncopy: x[4] == %c\n", x[4]); return 1; }
-  if (x[5] != s[5]) { printf("str_ncopy: x[5] == %c\n", x[5]); return 1; }
-  if (x[6] != s[6]) { printf("str_ncopy: x[6] == %c\n", x[6]); return 1; }
-  if (x[7] != s[7]) { printf("str_ncopy: x[7] == %c\n", x[7]); return 1; }
-  if (x[9] != s[9]) { printf("str_ncopy: x[9] == %c\n", x[9]); return 1; }
-  if (x[10] != s[10]) { printf("str_ncopy: x[10] == %c\n", x[10]); return 1; }
-  if (x[11] != s[11]) { printf("str_ncopy: x[11] == %c\n", x[11]); return 1; }
-  if (x[12] != s[12]) { printf("str_ncopy: x[12] == %c\n", x[12]); return 1; }
-  if (x[13] != s[13]) { printf("str_ncopy: x[13] == %c\n", x[13]); return 1; }
-  if (x[14] != s[14]) { printf("str_ncopy: x[14] == %c\n", x[14]); return 1; }
-  if (x[15] != s[15]) { printf("str_ncopy: x[15] == %c\n", x[15]); return 1; }
-
   return 0;
 }

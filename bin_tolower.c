@@ -1,12 +1,12 @@
 #include "bin.h"
 
-void bin_tolower(char *s, unsigned int l)
+void bin_tolower(char *s, unsigned long len)
 {
   register char x;
   for (;;) {
-    x = *s; if (!l) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --l;
-    x = *s; if (!l) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --l;
-    x = *s; if (!l) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --l;
-    x = *s; if (!l) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --l;
+    x = *s; if (!len) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --len;
+    x = *s; if (!len) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --len;
+    x = *s; if (!len) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --len;
+    x = *s; if (!len) return; if ((x >= 'A') && (x <= 'Z')) x += 32; *s++ = x; --len;
   }
 }

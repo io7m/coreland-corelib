@@ -1,8 +1,8 @@
 #include "scan.h"
 
-unsigned int scan_notcharset(const char *s, const char *chars)
+unsigned long scan_notcharset(const char *s, const char *chars)
 {
-  unsigned int len;
+  unsigned long len;
   const char *cmp;
   char ch;
 

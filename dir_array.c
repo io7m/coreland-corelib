@@ -8,8 +8,8 @@ void dir_array_rewind(dir_array *da) { da->p = 0; }
 
 int dir_array_next(dir_array *da, char **p)
 {
-  unsigned int m;
-  unsigned int n;
+  unsigned long m;
+  unsigned long n;
 
   m = da->p;
   n = da->n - 1;
@@ -25,11 +25,11 @@ int dir_array_init(dir_array *da, const char *p)
 {
   DIR *dir;
   direntry *d_ent;
-  unsigned int m;
-  unsigned int n;
-  unsigned int x;
-  unsigned int y;
-  unsigned int len;
+  unsigned long m;
+  unsigned long n;
+  unsigned long x;
+  unsigned long y;
+  unsigned long len;
   char *tmp;
   char **arr;
 
@@ -108,8 +108,8 @@ NOMEM:
 
 void dir_array_free(dir_array *da)
 {
-  unsigned int n;
-  unsigned int m;
+  unsigned long n;
+  unsigned long m;
 
   n = da->n;
   m = 0;

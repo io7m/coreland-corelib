@@ -10,7 +10,7 @@ static char *sp1;
 static char *sp2;
 static char *sp3;
 
-void set(char *p, unsigned int len)
+void set(char *p, unsigned long len)
 {
   for (;;) {
     if (!len) break; *p = 0x41; ++p; --len;

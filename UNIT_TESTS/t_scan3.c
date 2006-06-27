@@ -5,7 +5,7 @@ int main()
 {
   const char *a = "AAAABBBBCCCCDDDD    \nAAAA";
   const char *str;
-  unsigned int num = 0;
+  unsigned long num = 0;
 
   str = a;
   num = scan_charset(str, "AB");

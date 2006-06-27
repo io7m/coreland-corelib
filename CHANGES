@@ -122,3 +122,5 @@
 20060614 code: updated sysdeps
 20060620 code: updated sysdeps
 20060620 code: linux-ppc fix for t_get_opt
+20060627 code: changed to unsigned longs for paranoid type safety.
+20060627 code: removed str_copy and str_ncopy.

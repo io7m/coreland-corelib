@@ -6,7 +6,7 @@ static aligned a_space[STALLOC_SPACE / STALLOC_ALIGN];
 #define space ((char *) a_space)
 static unsigned int avail = STALLOC_SPACE;
 
-static void copy_bytes(const char *sc, char *dc, unsigned int n)
+static void copy_bytes(const char *sc, char *dc, unsigned long n)
 {
   for (;;) {
     if (!n) return; *dc++ = *sc++; --n;
@@ -15,7 +15,7 @@ static void copy_bytes(const char *sc, char *dc, unsigned int n)
     if (!n) return; *dc++ = *sc++; --n;
   }
 }
-void *stalloc(unsigned int n)
+void *stalloc(unsigned long n)
 {
   if (n < 0xfffffff0) {
     n = STALLOC_ALIGN + n - (n & (STALLOC_ALIGN - 1));
@@ -27,7 +27,7 @@ void *stalloc(unsigned int n)
   errno = error_nomem;
   return 0;
 }
-int strealloc(void **p, unsigned int n, unsigned int m)
+int strealloc(void **p, unsigned long n, unsigned long m)
 {
   char *q;
   q = stalloc(n); /* avoid indirect call */

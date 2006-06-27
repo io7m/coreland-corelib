@@ -4,15 +4,15 @@ extern void *malloc();
 extern void free();
 
 /* pointers to default mem functions */
-static void *def_alloc(unsigned int);
+static void *def_alloc(unsigned long);
 static void  def_dealloc(void *);
-static int   def_realloc(void **, unsigned int, unsigned int);
+static int   def_realloc(void **, unsigned long, unsigned long);
 
 static alloc_proto allocfunc = def_alloc;
 static realloc_proto reallocfunc = def_realloc;
 static dealloc_proto deallocfunc = def_dealloc;
 
-static void copy_bytes(const char *sc, char *dc, unsigned int n)
+static void copy_bytes(const char *sc, char *dc, unsigned long n)
 {
   for (;;) {
     if (!n) return; *dc++ = *sc++; --n;
@@ -21,7 +21,7 @@ static void copy_bytes(const char *sc, char *dc, unsigned int n)
     if (!n) return; *dc++ = *sc++; --n;
   }
 }
-static void *def_alloc(unsigned int n)
+static void *def_alloc(unsigned long n)
 {
   return malloc(n);
 }
@@ -29,7 +29,7 @@ static void def_dealloc(void *p)
 {
   free(p);
 }
-static int def_realloc(void **p, unsigned int m, unsigned int n)
+static int def_realloc(void **p, unsigned long m, unsigned long n)
 {
   char *q;
   q = def_alloc(n); /* avoid indirect call */
@@ -57,12 +57,12 @@ int set_dealloc(dealloc_proto dp)
   if (dp) { deallocfunc = dp; } return 0;
 }
 
-void* alloc(unsigned int n)
+void* alloc(unsigned long n)
 {
   return allocfunc(n);
 }
 
-int alloc_re(void **p, unsigned int m, unsigned int n)
+int alloc_re(void **p, unsigned long m, unsigned long n)
 {
   return reallocfunc(p, m, n);
 }

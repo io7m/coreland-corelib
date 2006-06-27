@@ -4,7 +4,7 @@
 
 int str_dup(const char *s, char **d)
 {
-  unsigned int n;
+  unsigned long n;
   char *x;
 
   n = str_len(s);

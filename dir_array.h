@@ -3,8 +3,8 @@
 
 typedef struct {
   char  **a;
-  unsigned int p;
-  unsigned int n;
+  unsigned long p;
+  unsigned long n;
 } dir_array;
 
 int dir_array_init(dir_array *, const char *);

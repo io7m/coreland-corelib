@@ -4,9 +4,9 @@
 int env_get(const char *key, const char **val)
 {
   char *vp;
-  unsigned int klen;
-  unsigned int vlen;
-  unsigned int i;
+  unsigned long klen;
+  unsigned long vlen;
+  unsigned long i;
 
   if ((!key) || (!environ)) return 0;
   klen = str_len(key);
