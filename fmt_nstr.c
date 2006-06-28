@@ -1,8 +1,8 @@
 #include "fmt.h"
 
-unsigned int fmt_nstr(char *s, const char *t, unsigned int n)
+unsigned long fmt_nstr(char *s, const char *t, unsigned long n)
 {
-  unsigned int len;
+  unsigned long len;
   char c;
 
   len = 0;

@@ -6,18 +6,24 @@ phase_link_local:
 phase_local_clean: ctxt_clean
 
 ctxt_clean:
-	rm -f ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
-	touch ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
+	rm -f ctxt/ctxt_slibdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c \
+	ctxt/ctxt_dlibdir.c ctxt/ctxt_incdir.c
+	touch ctxt/ctxt_slibdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c \
+	ctxt/ctxt_dlibdir.c ctxt/ctxt_incdir.c
 
 ctxt/ctxt_version.c: auto-text VERSION
 	rm -f ctxt/ctxt_version.c
 	./auto-text ctxt_version ../ctxt < VERSION > ctxt/ctxt_version.c
 
-ctxt/ctxt_libdir.c: auto-text conf-libdir
-	rm -f ctxt/ctxt_libdir.c
-	./auto-text ctxt_libdir ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+ctxt/ctxt_slibdir.c: auto-text conf-slibdir
+	rm -f ctxt/ctxt_slibdir.c
+	./auto-text ctxt_slibdir ../ctxt < conf-slibdir > ctxt/ctxt_slibdir.c
+
+ctxt/ctxt_dlibdir.c: auto-text conf-dlibdir
+	rm -f ctxt/ctxt_dlibdir.c
+	./auto-text ctxt_dlibdir ../ctxt < conf-dlibdir > ctxt/ctxt_dlibdir.c
 
 ctxt/ctxt_bindir.c: auto-text conf-bindir
 	rm -f ctxt/ctxt_bindir.c

@@ -323,7 +323,7 @@ instchk.o:\
 	compile instchk.c buffer.h fmt.h install.h syserr.h 
 	./compile instchk instchk.c 
 insthier.o:\
-	compile insthier.c ctxt.h install.h 
+	compile insthier.c install.h ctxt.h 
 	./compile insthier insthier.c 
 int16_pack.o:\
 	compile int16_pack.c int16.h 
@@ -575,25 +575,28 @@ uint64_unpack.o:\
 	compile uint64_unpack.c uint64.h 
 	./compile uint64_unpack uint64_unpack.c 
 ctxt/ctxt_bindir.o:\
-	compile ctxt/ctxt_bindir.c 
+	compile ctxt/ctxt_bindir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_bindir ctxt/ctxt_bindir.c 
+ctxt/ctxt_dlibdir.o:\
+	compile ctxt/ctxt_dlibdir.c ctxt/../ctxt.h 
+	./compile ctxt/ctxt_dlibdir ctxt/ctxt_dlibdir.c 
 ctxt/ctxt_group.o:\
-	compile ctxt/ctxt_group.c 
+	compile ctxt/ctxt_group.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
 ctxt/ctxt_incdir.o:\
 	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
-ctxt/ctxt_libdir.o:\
-	compile ctxt/ctxt_libdir.c 
-	./compile ctxt/ctxt_libdir ctxt/ctxt_libdir.c 
 ctxt/ctxt_owner.o:\
-	compile ctxt/ctxt_owner.c 
+	compile ctxt/ctxt_owner.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_owner ctxt/ctxt_owner.c 
 ctxt/ctxt_repos.o:\
-	compile ctxt/ctxt_repos.c 
+	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
+ctxt/ctxt_slibdir.o:\
+	compile ctxt/ctxt_slibdir.c ctxt/../ctxt.h 
+	./compile ctxt/ctxt_slibdir ctxt/ctxt_slibdir.c 
 ctxt/ctxt_version.o:\
-	compile ctxt/ctxt_version.c 
+	compile ctxt/ctxt_version.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_version ctxt/ctxt_version.c 
 
 phase_compile:\
@@ -632,9 +635,9 @@ phase_compile:\
 	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchr.o \
 	str_starts.o str_tolower.o str_toupper.o syserr_die.o syserr_init.o \
 	uint16_pack.o uint16_unpack.o uint32_pack.o uint32_unpack.o \
-	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_group.o \
-	ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o ctxt/ctxt_version.o 
+	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o \
+	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_owner.o \
+	ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
@@ -672,9 +675,9 @@ phase_compile_clean:
 	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchr.o \
 	str_starts.o str_tolower.o str_toupper.o syserr_die.o syserr_init.o \
 	uint16_pack.o uint16_unpack.o uint32_pack.o uint32_unpack.o \
-	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_group.o \
-	ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o ctxt/ctxt_version.o 
+	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o \
+	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_owner.o \
+	ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -835,11 +838,11 @@ uint64.a:\
 	./makelib uint64 uint64_pack.o uint64_unpack.o 
 ctxt/ctxt.a:\
 	makelib ctxt/ctxt.sld ctxt/ctxt_version.o ctxt/ctxt_group.o \
-	ctxt/ctxt_bindir.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	ctxt/ctxt_bindir.o ctxt/ctxt_incdir.o ctxt/ctxt_slibdir.o \
+	ctxt/ctxt_dlibdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 	./makelib ctxt/ctxt ctxt/ctxt_version.o ctxt/ctxt_group.o \
-	ctxt/ctxt_bindir.o ctxt/ctxt_incdir.o ctxt/ctxt_libdir.o \
-	ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
+	ctxt/ctxt_bindir.o ctxt/ctxt_incdir.o ctxt/ctxt_slibdir.o \
+	ctxt/ctxt_dlibdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o 
 
 phase_library:\
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
@@ -918,18 +921,24 @@ phase_link_local:
 phase_local_clean: ctxt_clean
 
 ctxt_clean:
-	rm -f ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
-	touch ctxt/ctxt_libdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
-	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c
+	rm -f ctxt/ctxt_slibdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c \
+	ctxt/ctxt_dlibdir.c ctxt/ctxt_incdir.c
+	touch ctxt/ctxt_slibdir.c ctxt/ctxt_repos.c ctxt/ctxt_group.c \
+	ctxt/ctxt_owner.c ctxt/ctxt_bindir.c ctxt/ctxt_version.c \
+	ctxt/ctxt_dlibdir.c ctxt/ctxt_incdir.c
 
 ctxt/ctxt_version.c: auto-text VERSION
 	rm -f ctxt/ctxt_version.c
 	./auto-text ctxt_version ../ctxt < VERSION > ctxt/ctxt_version.c
 
-ctxt/ctxt_libdir.c: auto-text conf-libdir
-	rm -f ctxt/ctxt_libdir.c
-	./auto-text ctxt_libdir ../ctxt < conf-libdir > ctxt/ctxt_libdir.c
+ctxt/ctxt_slibdir.c: auto-text conf-slibdir
+	rm -f ctxt/ctxt_slibdir.c
+	./auto-text ctxt_slibdir ../ctxt < conf-slibdir > ctxt/ctxt_slibdir.c
+
+ctxt/ctxt_dlibdir.c: auto-text conf-dlibdir
+	rm -f ctxt/ctxt_dlibdir.c
+	./auto-text ctxt_dlibdir ../ctxt < conf-dlibdir > ctxt/ctxt_dlibdir.c
 
 ctxt/ctxt_bindir.c: auto-text conf-bindir
 	rm -f ctxt/ctxt_bindir.c

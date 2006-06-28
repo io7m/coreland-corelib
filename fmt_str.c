@@ -1,8 +1,8 @@
 #include "fmt.h"
 
-unsigned int fmt_str(char *s, const char *t)
+unsigned long fmt_str(char *s, const char *t)
 {
-  unsigned int len;
+  unsigned long len;
   char c;
 
   len = 0;
