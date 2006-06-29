@@ -19,8 +19,8 @@ int main()
   if (pipe(pfds1) == -1) { perror("pipe"); return 2; }
   if (pipe(pfds2) == -1) { perror("pipe"); return 2; }
 
-  buffer_init(&buffer_pr, read, pfds1[0], prbuf, sizeof(prbuf));
-  buffer_init(&buffer_pw, write, pfds1[1], pwbuf, sizeof(pwbuf));
+  buffer_init(&buffer_pr, (buffer_op) read, pfds1[0], prbuf, sizeof(prbuf));
+  buffer_init(&buffer_pw, (buffer_op) write, pfds1[1], pwbuf, sizeof(pwbuf));
  
   if (write(pfds1[1], str, 8) == -1) { perror("write"); return 2; }
   if (read(pfds1[0], buf, 8) == -1)  { perror("read"); return 2; }
@@ -40,8 +40,8 @@ int main()
   if (buf2[2] != 'C') { printf("buf2[2] == %c\n", buf2[2]); return 1; }
   if (buf2[3] != 'D') { printf("buf2[3] == %c\n", buf2[3]); return 1; }
 
-  buffer_init(&buffer_pr, read, pfds2[0], prbuf, sizeof(prbuf));
-  buffer_init(&buffer_pw, write, pfds1[1], pwbuf, sizeof(pwbuf));
+  buffer_init(&buffer_pr, (buffer_op) read, pfds2[0], prbuf, sizeof(prbuf));
+  buffer_init(&buffer_pw, (buffer_op) write, pfds1[1], pwbuf, sizeof(pwbuf));
 
   if (write(pfds2[1], "WXYZ1234", 8) == -1) { perror("write"); return 2; }
   if (close(pfds2[1]) == -1) { perror("close"); return 2; }

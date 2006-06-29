@@ -19,7 +19,8 @@ typedef struct {
 void sgetline_init(sgetline *,
                    char *, unsigned int,
                    char *, unsigned int, 
-                   int (*)(), int);
+                   long (*)(int, char *, unsigned long),
+                   int);
 
 void sgetline_initbuf(sgetline *, char *, unsigned int, buffer *);
 void sgetline_chop(sgetline *, unsigned int);

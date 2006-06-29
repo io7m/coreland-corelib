@@ -19,7 +19,7 @@ int main()
   fd = open("./t_sgetline.txt", O_RDONLY);
   if (fd == -1) { perror("open"); return 1; }
 
-  buffer_init(&inbuf, read, fd, fbuf, sizeof(fbuf));
+  buffer_init(&inbuf, (buffer_op) read, fd, fbuf, sizeof(fbuf));
   sgetline_initbuf(&sg, linebuf, sizeof(linebuf), &inbuf);
 
   for (;;) {

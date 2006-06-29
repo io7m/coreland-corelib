@@ -5,7 +5,7 @@ void sgetline_init(sgetline *s,
                    unsigned int slen,
                    char *bbuf,
                    unsigned int blen,
-                   int (*op)(),
+                   long (*op)(int, char *, unsigned long),
                    int fd)
 {
   s->s = sbuf;
