@@ -523,11 +523,6 @@ static int instop_link(struct install_item *ins, int uid, int gid,
   if (lchown(to, uid, gid) == -1) {
     syserr_warn1sys("error: fchown: "); goto ERROR;
   }
-  if (perm) {
-    if (lchmod(to, perm) == -1) {
-      syserr_warn1sys("error: fchmod: "); goto ERROR;
-    }
-  }
   if (fchdir(pwdfd) == -1) 
     syserr_die1sys(112, "fatal: could not restore current directory: ");
   if (close(pwdfd) == -1) syserr_warn1sys("error: close: ");
