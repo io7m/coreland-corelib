@@ -46,7 +46,7 @@ void initfree_test(dstring *ds)
   dstring_free(ds);
   T_COMPARE(0, ds->a, INITTEST" a", 1);
   T_COMPARE(0, ds->len, INITTEST" len", 2);
-  T_COMPARE(0, (unsigned int) ds->s, INITTEST" s ", 3);
+  T_COMPARE(0, (unsigned long) ds->s, INITTEST" s ", 3); /* XXX: long ptr */
 }
 
 void cat_test(dstring *ds)
