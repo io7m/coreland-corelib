@@ -411,13 +411,11 @@ static int instop_copy(struct install_item *ins, int uid, int gid,
 {
   const char *from;
   const char *to;
-  const char *dir;
   char *s;
   int r;
   int w;
   unsigned int perm;
 
-  dir = ins->dir;
   from = ins->from;
   to = ins->to;
   perm = ins->perm;
