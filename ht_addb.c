@@ -56,8 +56,8 @@ int ht_addb(hashtable *h, const char *k, uint32 klen,
   if (!allocd) {
     if (!make_node(&tnew, k, klen, x, xlen)) return -1;
     th->head = tnew;
-    th->allocd++;
-    th->used++;
+    ++th->allocd;
+    ++th->used;
     return 1;
   }
  
@@ -84,6 +84,9 @@ int ht_addb(hashtable *h, const char *k, uint32 klen,
     fu = th->head;
   }
 
+  /* detect int overflow */
+  if ((used + 1) < used) return -1;
+
   /* if there was an unused node, use that */
   if (fu) {
     fu->key = alloc(klen);
@@ -95,13 +98,13 @@ int ht_addb(hashtable *h, const char *k, uint32 klen,
     fu->keylen = klen;
     fu->datalen = xlen;
     fu->state = SLOT_USED;
-    th->used++;
+    ++th->used;
   } else {
     /* need new node */
     if (!make_node(&tnew, k, klen, x, xlen)) return -1;
     p->next = tnew;
-    th->used++;
-    th->allocd++;
+    ++th->used;
+    ++th->allocd;
   }
   return 1;
 }

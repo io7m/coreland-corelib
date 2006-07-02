@@ -108,6 +108,21 @@ void cat_test(dstring *ds)
   T_COMPARE(543, ds->len, CATTEST" len", 34);
 
   dstring_free(ds);
+
+  /* try integer overflow */
+
+  if (!dstring_init(ds, 1)) die_sys("dstring_init");
+
+  ds->a = (unsigned long) -8;
+  ds->len = (unsigned long) -8;
+
+  if (dstring_cats(ds, "ABCDEFGH12345678")) {
+    printf("cat_test: did not prevent integer overflow\n");
+    printf("ds.a = %lu\nds.len = %lu\n", ds->a, ds->len);
+    exit(1);
+  }
+
+  dstring_free(ds);
 }
 
 void copy_test(dstring *ds)

@@ -147,6 +147,25 @@ int retrieve_test(array *arr)
   array_free(&barr);
   return 1;
 }
+int overflow_test(array *arr)
+{
+  char ch;
+
+  if (!array_init(arr, 1, 1)) {
+    printf("overflow_test: array_init\n");
+    return 0;
+  }
+  arr->a = (uint64) -1;
+  arr->u = (uint64) -1;
+
+  ch = 'z';
+  if (array_cat(arr, &ch)) {
+    printf("overflow_test: array_cat did not prevent overflow\n");
+    printf("arr.a: %llu\narr.u: %llu\n", arr->a, arr->u);
+    return 0;
+  }
+  return 1;
+}
 
 int main()
 {
@@ -162,5 +181,6 @@ int main()
   if (!retrieve_test(&arr)) return 1;
   if (!free_test(&arr)) return 1;
 
+  if (!overflow_test(&arr)) return 1;
   return 0;
 }

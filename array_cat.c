@@ -15,15 +15,15 @@ int array_cat(array *a, void* i)
   old_a = a->a;
   es = a->es;
 
+  if ((old_u + 1) < old_u) return 0; /* detect int overflow */
+
   if ((old_u + 1) > old_a) {
     new_a = old_a + ARRAY_OVERALLOC;
-    if (!alloc_re((void **) &a->x, old_a * es, new_a * es))
-      return 0;
+    if (!alloc_re((void **) &a->x, old_a * es, new_a * es)) return 0;
     a->a = new_a;
   }
 
   bin_copy((char *)i, a->x + (old_u * es), es);
   a->u++;
-
   return 1;
 }

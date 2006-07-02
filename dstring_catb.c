@@ -13,6 +13,8 @@ int dstring_catb(dstring *d, const char *str, unsigned int len)
   dlen = d->len;
   ds = d->s;
 
+  if ((dlen + len) < dlen) return 0; /* detect int overflow */
+
   if ((dlen + len) >= da) {
     unsigned int nal;
     nal = da + len + DSTRING_OVERALLOC;
