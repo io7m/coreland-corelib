@@ -2,8 +2,6 @@
 #include "ctxt.h"
 
 struct install_item insthier[] = {
-
-ls: *.dld: No such file or directory
   {IOP_MKDIR, 0, 0, ctxt_bindir, 0755, ctxt_owner, ctxt_group},
   {IOP_MKDIR, 0, 0, ctxt_incdir, 0755, ctxt_owner, ctxt_group},
   {IOP_MKDIR, 0, 0, ctxt_dlibdir, 0755, ctxt_owner, ctxt_group},
