@@ -125,3 +125,4 @@
 20060627 code: changed to unsigned longs for paranoid type safety.
 20060627 code: removed str_copy and str_ncopy.
 20060705 code: header format change from sysdeps
+20060705 code: darwin libname compat

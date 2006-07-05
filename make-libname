@@ -17,11 +17,19 @@ echo 'if [ "x${vmj}" != "x" ]'
 echo 'then'
 echo ' if [ "x${vmn}" != "x" ]'
 echo ' then'
-echo '   exec echo ${main}.${suf}.${vmj}.${vmn}'
-echo ' else'
-echo '   exec echo ${main}.${suf}.${vmj}'
+case "$sys" in
+  darwin)
+    echo '   exec echo ${main}.${vmj}.${vmn}.${suf}'
+    echo ' else'
+    echo '   exec echo ${main}.${vmj}.${suf}'
+    ;;
+  *)
+    echo '   exec echo ${main}.${suf}.${vmj}.${vmn}'
+    echo ' else'
+    echo '   exec echo ${main}.${suf}.${vmj}'
+    ;;
+esac 
 echo ' fi'
 echo 'else'
 echo ' exec echo ${main}.${suf}'
 echo 'fi'
-
