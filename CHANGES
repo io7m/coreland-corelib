@@ -127,3 +127,4 @@
 20060705 code: header format change from sysdeps
 20060705 code: darwin libname compat
 20060705 version: corelib-0.40
+20060706 code: hpux -> hp-ux in sysdep-subs.
