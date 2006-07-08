@@ -1,8 +1,8 @@
 default: sysdeps
 clean: sysdeps_clean
 
-sysdeps:  sd_direntry sd_endian sd_floats sd_integers sd_signal sd_systype sd_x86cpuid
-sysdeps_clean:  sd_direntry_clean sd_endian_clean sd_floats_clean sd_integers_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean
+sysdeps:  sd_direntry sd_endian sd_floats sd_integers sd_signal sd_systype sd_x86cpuid sd_fd
+sysdeps_clean:  sd_direntry_clean sd_endian_clean sd_floats_clean sd_integers_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean sd_fd_clean
 
 sd_direntry:
 	@(cd direntry && ./run)
@@ -38,6 +38,11 @@ sd_x86cpuid:
 	@(cd x86cpuid && ./run)
 sd_x86cpuid_clean:
 	@(cd x86cpuid && ./clean)
+
+sd_fd:
+	@(cd fd && ./run)
+sd_fd_clean:
+	@(cd fd && ./clean)
 
 regen:
 	./gen-makefile > Makefile.tmp
