@@ -2,6 +2,10 @@
 #include "fd.h"
 #include <fcntl.h>
 
+#ifdef HAVE_DUP2
+extern int dup2(int, int); /* avoid unistd.h here */
+#endif
+
 int fd_dup(int src, int dst)
 {
   if (src == dst) return 0;
