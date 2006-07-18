@@ -7,9 +7,9 @@
 
 typedef struct {
   char *s;
-  unsigned int len;
-  unsigned int a;
-  unsigned int line_nr;
+  unsigned long len;
+  unsigned long a;
+  unsigned long line_nr;
   buffer b; 
 } sgetline;
 
@@ -17,13 +17,13 @@ typedef struct {
 { (sbuf), (0), (sizeof sbuf), (0), { (sizeof sbuf), (0), (fd), (op), (bbuf) } }
 
 void sgetline_init(sgetline *,
-                   char *, unsigned int,
-                   char *, unsigned int, 
+                   char *, unsigned long,
+                   char *, unsigned long, 
                    long (*)(int, char *, unsigned long),
                    int);
 
-void sgetline_initbuf(sgetline *, char *, unsigned int, buffer *);
-void sgetline_chop(sgetline *, unsigned int);
+void sgetline_initbuf(sgetline *, char *, unsigned long, buffer *);
+void sgetline_chop(sgetline *, unsigned long);
 void sgetline_trunc(sgetline *);
 int sgetline_get(sgetline *);
 

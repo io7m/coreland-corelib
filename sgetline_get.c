@@ -12,8 +12,8 @@ int sgetline_get(sgetline *s)
 
 static int sub_sgetline_get(sgetline *s)
 {
-  int n;
-  int i;
+  long n;
+  long i;
   char *x;
   buffer *b;
   sstring sb;

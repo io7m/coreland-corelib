@@ -2,9 +2,9 @@
 
 void sgetline_init(sgetline *s,
                    char *sbuf,
-                   unsigned int slen,
+                   unsigned long slen,
                    char *bbuf,
-                   unsigned int blen,
+                   unsigned long blen,
                    long (*op)(int, char *, unsigned long),
                    int fd)
 {
@@ -19,7 +19,7 @@ void sgetline_init(sgetline *s,
   s->b.pos = 0;
 }
 
-void sgetline_initbuf(sgetline *s, char *sbuf, unsigned int slen, buffer *b)
+void sgetline_initbuf(sgetline *s, char *sbuf, unsigned long slen, buffer *b)
 {
   s->s = sbuf;
   s->len = 0;

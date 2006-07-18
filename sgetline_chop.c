@@ -5,7 +5,7 @@ void sgetline_trunc(sgetline *s)
   sgetline_chop(s, 0);
 }
 
-void sgetline_chop(sgetline *s, unsigned int len)
+void sgetline_chop(sgetline *s, unsigned long len)
 {
   if (!s->len) return;
   if (len >= s->len) len = s->len - 1;
