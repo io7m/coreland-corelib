@@ -1,6 +1,6 @@
 #include "bin.h"
 
-int bin_rchr(register const char *s, unsigned long len, register int c)
+long bin_rchr(register const char *s, unsigned long len, register int c)
 {
   register const char *t;
   register const char *u;

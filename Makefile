@@ -526,6 +526,9 @@ sstring_trunc.o:\
 stalloc.o:\
 	compile stalloc.c error.h stalloc.h 
 	./compile stalloc stalloc.c 
+str_char.o:\
+	compile str_char.c str.h 
+	./compile str_char str_char.c 
 str_chr.o:\
 	compile str_chr.c str.h 
 	./compile str_chr str_chr.c 
@@ -544,6 +547,9 @@ str_len.o:\
 str_ndiff.o:\
 	compile str_ndiff.c str.h 
 	./compile str_ndiff str_ndiff.c 
+str_rchar.o:\
+	compile str_rchar.c str.h 
+	./compile str_rchar str_rchar.c 
 str_rchr.o:\
 	compile str_rchr.c str.h 
 	./compile str_rchr str_rchr.c 
@@ -638,13 +644,14 @@ phase_compile:\
 	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
 	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
-	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
-	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchr.o \
-	str_starts.o str_tolower.o str_toupper.o syserr_die.o syserr_init.o \
-	uint16_pack.o uint16_unpack.o uint32_pack.o uint32_unpack.o \
-	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o \
-	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
+	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_char.o \
+	str_chr.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
+	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
+	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
+	ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o \
+	ctxt/ctxt_incdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o \
+	ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
@@ -678,13 +685,14 @@ phase_compile_clean:
 	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
 	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
-	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_chr.o \
-	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchr.o \
-	str_starts.o str_tolower.o str_toupper.o syserr_die.o syserr_init.o \
-	uint16_pack.o uint16_unpack.o uint32_pack.o uint32_unpack.o \
-	uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o \
-	ctxt/ctxt_group.o ctxt/ctxt_incdir.o ctxt/ctxt_owner.o \
-	ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
+	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_char.o \
+	str_chr.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
+	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
+	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
+	ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o \
+	ctxt/ctxt_incdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o \
+	ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -827,10 +835,12 @@ stalloc.a:\
 	makelib stalloc.sld stalloc.o 
 	./makelib stalloc stalloc.o 
 str.a:\
-	makelib str.sld str_chr.o str_diff.o str_dup.o str_ends.o str_len.o \
-	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o 
-	./makelib str str_chr.o str_diff.o str_dup.o str_ends.o str_len.o \
-	str_ndiff.o str_rchr.o str_starts.o str_tolower.o str_toupper.o 
+	makelib str.sld str_char.o str_chr.o str_diff.o str_dup.o \
+	str_ends.o str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o 
+	./makelib str str_char.o str_chr.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o 
 syserr.a:\
 	makelib syserr.sld syserr_die.o syserr_init.o 
 	./makelib syserr syserr_die.o syserr_init.o 

@@ -1,6 +1,6 @@
 #include "bin.h"
 
-int bin_chr(register const char *s, unsigned long len, register int c)
+long bin_chr(register const char *s, unsigned long len, register int c)
 {
   register const char *t;
   register char cc;

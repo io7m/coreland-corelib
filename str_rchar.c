@@ -1,6 +1,6 @@
 #include "str.h"
 
-long str_rchr(register const char *s, register int c)
+int str_rchar(register const char *s, register int c, unsigned long *pos)
 {
   register const char *t;
   register const char *u;
@@ -12,7 +12,8 @@ long str_rchr(register const char *s, register int c)
     if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
     if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
   }
-  if (f == 0) return -1;
+  if (f == 0) return 0;
   if (!u) u = t;
-  return u - s;
+  *pos = u - s;
+  return 1;
 }

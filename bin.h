@@ -1,8 +1,8 @@
 #ifndef BIN_H
 #define BIN_H
 
-int bin_chr(const char *, unsigned long, int);
-int bin_rchr(const char *, unsigned long, int);
+long bin_chr(const char *, unsigned long, int);
+long bin_rchr(const char *, unsigned long, int);
 
 int bin_char(const char *, unsigned long, int, unsigned long *);
 int bin_rchar(const char *, unsigned long, int, unsigned long *);
