@@ -6,9 +6,14 @@ int main()
   const char *s = "ABCD1234EFGHXXXX";
   char buf[8];
   int i;
+  unsigned long pos;
 
   i = bin_chr(s, 16, 'D');
   if (i != 3) { printf("bin_chr: i == %d\n", i); return 1; }
+
+  i = bin_char(s, 16, 'D', &pos);
+  if (i != 1) { printf("bin_char: i == %d\n", i); return 1; }
+  if (pos != 3) { printf("bin_char: pos == %lu\n", pos); return 1; }
 
   bin_copy(s, buf, 8);
   if (buf[0] != 'A') { printf("bin_copy: buf[0] == %c\n", buf[0]); return 1; }
@@ -37,13 +42,17 @@ int main()
   if (i != 4) { printf("bin_count: i == %d\n", i); return 1; }
 
   i = bin_diff(s + 4, buf, 8);
-  if (i != 1) { printf("bin_diff: i == %d\n", i); return 1; }
+  if (i != -16) { printf("bin_diff: i == %d\n", i); return 1; }
 
   i = bin_same(s, buf, 8);
   if (i != 1) { printf("bin_same: i == %d\n", i); return 1; }
 
   i = bin_rchr(s, 16, 'X');
   if (i != 15) { printf("bin_rchr: i == %d\n", i); return 1; }
+
+  i = bin_rchar(s, 16, 'X', &pos);
+  if (i != 1) { printf("bin_rchar: i == %d\n", i); return 1; }
+  if (pos != 15) { printf("bin_rchar: pos == %lu\n", pos); return 1; } 
 
   bin_set(buf, 8, 0x41);
   if (buf[0] != 0x41) { printf("bin_set: buf[0] == %c\n", buf[0]); return 1; }

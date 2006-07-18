@@ -129,3 +129,9 @@
 20060705 version: corelib-0.40
 20060706 code: hpux -> hp-ux in sysdep-subs.
 20060709 code: fd_dup now uses the atomic fd_dup2 if available.
+20060718 code: bin_same now a macro.
+20060718 code: bin_diff interface changed to match str_diff (why was
+               this not done before?).
+20060718 code: bin_char and bin_rchar added with tests.
+20060718 code: sgetline_get now uses bin_char instead of bin_chr.
+20060718 code: sgetline_get now returns blank lines instead of skipping.

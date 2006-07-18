@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.77
+# cpj-genmk-0.78
 
 SHELL=/bin/sh
 default: all
@@ -63,6 +63,9 @@ auto-text.o:\
 base_name.o:\
 	compile base_name.c bin.h base_name.h str.h 
 	./compile base_name base_name.c 
+bin_char.o:\
+	compile bin_char.c bin.h 
+	./compile bin_char bin_char.c 
 bin_chr.o:\
 	compile bin_chr.c bin.h 
 	./compile bin_chr bin_chr.c 
@@ -78,6 +81,9 @@ bin_count.o:\
 bin_diff.o:\
 	compile bin_diff.c bin.h 
 	./compile bin_diff bin_diff.c 
+bin_rchar.o:\
+	compile bin_rchar.c bin.h 
+	./compile bin_rchar bin_rchar.c 
 bin_rchr.o:\
 	compile bin_rchr.c bin.h 
 	./compile bin_rchr bin_rchr.c 
@@ -575,52 +581,53 @@ uint64_unpack.o:\
 	compile uint64_unpack.c uint64.h 
 	./compile uint64_unpack uint64_unpack.c 
 ctxt/ctxt_bindir.o:\
-	compile ctxt/ctxt_bindir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_bindir.c 
 	./compile ctxt/ctxt_bindir ctxt/ctxt_bindir.c 
 ctxt/ctxt_dlibdir.o:\
-	compile ctxt/ctxt_dlibdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_dlibdir.c 
 	./compile ctxt/ctxt_dlibdir ctxt/ctxt_dlibdir.c 
 ctxt/ctxt_group.o:\
-	compile ctxt/ctxt_group.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_group.c 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
 ctxt/ctxt_incdir.o:\
-	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_incdir.c 
 	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
 ctxt/ctxt_owner.o:\
-	compile ctxt/ctxt_owner.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_owner.c 
 	./compile ctxt/ctxt_owner ctxt/ctxt_owner.c 
 ctxt/ctxt_repos.o:\
-	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_repos.c 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
 ctxt/ctxt_slibdir.o:\
-	compile ctxt/ctxt_slibdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_slibdir.c 
 	./compile ctxt/ctxt_slibdir ctxt/ctxt_slibdir.c 
 ctxt/ctxt_version.o:\
-	compile ctxt/ctxt_version.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_version.c 
 	./compile ctxt/ctxt_version ctxt/ctxt_version.c 
 
 phase_compile:\
 	alloc.o array.o array_bytes.o array_cat.o array_chop.o array_copy.o \
 	array_data.o array_index.o array_size.o auto-text.o base_name.o \
-	bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchr.o \
-	bin_set.o bin_tolower.o bin_toupper.o bin_zero.o buffer0.o buffer1.o \
-	buffer2.o buffer_copy.o buffer_get.o buffer_init.o buffer_put.o \
-	closeonexec.o corelib-conf.o deinstaller.o dir_array.o dir_hash.o \
-	dir_name.o dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o env.o env_get.o \
-	error.o error_str.o fd_dup.o fd_move.o fd_reset.o float32_pack.o \
-	float32_upack.o float64_pack.o float64_upack.o fmt_nstr.o fmt_str.o \
-	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
-	fmt_uchar.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o \
-	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
-	fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o \
-	get_opt.o ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o install.o installer.o \
-	instchk.o insthier.o int16_pack.o int16_unpack.o int32_pack.o \
-	int32_unpack.o int64_pack.o int64_unpack.o nonblock.o open_append.o \
-	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	bin_char.o bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o \
+	bin_rchar.o bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o \
+	bin_zero.o buffer0.o buffer1.o buffer2.o buffer_copy.o buffer_get.o \
+	buffer_init.o buffer_put.o closeonexec.o corelib-conf.o \
+	deinstaller.o dir_array.o dir_hash.o dir_name.o dstring_0.o \
+	dstring_cat.o dstring_cat0.o dstring_catb.o dstring_cats.o \
+	dstring_chop.o dstring_copy.o dstring_cpyb.o dstring_cpys.o \
+	dstring_init.o dstring_trunc.o env.o env_get.o error.o error_str.o \
+	fd_dup.o fd_move.o fd_reset.o float32_pack.o float32_upack.o \
+	float64_pack.o float64_upack.o fmt_nstr.o fmt_str.o fmt_u32.o \
+	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o fmt_uchar.o \
+	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o \
+	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o \
+	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
+	ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
+	ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o \
+	ht_replaceb.o ht_replaces.o install.o installer.o instchk.o \
+	insthier.o int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o \
+	int64_pack.o int64_unpack.o nonblock.o open_append.o open_creat.o \
+	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
 	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
 	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
@@ -641,10 +648,10 @@ phase_compile:\
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
-	base_name.o bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o \
-	bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o bin_zero.o \
-	buffer0.o buffer1.o buffer2.o buffer_copy.o buffer_get.o \
-	buffer_init.o buffer_put.o closeonexec.o corelib-conf.o \
+	base_name.o bin_char.o bin_chr.o bin_copy.o bin_copyr.o bin_count.o \
+	bin_diff.o bin_rchar.o bin_rchr.o bin_set.o bin_tolower.o \
+	bin_toupper.o bin_zero.o buffer0.o buffer1.o buffer2.o buffer_copy.o \
+	buffer_get.o buffer_init.o buffer_put.o closeonexec.o corelib-conf.o \
 	deinstaller.o dir_array.o dir_hash.o dir_name.o dstring_0.o \
 	dstring_cat.o dstring_cat0.o dstring_catb.o dstring_cats.o \
 	dstring_chop.o dstring_copy.o dstring_cpyb.o dstring_cpys.o \
@@ -693,12 +700,12 @@ base_name.a:\
 	makelib base_name.sld base_name.o 
 	./makelib base_name base_name.o 
 bin.a:\
-	makelib bin.sld bin_chr.o bin_copy.o bin_copyr.o bin_count.o \
-	bin_diff.o bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o \
-	bin_zero.o 
-	./makelib bin bin_chr.o bin_copy.o bin_copyr.o bin_count.o \
-	bin_diff.o bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o \
-	bin_zero.o 
+	makelib bin.sld bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
+	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
+	bin_tolower.o bin_toupper.o bin_zero.o 
+	./makelib bin bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
+	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
+	bin_tolower.o bin_toupper.o bin_zero.o 
 buffer.a:\
 	makelib buffer.sld buffer0.o buffer1.o buffer2.o buffer_get.o \
 	buffer_init.o buffer_put.o buffer_copy.o 

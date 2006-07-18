@@ -1,9 +1,5 @@
 #include "bin.h"
 
-/*
- returns index of last occuring c or -1 if none
- */
-
 int bin_rchr(register const char *s, unsigned long len, register int c)
 {
   register const char *t;

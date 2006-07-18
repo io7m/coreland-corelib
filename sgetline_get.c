@@ -7,13 +7,7 @@ static int sub_sgetline_get(sgetline *s);
 
 int sgetline_get(sgetline *s)
 {
-  int r;
-
-  for (;;) {
-    r = sub_sgetline_get(s);
-    if ((s->len == 0) && (r > 0)) continue;
-    return r;
-  }
+  return sub_sgetline_get(s);
 }
 
 static int sub_sgetline_get(sgetline *s)
@@ -24,6 +18,7 @@ static int sub_sgetline_get(sgetline *s)
   buffer *b;
   sstring sb;
   int sep = '\n';
+  unsigned long pos;
 
   b = &(s->b);
   s->len = 0;
@@ -35,8 +30,7 @@ static int sub_sgetline_get(sgetline *s)
     if (n == 0) return 0;
     if (n == -1) return -1;
     x = buffer_peek(b);
-    i = bin_chr(x, n, sep);
-    if (i == -1) {
+    if (!bin_char(x, n, sep, &pos)) {
       if ((sb.len + n) >= s->a) {
         buffer_seek(b, n);
         return -2; /* line too long */
@@ -45,14 +39,13 @@ static int sub_sgetline_get(sgetline *s)
       buffer_seek(b, n);
       continue;
     }
-    sstring_catb(&sb, x, i);
+    sstring_catb(&sb, x, pos);
     sstring_0(&sb);
     if (sb.len == s->a) return -2;
     s->len = sb.len;
     ++s->line_nr;
  
-    buffer_seek(b, i + 1); /* remove newline */
-
+    buffer_seek(b, pos + 1); /* remove newline */
     return 1;
   }
 }

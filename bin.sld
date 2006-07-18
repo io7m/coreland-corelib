@@ -1,3 +1,5 @@
+bin_char.o
+bin_rchar.o
 bin_chr.o
 bin_copy.o
 bin_copyr.o

@@ -1,27 +1,13 @@
 #include "bin.h"
 
-/*
- returns -1 if strings don't differ
- returns index of differing chars otherwise
-*/
-
-int bin_diff(register const char *ac, 
-             register const char *bc,
-             unsigned long len)
+int bin_diff(const char *s, const char *t, unsigned long n)
 {
-  register unsigned long n;
-  for (n = len;;) {
-    if (!n--) return -1; if (*ac != *bc) break; ++ac; ++bc;
-    if (!n--) return -1; if (*ac != *bc) break; ++ac; ++bc;
-    if (!n--) return -1; if (*ac != *bc) break; ++ac; ++bc;
-    if (!n--) return -1; if (*ac != *bc) break; ++ac; ++bc;
+  for (;;) {
+    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
   }
-  return (signed int)(len - n);
-}
-
-int bin_same(register const char *a, 
-             register const char *b, 
-             register unsigned long len)
-{
-  return bin_diff(a, b, len) == -1;
+  return ((int)(unsigned int)(unsigned char) *s)
+       - ((int)(unsigned int)(unsigned char) *t);
 }

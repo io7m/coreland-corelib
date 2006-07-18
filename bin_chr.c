@@ -1,9 +1,5 @@
 #include "bin.h"
 
-/*
- returns index of first occuring c or -1
- */
-
 int bin_chr(register const char *s, unsigned long len, register int c)
 {
   register const char *t;
