@@ -136,3 +136,6 @@
 20060718 code: sgetline_get now uses bin_char instead of bin_chr.
 20060718 code: sgetline_get now returns blank lines instead of skipping.
 20060718 code: str_char and str_rchar added with tests.
+20060719 code: dstring and sstring now use unsigned long. this change
+               was made on 20060627 but apparently somehow didn't make
+               it into the commit.
