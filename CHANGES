@@ -139,5 +139,6 @@
 20060719 code: dstring and sstring now use unsigned long. this change
                was made on 20060627 but apparently somehow didn't make
                it into the commit.
+20060719 code: installer update.
 20060719 note: previous version withdrawn!
 20060719 version: corelib-0.41
