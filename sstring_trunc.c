@@ -2,7 +2,7 @@
 
 void sstring_trunc(sstring *ss)
 {
-  register unsigned int n;
+  register unsigned long n;
   register char* t;
   n = ss->a;
   t = ss->s;

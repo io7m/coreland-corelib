@@ -2,10 +2,10 @@
 #include "bin.h"
 #include "dstring.h"
 
-int dstring_cpyb(dstring *d, const char *s, unsigned int len)
+int dstring_cpyb(dstring *d, const char *s, unsigned long len)
 {
-  unsigned int dlen;
-  unsigned int da;
+  unsigned long dlen;
+  unsigned long da;
   char *ds;
 
   dlen = d->len;
@@ -13,7 +13,7 @@ int dstring_cpyb(dstring *d, const char *s, unsigned int len)
   ds = d->s;
 
   if (len >= da) {
-    unsigned int nal;
+    unsigned long nal;
     char *ns;
     nal = len + DSTRING_OVERALLOC;
     ns = alloc(nal);

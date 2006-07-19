@@ -2,10 +2,10 @@
 #include "bin.h"
 #include "dstring.h"
 
-int dstring_catb(dstring *d, const char *str, unsigned int len)
+int dstring_catb(dstring *d, const char *str, unsigned long len)
 {
-  unsigned int da;
-  unsigned int dlen;
+  unsigned long da;
+  unsigned long dlen;
   char *ds;
   char *s;
 
@@ -16,7 +16,7 @@ int dstring_catb(dstring *d, const char *str, unsigned int len)
   if ((dlen + len) < dlen) return 0; /* detect int overflow */
 
   if ((dlen + len) >= da) {
-    unsigned int nal;
+    unsigned long nal;
     nal = da + len + DSTRING_OVERALLOC;
     s = alloc(nal);
     if (!s) return 0;

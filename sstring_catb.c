@@ -4,9 +4,9 @@
    returns new length of string
  */
 
-unsigned int sstring_catb(sstring *ss, const char *s, unsigned int len)
+unsigned long sstring_catb(sstring *ss, const char *s, unsigned long len)
 {
-  register unsigned int n;
+  register unsigned long n;
   register char* ssp;
   n = len; ssp = ss->s;
   

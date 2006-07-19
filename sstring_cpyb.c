@@ -3,10 +3,10 @@
 /* copies ss->len chars, doesn't care about 0x0.
    returns new length of string */
 
-unsigned int sstring_cpyb(sstring *ss, register const char *cs,
-                          unsigned int len)
+unsigned long sstring_cpyb(sstring *ss, register const char *cs,
+                           unsigned long len)
 {
-  register unsigned int n;
+  register unsigned long n;
   register char* ssp;
   ssp = ss->s;
   if (len >= ss->a) { len = ss->a; }

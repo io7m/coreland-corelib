@@ -1,6 +1,6 @@
 #include "sstring.h"
 
-unsigned int sstring_chop(sstring *s, unsigned int len)
+unsigned long sstring_chop(sstring *s, unsigned long len)
 {
   char *str;
 

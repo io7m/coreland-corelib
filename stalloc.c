@@ -4,7 +4,7 @@
 typedef union { char x[STALLOC_ALIGN]; double d; } aligned;
 static aligned a_space[STALLOC_SPACE / STALLOC_ALIGN];
 #define space ((char *) a_space)
-static unsigned int avail = STALLOC_SPACE;
+static unsigned long avail = STALLOC_SPACE;
 
 static void copy_bytes(const char *sc, char *dc, unsigned long n)
 {

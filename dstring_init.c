@@ -1,7 +1,7 @@
 #include "alloc.h"
 #include "dstring.h"
 
-int dstring_init(dstring *ds, unsigned int len)
+int dstring_init(dstring *ds, unsigned long len)
 {
   char *s;
 

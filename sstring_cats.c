@@ -1,6 +1,6 @@
 #include "sstring.h"
 
-unsigned int sstring_cats(sstring *ss, const char *s)
+unsigned long sstring_cats(sstring *ss, const char *s)
 {
   register const char* t;
   for (t = s;;) {

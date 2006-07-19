@@ -3,25 +3,25 @@
 
 typedef struct sstring {
   char* s;
-  unsigned int len; /* length of contents */
-  unsigned int a;   /* allocated */
+  unsigned long len; /* length of contents */
+  unsigned long a;   /* allocated */
 } sstring;
 
 #define sstring_INIT(s) { (s), (0), (sizeof s) }
 
-void sstring_init(sstring *, char *, unsigned int);
+void sstring_init(sstring *, char *, unsigned long);
 
-unsigned int sstring_catb(sstring *, const char *, unsigned int);
-unsigned int sstring_cats(sstring *, const char *);
-unsigned int sstring_cat(sstring *, const sstring *);
+unsigned long sstring_catb(sstring *, const char *, unsigned long);
+unsigned long sstring_cats(sstring *, const char *);
+unsigned long sstring_cat(sstring *, const sstring *);
 
-unsigned int sstring_cpyb(sstring *, const char *, unsigned int);
-unsigned int sstring_cpys(sstring *, const char *);
-unsigned int sstring_copy(sstring *, const sstring *);
+unsigned long sstring_cpyb(sstring *, const char *, unsigned long);
+unsigned long sstring_cpys(sstring *, const char *);
+unsigned long sstring_copy(sstring *, const sstring *);
 
-unsigned int sstring_0(sstring *);
+unsigned long sstring_0(sstring *);
 
-unsigned int sstring_chop(sstring *, unsigned int);
+unsigned long sstring_chop(sstring *, unsigned long);
 void sstring_trunc(sstring *);
 
 #endif
