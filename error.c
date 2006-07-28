@@ -112,3 +112,10 @@ EISDIR;
 #else
 -16;
 #endif
+
+int error_overflow =
+#ifdef EOVERFLOW
+EOVERFLOW;
+#else
+-84;
+#endif

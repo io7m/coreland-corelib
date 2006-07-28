@@ -19,6 +19,7 @@ extern int error_acces;
 extern int error_nodevice;
 extern int error_proto;
 extern int error_isdir;
+extern int error_overflow;
 
 const char *error_str(int);
 

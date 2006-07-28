@@ -21,6 +21,8 @@ const char *error_str(int i)
   X(error_acces,"permission denied")
   X(error_nodevice,"device not configured")
   X(error_proto,"protocol error")
+  X(error_overflow,"value too large for data type")
+  X(error_isdir,"is a directory")
 #ifdef ESRCH
   X(ESRCH,"no such process")
 #endif
