@@ -21,6 +21,7 @@ static int new_node(struct ht_table_node **tn,
     dealloc(tmp);
     return 0;
   }
+  tmp->next = 0;
   *tn = tmp;
   return 1;
 }
