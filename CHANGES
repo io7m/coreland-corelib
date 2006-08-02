@@ -143,3 +143,4 @@
 20060719 note: previous version withdrawn!
 20060719 version: corelib-0.41
 20060728 code: added EOVERFLOW/error_overflow to error.
+20060802 code: hashtable re-implement with tests.

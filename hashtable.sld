@@ -1,0 +1,12 @@
+ht_init.o
+ht_hash.o
+ht_free.o
+ht_addb.o
+ht_adds.o
+ht_deleteb.o
+ht_deletes.o
+ht_getb.o
+ht_gets.o
+ht_replaceb.o
+ht_replaces.o
+ht_bytes.o

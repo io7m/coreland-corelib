@@ -277,16 +277,13 @@ get_opt.o:\
 	compile get_opt.c buffer.h get_opt.h 
 	./compile get_opt get_opt.c 
 ht_addb.o:\
-	compile ht_addb.c alloc.h bin.h hashtable.h 
+	compile ht_addb.c alloc.h bin.h error.h hashtable.h 
 	./compile ht_addb ht_addb.c 
 ht_adds.o:\
 	compile ht_adds.c hashtable.h str.h 
 	./compile ht_adds ht_adds.c 
-ht_addu32.o:\
-	compile ht_addu32.c hashtable.h uint32.h 
-	./compile ht_addu32 ht_addu32.c 
 ht_bytes.o:\
-	compile ht_bytes.c hashtable.h uint64.h 
+	compile ht_bytes.c hashtable.h 
 	./compile ht_bytes ht_bytes.c 
 ht_deleteb.o:\
 	compile ht_deleteb.c alloc.h bin.h hashtable.h 
@@ -294,26 +291,23 @@ ht_deleteb.o:\
 ht_deletes.o:\
 	compile ht_deletes.c hashtable.h str.h 
 	./compile ht_deletes ht_deletes.c 
-ht_destroy.o:\
-	compile ht_destroy.c alloc.h hashtable.h 
-	./compile ht_destroy ht_destroy.c 
+ht_free.o:\
+	compile ht_free.c alloc.h hashtable.h 
+	./compile ht_free ht_free.c 
 ht_getb.o:\
 	compile ht_getb.c bin.h hashtable.h 
 	./compile ht_getb ht_getb.c 
 ht_gets.o:\
 	compile ht_gets.c hashtable.h str.h 
 	./compile ht_gets ht_gets.c 
-ht_getu32.o:\
-	compile ht_getu32.c alloc.h bin.h hashtable.h uint32.h 
-	./compile ht_getu32 ht_getu32.c 
 ht_hash.o:\
 	compile ht_hash.c hashtable.h 
 	./compile ht_hash ht_hash.c 
 ht_init.o:\
-	compile ht_init.c hashtable.h 
+	compile ht_init.c bin.h hashtable.h 
 	./compile ht_init ht_init.c 
 ht_replaceb.o:\
-	compile ht_replaceb.c alloc.h bin.h hashtable.h uint32.h 
+	compile ht_replaceb.c alloc.h bin.h hashtable.h 
 	./compile ht_replaceb ht_replaceb.c 
 ht_replaces.o:\
 	compile ht_replaces.c hashtable.h str.h 
@@ -628,30 +622,30 @@ phase_compile:\
 	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o \
 	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o \
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
-	ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
-	ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o \
-	ht_replaceb.o ht_replaces.o install.o installer.o instchk.o \
-	insthier.o int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o \
-	int64_pack.o int64_unpack.o nonblock.o open_append.o open_creat.o \
-	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
-	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
-	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
-	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
-	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
-	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
-	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
-	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_char.o \
-	str_chr.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
-	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
-	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
-	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
-	ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o \
-	ctxt/ctxt_incdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o \
-	ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
+	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
+	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
+	install.o installer.o instchk.o insthier.o int16_pack.o \
+	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
+	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
+	open_ro.o open_rw.o open_trunc.o open_wo.o scan_charset.o \
+	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_ncharset.o \
+	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
+	scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o scan_ucharo.o \
+	scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o scan_ullong.o \
+	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongo.o \
+	scan_ulongx.o scan_ushort.o scan_ushorto.o scan_ushortx.o seek_cur.o \
+	seek_end.o seek_pos.o seek_start.o sgetline.o sgetline_chop.o \
+	sgetline_get.o sig_block.o sig_catch.o sig_pause.o signal.o \
+	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
+	sstring_init.o sstring_trunc.o stalloc.o str_char.o str_chr.o \
+	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o \
+	str_rchr.o str_starts.o str_tolower.o str_toupper.o syserr_die.o \
+	syserr_init.o uint16_pack.o uint16_unpack.o uint32_pack.o \
+	uint32_unpack.o uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o \
+	ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_owner.o ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o \
+	ctxt/ctxt_version.o 
 phase_compile_clean:
 	rm -f alloc.o array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_data.o array_index.o array_size.o auto-text.o \
@@ -669,30 +663,30 @@ phase_compile_clean:
 	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o \
 	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o \
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
-	ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o ht_deleteb.o ht_deletes.o \
-	ht_destroy.o ht_getb.o ht_gets.o ht_getu32.o ht_hash.o ht_init.o \
-	ht_replaceb.o ht_replaces.o install.o installer.o instchk.o \
-	insthier.o int16_pack.o int16_unpack.o int32_pack.o int32_unpack.o \
-	int64_pack.o int64_unpack.o nonblock.o open_append.o open_creat.o \
-	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_u32.o scan_u32o.o \
-	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
-	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
-	scan_ushortx.o seek_cur.o seek_end.o seek_pos.o seek_start.o \
-	sgetline.o sgetline_chop.o sgetline_get.o sig_block.o sig_catch.o \
-	sig_pause.o signal.o sstring_0.o sstring_cat.o sstring_catb.o \
-	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
-	sstring_cpys.o sstring_init.o sstring_trunc.o stalloc.o str_char.o \
-	str_chr.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
-	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
-	syserr_die.o syserr_init.o uint16_pack.o uint16_unpack.o \
-	uint32_pack.o uint32_unpack.o uint64_pack.o uint64_unpack.o \
-	ctxt/ctxt_bindir.o ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o \
-	ctxt/ctxt_incdir.o ctxt/ctxt_owner.o ctxt/ctxt_repos.o \
-	ctxt/ctxt_slibdir.o ctxt/ctxt_version.o 
+	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
+	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
+	install.o installer.o instchk.o insthier.o int16_pack.o \
+	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
+	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
+	open_ro.o open_rw.o open_trunc.o open_wo.o scan_charset.o \
+	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_ncharset.o \
+	scan_newline.o scan_space.o scan_u32.o scan_u32o.o scan_u32x.o \
+	scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o scan_ucharo.o \
+	scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o scan_ullong.o \
+	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongo.o \
+	scan_ulongx.o scan_ushort.o scan_ushorto.o scan_ushortx.o seek_cur.o \
+	seek_end.o seek_pos.o seek_start.o sgetline.o sgetline_chop.o \
+	sgetline_get.o sig_block.o sig_catch.o sig_pause.o signal.o \
+	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
+	sstring_init.o sstring_trunc.o stalloc.o str_char.o str_chr.o \
+	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o \
+	str_rchr.o str_starts.o str_tolower.o str_toupper.o syserr_die.o \
+	syserr_init.o uint16_pack.o uint16_unpack.o uint32_pack.o \
+	uint32_unpack.o uint64_pack.o uint64_unpack.o ctxt/ctxt_bindir.o \
+	ctxt/ctxt_dlibdir.o ctxt/ctxt_group.o ctxt/ctxt_incdir.o \
+	ctxt/ctxt_owner.o ctxt/ctxt_repos.o ctxt/ctxt_slibdir.o \
+	ctxt/ctxt_version.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -771,12 +765,12 @@ get_opt.a:\
 	makelib get_opt.sld get_opt.o 
 	./makelib get_opt get_opt.o 
 hashtable.a:\
-	makelib hashtable.sld ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o \
-	ht_deleteb.o ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o \
-	ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o 
-	./makelib hashtable ht_addb.o ht_adds.o ht_addu32.o ht_bytes.o \
-	ht_deleteb.o ht_deletes.o ht_destroy.o ht_getb.o ht_gets.o \
-	ht_getu32.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o 
+	makelib hashtable.sld ht_init.o ht_hash.o ht_free.o ht_addb.o \
+	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
+	ht_replaceb.o ht_replaces.o ht_bytes.o 
+	./makelib hashtable ht_init.o ht_hash.o ht_free.o ht_addb.o \
+	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
+	ht_replaceb.o ht_replaces.o ht_bytes.o 
 int16.a:\
 	makelib int16.sld int16_pack.o int16_unpack.o 
 	./makelib int16 int16_pack.o int16_unpack.o 

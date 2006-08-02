@@ -1,5 +1,5 @@
 # auto generated - do not edit
-# cpj-genmk-0.76
+# cpj-genmk-0.78
 
 SHELL=/bin/sh
 default: all
@@ -63,9 +63,32 @@ t_fmt_spec.o:\
 t_get_opt.o:\
 	compile t_get_opt.c ../get_opt.h 
 	./compile t_get_opt t_get_opt.c 
-t_hashtable.o:\
-	compile t_hashtable.c ../hashtable.h 
-	./compile t_hashtable t_hashtable.c 
+t_hashtable1.o:\
+	compile t_hashtable1.c t_hashtable.h ../hashtable.h 
+	./compile t_hashtable1 t_hashtable1.c 
+t_hashtable2.o:\
+	compile t_hashtable2.c t_hashtable.h ../hashtable.h ../bin.h \
+	../alloc.h 
+	./compile t_hashtable2 t_hashtable2.c 
+t_hashtable3.o:\
+	compile t_hashtable3.c t_hashtable.h ../hashtable.h ../bin.h \
+	../str.h 
+	./compile t_hashtable3 t_hashtable3.c 
+t_hashtable4.o:\
+	compile t_hashtable4.c t_hashtable.h ../hashtable.h ../bin.h \
+	../alloc.h ../str.h 
+	./compile t_hashtable4 t_hashtable4.c 
+t_hashtable5.o:\
+	compile t_hashtable5.c t_hashtable.h ../hashtable.h ../bin.h \
+	../error.h ../alloc.h ../str.h 
+	./compile t_hashtable5 t_hashtable5.c 
+t_hashtable_c.o:\
+	compile t_hashtable_c.c t_hashtable.h ../hashtable.h ../bin.h \
+	../str.h 
+	./compile t_hashtable_c t_hashtable_c.c 
+t_hashtable_d.o:\
+	compile t_hashtable_d.c 
+	./compile t_hashtable_d t_hashtable_d.c 
 t_int.o:\
 	compile t_int.c ../int16.h ../int32.h ../int64.h 
 	./compile t_int t_int.c 
@@ -115,17 +138,19 @@ t_uint.o:\
 phase_compile:\
 	t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o t_dir_array.o \
 	t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o t_float.o \
-	t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable.o t_int.o \
-	t_open.o t_scan.o t_scan2.o t_scan3.o t_scan_float.o t_scan_fspec.o \
-	t_scan_spec.o t_seek.o t_sgetline.o t_signal.o t_sstring.o \
-	t_stalloc.o t_str.o t_uint.o 
+	t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable1.o \
+	t_hashtable2.o t_hashtable3.o t_hashtable4.o t_hashtable5.o \
+	t_hashtable_c.o t_hashtable_d.o t_int.o t_open.o t_scan.o t_scan2.o \
+	t_scan3.o t_scan_float.o t_scan_fspec.o t_scan_spec.o t_seek.o \
+	t_sgetline.o t_signal.o t_sstring.o t_stalloc.o t_str.o t_uint.o 
 phase_compile_clean:
 	rm -f t_alloc.o t_array.o t_base_name.o t_bin.o t_buffer.o \
 	t_dir_array.o t_dir_hash.o t_dir_name.o t_dstring.o t_env.o t_fd.o \
-	t_float.o t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable.o \
-	t_int.o t_open.o t_scan.o t_scan2.o t_scan3.o t_scan_float.o \
-	t_scan_fspec.o t_scan_spec.o t_seek.o t_sgetline.o t_signal.o \
-	t_sstring.o t_stalloc.o t_str.o t_uint.o 
+	t_float.o t_fmt.o t_fmt2.o t_fmt_spec.o t_get_opt.o t_hashtable1.o \
+	t_hashtable2.o t_hashtable3.o t_hashtable4.o t_hashtable5.o \
+	t_hashtable_c.o t_hashtable_d.o t_int.o t_open.o t_scan.o t_scan2.o \
+	t_scan3.o t_scan_float.o t_scan_fspec.o t_scan_spec.o t_seek.o \
+	t_sgetline.o t_signal.o t_sstring.o t_stalloc.o t_str.o t_uint.o 
 
 #--LIBRARY--------------------------------------------------------------------
 
@@ -196,11 +221,31 @@ t_get_opt:\
 	../bin.a ../str.a 
 	./link t_get_opt t_get_opt.o ../get_opt.a ../buffer.a ../error.a \
 	../bin.a ../str.a 
-t_hashtable:\
-	link t_hashtable.ld t_hashtable.o ../hashtable.a ../uint32.a \
-	../str.a ../bin.a ../alloc.a 
-	./link t_hashtable t_hashtable.o ../hashtable.a ../uint32.a \
-	../str.a ../bin.a ../alloc.a 
+t_hashtable1:\
+	link t_hashtable1.ld t_hashtable1.o t_hashtable_d.o ../hashtable.a \
+	../error.a ../bin.a ../str.a ../alloc.a 
+	./link t_hashtable1 t_hashtable1.o t_hashtable_d.o ../hashtable.a \
+	../error.a ../bin.a ../str.a ../alloc.a 
+t_hashtable2:\
+	link t_hashtable2.ld t_hashtable2.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+	./link t_hashtable2 t_hashtable2.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+t_hashtable3:\
+	link t_hashtable3.ld t_hashtable3.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+	./link t_hashtable3 t_hashtable3.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+t_hashtable4:\
+	link t_hashtable4.ld t_hashtable4.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+	./link t_hashtable4 t_hashtable4.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+t_hashtable5:\
+	link t_hashtable5.ld t_hashtable5.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
+	./link t_hashtable5 t_hashtable5.o t_hashtable_d.o t_hashtable_c.o \
+	../hashtable.a ../error.a ../bin.a ../str.a ../alloc.a 
 t_int:\
 	link t_int.ld t_int.o ../int16.a ../int32.a ../int64.a 
 	./link t_int t_int.o ../int16.a ../int32.a ../int64.a 
@@ -252,13 +297,15 @@ t_uint:\
 phase_link:\
 	t_alloc t_array t_base_name t_bin t_buffer t_dir_array t_dir_hash \
 	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt_spec \
-	t_get_opt t_hashtable t_int t_open t_scan t_scan2 t_scan3 \
-	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_signal \
-	t_sstring t_stalloc t_str t_uint 
+	t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 t_hashtable4 \
+	t_hashtable5 t_int t_open t_scan t_scan2 t_scan3 t_scan_float \
+	t_scan_fspec t_scan_spec t_seek t_sgetline t_signal t_sstring \
+	t_stalloc t_str t_uint 
 phase_link_clean:
 	rm -f t_alloc t_array t_base_name t_bin t_buffer t_dir_array \
 	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 \
-	t_fmt_spec t_get_opt t_hashtable t_int t_open t_scan t_scan2 t_scan3 \
+	t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
+	t_hashtable4 t_hashtable5 t_int t_open t_scan t_scan2 t_scan3 \
 	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_signal \
 	t_sstring t_stalloc t_str t_uint 
 
