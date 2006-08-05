@@ -984,7 +984,7 @@ sysdep_clean:
 
 #--TOOLS----------------------------------------------------------------------
 
-mkftools: compile makelib libname makeso link 
+mkftools: compile makelib libname makeso link sosuffix 
 compile: sysdeps.out conf-shebang conf-cc make-compile 
 	(cat conf-shebang; ./make-compile) > compile; chmod u+x compile;
 link: sysdeps.out conf-shebang conf-ld make-link conf-ldfflist \
@@ -996,8 +996,11 @@ makeso: sysdeps.out conf-shebang libname make-makeso
 	(cat conf-shebang; ./make-makeso) > makeso; chmod u+x makeso;
 libname: sysdeps.out conf-shebang make-libname 
 	(cat conf-shebang; ./make-libname) > libname; chmod u+x libname;
+sosuffix: sysdeps.out conf-shebang libname make-sosuffix 
+	(cat conf-shebang; ./make-sosuffix) > sosuffix; chmod u+x sosuffix;
 mkftools_clean: 
-	 rm -f compile makelib makeso libname link 
+	 rm -f compile makelib makeso libname link \
+	sosuffix 
 regen:
 	cpj-genmk > Makefile.tmp
 	mv Makefile.tmp Makefile
