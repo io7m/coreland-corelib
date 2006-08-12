@@ -324,9 +324,9 @@ inst-dir.o:\
 inst-link.o:\
 	compile inst-link.c install.h 
 	./compile inst-link inst-link.c 
-install.o:\
-	compile install.c install.h 
-	./compile install install.c 
+install_core.o:\
+	compile install_core.c install.h 
+	./compile install_core install_core.c 
 install_error.o:\
 	compile install_error.c install.h 
 	./compile install_error install_error.c 
@@ -595,28 +595,28 @@ uint64_unpack.o:\
 	compile uint64_unpack.c uint64.h 
 	./compile uint64_unpack uint64_unpack.c 
 ctxt/ctxt_bindir.o:\
-	compile ctxt/ctxt_bindir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_bindir.c 
 	./compile ctxt/ctxt_bindir ctxt/ctxt_bindir.c 
 ctxt/ctxt_dlibdir.o:\
-	compile ctxt/ctxt_dlibdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_dlibdir.c 
 	./compile ctxt/ctxt_dlibdir ctxt/ctxt_dlibdir.c 
 ctxt/ctxt_group.o:\
-	compile ctxt/ctxt_group.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_group.c 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
 ctxt/ctxt_incdir.o:\
-	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_incdir.c 
 	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
 ctxt/ctxt_owner.o:\
-	compile ctxt/ctxt_owner.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_owner.c 
 	./compile ctxt/ctxt_owner ctxt/ctxt_owner.c 
 ctxt/ctxt_repos.o:\
-	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_repos.c 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
 ctxt/ctxt_slibdir.o:\
-	compile ctxt/ctxt_slibdir.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_slibdir.c 
 	./compile ctxt/ctxt_slibdir ctxt/ctxt_slibdir.c 
 ctxt/ctxt_version.o:\
-	compile ctxt/ctxt_version.c ctxt/../ctxt.h 
+	compile ctxt/ctxt_version.c 
 	./compile ctxt/ctxt_version ctxt/ctxt_version.c 
 
 phase_compile:\
@@ -638,7 +638,7 @@ phase_compile:\
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
 	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
 	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
-	inst-check.o inst-copy.o inst-dir.o inst-link.o install.o \
+	inst-check.o inst-copy.o inst-dir.o inst-link.o install_core.o \
 	install_error.o installer.o instchk.o insthier.o int16_pack.o \
 	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
 	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
@@ -680,7 +680,7 @@ phase_compile_clean:
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
 	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
 	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
-	inst-check.o inst-copy.o inst-dir.o inst-link.o install.o \
+	inst-check.o inst-copy.o inst-dir.o inst-link.o install_core.o \
 	install_error.o installer.o instchk.o insthier.o int16_pack.o \
 	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
 	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
@@ -897,9 +897,9 @@ corelib-conf:\
 	./link corelib-conf corelib-conf.o ctxt/ctxt.a get_opt.a syserr.a \
 	buffer.a error.a bin.a str.a 
 deinstaller:\
-	link deinstaller.ld deinstaller.o insthier.o install.o \
+	link deinstaller.ld deinstaller.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
-	./link deinstaller deinstaller.o insthier.o install.o \
+	./link deinstaller deinstaller.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
 inst-check:\
 	link inst-check.ld inst-check.o install_error.o 
@@ -914,14 +914,14 @@ inst-link:\
 	link inst-link.ld inst-link.o install_error.o 
 	./link inst-link inst-link.o install_error.o 
 installer:\
-	link installer.ld installer.o insthier.o install.o install_error.o \
-	ctxt/ctxt.a 
-	./link installer installer.o insthier.o install.o install_error.o \
-	ctxt/ctxt.a 
+	link installer.ld installer.o insthier.o install_core.o \
+	install_error.o ctxt/ctxt.a 
+	./link installer installer.o insthier.o install_core.o \
+	install_error.o ctxt/ctxt.a 
 instchk:\
-	link instchk.ld instchk.o insthier.o install.o install_error.o \
+	link instchk.ld instchk.o insthier.o install_core.o install_error.o \
 	ctxt/ctxt.a 
-	./link instchk instchk.o insthier.o install.o install_error.o \
+	./link instchk instchk.o insthier.o install_core.o install_error.o \
 	ctxt/ctxt.a 
 
 phase_link:\
