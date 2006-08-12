@@ -130,10 +130,10 @@ void copy_test(dstring *ds)
   /* 1 + 32 == 33 */
   if (!dstring_init(ds, 1)) die_sys("dstring_init");
 
-  /* 256 + 32 == 288 */
+  /* 256 + 32 + 1 == 289 */
   if (!dstring_cpys(ds, BIG_STRING)) die_sys("dstring_cpys");
   T_COMPARE(256, ds->len, COPYTEST" len", 1);
-  T_COMPARE(288, ds->a, COPYTEST" a", 2);
+  T_COMPARE(289, ds->a, COPYTEST" a", 2);
   /* ds->s[288] == ok, ds->s[289] == overflow */
 
   T_COMPARE('1', ds->s[248], COPYTEST" s[248]", 3);
@@ -176,16 +176,16 @@ void chop_test(dstring *ds)
     if (!dstring_catb(ds, "X", 1)) die_sys("dstring_catb");
 
   dstring_chop(ds, ds->a);
-  T_COMPARE(287, ds->len, CHOPTEST" len ", 4);
-  T_COMPARE(288, ds->a, CHOPTEST" a", 5);
+  T_COMPARE(288, ds->len, CHOPTEST" len ", 4);
+  T_COMPARE(289, ds->a, CHOPTEST" a", 5);
 
   dstring_trunc(ds);
   T_COMPARE(0, ds->len, CHOPTEST" len ", 6);
-  T_COMPARE(288, ds->a, CHOPTEST" a", 7);
+  T_COMPARE(289, ds->a, CHOPTEST" a", 7);
 
   dstring_trunc(ds);
   T_COMPARE(0, ds->len, CHOPTEST" len ", 6);
-  T_COMPARE(288, ds->a, CHOPTEST" a", 7);
+  T_COMPARE(289, ds->a, CHOPTEST" a", 7);
 }
 
 int main()

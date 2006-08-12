@@ -1,20 +1,26 @@
 #include "bin.h"
 
-int bin_rchar(register const char *s, unsigned long len,
-              register int c, unsigned long *pos)
+int bin_rchar(register const void *s, unsigned long len,
+              register int ch, unsigned long *pos)
 {
-  register const char *t;
+  register const char *tc;
   register const char *u;
   register char cc;
-  int f = 0;
-  for (t = s, cc = c, u = 0;;) {
-    if (!len) break; if (*t == cc) { u = t; f = 1; } ++t; --len;
-    if (!len) break; if (*t == cc) { u = t; f = 1; } ++t; --len;
-    if (!len) break; if (*t == cc) { u = t; f = 1; } ++t; --len;
-    if (!len) break; if (*t == cc) { u = t; f = 1; } ++t; --len;
+  int f;
+
+  tc = (const char *) s;
+  cc = (char) ch;
+  f = 0;
+  u = 0;
+
+  for (;;) {
+    if (!len) break; if (*tc == cc) { u = tc; f = 1; } ++tc; --len;
+    if (!len) break; if (*tc == cc) { u = tc; f = 1; } ++tc; --len;
+    if (!len) break; if (*tc == cc) { u = tc; f = 1; } ++tc; --len;
+    if (!len) break; if (*tc == cc) { u = tc; f = 1; } ++tc; --len;
   }
   if (f == 0) return 0;
-  if (!u) u = t;
-  *pos = u - s;
+  if (!u) u = tc;
+  *pos = u - (const char *) s;
   return 1;
 }

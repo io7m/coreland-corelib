@@ -15,7 +15,7 @@ int dstring_cpyb(dstring *d, const char *s, unsigned long len)
   if (len >= da) {
     unsigned long nal;
     char *ns;
-    nal = len + DSTRING_OVERALLOC;
+    nal = len + 1 + DSTRING_OVERALLOC;
     ns = alloc(nal);
     if (!ns) return 0;
     dealloc(ds);

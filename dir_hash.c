@@ -27,7 +27,7 @@ int dir_hash_init(dir_hash *dh, const char *path)
   da = &dh->da;
   if (!dir_array_init(da, path)) return 0;
 
-  bin_zero((char *) &dh->tab, DIR_HASH_BUCKETS * sizeof(struct dir_hash_tnode *));
+  bin_zero(&dh->tab, DIR_HASH_BUCKETS * sizeof(struct dir_hash_tnode *));
 
   for (;;) {
     if (!dir_array_next(da, &name)) break;

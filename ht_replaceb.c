@@ -35,8 +35,8 @@ int ht_replaceb(hashtable *h, const void *k, unsigned long klen,
             return -1;
           }
         } else tmpdat = np->data;
-        bin_copy((char *) key, tmpkey, klen);
-        bin_copy((char *) dat, tmpdat, dlen);
+        bin_copy(key, tmpkey, klen);
+        bin_copy(dat, tmpdat, dlen);
         np->keylen = klen;
         np->datalen = dlen;
         return 1;

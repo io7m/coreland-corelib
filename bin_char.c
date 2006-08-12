@@ -1,14 +1,17 @@
 #include "bin.h"
 
-int bin_char(register const char *s, unsigned long len,
+int bin_char(register const void *s, unsigned long len,
              register int ch, unsigned long *pos)
 {
-  register const char *t;
+  register const char *tc;
+  register const char *sc;
   register char cc;
-  for (t = s, cc = (char) ch;;) {
-    if (!len) return 0; if (*t == cc) { *pos = t - s; return 1; } ++t; --len;
-    if (!len) return 0; if (*t == cc) { *pos = t - s; return 1; } ++t; --len;
-    if (!len) return 0; if (*t == cc) { *pos = t - s; return 1; } ++t; --len;
-    if (!len) return 0; if (*t == cc) { *pos = t - s; return 1; } ++t; --len;
+
+  tc = (const char *) s;
+  sc = tc;
+  cc = (char) ch;
+
+  for (;;) {
+    if (!len) return 0; if (*tc == cc) { *pos = tc - sc; return 1; } ++tc; --len;
   }
 }

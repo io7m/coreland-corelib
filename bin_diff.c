@@ -1,13 +1,18 @@
 #include "bin.h"
 
-int bin_diff(const char *s, const char *t, unsigned long n)
+int bin_diff(const void *sv, const void *tv, unsigned long n)
 {
+  register const char *sc;
+  register const char *tc;
+
+  sc = (const char *) sv;
+  tc = (const char *) tv; 
   for (;;) {
-    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
-    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
-    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
-    if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+    if (!n) return 0; if (*sc != *tc) break; ++sc; ++tc; --n;
+    if (!n) return 0; if (*sc != *tc) break; ++sc; ++tc; --n;
+    if (!n) return 0; if (*sc != *tc) break; ++sc; ++tc; --n;
+    if (!n) return 0; if (*sc != *tc) break; ++sc; ++tc; --n;
   }
-  return ((int)(unsigned int)(unsigned char) *s)
-       - ((int)(unsigned int)(unsigned char) *t);
+  return ((int)(unsigned int)(unsigned char) *sc)
+       - ((int)(unsigned int)(unsigned char) *tc);
 }

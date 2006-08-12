@@ -11,7 +11,7 @@
 int array_init(array *a, uint64 n, uint32 es)
 {
   char *x;
-  n += ARRAY_OVERALLOC;
+  n += 1 + ARRAY_OVERALLOC;
 
   x = alloc(n * es);
   if (!x) return 0;

@@ -18,7 +18,7 @@ int array_cat(array *a, void* i)
   if ((old_u + 1) < old_u) return 0; /* detect int overflow */
 
   if ((old_u + 1) > old_a) {
-    new_a = old_a + ARRAY_OVERALLOC;
+    new_a = old_a + 1 + ARRAY_OVERALLOC;
     if (!alloc_re((void **) &a->x, old_a * es, new_a * es)) return 0;
     a->a = new_a;
   }
