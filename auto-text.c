@@ -31,7 +31,7 @@ int main(int argc, char **argv)
   b = 0;
 
   put("#include \""); put(head); put(".h\"\n");
-  put("const char "); put(name); put("[] = {\n");
+  put("char "); put(name); put("[] = {\n");
 
   line = 0;
   while (!done) {

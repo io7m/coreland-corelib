@@ -2,4 +2,4 @@ phase_install: installer
 	./installer
 
 install-dryrun: installer
-	./installer -n
+	./installer dryrun

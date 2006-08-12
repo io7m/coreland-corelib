@@ -127,7 +127,7 @@ corelib-conf.o:\
 	compile corelib-conf.c buffer.h ctxt.h get_opt.h str.h syserr.h 
 	./compile corelib-conf corelib-conf.c 
 deinstaller.o:\
-	compile deinstaller.c buffer.h get_opt.h fmt.h install.h syserr.h 
+	compile deinstaller.c install.h 
 	./compile deinstaller deinstaller.c 
 dir_array.o:\
 	compile dir_array.c alloc.h bin.h dir_array.h direntry.h str.h 
@@ -312,15 +312,29 @@ ht_replaceb.o:\
 ht_replaces.o:\
 	compile ht_replaces.c hashtable.h str.h 
 	./compile ht_replaces ht_replaces.c 
+inst-check.o:\
+	compile inst-check.c install.h 
+	./compile inst-check inst-check.c 
+inst-copy.o:\
+	compile inst-copy.c install.h 
+	./compile inst-copy inst-copy.c 
+inst-dir.o:\
+	compile inst-dir.c install.h 
+	./compile inst-dir inst-dir.c 
+inst-link.o:\
+	compile inst-link.c install.h 
+	./compile inst-link inst-link.c 
 install.o:\
-	compile install.c bin.h buffer.h error.h fmt.h install.h open.h \
-	read.h str.h syserr.h write.h 
+	compile install.c install.h 
 	./compile install install.c 
+install_error.o:\
+	compile install_error.c install.h 
+	./compile install_error install_error.c 
 installer.o:\
-	compile installer.c buffer.h get_opt.h install.h syserr.h 
+	compile installer.c install.h 
 	./compile installer installer.c 
 instchk.o:\
-	compile instchk.c buffer.h fmt.h install.h syserr.h 
+	compile instchk.c install.h 
 	./compile instchk instchk.c 
 insthier.o:\
 	compile insthier.c install.h ctxt.h 
@@ -581,28 +595,28 @@ uint64_unpack.o:\
 	compile uint64_unpack.c uint64.h 
 	./compile uint64_unpack uint64_unpack.c 
 ctxt/ctxt_bindir.o:\
-	compile ctxt/ctxt_bindir.c 
+	compile ctxt/ctxt_bindir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_bindir ctxt/ctxt_bindir.c 
 ctxt/ctxt_dlibdir.o:\
-	compile ctxt/ctxt_dlibdir.c 
+	compile ctxt/ctxt_dlibdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_dlibdir ctxt/ctxt_dlibdir.c 
 ctxt/ctxt_group.o:\
-	compile ctxt/ctxt_group.c 
+	compile ctxt/ctxt_group.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_group ctxt/ctxt_group.c 
 ctxt/ctxt_incdir.o:\
-	compile ctxt/ctxt_incdir.c 
+	compile ctxt/ctxt_incdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_incdir ctxt/ctxt_incdir.c 
 ctxt/ctxt_owner.o:\
-	compile ctxt/ctxt_owner.c 
+	compile ctxt/ctxt_owner.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_owner ctxt/ctxt_owner.c 
 ctxt/ctxt_repos.o:\
-	compile ctxt/ctxt_repos.c 
+	compile ctxt/ctxt_repos.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_repos ctxt/ctxt_repos.c 
 ctxt/ctxt_slibdir.o:\
-	compile ctxt/ctxt_slibdir.c 
+	compile ctxt/ctxt_slibdir.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_slibdir ctxt/ctxt_slibdir.c 
 ctxt/ctxt_version.o:\
-	compile ctxt/ctxt_version.c 
+	compile ctxt/ctxt_version.c ctxt/../ctxt.h 
 	./compile ctxt/ctxt_version ctxt/ctxt_version.c 
 
 phase_compile:\
@@ -624,7 +638,8 @@ phase_compile:\
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
 	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
 	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
-	install.o installer.o instchk.o insthier.o int16_pack.o \
+	inst-check.o inst-copy.o inst-dir.o inst-link.o install.o \
+	install_error.o installer.o instchk.o insthier.o int16_pack.o \
 	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
 	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
 	open_ro.o open_rw.o open_trunc.o open_wo.o scan_charset.o \
@@ -665,7 +680,8 @@ phase_compile_clean:
 	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.o \
 	ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o \
 	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
-	install.o installer.o instchk.o insthier.o int16_pack.o \
+	inst-check.o inst-copy.o inst-dir.o inst-link.o install.o \
+	install_error.o installer.o instchk.o insthier.o int16_pack.o \
 	int16_unpack.o int32_pack.o int32_unpack.o int64_pack.o \
 	int64_unpack.o nonblock.o open_append.o open_creat.o open_excl.o \
 	open_ro.o open_rw.o open_trunc.o open_wo.o scan_charset.o \
@@ -881,25 +897,39 @@ corelib-conf:\
 	./link corelib-conf corelib-conf.o ctxt/ctxt.a get_opt.a syserr.a \
 	buffer.a error.a bin.a str.a 
 deinstaller:\
-	link deinstaller.ld deinstaller.o install.o insthier.o ctxt/ctxt.a \
-	open.a syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
-	./link deinstaller deinstaller.o install.o insthier.o ctxt/ctxt.a \
-	open.a syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
+	link deinstaller.ld deinstaller.o insthier.o install.o \
+	install_error.o ctxt/ctxt.a 
+	./link deinstaller deinstaller.o insthier.o install.o \
+	install_error.o ctxt/ctxt.a 
+inst-check:\
+	link inst-check.ld inst-check.o install_error.o 
+	./link inst-check inst-check.o install_error.o 
+inst-copy:\
+	link inst-copy.ld inst-copy.o install_error.o 
+	./link inst-copy inst-copy.o install_error.o 
+inst-dir:\
+	link inst-dir.ld inst-dir.o install_error.o 
+	./link inst-dir inst-dir.o install_error.o 
+inst-link:\
+	link inst-link.ld inst-link.o install_error.o 
+	./link inst-link inst-link.o install_error.o 
 installer:\
-	link installer.ld installer.o install.o insthier.o ctxt/ctxt.a \
-	open.a syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
-	./link installer installer.o install.o insthier.o ctxt/ctxt.a \
-	open.a syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
+	link installer.ld installer.o insthier.o install.o install_error.o \
+	ctxt/ctxt.a 
+	./link installer installer.o insthier.o install.o install_error.o \
+	ctxt/ctxt.a 
 instchk:\
-	link instchk.ld instchk.o install.o insthier.o ctxt/ctxt.a open.a \
-	syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
-	./link instchk instchk.o install.o insthier.o ctxt/ctxt.a open.a \
-	syserr.a get_opt.a fmt.a buffer.a str.a bin.a error.a 
+	link instchk.ld instchk.o insthier.o install.o install_error.o \
+	ctxt/ctxt.a 
+	./link instchk instchk.o insthier.o install.o install_error.o \
+	ctxt/ctxt.a 
 
 phase_link:\
-	auto-text corelib-conf deinstaller installer instchk 
+	auto-text corelib-conf deinstaller inst-check inst-copy inst-dir \
+	inst-link installer instchk 
 phase_link_clean:
-	rm -f auto-text corelib-conf deinstaller installer instchk 
+	rm -f auto-text corelib-conf deinstaller inst-check inst-copy \
+	inst-dir inst-link installer instchk 
 
 #--TEST-----------------------------------------------------------------------
 
@@ -915,7 +945,7 @@ phase_install: installer
 	./installer
 
 install-dryrun: installer
-	./installer -n
+	./installer dryrun
 
 #--INSTALL-CHECK--------------------------------------------------------------
 
