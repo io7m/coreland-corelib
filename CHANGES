@@ -146,3 +146,4 @@
 20060802 code: hashtable re-implement with tests.
 20060805 code: re-added old sosuffix support script for installer.
 20060812 code: new installer, bin interface changed to void *
+20060821 code: error_loop
