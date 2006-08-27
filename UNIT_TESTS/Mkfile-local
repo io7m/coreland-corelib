@@ -1,19 +1,28 @@
 phase_tools_local: tools
+phase_pregen_local:
 phase_compile_local:
 phase_library_local:
 phase_link_local:
 phase_local_clean: toollink_clean
 
 toollink_clean:
-	rm -f compile link makeso makelib
+	rm -f cc ld mk-slib conf-systype conf-cctype mk-systype \
+        conf-cc conf-ld mk-cctype
 
-tools: compile link makeso makelib
+tools: cc ld mk-slib conf-systype conf-cctype mk-systype \
+	conf-cc conf-ld mk-cctype
 
-compile: ../compile
-	ln -s ../compile compile
-link: ../link
-	ln -s ../link link
-makeso: ../makeso
-	ln -s ../makeso makeso
-makelib: ../makelib
-	ln -s ../makelib makelib
+cc: ../cc
+	ln -s ../cc cc
+ld: ../ld
+	ln -s ../ld ld
+conf-cc: ../conf-cc
+	ln -s ../conf-cc conf-cc
+conf-ld: ../conf-ld
+	ln -s ../conf-ld conf-ld
+mk-slib: ../mk-slib
+	ln -s ../mk-slib mk-slib
+mk-systype: ../mk-systype
+	ln -s ../mk-systype mk-systype
+mk-cctype: ../mk-cctype
+	ln -s ../mk-cctype mk-cctype
