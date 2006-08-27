@@ -332,12 +332,13 @@ phase_library_local:
 phase_link_local:
 phase_local_clean: toollink_clean
 
-toollink_clean:
-	rm -f cc ld mk-slib conf-systype conf-cctype mk-systype \
-        conf-cc conf-ld mk-cctype
+phase_tools:
+phase_tools_clean:
 
-tools: mk-systype mk-cctype cc ld mk-slib conf-systype conf-cctype \
-	conf-cc conf-ld
+toollink_clean:
+	rm -f cc ld conf-systype conf-cctype conf-cc conf-ld
+
+tools: cc ld conf-systype conf-cctype conf-cc conf-ld
 
 cc: ../cc
 	ln -s ../cc cc
@@ -347,12 +348,10 @@ conf-cc: ../conf-cc
 	ln -s ../conf-cc conf-cc
 conf-ld: ../conf-ld
 	ln -s ../conf-ld conf-ld
-mk-slib: ../mk-slib
-	ln -s ../mk-slib mk-slib
-mk-systype: ../mk-systype
-	ln -s ../mk-systype mk-systype
-mk-cctype: ../mk-cctype
-	ln -s ../mk-cctype mk-cctype
+conf-systype:
+	ln -s ../conf-systype conf-systype
+conf-cctype:
+	ln -s ../conf-cctype conf-cctype
 
 #--TEST-----------------------------------------------------------------------
 
@@ -367,24 +366,6 @@ list_tests:
 
 run_tests:
 	./run-tests -v
-
-#--TOOLS----------------------------------------------------------------------
-
-phase_tools: cc conf-cc conf-cctype conf-ld conf-systype ld \
-	mk-cctype mk-systype 
-cc: conf-cctype conf-cc 
-
-conf-cctype: conf-systype conf-cc 
-	./mk-cctype > conf-cctype
-conf-systype: 
-	./mk-systype > conf-systype
-ld: conf-ld libs-sysmath 
-
-mk-cctype: conf-cc conf-systype 
-
-
-phase_tools_clean:
-	rm -f conf-cctype conf-systype 
 regen:
-	cpj-genmk > Makefile.tmp
+	cpj-genmk -t > Makefile.tmp
 	mv Makefile.tmp Makefile
