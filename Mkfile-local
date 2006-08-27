@@ -1,5 +1,6 @@
 phase_sysdeps_local:
 phase_tools_local:
+phase_pregen_local:
 phase_compile_local:
 phase_library_local:
 phase_link_local:

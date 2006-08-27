@@ -9,8 +9,8 @@ toollink_clean:
 	rm -f cc ld mk-slib conf-systype conf-cctype mk-systype \
         conf-cc conf-ld mk-cctype
 
-tools: cc ld mk-slib conf-systype conf-cctype mk-systype \
-	conf-cc conf-ld mk-cctype
+tools: mk-systype mk-cctype cc ld mk-slib conf-systype conf-cctype \
+	conf-cc conf-ld
 
 cc: ../cc
 	ln -s ../cc cc

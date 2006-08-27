@@ -147,3 +147,6 @@
 20060805 code: re-added old sosuffix support script for installer.
 20060812 code: new installer, bin interface changed to void *
 20060821 code: error_loop
+20060827 code: new coreproject tools
+20060827 code: fd_dup return statement inside #ifdef as opposed to
+               outside.

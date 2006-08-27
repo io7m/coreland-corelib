@@ -336,8 +336,8 @@ toollink_clean:
 	rm -f cc ld mk-slib conf-systype conf-cctype mk-systype \
         conf-cc conf-ld mk-cctype
 
-tools: cc ld mk-slib conf-systype conf-cctype mk-systype \
-	conf-cc conf-ld mk-cctype
+tools: mk-systype mk-cctype cc ld mk-slib conf-systype conf-cctype \
+	conf-cc conf-ld
 
 cc: ../cc
 	ln -s ../cc cc
@@ -372,13 +372,13 @@ run_tests:
 
 phase_tools: cc conf-cc conf-cctype conf-ld conf-systype ld \
 	mk-cctype mk-systype 
-cc: conf-cctype conf-cc libs-sysmath 
+cc: conf-cctype conf-cc 
 
 conf-cctype: conf-systype conf-cc 
 	./mk-cctype > conf-cctype
 conf-systype: 
 	./mk-systype > conf-systype
-ld: conf-ld 
+ld: conf-ld libs-sysmath 
 
 mk-cctype: conf-cc conf-systype 
 
