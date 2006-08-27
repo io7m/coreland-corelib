@@ -1,0 +1,3 @@
+-O -s
+
+These are passed to the C compiler.
