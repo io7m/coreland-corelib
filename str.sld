@@ -1,5 +1,7 @@
 str_char.o
 str_chr.o
+str_ci_diff.o
+str_ci_ndiff.o
 str_diff.o
 str_dup.o
 str_ends.o

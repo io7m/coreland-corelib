@@ -1,4 +1,4 @@
-phase_install: installer
+install: installer
 	./installer
 
 install-dryrun: installer

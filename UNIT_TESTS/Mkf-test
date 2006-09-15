@@ -1,6 +1,4 @@
-phase_test: list_tests run_tests
-phase_test_clean: tests_clean
-
+tests: list_tests run_tests
 tests_clean:
 	rm -f testlist
 

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ $# -lt 2 ]
+if [ $# -lt 1 ]
 then
-  echo "usage: basename source" 1>&2
+  echo "usage: source" 1>&2
   exit 1
 fi
 
@@ -23,8 +23,7 @@ then
   done
 fi
 
-out="$1"
-shift
+out=`echo "$1" | awk -F. '{print $1}'`
 src="$1"
 shift
 

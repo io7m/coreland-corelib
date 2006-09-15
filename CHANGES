@@ -150,3 +150,6 @@
 20060827 code: new coreproject tools
 20060827 code: fd_dup return statement inside #ifdef as opposed to
                outside.
+20060915 code: added str_casei* (case insensitive string comparison)
+               and updated tests.
+               new coreproject tools and makefile.

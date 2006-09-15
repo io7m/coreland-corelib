@@ -26,4 +26,4 @@ fi
 out="$1"
 shift
 
-${LD} -o ${out} ${LDFLAGS} ${1+"$@"}
+${LD} -o ${out} ${1+"$@"} ${LDFLAGS}

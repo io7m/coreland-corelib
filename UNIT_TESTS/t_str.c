@@ -6,6 +6,8 @@ int main()
 {
   const char *s = "ABCD1234EFGHXXXX";
   const char *t = "ABCD1234EFGHXXXX";
+  const char *u = "AbCdEfGh";
+  const char *v = "aBcDeFgH";
   char *x;
   long i;
   unsigned long pos;
@@ -19,13 +21,24 @@ int main()
 
   i = str_diff(s, t);
   if (i != 0) { printf("str_diff: i == %ld\n", i); return 1; }
-
   i = str_same(s, t);
   if (i != 1) { printf("str_same: i == %ld\n", i); return 1; }
+  i = str_ndiff(s, t, 8);
+  if (i != 0) { printf("str_ndiff: i == %ld\n", i); return 1; }
+  i = str_nsame(s, t, 8);
+  if (i != 1) { printf("str_nsame: i == %ld\n", i); return 1; }
+
+  i = str_casei_diff(u, v);
+  if (i != 0) { printf("str_casei_diff: i == %ld\n", i); return 1; }
+  i = str_casei_same(u, v);
+  if (i != 1) { printf("str_casei_same: i == %ld\n", i); return 1; }
+  i = str_casei_ndiff(u, v, 8);
+  if (i != 0) { printf("str_casei_ndiff: i == %ld\n", i); return 1; }
+  i = str_casei_nsame(u, v, 8);
+  if (i != 1) { printf("str_casei_nsame: i == %ld\n", i); return 1; }
 
   i = str_rchr(s, 'X');
   if (i != 15) { printf("str_rchr: i == %ld\n", i); return 1; }
-
   i = str_rchar(s, 'X', &pos);
   if (i != 1) { printf("str_rchar: i == %ld\n", i); return 1; }
   if (pos != 15) { printf("str_rchar: pos == %ld\n", pos); return 1; }
