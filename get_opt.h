@@ -10,5 +10,6 @@ extern char *optprogname;
 extern char *optarg;
 
 int get_opt(int, char **, char *);
+void get_opt_reset();
 
 #endif

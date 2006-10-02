@@ -90,3 +90,15 @@ int get_opt(int argc, char **argv, char *opts)
 
   return c;
 }
+
+void get_opt_reset()
+{
+  optprogname = 0;
+  optarg = 0;
+  opterr = 1;
+  optproblem = 0;
+  optind = 1;
+  optpos = 0;
+  optdone = -1;
+  opteof = -1;
+}
