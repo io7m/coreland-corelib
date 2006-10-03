@@ -11,6 +11,7 @@ all: local  sysdeps.out \
 	open.a scan.a scan_fspec.a scan_spec.a seek.a sgetline.a signal.a \
 	sstring.a stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
 
+sysdeps: sysdeps.out
 sysdeps.out:
 	SYSDEPS/sysdep-header sysdeps.out
 	(cd SYSDEPS && make)
@@ -139,6 +140,9 @@ closeonexec.o:\
 conf-cctype:\
 	conf-systype conf-cc mk-cctype 
 	./mk-cctype > conf-cctype
+conf-sosuffix:\
+	mk-sosuffix 
+	./mk-sosuffix > conf-sosuffix
 conf-systype:\
 	mk-systype 
 	./mk-systype > conf-systype
@@ -858,23 +862,23 @@ clean: sysdeps_clean tests_clean local_clean
 	install_core.o install_error.o installer installer.o instchk \
 	instchk.o insthier.o int16.a int16_pack.o int16_unpack.o int32.a \
 	int32_pack.o int32_unpack.o int64.a int64_pack.o int64_unpack.o \
-	mk-ctxt.o nonblock.a nonblock.o open.a open_append.o open_creat.o \
-	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o scan.a \
-	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
-	scan_fspec.a scan_ncharset.o scan_newline.o scan_space.o scan_spec.a \
-	scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o \
-	scan_u64x.o scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o \
-	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongo.o \
-	scan_ullongx.o 
-	rm -f scan_ulong.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushorto.o scan_ushortx.o seek.a seek_cur.o seek_end.o \
-	seek_pos.o seek_start.o sgetline.a sgetline.o sgetline_chop.o \
-	sgetline_get.o sig_block.o sig_catch.o sig_pause.o signal.a signal.o \
-	sstring.a sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
-	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o sstring_trunc.o stalloc.a stalloc.o str.a str_char.o \
-	str_chr.o str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
+	nonblock.a nonblock.o open.a open_append.o open_creat.o open_excl.o \
+	open_ro.o open_rw.o open_trunc.o open_wo.o scan.a scan_charset.o \
+	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_fspec.a \
+	scan_ncharset.o scan_newline.o scan_space.o scan_spec.a scan_u32.o \
+	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
+	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
+	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
+	scan_ulong.o 
+	rm -f scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
+	scan_ushortx.o seek.a seek_cur.o seek_end.o seek_pos.o seek_start.o \
+	sgetline.a sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
+	sig_catch.o sig_pause.o signal.a signal.o sstring.a sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
+	sstring_trunc.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
+	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
 	uint16.a uint16_pack.o uint16_unpack.o uint32.a uint32_pack.o \
 	uint32_unpack.o uint64.a uint64_pack.o uint64_unpack.o 
