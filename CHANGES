@@ -153,3 +153,6 @@
 20060915 code: added str_casei* (case insensitive string comparison)
                and updated tests.
                new coreproject tools and makefile.
+20060916 version: corelib-0.42 (no release)
+20061003 code: get_opt_reset()
+20061003 version: corelib-0.43

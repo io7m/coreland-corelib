@@ -20,7 +20,7 @@ static int do_init()
   if (environ)
     for (;;) if (environ[++esize] == 0) break;
 
-  esize += ENV_OVERALLOC;
+  esize += 1 + ENV_OVERALLOC;
   new_env = (char **) alloc(esize * sizeof(char *));
   if (!new_env) return 0;
 
