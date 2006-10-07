@@ -155,7 +155,7 @@ corelib-conf.o:\
 	cc corelib-conf.c buffer.h ctxt.h get_opt.h str.h syserr.h 
 	./cc corelib-conf.c
 ctxt/bindir.o:\
-	cc ctxt/bindir.c 
+	cc ctxt/bindir.c ctxt.h 
 	./cc ctxt/bindir.c
 ctxt/ctxt.a:\
 	mk-slib ctxt/ctxt.sld ctxt/version.o ctxt/group.o ctxt/bindir.o \
@@ -165,25 +165,25 @@ ctxt/ctxt.a:\
 	ctxt/incdir.o ctxt/slibdir.o ctxt/dlibdir.o ctxt/owner.o \
 	ctxt/repos.o 
 ctxt/dlibdir.o:\
-	cc ctxt/dlibdir.c 
+	cc ctxt/dlibdir.c ctxt.h 
 	./cc ctxt/dlibdir.c
 ctxt/group.o:\
-	cc ctxt/group.c 
+	cc ctxt/group.c ctxt.h 
 	./cc ctxt/group.c
 ctxt/incdir.o:\
-	cc ctxt/incdir.c 
+	cc ctxt/incdir.c ctxt.h 
 	./cc ctxt/incdir.c
 ctxt/owner.o:\
-	cc ctxt/owner.c 
+	cc ctxt/owner.c ctxt.h 
 	./cc ctxt/owner.c
 ctxt/repos.o:\
-	cc ctxt/repos.c 
+	cc ctxt/repos.c ctxt.h 
 	./cc ctxt/repos.c
 ctxt/slibdir.o:\
-	cc ctxt/slibdir.c 
+	cc ctxt/slibdir.c ctxt.h 
 	./cc ctxt/slibdir.c
 ctxt/version.o:\
-	cc ctxt/version.c 
+	cc ctxt/version.c ctxt.h 
 	./cc ctxt/version.c
 deinstaller:\
 	ld deinstaller.ld deinstaller.o insthier.o install_core.o \
@@ -838,39 +838,39 @@ clean: sysdeps_clean tests_clean local_clean
 	bin_copyr.o bin_count.o bin_diff.o bin_rchar.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer.a buffer0.o buffer1.o \
 	buffer2.o buffer_copy.o buffer_get.o buffer_init.o buffer_put.o \
-	closeonexec.a closeonexec.o corelib-conf corelib-conf.o \
-	ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c \
-	ctxt/dlibdir.o ctxt/group.c ctxt/group.o ctxt/incdir.c ctxt/incdir.o \
-	ctxt/owner.c ctxt/owner.o ctxt/repos.c ctxt/repos.o ctxt/slibdir.c \
-	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller \
-	deinstaller.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
-	dir_name.a dir_name.o dstring.a 
-	rm -f dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o env.a env.o env_get.o \
-	error.a error.o error_str.o fd.a fd_dup.o fd_move.o fd_reset.o \
-	float32.a float32_pack.o float32_upack.o float64.a float64_pack.o \
-	float64_upack.o fmt.a fmt_nstr.o fmt_spec.a fmt_str.o fmt_u32.o \
-	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o fmt_uchar.o \
-	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o \
-	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o \
-	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.a \
-	get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o 
-	rm -f ht_init.o ht_replaceb.o ht_replaces.o inst-check inst-check.o \
-	inst-copy inst-copy.o inst-dir inst-dir.o inst-link inst-link.o \
-	install_core.o install_error.o installer installer.o instchk \
-	instchk.o insthier.o int16.a int16_pack.o int16_unpack.o int32.a \
-	int32_pack.o int32_unpack.o int64.a int64_pack.o int64_unpack.o \
-	nonblock.a nonblock.o open.a open_append.o open_creat.o open_excl.o \
-	open_ro.o open_rw.o open_trunc.o open_wo.o scan.a scan_charset.o \
-	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_fspec.a \
-	scan_ncharset.o scan_newline.o scan_space.o scan_spec.a scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o \
-	scan_uintx.o scan_ullong.o scan_ullongo.o scan_ullongx.o \
-	scan_ulong.o 
-	rm -f scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
+	closeonexec.a closeonexec.o conf-cctype conf-systype corelib-conf \
+	corelib-conf.o ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a \
+	ctxt/dlibdir.c ctxt/dlibdir.o ctxt/group.c ctxt/group.o \
+	ctxt/incdir.c ctxt/incdir.o ctxt/owner.c ctxt/owner.o ctxt/repos.c \
+	ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o ctxt/version.c \
+	ctxt/version.o deinstaller deinstaller.o dir_array.a dir_array.o \
+	dir_hash.a dir_hash.o dir_name.a 
+	rm -f dir_name.o dstring.a dstring_0.o dstring_cat.o dstring_cat0.o \
+	dstring_catb.o dstring_cats.o dstring_chop.o dstring_copy.o \
+	dstring_cpyb.o dstring_cpys.o dstring_init.o dstring_trunc.o env.a \
+	env.o env_get.o error.a error.o error_str.o fd.a fd_dup.o fd_move.o \
+	fd_reset.o float32.a float32_pack.o float32_upack.o float64.a \
+	float64_pack.o float64_upack.o fmt.a fmt_nstr.o fmt_spec.a fmt_str.o \
+	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
+	fmt_uchar.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o \
+	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
+	fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o \
+	get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o \
+	ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o 
+	rm -f ht_gets.o ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o \
+	inst-check inst-check.o inst-copy inst-copy.o inst-dir inst-dir.o \
+	inst-link inst-link.o install_core.o install_error.o installer \
+	installer.o instchk instchk.o insthier.o int16.a int16_pack.o \
+	int16_unpack.o int32.a int32_pack.o int32_unpack.o int64.a \
+	int64_pack.o int64_unpack.o mk-ctxt mk-ctxt.o nonblock.a nonblock.o \
+	open.a open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
+	open_trunc.o open_wo.o scan.a scan_charset.o scan_double.o \
+	scan_f32.o scan_f64.o scan_float.o scan_fspec.a scan_ncharset.o \
+	scan_newline.o scan_space.o scan_spec.a scan_u32.o scan_u32o.o \
+	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
+	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o 
+	rm -f scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
+	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
 	scan_ushortx.o seek.a seek_cur.o seek_end.o seek_pos.o seek_start.o \
 	sgetline.a sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
 	sig_catch.o sig_pause.o signal.a signal.o sstring.a sstring_0.o \
