@@ -158,3 +158,5 @@
 20061003 version: corelib-0.43
 20061007 code: missing header files in insthier
 20061003 version: corelib-0.431
+20061013 code: endian.h and signal.h conflict with standard C library
+               on linux. renamed to sig.h and byteorder.h
