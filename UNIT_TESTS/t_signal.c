@@ -1,7 +1,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "../signal.h"
+#include "../sig.h"
 
 int sig_alarm_num;
 int sig_child_num;

@@ -1,18 +1,18 @@
 default: sysdeps
 clean: sysdeps_clean
 
-sysdeps:  sd_direntry sd_endian sd_floats sd_integers sd_signal sd_systype sd_x86cpuid sd_fd
-sysdeps_clean:  sd_direntry_clean sd_endian_clean sd_floats_clean sd_integers_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean sd_fd_clean
+sysdeps:  sd_direntry sd_fd sd_floats sd_integers sd_signal sd_systype sd_x86cpuid sd_byteorder
+sysdeps_clean:  sd_direntry_clean sd_fd_clean sd_floats_clean sd_integers_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean sd_byteorder_clean
 
 sd_direntry:
 	@(cd direntry && ./run)
 sd_direntry_clean:
 	@(cd direntry && ./clean)
 
-sd_endian:
-	@(cd endian && ./run)
-sd_endian_clean:
-	@(cd endian && ./clean)
+sd_fd:
+	@(cd fd && ./run)
+sd_fd_clean:
+	@(cd fd && ./clean)
 
 sd_floats:
 	@(cd floats && ./run)
@@ -39,10 +39,10 @@ sd_x86cpuid:
 sd_x86cpuid_clean:
 	@(cd x86cpuid && ./clean)
 
-sd_fd:
-	@(cd fd && ./run)
-sd_fd_clean:
-	@(cd fd && ./clean)
+sd_byteorder:
+	@(cd byteorder && ./run)
+sd_byteorder_clean:
+	@(cd byteorder && ./clean)
 
 regen:
 	./gen-makefile > Makefile.tmp

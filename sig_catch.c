@@ -1,5 +1,5 @@
 #include <signal.h>
-#include "signal.h"
+#include "sig.h"
 #include "sig_action.h"
 
 void sig_catch(int sig, void (*func)())

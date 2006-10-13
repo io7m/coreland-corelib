@@ -1,5 +1,5 @@
 #include <signal.h>
-#include "signal.h"
+#include "sig.h"
 
 int sig_alarm = SIGALRM;
 int sig_child = SIGCHLD;

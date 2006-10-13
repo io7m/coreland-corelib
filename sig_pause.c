@@ -1,5 +1,5 @@
 #include <signal.h>
-#include "signal.h"
+#include "sig.h"
 #include "sig_pmask.h"
 
 void sig_pause(void)

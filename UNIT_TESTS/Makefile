@@ -252,7 +252,7 @@ t_signal:\
 	ld t_signal.ld t_signal.o ../signal.a 
 	./ld t_signal t_signal.o ../signal.a 
 t_signal.o:\
-	cc t_signal.c ../signal.h 
+	cc t_signal.c ../sig.h 
 	./cc t_signal.c
 t_sstring:\
 	ld t_sstring.ld t_sstring.o ../sstring.a 
