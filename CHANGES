@@ -160,3 +160,4 @@
 20061003 version: corelib-0.431
 20061013 code: endian.h and signal.h conflict with standard C library
                on linux. renamed to sig.h and byteorder.h
+20061013 version: corelib-0.44
