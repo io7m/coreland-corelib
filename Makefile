@@ -2,7 +2,7 @@
 
 default: all
 
-all: local  sysdeps.out \
+all: sysdeps.out \
 	alloc.a array.a base_name.a bin.a buffer.a closeonexec.a \
 	corelib-conf ctxt/ctxt.a deinstaller dir_array.a dir_hash.a \
 	dir_name.a dstring.a env.a error.a fd.a float32.a float64.a fmt.a \
@@ -153,34 +153,50 @@ corelib-conf:\
 corelib-conf.o:\
 	cc corelib-conf.c buffer.h ctxt.h get_opt.h str.h syserr.h 
 	./cc corelib-conf.c
+ctxt/bindir.c: mk-ctxt conf-bindir
+	rm -f ctxt/bindir.c
+	./mk-ctxt ctxt_bindir < conf-bindir > ctxt/bindir.c
+
 ctxt/bindir.o:\
 	cc ctxt/bindir.c 
 	./cc ctxt/bindir.c
 ctxt/ctxt.a:\
-	mk-slib ctxt/ctxt.sld ctxt/version.o ctxt/group.o ctxt/bindir.o \
-	ctxt/incdir.o ctxt/slibdir.o ctxt/dlibdir.o ctxt/owner.o \
-	ctxt/repos.o 
-	./mk-slib ctxt/ctxt ctxt/version.o ctxt/group.o ctxt/bindir.o \
-	ctxt/incdir.o ctxt/slibdir.o ctxt/dlibdir.o ctxt/owner.o \
-	ctxt/repos.o 
+	mk-slib ctxt/ctxt.sld ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
+	ctxt/repos.o ctxt/slibdir.o ctxt/version.o 
+	./mk-slib ctxt/ctxt ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
+	ctxt/repos.o ctxt/slibdir.o ctxt/version.o 
+ctxt/dlibdir.c: mk-ctxt conf-dlibdir
+	rm -f ctxt/dlibdir.c
+	./mk-ctxt ctxt_dlibdir < conf-dlibdir > ctxt/dlibdir.c
+
 ctxt/dlibdir.o:\
 	cc ctxt/dlibdir.c 
 	./cc ctxt/dlibdir.c
-ctxt/group.o:\
-	cc ctxt/group.c 
-	./cc ctxt/group.c
+ctxt/incdir.c: mk-ctxt conf-incdir
+	rm -f ctxt/incdir.c
+	./mk-ctxt ctxt_incdir < conf-incdir > ctxt/incdir.c
+
 ctxt/incdir.o:\
 	cc ctxt/incdir.c 
 	./cc ctxt/incdir.c
-ctxt/owner.o:\
-	cc ctxt/owner.c 
-	./cc ctxt/owner.c
+ctxt/repos.c: mk-ctxt conf-repos
+	rm -f ctxt/repos.c
+	./mk-ctxt ctxt_repos < conf-repos > ctxt/repos.c
+
 ctxt/repos.o:\
 	cc ctxt/repos.c 
 	./cc ctxt/repos.c
+ctxt/slibdir.c: mk-ctxt conf-slibdir
+	rm -f ctxt/slibdir.c
+	./mk-ctxt ctxt_slibdir < conf-slibdir > ctxt/slibdir.c
+
 ctxt/slibdir.o:\
 	cc ctxt/slibdir.c 
 	./cc ctxt/slibdir.c
+ctxt/version.c: mk-ctxt VERSION
+	rm -f ctxt/version.c
+	./mk-ctxt ctxt_version < VERSION > ctxt/version.c
+
 ctxt/version.o:\
 	cc ctxt/version.c 
 	./cc ctxt/version.c
@@ -826,37 +842,37 @@ uint64_pack.o:\
 uint64_unpack.o:\
 	cc uint64_unpack.c uint64.h 
 	./cc uint64_unpack.c
-clean: sysdeps_clean tests_clean local_clean 
+clean: sysdeps_clean tests_clean 
 	rm -f alloc.a alloc.o array.a array.o array_bytes.o array_cat.o \
 	array_chop.o array_copy.o array_data.o array_index.o array_size.o \
 	base_name.a base_name.o bin.a bin_char.o bin_chr.o bin_copy.o \
 	bin_copyr.o bin_count.o bin_diff.o bin_rchar.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer.a buffer0.o buffer1.o \
 	buffer2.o buffer_copy.o buffer_get.o buffer_init.o buffer_put.o \
-	closeonexec.a closeonexec.o corelib-conf corelib-conf.o \
-	ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c \
-	ctxt/dlibdir.o ctxt/group.c ctxt/group.o ctxt/incdir.c ctxt/incdir.o \
-	ctxt/owner.c ctxt/owner.o ctxt/repos.c ctxt/repos.o ctxt/slibdir.c \
-	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller \
-	deinstaller.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
-	dir_name.a dir_name.o dstring.a 
-	rm -f dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o env.a env.o env_get.o \
-	error.a error.o error_str.o fd.a fd_dup.o fd_move.o fd_reset.o \
-	float32.a float32_pack.o float32_upack.o float64.a float64_pack.o \
-	float64_upack.o fmt.a fmt_nstr.o fmt_spec.a fmt_str.o fmt_u32.o \
-	fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o fmt_uchar.o \
-	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o \
-	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o \
-	fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.a \
-	get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o 
-	rm -f ht_init.o ht_replaceb.o ht_replaces.o inst-check inst-check.o \
-	inst-copy inst-copy.o inst-dir inst-dir.o inst-link inst-link.o \
-	install_core.o install_error.o installer installer.o instchk \
-	instchk.o insthier.o int16.a int16_pack.o int16_unpack.o int32.a \
-	int32_pack.o int32_unpack.o int64.a int64_pack.o int64_unpack.o \
+	closeonexec.a closeonexec.o conf-cctype conf-systype corelib-conf \
+	corelib-conf.o ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a \
+	ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c ctxt/incdir.o \
+	ctxt/repos.c ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o \
+	ctxt/version.c ctxt/version.o deinstaller deinstaller.o dir_array.a \
+	dir_array.o dir_hash.a dir_hash.o dir_name.a dir_name.o dstring.a \
+	dstring_0.o dstring_cat.o 
+	rm -f dstring_cat0.o dstring_catb.o dstring_cats.o dstring_chop.o \
+	dstring_copy.o dstring_cpyb.o dstring_cpys.o dstring_init.o \
+	dstring_trunc.o env.a env.o env_get.o error.a error.o error_str.o \
+	fd.a fd_dup.o fd_move.o fd_reset.o float32.a float32_pack.o \
+	float32_upack.o float64.a float64_pack.o float64_upack.o fmt.a \
+	fmt_nstr.o fmt_spec.a fmt_str.o fmt_u32.o fmt_u32o.o fmt_u32x.o \
+	fmt_u64.o fmt_u64o.o fmt_u64x.o fmt_uchar.o fmt_ucharo.o \
+	fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o fmt_ullong.o \
+	fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o fmt_ulongx.o \
+	fmt_ushort.o fmt_ushorto.o fmt_ushortx.o get_opt.a get_opt.o \
+	hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o \
+	ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o 
+	rm -f ht_replaces.o inst-check inst-check.o inst-copy inst-copy.o \
+	inst-dir inst-dir.o inst-link inst-link.o install_core.o \
+	install_error.o installer installer.o instchk instchk.o insthier.o \
+	int16.a int16_pack.o int16_unpack.o int32.a int32_pack.o \
+	int32_unpack.o int64.a int64_pack.o int64_unpack.o mk-ctxt mk-ctxt.o \
 	nonblock.a nonblock.o open.a open_append.o open_creat.o open_excl.o \
 	open_ro.o open_rw.o open_trunc.o open_wo.o scan.a scan_charset.o \
 	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_fspec.a \
@@ -893,40 +909,6 @@ tests:
 	(cd UNIT_TESTS; make && make tests)
 tests_clean:
 	(cd UNIT_TESTS; make clean)
-local:
-local_clean:
-
-ctxt/version.c: mk-ctxt VERSION
-	rm -f ctxt/version.c
-	./mk-ctxt ctxt_version < VERSION > ctxt/version.c
-
-ctxt/slibdir.c: mk-ctxt conf-slibdir
-	rm -f ctxt/slibdir.c
-	./mk-ctxt ctxt_slibdir < conf-slibdir > ctxt/slibdir.c
-
-ctxt/dlibdir.c: mk-ctxt conf-dlibdir
-	rm -f ctxt/dlibdir.c
-	./mk-ctxt ctxt_dlibdir < conf-dlibdir > ctxt/dlibdir.c
-
-ctxt/bindir.c: mk-ctxt conf-bindir
-	rm -f ctxt/bindir.c
-	./mk-ctxt ctxt_bindir < conf-bindir > ctxt/bindir.c
-
-ctxt/incdir.c: mk-ctxt conf-incdir
-	rm -f ctxt/incdir.c
-	./mk-ctxt ctxt_incdir < conf-incdir > ctxt/incdir.c
-
-ctxt/repos.c: mk-ctxt conf-repos
-	rm -f ctxt/repos.c
-	./mk-ctxt ctxt_repos < conf-repos > ctxt/repos.c
-
-ctxt/group.c: mk-ctxt conf-group
-	rm -f ctxt/group.c
-	./mk-ctxt ctxt_group < conf-group > ctxt/group.c
-
-ctxt/owner.c: mk-ctxt conf-owner
-	rm -f ctxt/owner.c
-	./mk-ctxt ctxt_owner < conf-owner > ctxt/owner.c
 regen:
 	cpj-genmk > Makefile.tmp
 	mv Makefile.tmp Makefile

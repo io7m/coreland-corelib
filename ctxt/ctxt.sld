@@ -1,8 +1,6 @@
-version.o
-group.o
 bindir.o
-incdir.o
-slibdir.o
 dlibdir.o
-owner.o
+incdir.o
 repos.o
+slibdir.o
+version.o
