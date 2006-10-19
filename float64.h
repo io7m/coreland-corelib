@@ -1,7 +1,6 @@
 #ifndef FLOAT64_H
 #define FLOAT64_H
 
-#include "uint64.h"
 #include "_float64.h"
 
 void float64_unpackl(unsigned const char[8], float64 *);

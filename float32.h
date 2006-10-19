@@ -1,7 +1,6 @@
 #ifndef FLOAT32_H
 #define FLOAT32_H
 
-#include "uint32.h"
 #include "_float32.h"
 
 void float32_unpackl(unsigned const char[4], float32 *);

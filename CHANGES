@@ -162,3 +162,4 @@
                on linux. renamed to sig.h and byteorder.h
 20061013 version: corelib-0.44
 20061019 code: Mkf-local gone. new coreproject tools.
+20061019 code: integer and float sysdep split.

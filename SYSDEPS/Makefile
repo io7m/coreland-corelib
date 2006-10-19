@@ -1,8 +1,8 @@
 default: sysdeps
 clean: sysdeps_clean
 
-sysdeps:  sd_direntry sd_int16 sd_fd sd_floats sd_integers sd_signal sd_systype sd_x86cpuid sd_byteorder sd_int32 sd_int64 sd_uint16 sd_uint32 sd_uint64 sd_float32 sd_float64
-sysdeps_clean:  sd_direntry_clean sd_int16_clean sd_fd_clean sd_floats_clean sd_integers_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean sd_byteorder_clean sd_int32_clean sd_int64_clean sd_uint16_clean sd_uint32_clean sd_uint64_clean sd_float32_clean sd_float64_clean
+sysdeps:  sd_direntry sd_int16 sd_fd sd_signal sd_systype sd_x86cpuid sd_byteorder sd_int32 sd_int64 sd_uint16 sd_uint32 sd_uint64 sd_float32 sd_float64
+sysdeps_clean:  sd_direntry_clean sd_int16_clean sd_fd_clean sd_signal_clean sd_systype_clean sd_x86cpuid_clean sd_byteorder_clean sd_int32_clean sd_int64_clean sd_uint16_clean sd_uint32_clean sd_uint64_clean sd_float32_clean sd_float64_clean
 
 sd_direntry:
 	@(cd direntry && ./run)
@@ -18,16 +18,6 @@ sd_fd:
 	@(cd fd && ./run)
 sd_fd_clean:
 	@(cd fd && ./clean)
-
-sd_floats:
-	@(cd floats && ./run)
-sd_floats_clean:
-	@(cd floats && ./clean)
-
-sd_integers:
-	@(cd integers && ./run)
-sd_integers_clean:
-	@(cd integers && ./clean)
 
 sd_signal:
 	@(cd signal && ./run)
