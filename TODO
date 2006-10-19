@@ -1,6 +1,2 @@
-grep OVERALLOC *
+Move signal.a to sig.a.
 
-What happens if OVERALLOC is 0? Infinite loops in most cases.
-
-Document str_casei_*
-Document get_opt_reset()
