@@ -3,32 +3,32 @@ local_clean:
 
 ctxt/version.c: mk-ctxt VERSION
 	rm -f ctxt/version.c
-	./mk-ctxt ctxt_version ../ctxt < VERSION > ctxt/version.c
+	./mk-ctxt ctxt_version < VERSION > ctxt/version.c
 
 ctxt/slibdir.c: mk-ctxt conf-slibdir
 	rm -f ctxt/slibdir.c
-	./mk-ctxt ctxt_slibdir ../ctxt < conf-slibdir > ctxt/slibdir.c
+	./mk-ctxt ctxt_slibdir < conf-slibdir > ctxt/slibdir.c
 
 ctxt/dlibdir.c: mk-ctxt conf-dlibdir
 	rm -f ctxt/dlibdir.c
-	./mk-ctxt ctxt_dlibdir ../ctxt < conf-dlibdir > ctxt/dlibdir.c
+	./mk-ctxt ctxt_dlibdir < conf-dlibdir > ctxt/dlibdir.c
 
 ctxt/bindir.c: mk-ctxt conf-bindir
 	rm -f ctxt/bindir.c
-	./mk-ctxt ctxt_bindir ../ctxt < conf-bindir > ctxt/bindir.c
+	./mk-ctxt ctxt_bindir < conf-bindir > ctxt/bindir.c
 
 ctxt/incdir.c: mk-ctxt conf-incdir
 	rm -f ctxt/incdir.c
-	./mk-ctxt ctxt_incdir ../ctxt < conf-incdir > ctxt/incdir.c
+	./mk-ctxt ctxt_incdir < conf-incdir > ctxt/incdir.c
 
 ctxt/repos.c: mk-ctxt conf-repos
 	rm -f ctxt/repos.c
-	./mk-ctxt ctxt_repos ../ctxt < conf-repos > ctxt/repos.c
+	./mk-ctxt ctxt_repos < conf-repos > ctxt/repos.c
 
 ctxt/group.c: mk-ctxt conf-group
 	rm -f ctxt/group.c
-	./mk-ctxt ctxt_group ../ctxt < conf-group > ctxt/group.c
+	./mk-ctxt ctxt_group < conf-group > ctxt/group.c
 
 ctxt/owner.c: mk-ctxt conf-owner
 	rm -f ctxt/owner.c
-	./mk-ctxt ctxt_owner ../ctxt < conf-owner > ctxt/owner.c
+	./mk-ctxt ctxt_owner < conf-owner > ctxt/owner.c
