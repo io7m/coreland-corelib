@@ -166,4 +166,5 @@
 20061028 code: postinstall added to fix darwin 'ar' bugs.
 20061028 code: signal.a -> sig.a for uniformity.
 20061028 code: fixed deinstaller deps.
+20061028 code: obsolete uint8.h removed.
 20061028 version: corelib-0.441
