@@ -31,14 +31,11 @@ in
     # darwin static archive bug
     for f in `ls ${SLIB_DIR}/*.a`
     do
-      lib=`basename $f`
-      echo ${lib} | grep '^lib' >/dev/null 2>&1
-      if [ $? -ne 0 ]
-      then
-        echo ${RANLIB} ${SLIB_DIR}/$lib
-        # ${RANLIB} $f
-      fi
+      echo ${RANLIB} $f
+      ${RANLIB} $f
     done
+    echo "warn: darwin static archives are buggy - install-check may
+          fail but the library will still work correctly."
     ;;
   *)
     ;;
