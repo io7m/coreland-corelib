@@ -31,8 +31,13 @@ in
     # darwin static archive bug
     for f in `ls ${SLIB_DIR}/*.a`
     do
-      echo ${RANLIB} $f
-      ${RANLIB} $f
+      lib=`basename $f`
+      echo ${lib} | grep '^lib' >/dev/null 2>&1
+      if [ $? -ne 0 ]
+      then
+        echo ${RANLIB} ${SLIB_DIR}/$lib
+        # ${RANLIB} $f
+      fi
     done
     ;;
   *)
