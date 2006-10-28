@@ -164,4 +164,5 @@
 20061019 code: Mkf-local gone. new coreproject tools.
 20061019 code: integer and float sysdep split.
 20061028 code: postinstall added to fix darwin 'ar' bugs.
+20061028 code: signal.a -> sig.a for uniformity.
 20061028 version: corelib-0.441

@@ -249,8 +249,8 @@ t_sgetline.o:\
 	cc t_sgetline.c ../buffer.h ../close.h ../read.h ../sgetline.h 
 	./cc t_sgetline.c
 t_signal:\
-	ld t_signal.ld t_signal.o ../signal.a 
-	./ld t_signal t_signal.o ../signal.a 
+	ld t_signal.ld t_signal.o ../sig.a 
+	./ld t_signal t_signal.o ../sig.a 
 t_signal.o:\
 	cc t_signal.c ../sig.h 
 	./cc t_signal.c

@@ -1,2 +1,2 @@
 t_signal.o
-../signal.a
+../sig.a

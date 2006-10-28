@@ -8,7 +8,7 @@ all: sysdeps.out \
 	dir_name.a dstring.a env.a error.a fd.a float32.a float64.a fmt.a \
 	fmt_spec.a get_opt.a hashtable.a inst-check inst-copy inst-dir \
 	inst-link installer instchk int16.a int32.a int64.a nonblock.a \
-	open.a scan.a scan_fspec.a scan_spec.a seek.a sgetline.a signal.a \
+	open.a scan.a scan_fspec.a scan_spec.a seek.a sgetline.a sig.a \
 	sstring.a stalloc.a str.a syserr.a uint16.a uint32.a uint64.a 
 
 sysdeps: sysdeps.out
@@ -699,6 +699,12 @@ sgetline_chop.o:\
 sgetline_get.o:\
 	cc sgetline_get.c bin.h buffer.h sgetline.h sstring.h 
 	./cc sgetline_get.c
+sig.a:\
+	mk-slib sig.sld sig.o sig_block.o sig_catch.o sig_pause.o 
+	./mk-slib sig sig.o sig_block.o sig_catch.o sig_pause.o 
+sig.o:\
+	cc sig.c sig.h 
+	./cc sig.c
 sig_block.o:\
 	cc sig_block.c sig.h sig_pmask.h 
 	./cc sig_block.c
@@ -708,12 +714,6 @@ sig_catch.o:\
 sig_pause.o:\
 	cc sig_pause.c sig.h sig_pmask.h 
 	./cc sig_pause.c
-signal.a:\
-	mk-slib signal.sld signal.o sig_block.o sig_catch.o sig_pause.o 
-	./mk-slib signal signal.o sig_block.o sig_catch.o sig_pause.o 
-signal.o:\
-	cc signal.c sig.h 
-	./cc signal.c
 sstring.a:\
 	mk-slib sstring.sld sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
@@ -883,8 +883,8 @@ clean: sysdeps_clean tests_clean
 	scan_ulong.o 
 	rm -f scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
 	scan_ushortx.o seek.a seek_cur.o seek_end.o seek_pos.o seek_start.o \
-	sgetline.a sgetline.o sgetline_chop.o sgetline_get.o sig_block.o \
-	sig_catch.o sig_pause.o signal.a signal.o sstring.a sstring_0.o \
+	sgetline.a sgetline.o sgetline_chop.o sgetline_get.o sig.a sig.o \
+	sig_block.o sig_catch.o sig_pause.o sstring.a sstring_0.o \
 	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
 	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
 	sstring_trunc.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
