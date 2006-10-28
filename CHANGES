@@ -168,3 +168,5 @@
 20061028 code: fixed deinstaller deps.
 20061028 code: obsolete uint8.h removed.
 20061028 version: corelib-0.441
+20061029 code: no longer install symlinks to static libraries, this is
+               to work around some more stupid Darwin misbehaviour.
