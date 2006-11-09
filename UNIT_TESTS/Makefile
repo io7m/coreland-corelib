@@ -7,8 +7,8 @@ all:\
 	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt_spec \
 	t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 t_hashtable4 \
 	t_hashtable5 t_int t_open t_scan t_scan2 t_scan3 t_scan_float \
-	t_scan_fspec t_scan_spec t_seek t_sgetline t_signal t_sstring \
-	t_stalloc t_str t_uint 
+	t_scan_fspec t_scan_spec t_seek t_sgetline t_sig t_sstring t_stalloc \
+	t_str t_uint 
 
 cc: ../cc conf-cctype conf-cc
 	rm -f cc
@@ -248,12 +248,12 @@ t_sgetline:\
 t_sgetline.o:\
 	cc t_sgetline.c ../buffer.h ../close.h ../read.h ../sgetline.h 
 	./cc t_sgetline.c
-t_signal:\
-	ld t_signal.ld t_signal.o ../sig.a 
-	./ld t_signal t_signal.o ../sig.a 
-t_signal.o:\
-	cc t_signal.c ../sig.h 
-	./cc t_signal.c
+t_sig:\
+	ld t_sig.ld t_sig.o ../sig.a 
+	./ld t_sig t_sig.o ../sig.a 
+t_sig.o:\
+	cc t_sig.c ../sig.h 
+	./cc t_sig.c
 t_sstring:\
 	ld t_sstring.ld t_sstring.o ../sstring.a 
 	./ld t_sstring t_sstring.o ../sstring.a 
@@ -290,9 +290,9 @@ clean: tests_clean
 	t_hashtable_d.o t_int t_int.o t_open t_open.o t_scan t_scan.o \
 	t_scan2 t_scan2.o t_scan3 t_scan3.o t_scan_float t_scan_float.o \
 	t_scan_fspec t_scan_fspec.o t_scan_spec 
-	rm -f t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o \
-	t_signal t_signal.o t_sstring t_sstring.o t_stalloc t_stalloc.o \
-	t_str t_str.o t_uint t_uint.o 
+	rm -f t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o t_sig \
+	t_sig.o t_sstring t_sstring.o t_stalloc t_stalloc.o t_str t_str.o \
+	t_uint t_uint.o 
 
 tests: list_tests run_tests
 tests_clean:

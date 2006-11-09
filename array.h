@@ -1,30 +1,27 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "uint32.h"
-#include "uint64.h"
-
 #define ARRAY_OVERALLOC 8
 
 typedef struct {
   char *x;
-  uint64 a;
-  uint64 u;
-  uint32 es;
+  unsigned long a;
+  unsigned long u;
+  unsigned int es;
 } array;
 
-int array_init(array *, uint64, uint32);
-char *array_index(array *, uint64);
+int array_init(array *, unsigned long, unsigned int);
+char *array_index(array *, unsigned long);
 int array_cat(array *, void *);
 void array_free(array *);
 int array_copy(array *, const array *);
-int array_resize(array *, uint64);
-void array_trunc(array *, uint64);
+int array_resize(array *, unsigned long);
+void array_trunc(array *, unsigned long);
 
-uint64 array_size(array *);
-uint64 array_bytes(array *);
+unsigned long array_size(array *);
+unsigned long array_bytes(array *);
 void *array_data(array *);
-void array_chop(array *, uint64);
+void array_chop(array *, unsigned long);
 
 #define array_trunc(a) array_chop((a),0)
 

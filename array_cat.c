@@ -1,15 +1,13 @@
 #include "alloc.h"
 #include "array.h"
 #include "bin.h"
-#include "uint32.h"
-#include "uint64.h"
 
 int array_cat(array *a, void* i)
 {
-  uint64 old_u;
-  uint64 old_a;
-  uint64 new_a;
-  uint32 es;
+  unsigned long old_u;
+  unsigned long old_a;
+  unsigned long new_a;
+  unsigned int es;
 
   old_u = a->u;
   old_a = a->a;

@@ -1,13 +1,11 @@
 #include "alloc.h"
 #include "array.h"
 #include "bin.h"
-#include "uint32.h"
-#include "uint64.h"
 
 int array_copy(array* b, const array* a)
 {
-  uint64 u;
-  uint32 es;
+  unsigned long u;
+  unsigned int es;
 
   u = a->u;
   es = a->es;

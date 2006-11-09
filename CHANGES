@@ -170,3 +170,6 @@
 20061028 version: corelib-0.441
 20061029 code: no longer install symlinks to static libraries, this is
                to work around some more stupid Darwin misbehaviour.
+20061109 code: FMT_ULONG == (sizeof(long) >> 1).
+20061109 code: array no longer uses specific sized integers.
+20061109 code: t_signal test moved to t_sig.

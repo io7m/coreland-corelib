@@ -4,13 +4,13 @@
 #define LOOPS 1000
 
 struct thing {
-  uint32 num;
+  unsigned int num;
   char buf[8];
 };
 
 int init_test(array *arr)
 {
-  uint32 x;
+  unsigned int x;
 
   if (!array_init(arr, 10, sizeof(struct thing))) {
     printf("init_test: array_init\n");
@@ -31,7 +31,7 @@ int init_test(array *arr)
 }
 int cat_test1(array *arr)
 {
-  uint32 i;
+  unsigned int i;
   struct thing t;
 
   for (i = 0; i < LOOPS; ++i) {
@@ -46,8 +46,8 @@ int cat_test1(array *arr)
 }
 int index_test1(array *arr)
 {
-  uint32 i;
-  uint32 max;
+  unsigned int i;
+  unsigned int max;
   struct thing *t;
 
   max = array_size(arr);
@@ -85,7 +85,7 @@ int copy_test(array *arr)
 }
 int chop_test(array *arr)
 {
-  uint32 u;
+  unsigned int u;
 
   array_chop(arr, 10);
   u = array_size(arr);
@@ -97,7 +97,7 @@ int chop_test(array *arr)
 }
 int free_test(array *arr)
 {
-  uint32 u;
+  unsigned int u;
 
   array_free(arr);
   u = array_size(arr);
@@ -109,12 +109,12 @@ int free_test(array *arr)
 }
 int retrieve_test(array *arr)
 {
-  uint32 i;
-  uint32 j;
-  uint32 *k;
+  unsigned int i;
+  unsigned int j;
+  unsigned int *k;
   static array barr;
 
-  if (!array_init(arr, 1, sizeof(uint32))) {
+  if (!array_init(arr, 1, sizeof(unsigned int))) {
     printf("retrieve_test: array_init\n");
     return 0;
   }
@@ -126,7 +126,7 @@ int retrieve_test(array *arr)
     }
   }
   for (i = 0; i < LOOPS; ++i) {
-    k = (uint32 *) array_index(arr, i);
+    k = (unsigned int *) array_index(arr, i);
     if (*k != i) {
       printf("retrieve_test: k == %u != %u\n", *k, i);
       return 0;
@@ -137,7 +137,7 @@ int retrieve_test(array *arr)
     return 0;
   }
   for (i = 0; i < LOOPS; ++i) {
-    k = (uint32 *) array_index(&barr, i);
+    k = (unsigned int *) array_index(&barr, i);
     if (*k != i) {
       printf("retrieve_test: (2) k == %u != %u\n", *k, i);
       return 0;
@@ -155,8 +155,8 @@ int overflow_test(array *arr)
     printf("overflow_test: array_init\n");
     return 0;
   }
-  arr->a = (uint64) -1;
-  arr->u = (uint64) -1;
+  arr->a = (unsigned long) -1;
+  arr->u = (unsigned long) -1;
 
   ch = 'z';
   if (array_cat(arr, &ch)) {
