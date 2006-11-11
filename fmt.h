@@ -1,8 +1,8 @@
 #ifndef FMT_H
 #define FMT_H
 
-#define FMT_ULONG (sizeof(long) >> 1)
-#define FMT_ULONGLONG ((FMT_ULONG) << 1)
+#define FMT_ULONG ((sizeof(long) >> 1) * 8)
+#define FMT_ULONGLONG ((sizeof(long long) >> 1) * 8)
 #define FMT_LEN ((char *) 0)
 
 unsigned int fmt_ulong(char *, unsigned long);
