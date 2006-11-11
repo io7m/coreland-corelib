@@ -175,3 +175,6 @@
 20061109 code: t_signal test moved to t_sig.
 20061111 code: FMT_ULONG == ((sizeof(long) >> 1) * 8).
                FMT_ULONGLONG == ((sizeof(long long) >> 1) * 8).
+20061111 code: stalloc now gets the parameters in the right order (this could
+               cause crashes on linux, other platforms seemed not to be
+               affected).
