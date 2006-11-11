@@ -10,6 +10,9 @@ int main()
   char cui[FMT_ULONG];
   char cull[FMT_ULONGLONG];
 
+  printf("FMT_ULONG %u\n", FMT_ULONG);
+  printf("FMT_ULONGLONG %u\n", FMT_ULONGLONG);
+
   /* uchar */
 
   uc = 100U;
