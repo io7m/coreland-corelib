@@ -1,4 +1,4 @@
-install: installer inst-check inst-copy inst-dir inst-link
+install: installer inst-check inst-copy inst-dir inst-link postinstall
 	./installer
 	./postinstall
 
