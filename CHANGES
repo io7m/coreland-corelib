@@ -178,3 +178,5 @@
 20061111 code: stalloc now gets the parameters in the right order (this could
                cause crashes on linux, other platforms seemed not to be
                affected).
+20061111 code: corelib-conf no longer prints raw include dir, so the
+               only valid #include statements are of the form <corelib/*.h>
