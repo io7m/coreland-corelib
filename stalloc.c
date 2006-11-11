@@ -30,9 +30,9 @@ void *stalloc(unsigned long n)
 int strealloc(void **p, unsigned long n, unsigned long m)
 {
   char *q;
-  q = stalloc(n); /* avoid indirect call */
+  q = stalloc(m); /* avoid indirect call */
   if (q == 0) return 0;
-  copy_bytes(*(char **)p, q, m);
+  copy_bytes(*(char **)p, q, n);
   stdealloc(*(char **)p);
   *(char **)p = q;
   return 1;

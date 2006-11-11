@@ -98,5 +98,23 @@ int main()
   dealloc(sp2);
   dealloc(sp3);
 
+  p1 = alloc(4);
+  if (!p1) { printf("!p1\n"); return 1; }
+
+  set(p1, 4);
+  if (p1[0] != 0x41) { printf("p1[0] == %c\n", p1[0]); return 1; }
+  if (p1[1] != 0x41) { printf("p1[1] == %c\n", p1[1]); return 1; }
+  if (p1[2] != 0x41) { printf("p1[2] == %c\n", p1[2]); return 1; }
+  if (p1[3] != 0x41) { printf("p1[3] == %c\n", p1[3]); return 1; }
+
+  if (!alloc_re((void *) &p1, 4, 8)) {
+    printf("!alloc_re(p1)\n"); return 1;
+  }
+  if (p1[0] != 0x41) { printf("p1[0] == %c\n", p1[0]); return 1; }
+  if (p1[1] != 0x41) { printf("p1[1] == %c\n", p1[1]); return 1; }
+  if (p1[2] != 0x41) { printf("p1[2] == %c\n", p1[2]); return 1; }
+  if (p1[3] != 0x41) { printf("p1[3] == %c\n", p1[3]); return 1; }
+
+  dealloc(p1);
   return 0;
 }
