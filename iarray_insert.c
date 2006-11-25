@@ -8,6 +8,8 @@ int iarray_insert(struct iarray *ia, unsigned long ind,
   struct iarray_node *tn;
   struct iarray_node *sn;
 
+  if (ia->u + 1 < ia->u) return 0; /* detect overflow */
+
   tn = 0;
   sn = 0;
   if (iarray_nindex(ia, ind, &in)) {
