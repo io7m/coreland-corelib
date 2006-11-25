@@ -1,0 +1,12 @@
+iarray_bytes.o
+iarray_cat.o
+iarray_chop.o
+iarray_copy.o
+iarray_free.o
+iarray_index.o
+iarray_init.o
+iarray_insert.o
+iarray_node.o
+iarray_remove.o
+iarray_size.o
+iarray_zero.o

@@ -184,3 +184,4 @@
                struct buffer. sstring is now struct sstring. etc. this
                is because of various compiler, aesthetic, stylistic and
                whimsical issues.
+20061125 code: iarray added.
