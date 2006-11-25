@@ -4,9 +4,9 @@
 #include "direntry.h"
 #include "str.h"
 
-void dir_array_rewind(dir_array *da) { da->p = 0; }
+void dir_array_rewind(struct dir_array *da) { da->p = 0; }
 
-int dir_array_next(dir_array *da, char **p)
+int dir_array_next(struct dir_array *da, char **p)
 {
   unsigned long m;
   unsigned long n;
@@ -21,7 +21,7 @@ int dir_array_next(dir_array *da, char **p)
   return 1;
 }
 
-int dir_array_init(dir_array *da, const char *p)
+int dir_array_init(struct dir_array *da, const char *p)
 {
   DIR *dir;
   direntry *d_ent;
@@ -106,7 +106,7 @@ NOMEM:
   return 0;
 }
 
-void dir_array_free(dir_array *da)
+void dir_array_free(struct dir_array *da)
 {
   unsigned long n;
   unsigned long m;

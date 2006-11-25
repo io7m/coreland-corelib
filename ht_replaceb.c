@@ -2,8 +2,8 @@
 #include "bin.h"
 #include "hashtable.h"
 
-int ht_replaceb(hashtable *h, const void *k, unsigned long klen,
-                              const void *x, unsigned long dlen)
+int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
+                                     const void *x, unsigned long dlen)
 {
   struct ht_table_head *th;
   struct ht_table_node *np;

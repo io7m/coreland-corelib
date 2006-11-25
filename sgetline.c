@@ -1,6 +1,6 @@
 #include "sgetline.h"
 
-void sgetline_init(sgetline *s,
+void sgetline_init(struct sgetline *s,
                    char *sbuf,
                    unsigned long slen,
                    char *bbuf,
@@ -19,7 +19,8 @@ void sgetline_init(sgetline *s,
   s->b.pos = 0;
 }
 
-void sgetline_initbuf(sgetline *s, char *sbuf, unsigned long slen, buffer *b)
+void sgetline_initbuf(struct sgetline *s, char *sbuf,
+                      unsigned long slen, struct buffer *b)
 {
   s->s = sbuf;
   s->len = 0;

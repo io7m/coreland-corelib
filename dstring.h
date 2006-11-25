@@ -4,26 +4,26 @@
 #define DSTRING_OVERALLOC 32
 #define dstring_INIT {0,0,0}
 
-typedef struct dstring {
+struct dstring {
   char *s;
   unsigned long len;
   unsigned long a;
-} dstring;
+};
 
-int dstring_init(dstring *, unsigned long);
-void dstring_free(dstring *);
+int dstring_init(struct dstring *, unsigned long);
+void dstring_free(struct dstring *);
 
-int dstring_cat(dstring *, const dstring *);
-int dstring_catb(dstring *, const char *, unsigned long);
-int dstring_cats(dstring *, const char *);
-int dstring_cat0(dstring *);
-unsigned long dstring_0(dstring *);
+int dstring_cat(struct dstring *, const struct dstring *);
+int dstring_catb(struct dstring *, const char *, unsigned long);
+int dstring_cats(struct dstring *, const char *);
+int dstring_cat0(struct dstring *);
+unsigned long dstring_0(struct dstring *);
 
-int dstring_cpyb(dstring *, const char *, unsigned long);
-int dstring_cpys(dstring *, const char *);
-int dstring_copy(dstring *, const dstring *);
+int dstring_cpyb(struct dstring *, const char *, unsigned long);
+int dstring_cpys(struct dstring *, const char *);
+int dstring_copy(struct dstring *, const struct dstring *);
 
-void dstring_trunc(dstring *);
-void dstring_chop(dstring *, unsigned long);
+void dstring_trunc(struct dstring *);
+void dstring_chop(struct dstring *, unsigned long);
 
 #endif

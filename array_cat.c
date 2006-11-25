@@ -2,7 +2,7 @@
 #include "array.h"
 #include "bin.h"
 
-int array_cat(array *a, void* i)
+int array_cat(struct array *a, void* i)
 {
   unsigned long old_u;
   unsigned long old_a;

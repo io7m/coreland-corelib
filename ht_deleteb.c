@@ -2,7 +2,7 @@
 #include "bin.h"
 #include "hashtable.h"
 
-int ht_deleteb(hashtable *h, const void *k, unsigned long len)
+int ht_deleteb(struct hashtable *h, const void *k, unsigned long len)
 {
   unsigned long pos;
   struct ht_table_node *np;

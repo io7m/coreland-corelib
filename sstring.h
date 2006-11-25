@@ -1,27 +1,27 @@
 #ifndef SSTRING_H
 #define SSTRING_H
 
-typedef struct sstring {
+struct sstring {
   char* s;
   unsigned long len; /* length of contents */
   unsigned long a;   /* allocated */
-} sstring;
+};
 
 #define sstring_INIT(s) { (s), (0), (sizeof s) }
 
-void sstring_init(sstring *, char *, unsigned long);
+void sstring_init(struct sstring *, char *, unsigned long);
 
-unsigned long sstring_catb(sstring *, const char *, unsigned long);
-unsigned long sstring_cats(sstring *, const char *);
-unsigned long sstring_cat(sstring *, const sstring *);
+unsigned long sstring_catb(struct sstring *, const char *, unsigned long);
+unsigned long sstring_cats(struct sstring *, const char *);
+unsigned long sstring_cat(struct sstring *, const struct sstring *);
 
-unsigned long sstring_cpyb(sstring *, const char *, unsigned long);
-unsigned long sstring_cpys(sstring *, const char *);
-unsigned long sstring_copy(sstring *, const sstring *);
+unsigned long sstring_cpyb(struct sstring *, const char *, unsigned long);
+unsigned long sstring_cpys(struct sstring *, const char *);
+unsigned long sstring_copy(struct sstring *, const struct sstring *);
 
-unsigned long sstring_0(sstring *);
+unsigned long sstring_0(struct sstring *);
 
-unsigned long sstring_chop(sstring *, unsigned long);
-void sstring_trunc(sstring *);
+unsigned long sstring_chop(struct sstring *, unsigned long);
+void sstring_trunc(struct sstring *);
 
 #endif

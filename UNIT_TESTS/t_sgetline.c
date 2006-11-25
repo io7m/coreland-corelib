@@ -7,8 +7,8 @@
 
 static char fbuf[BUFFER_INSIZE];
 static char linebuf[1024]; /* very short line buffer */
-static buffer inbuf;
-static sgetline sg;
+static struct buffer inbuf;
+static struct sgetline sg;
 
 int main()
 {

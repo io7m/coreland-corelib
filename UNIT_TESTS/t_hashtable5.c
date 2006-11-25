@@ -16,7 +16,7 @@ static void *count_malloc(unsigned long n)
   return malloc(n);
 }
 
-void except1(hashtable *h)
+void except1(struct hashtable *h)
 {
   /* try to trigger overflow condition */
   h->slots[1].used = -1;
@@ -36,7 +36,7 @@ void except1(hashtable *h)
 
 int main()
 {
-  hashtable ht;
+  struct hashtable ht;
 
   set_alloc(count_malloc);
 

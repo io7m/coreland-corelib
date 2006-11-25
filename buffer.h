@@ -4,32 +4,32 @@
 #define BUFFER_OUTSIZE 8192
 #define BUFFER_INSIZE 8192
 
-typedef struct {
+struct buffer {
   char *buf;
   unsigned long pos;
   unsigned long size;
   int fd;
   long (*op)(int, char *, unsigned long);
-} buffer;
+};
 
 typedef long (*buffer_op)(int, char *, unsigned long);
 
 #define buffer_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (buffer_op)(op) }
 
-void buffer_init(buffer *, long (*)(int, char *, unsigned long), int, char *,
+void buffer_init(struct buffer *, long (*)(int, char *, unsigned long), int, char *,
                  unsigned long);
-long buffer_get(buffer *, char *, unsigned long);
-long buffer_feed(buffer *);
-char *buffer_peek(buffer *);
-void buffer_seek(buffer *, unsigned long);
+long buffer_get(struct buffer *, char *, unsigned long);
+long buffer_feed(struct buffer *);
+char *buffer_peek(struct buffer *);
+void buffer_seek(struct buffer *, unsigned long);
 
-long buffer_flush(buffer *);
-int buffer_put(buffer *, const char *, unsigned long);
-int buffer_puts(buffer *, const char *);
-int buffer_putflush(buffer *, const char *, unsigned long);
-int buffer_putsflush(buffer *, const char *);
+long buffer_flush(struct buffer *);
+int buffer_put(struct buffer *, const char *, unsigned long);
+int buffer_puts(struct buffer *, const char *);
+int buffer_putflush(struct buffer *, const char *, unsigned long);
+int buffer_putsflush(struct buffer *, const char *);
 
-int buffer_copy(buffer *, buffer *);
+int buffer_copy(struct buffer *, struct buffer *);
 
 #define buffer_PEEK(s) ( (s)->buf + (s)->size )
 #define buffer_SEEK(s,len) ( ( (s)->pos -= (len) ) , ( (s)->size += (len) ) )
@@ -39,8 +39,8 @@ int buffer_copy(buffer *, buffer *);
     : buffer_get((s),(c),1) \
   )
 
-extern buffer *buffer0;
-extern buffer *buffer1;
-extern buffer *buffer2;
+extern struct buffer *buffer0;
+extern struct buffer *buffer1;
+extern struct buffer *buffer2;
 
 #endif

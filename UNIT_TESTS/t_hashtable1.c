@@ -5,7 +5,7 @@
 
 int main()
 {
-  hashtable ht;
+  struct hashtable ht;
   ht_init(&ht);
 
   ht_free(&ht);

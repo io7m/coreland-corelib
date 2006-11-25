@@ -2,7 +2,7 @@
 #include "array.h"
 #include "bin.h"
 
-int array_copy(array* b, const array* a)
+int array_copy(struct array *b, const struct array *a)
 {
   unsigned long u;
   unsigned int es;

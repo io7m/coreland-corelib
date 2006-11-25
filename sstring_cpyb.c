@@ -3,7 +3,7 @@
 /* copies ss->len chars, doesn't care about 0x0.
    returns new length of string */
 
-unsigned long sstring_cpyb(sstring *ss, register const char *cs,
+unsigned long sstring_cpyb(struct sstring *ss, register const char *cs,
                            unsigned long len)
 {
   register unsigned long n;

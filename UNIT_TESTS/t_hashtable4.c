@@ -15,7 +15,7 @@ static void *count_malloc(unsigned long n)
   return malloc(n);
 }
 
-void replace1(hashtable *h)
+void replace1(struct hashtable *h)
 {
   const char *key;
   char *dat;
@@ -45,7 +45,7 @@ void replace1(hashtable *h)
 
 int main()
 {
-  hashtable ht;
+  struct hashtable ht;
 
   set_alloc(count_malloc);
 

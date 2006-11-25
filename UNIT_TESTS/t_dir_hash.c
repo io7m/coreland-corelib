@@ -3,7 +3,7 @@
 
 int main()
 {
-  dir_hash dh;
+  struct dir_hash dh;
 
   if (!dir_hash_init(&dh, "testdata/dir_hash"))
     syserr_die1sys(1, "fatal: dir_hash_init: ");

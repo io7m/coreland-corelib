@@ -2,7 +2,7 @@
 #include "array.h"
 #include "bin.h"
 
-int array_init(array *a, unsigned long n, unsigned int es)
+int array_init(struct array *a, unsigned long n, unsigned int es)
 {
   char *x;
   n += 1 + ARRAY_OVERALLOC;
@@ -16,7 +16,7 @@ int array_init(array *a, unsigned long n, unsigned int es)
   return 1;
 }
 
-void array_free(array *a)
+void array_free(struct array *a)
 {
   a->es = 0;
   a->a = 0;

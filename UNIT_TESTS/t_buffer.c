@@ -4,8 +4,8 @@
 
 static char pwbuf[1024];
 static char prbuf[1024];
-static buffer buffer_pw;
-static buffer buffer_pr;
+static struct buffer buffer_pw;
+static struct buffer buffer_pr;
 
 int main()
 {

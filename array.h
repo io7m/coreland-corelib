@@ -3,25 +3,25 @@
 
 #define ARRAY_OVERALLOC 8
 
-typedef struct {
+struct array {
   char *x;
   unsigned long a;
   unsigned long u;
   unsigned int es;
-} array;
+};
 
-int array_init(array *, unsigned long, unsigned int);
-char *array_index(array *, unsigned long);
-int array_cat(array *, void *);
-void array_free(array *);
-int array_copy(array *, const array *);
-int array_resize(array *, unsigned long);
-void array_trunc(array *, unsigned long);
+int array_init(struct array *, unsigned long, unsigned int);
+void *array_index(const struct array *, unsigned long);
+int array_cat(struct array *, void *);
+void array_free(struct array *);
+int array_copy(struct array *, const struct array *);
+int array_resize(struct array *, unsigned long);
+void array_trunc(struct array *, unsigned long);
 
-unsigned long array_size(array *);
-unsigned long array_bytes(array *);
-void *array_data(array *);
-void array_chop(array *, unsigned long);
+unsigned long array_size(const struct array *);
+unsigned long array_bytes(const struct array *);
+void *array_data(const struct array *);
+void array_chop(struct array *, unsigned long);
 
 #define array_trunc(a) array_chop((a),0)
 

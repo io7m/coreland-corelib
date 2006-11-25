@@ -3,19 +3,19 @@
 #include "sgetline.h"
 #include "sstring.h"
 
-static int sub_sgetline_get(sgetline *s);
+static int sub_sgetline_get(struct sgetline *s);
 
-int sgetline_get(sgetline *s)
+int sgetline_get(struct sgetline *s)
 {
   return sub_sgetline_get(s);
 }
 
-static int sub_sgetline_get(sgetline *s)
+static int sub_sgetline_get(struct sgetline *s)
 {
   long n;
   char *x;
-  buffer *b;
-  sstring sb;
+  struct buffer *b;
+  struct sstring sb;
   int sep = '\n';
   unsigned long pos;
 

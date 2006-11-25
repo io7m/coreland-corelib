@@ -5,7 +5,7 @@
 #include "../bin.h"
 #include "../str.h"
 
-void get1(hashtable *h)
+void get1(struct hashtable *h)
 {
   unsigned int ind;
   unsigned long len;
@@ -38,7 +38,7 @@ struct test {
   unsigned int z;
 };
 
-void get2(hashtable *h)
+void get2(struct hashtable *h)
 {
   struct test t;
   struct test *tp;
@@ -75,7 +75,7 @@ void get2(hashtable *h)
 
 int main()
 {
-  hashtable ht;
+  struct hashtable ht;
   ht_init(&ht);
 
   get1(&ht);

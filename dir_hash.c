@@ -16,12 +16,12 @@ static unsigned int keyhash(const char *key)
     ++key;
   }
 }
-int dir_hash_init(dir_hash *dh, const char *path)
+int dir_hash_init(struct dir_hash *dh, const char *path)
 {
-  dir_array *da;
-  char *name;
+  struct dir_array *da;
   struct dir_hash_tnode *tn;
   struct dir_hash_tnode *tp;
+  char *name;
   unsigned int hash;
 
   da = &dh->da;
@@ -53,7 +53,7 @@ int dir_hash_init(dir_hash *dh, const char *path)
   dir_array_rewind(da);
   return 1;
 }
-int dir_hash_check(dir_hash *dh, const char *key)
+int dir_hash_check(struct dir_hash *dh, const char *key)
 {
   unsigned int hash;
   struct dir_hash_tnode *tn;
@@ -68,7 +68,7 @@ int dir_hash_check(dir_hash *dh, const char *key)
     tn = tn->next;
   }
 }
-void dir_hash_free(dir_hash *dh)
+void dir_hash_free(struct dir_hash *dh)
 {
   unsigned int i;
   struct dir_hash_tnode *tn;

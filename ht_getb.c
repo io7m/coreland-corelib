@@ -1,8 +1,8 @@
 #include "bin.h"
 #include "hashtable.h"
 
-int ht_getb(hashtable *h, const void *k, unsigned long klen,
-                          void **dat, unsigned long *dlen)
+int ht_getb(const struct hashtable *h, const void *k, unsigned long klen,
+            void **dat, unsigned long *dlen)
 {
   struct ht_table_head *th;
   struct ht_table_node *np;

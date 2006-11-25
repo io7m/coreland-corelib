@@ -1,7 +1,7 @@
 #include "alloc.h"
 #include "dstring.h"
 
-int dstring_init(dstring *ds, unsigned long len)
+int dstring_init(struct dstring *ds, unsigned long len)
 {
   char *s;
 
@@ -16,7 +16,7 @@ int dstring_init(dstring *ds, unsigned long len)
   return 1;
 }
 
-void dstring_free(dstring *ds)
+void dstring_free(struct dstring *ds)
 {
   dealloc(ds->s);
   ds->s = 0;

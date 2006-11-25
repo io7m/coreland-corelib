@@ -1,7 +1,7 @@
 #include "alloc.h"
 #include "hashtable.h"
 
-void ht_free(hashtable *h)
+void ht_free(struct hashtable *h)
 {
   unsigned long ind;
   struct ht_table_head *th;

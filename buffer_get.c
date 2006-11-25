@@ -15,7 +15,7 @@ static long single_read(long (*op)(int, char *, unsigned long),
   }
 }
 
-static long get_this(buffer *b, char *s, unsigned long len)
+static long get_this(struct buffer *b, char *s, unsigned long len)
 {
   if (len > b->pos) len = b->pos;
   b->pos -= len;
@@ -24,7 +24,7 @@ static long get_this(buffer *b, char *s, unsigned long len)
   return len; 
 }
 
-long buffer_feed(buffer *b)
+long buffer_feed(struct buffer *b)
 {
   long r;
  
@@ -37,7 +37,7 @@ long buffer_feed(buffer *b)
   return r;
 }
 
-long buffer_get(buffer *b, char *s, unsigned long len)
+long buffer_get(struct buffer *b, char *s, unsigned long len)
 {
   long r;
  
@@ -48,12 +48,12 @@ long buffer_get(buffer *b, char *s, unsigned long len)
   return get_this(b, s, len);
 }
 
-char *buffer_peek(buffer *b)
+char *buffer_peek(struct buffer *b)
 {
   return b->buf + b->size;
 }
 
-void buffer_seek(buffer *b, unsigned long len)
+void buffer_seek(struct buffer *b, unsigned long len)
 {
   b->size += len;
   b->pos -= len;

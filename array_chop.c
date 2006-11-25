@@ -2,7 +2,7 @@
 #include "array.h"
 #include "bin.h"
 
-void array_chop(array* a, unsigned long sz)
+void array_chop(struct array *a, unsigned long sz)
 {
   if (sz <= a->u) a->u = sz;
 }

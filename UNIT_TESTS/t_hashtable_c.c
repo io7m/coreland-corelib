@@ -10,8 +10,8 @@ void printn(const char *s, unsigned int len)
   while (len--) printf("%c", *s);
 }
 
-void addb(hashtable *h, const char *key, unsigned long klen,
-                        const char *dat, unsigned long dlen, int exp)
+void addb(struct hashtable *h, const char *key, unsigned long klen,
+                               const char *dat, unsigned long dlen, int exp)
 {
   switch (ht_addb(h, key, klen, dat, dlen)) {
     case -1:
@@ -38,7 +38,7 @@ void addb(hashtable *h, const char *key, unsigned long klen,
   }
 }
 
-void delete_keyb(hashtable *h, const char *key, unsigned long len, int exp)
+void delete_keyb(struct hashtable *h, const char *key, unsigned long len, int exp)
 {
   switch (ht_deleteb(h, key, len)) {
     case -1:
@@ -65,8 +65,8 @@ void delete_keyb(hashtable *h, const char *key, unsigned long len, int exp)
   }
 }
 
-void getb(hashtable *h, const char *key, unsigned long klen,
-                        char **x, unsigned long *len, int exp)
+void getb(struct hashtable *h, const char *key, unsigned long klen,
+                               char **x, unsigned long *len, int exp)
 {
   switch (ht_getb(h, key, klen, (void **) x, len)) {
     case -1:
@@ -93,8 +93,8 @@ void getb(hashtable *h, const char *key, unsigned long klen,
   }
 }
 
-void replaceb(hashtable *h, const char *key, unsigned long klen,
-                            const char *dat, unsigned long dlen, int exp)
+void replaceb(struct hashtable *h, const char *key, unsigned long klen,
+                                   const char *dat, unsigned long dlen, int exp)
 {
   switch (ht_replaceb(h, key, klen, dat, dlen)) {
     case -1:
@@ -121,19 +121,19 @@ void replaceb(hashtable *h, const char *key, unsigned long klen,
   }
 }
 
-void add(hashtable *h, const char *k, const char *x, int exp)
+void add(struct hashtable *h, const char *k, const char *x, int exp)
 {
   addb(h, k, str_len(k), x, str_len(x), exp);
 }
-void delete_key(hashtable *h, const char *k, int exp)
+void delete_key(struct hashtable *h, const char *k, int exp)
 {
   delete_keyb(h, k, str_len(k), exp);
 }
-void get(hashtable *h, const char *k, char **x, unsigned long *len, int exp)
+void get(struct hashtable *h, const char *k, char **x, unsigned long *len, int exp)
 {
   getb(h, k, str_len(k), x, len, exp);
 }
-void replace(hashtable *h, const char *k, const char *x, int exp)
+void replace(struct hashtable *h, const char *k, const char *x, int exp)
 {
   replaceb(h, k, str_len(k), x, str_len(x), exp);
 }

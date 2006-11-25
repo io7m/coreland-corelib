@@ -13,7 +13,7 @@ static void *count_malloc(unsigned long n)
   return malloc(n);
 }
 
-void check(int tnum, const char *tname, hashtable *h, const char *key,
+void check(int tnum, const char *tname, struct hashtable *h, const char *key,
            const char *data, unsigned int slot, unsigned long allocd,
            unsigned long used, struct ht_table_node *tnode)
 {
@@ -45,7 +45,7 @@ void check(int tnum, const char *tname, hashtable *h, const char *key,
   }
 }
 
-void add1(hashtable *h)
+void add1(struct hashtable *h)
 {
   struct ht_table_node *tn;
   const unsigned int slot = 1;
@@ -111,7 +111,7 @@ void add1(hashtable *h)
 
 int main()
 {
-  hashtable ht;
+  struct hashtable ht;
 
   set_alloc(count_malloc);
 

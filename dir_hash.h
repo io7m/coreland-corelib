@@ -7,14 +7,14 @@
 
 struct dir_hash_tnode { struct dir_hash_tnode *next; const char *name; };
 
-typedef struct {
-  dir_array da;
+struct dir_hash {
+  struct dir_array da;
   struct dir_hash_tnode *tab[DIR_HASH_BUCKETS];
-} dir_hash;
+};
 
-int dir_hash_init(dir_hash *, const char *);
-int dir_hash_check(dir_hash *, const char *);
-void dir_hash_free(dir_hash *);
+int dir_hash_init(struct dir_hash *, const char *);
+int dir_hash_check(struct dir_hash *, const char *);
+void dir_hash_free(struct dir_hash *);
 
 #define dir_hash_array(dh) (&(dh)->da)
 

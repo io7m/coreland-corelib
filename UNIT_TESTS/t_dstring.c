@@ -33,7 +33,7 @@ void die_wrongnumt(unsigned int t, const char *s, unsigned int wanted,
 #define COPYTEST "copy_test:"
 #define CHOPTEST "chop_test:"
 
-void initfree_test(dstring *ds)
+void initfree_test(struct dstring *ds)
 {
   unsigned int num;
   if (!dstring_init(ds, 1)) die_sys("dstring_init");
@@ -49,7 +49,7 @@ void initfree_test(dstring *ds)
   T_COMPARE(0, (unsigned long) ds->s, INITTEST" s ", 3); /* XXX: long ptr */
 }
 
-void cat_test(dstring *ds)
+void cat_test(struct dstring *ds)
 {
   char *tmp;
 
@@ -125,7 +125,7 @@ void cat_test(dstring *ds)
   dstring_free(ds);
 }
 
-void copy_test(dstring *ds)
+void copy_test(struct dstring *ds)
 {
   /* 1 + 32 == 33 */
   if (!dstring_init(ds, 1)) die_sys("dstring_init");
@@ -155,7 +155,7 @@ void copy_test(dstring *ds)
   T_COMPARE('8', ds->s[15], COPYTEST" s[15]", 18);
 }
 
-void chop_test(dstring *ds)
+void chop_test(struct dstring *ds)
 {
   if (!dstring_cpys(ds, BIG_STRING)) die_sys("dstring_cpys");
   /* len == 256 */
@@ -190,7 +190,7 @@ void chop_test(dstring *ds)
 
 int main()
 {
-  static dstring ds;
+  static struct dstring ds;
 
   initfree_test(&ds);
   cat_test(&ds);

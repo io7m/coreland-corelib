@@ -2,7 +2,7 @@
 #include "bin.h"
 #include "dstring.h"
 
-int dstring_catb(dstring *d, const char *str, unsigned long len)
+int dstring_catb(struct dstring *d, const char *str, unsigned long len)
 {
   unsigned long da;
   unsigned long dlen;

@@ -7,7 +7,7 @@ int main()
 {
   unsigned long len;
   static char buf[BSIZE];
-  sstring str = sstring_INIT(buf);
+  struct sstring str = sstring_INIT(buf);
 
   if (str.a != BSIZE) { printf("str.a == %u\n", str.a); return 1; }
   if (str.len != 0) { printf("str.len == %u\n", str.len); return 1; }

@@ -26,8 +26,8 @@ static int new_node(struct ht_table_node **tn,
   return 1;
 }
 
-int ht_addb(hashtable *h, const void *k, unsigned long klen,
-                          const void *x, unsigned long xlen)
+int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
+                                 const void *x, unsigned long xlen)
 {
   struct ht_table_head *th;
   struct ht_table_node *tn;

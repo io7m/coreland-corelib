@@ -1,6 +1,6 @@
 #include "sstring.h"
 
-void sstring_trunc(sstring *ss)
+void sstring_trunc(struct sstring *ss)
 {
   register unsigned long n;
   register char* t;

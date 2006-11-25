@@ -23,7 +23,7 @@ static long write_all(long (*op)(int, char *, unsigned long),
   return 0;
 }
 
-long buffer_flush(buffer *b)
+long buffer_flush(struct buffer *b)
 {
   unsigned long pos;
 
@@ -33,7 +33,7 @@ long buffer_flush(buffer *b)
   return write_all(b->op, b->fd, b->buf, pos);
 }
 
-int buffer_put(buffer *b, const char *s, unsigned long len)
+int buffer_put(struct buffer *b, const char *s, unsigned long len)
 {
   unsigned long n;
 
@@ -53,7 +53,7 @@ int buffer_put(buffer *b, const char *s, unsigned long len)
   return 0;
 }
 
-int buffer_putalign(buffer *b, const char *s, unsigned long len)
+int buffer_putalign(struct buffer *b, const char *s, unsigned long len)
 {
   unsigned long n;
 
@@ -69,23 +69,23 @@ int buffer_putalign(buffer *b, const char *s, unsigned long len)
   return 0;
 }
 
-int buffer_puts(buffer *b, const char *s)
+int buffer_puts(struct buffer *b, const char *s)
 {
   return buffer_put(b, s, str_len(s));
 }
 
-int buffer_putsalign(buffer *b, const char *s)
+int buffer_putsalign(struct buffer *b, const char *s)
 {
   return buffer_putalign(b, s, str_len(s));
 }
 
-int buffer_putflush(buffer *b, const char *s, unsigned long len)
+int buffer_putflush(struct buffer *b, const char *s, unsigned long len)
 {
   if (buffer_flush(b) == -1) return -1;
   return write_all(b->op, b->fd, s, len);
 }
 
-int buffer_putsflush(buffer *b, const char *s)
+int buffer_putsflush(struct buffer *b, const char *s)
 {
   return buffer_putflush(b, s, str_len(s));
 }

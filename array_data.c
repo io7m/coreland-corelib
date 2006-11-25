@@ -1,6 +1,6 @@
 #include "array.h"
 
-void *array_data(array* a)
+void *array_data(struct array *a)
 {
   return a->x;
 }

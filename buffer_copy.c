@@ -1,6 +1,6 @@
 #include "buffer.h"
 
-int buffer_copy(buffer *to, buffer *from)
+int buffer_copy(struct buffer *to, struct buffer *from)
 {
   int r;
   int w;

@@ -3,7 +3,7 @@
 
 int main()
 {
-  dir_array da;
+  struct dir_array da;
   char *fname;
 
   if (!dir_array_init(&da, ".")) {

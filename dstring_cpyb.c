@@ -2,7 +2,7 @@
 #include "bin.h"
 #include "dstring.h"
 
-int dstring_cpyb(dstring *d, const char *s, unsigned long len)
+int dstring_cpyb(struct dstring *d, const char *s, unsigned long len)
 {
   unsigned long dlen;
   unsigned long da;
