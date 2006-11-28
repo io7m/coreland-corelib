@@ -2,7 +2,7 @@
 #define SSTRING_H
 
 struct sstring {
-  char* s;
+  char *s;
   unsigned long len; /* length of contents */
   unsigned long a;   /* allocated */
 };
@@ -20,8 +20,8 @@ unsigned long sstring_cpys(struct sstring *, const char *);
 unsigned long sstring_copy(struct sstring *, const struct sstring *);
 
 unsigned long sstring_0(struct sstring *);
-
 unsigned long sstring_chop(struct sstring *, unsigned long);
-void sstring_trunc(struct sstring *);
+
+#define sstring_trunc(ss) (sstring_chop((ss),0))
 
 #endif

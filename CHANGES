@@ -189,3 +189,7 @@
 20061128 code: fixed null-dereference in iarray_node.c (if no nodes
                could be allocated).
 20061128 code: array.h uses void * for x instead of char *.
+20061128 code: array now no longer depends on bin.h. bin_copy() routines
+               have been moved inline.
+20061128 code: sstring_trunc() now implemented as a macro around
+               sstring_chop().

@@ -1,6 +1,5 @@
 #include "alloc.h"
 #include "array.h"
-#include "bin.h"
 
 int array_init(struct array *a, unsigned long n, unsigned int es)
 {

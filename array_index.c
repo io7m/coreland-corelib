@@ -1,6 +1,4 @@
-#include "alloc.h"
 #include "array.h"
-#include "bin.h"
 
 void *array_index(const struct array *a, unsigned long p)
 {
@@ -9,5 +7,5 @@ void *array_index(const struct array *a, unsigned long p)
   unsigned long ind = p * es;
 
   if (ind > (es * u)) return 0;
-  return (void *) a->x + ind;
+  return a->x + ind;
 }

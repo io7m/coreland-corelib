@@ -32,28 +32,28 @@ array.a:\
 	./mk-slib array array.o array_bytes.o array_cat.o array_copy.o \
 	array_index.o array_size.o array_chop.o 
 array.o:\
-	cc array.c alloc.h array.h bin.h 
+	cc array.c alloc.h array.h 
 	./cc array.c
 array_bytes.o:\
-	cc array_bytes.c alloc.h array.h bin.h 
+	cc array_bytes.c array.h 
 	./cc array_bytes.c
 array_cat.o:\
-	cc array_cat.c alloc.h array.h bin.h 
+	cc array_cat.c alloc.h array.h 
 	./cc array_cat.c
 array_chop.o:\
-	cc array_chop.c alloc.h array.h bin.h 
+	cc array_chop.c array.h 
 	./cc array_chop.c
 array_copy.o:\
-	cc array_copy.c alloc.h array.h bin.h 
+	cc array_copy.c array.h 
 	./cc array_copy.c
 array_data.o:\
 	cc array_data.c array.h 
 	./cc array_data.c
 array_index.o:\
-	cc array_index.c alloc.h array.h bin.h 
+	cc array_index.c array.h 
 	./cc array_index.c
 array_size.o:\
-	cc array_size.c alloc.h array.h bin.h 
+	cc array_size.c array.h 
 	./cc array_size.c
 base_name.a:\
 	mk-slib base_name.sld base_name.o 
@@ -763,10 +763,10 @@ sig_pause.o:\
 sstring.a:\
 	mk-slib sstring.sld sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o sstring_trunc.o sstring_chop.o 
+	sstring_init.o sstring_chop.o 
 	./mk-slib sstring sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o sstring_trunc.o sstring_chop.o 
+	sstring_init.o sstring_chop.o 
 sstring_0.o:\
 	cc sstring_0.c sstring.h 
 	./cc sstring_0.c
@@ -794,9 +794,6 @@ sstring_cpys.o:\
 sstring_init.o:\
 	cc sstring_init.c sstring.h 
 	./cc sstring_init.c
-sstring_trunc.o:\
-	cc sstring_trunc.c sstring.h 
-	./cc sstring_trunc.c
 stalloc.a:\
 	mk-slib stalloc.sld stalloc.o 
 	./mk-slib stalloc stalloc.o 
@@ -935,12 +932,13 @@ clean: sysdeps_clean tests_clean
 	sgetline_get.o sig.a sig.o sig_block.o sig_catch.o sig_pause.o \
 	sstring.a sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
 	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o sstring_trunc.o stalloc.a stalloc.o str.a str_char.o \
-	str_chr.o str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o \
-	str_ends.o str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
+	sstring_init.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
+	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
-	uint16.a uint16_pack.o uint16_unpack.o uint32.a uint32_pack.o 
-	rm -f uint32_unpack.o uint64.a uint64_pack.o uint64_unpack.o 
+	uint16.a uint16_pack.o uint16_unpack.o uint32.a uint32_pack.o \
+	uint32_unpack.o 
+	rm -f uint64.a uint64_pack.o uint64_unpack.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller
