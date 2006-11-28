@@ -192,3 +192,4 @@
 20061128 code: sstring_trunc() now implemented as a macro around
                sstring_chop().
 20061128 code: added array_zero().
+20061128 code: use of alloc_re() in dstring_catb() and dstring_cpyb().
