@@ -5,3 +5,4 @@ array_copy.o
 array_index.o
 array_size.o
 array_chop.o
+array_zero.o

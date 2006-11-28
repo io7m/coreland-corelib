@@ -193,3 +193,4 @@
                have been moved inline.
 20061128 code: sstring_trunc() now implemented as a macro around
                sstring_chop().
+20061128 code: added array_zero().
