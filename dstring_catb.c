@@ -6,6 +6,7 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
 {
   unsigned long da;
   unsigned long dlen;
+  unsigned long na;
   char *ds;
   char *s;
 
@@ -16,14 +17,10 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
   if ((dlen + len) < dlen) return 0; /* detect int overflow */
 
   if ((dlen + len) >= da) {
-    unsigned long nal;
-    nal = da + len + DSTRING_OVERALLOC;
-    s = alloc(nal);
-    if (!s) return 0;
-    bin_copy(ds, s, dlen);
-    da = nal;
-    dealloc(ds);
-    ds = s;
+    na = da + len + DSTRING_OVERALLOC;
+    if (!alloc_re((void **) &d->s, da, na)) return 0;
+    da = na;
+    ds = d->s;
   }
 
   bin_copy(str, ds + dlen, len);

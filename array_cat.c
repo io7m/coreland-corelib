@@ -1,37 +1,27 @@
 #include "alloc.h"
 #include "array.h"
+#include "bin.h"
 
-int array_cat(struct array *a, void* dat)
+int array_cat(struct array *a, void *dat)
 {
-  register char *dp;
-  register char *sp;
-  unsigned long old_u;
-  unsigned long old_a;
-  unsigned long new_a;
+  unsigned long au;
+  unsigned long aa;
+  unsigned long na;
   unsigned int es;
 
-  old_u = a->u;
-  old_a = a->a;
+  au = a->u;
+  aa = a->a;
   es = a->es;
 
-  if ((old_u + 1) < old_u) return 0; /* detect int overflow */
+  if ((au + 1) < au) return 0; /* detect int overflow */
 
-  if ((old_u + 1) > old_a) {
-    new_a = old_a + 1 + ARRAY_OVERALLOC;
-    if (!alloc_re((void **) &a->x, old_a * es, new_a * es)) return 0;
-    a->a = new_a;
+  if ((au + 1) > aa) {
+    na = aa + 1 + ARRAY_OVERALLOC;
+    if (!alloc_re((void **) &a->x, aa * es, na * es)) return 0;
+    a->a = na;
   }
 
-  dp = a->x + (old_u * es);
-  sp = dat;
-
-  for (;;) {
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-  } 
-
+  bin_copy(dat, a->x + (au * es), es);
   a->u++;
   return 1;
 }

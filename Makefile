@@ -38,13 +38,13 @@ array_bytes.o:\
 	cc array_bytes.c array.h 
 	./cc array_bytes.c
 array_cat.o:\
-	cc array_cat.c alloc.h array.h 
+	cc array_cat.c alloc.h array.h bin.h 
 	./cc array_cat.c
 array_chop.o:\
 	cc array_chop.c array.h 
 	./cc array_chop.c
 array_copy.o:\
-	cc array_copy.c array.h 
+	cc array_copy.c array.h bin.h 
 	./cc array_copy.c
 array_data.o:\
 	cc array_data.c array.h 
