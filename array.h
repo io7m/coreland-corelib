@@ -4,7 +4,7 @@
 #define ARRAY_OVERALLOC 8
 
 struct array {
-  char *x;
+  void *x;
   unsigned long a;
   unsigned long u;
   unsigned int es;
