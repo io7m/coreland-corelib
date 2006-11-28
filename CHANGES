@@ -186,3 +186,6 @@
                whimsical issues.
 20061125 code: iarray added.
 20061126 version: corelib 0.5
+20061128 code: fixed null-dereference in iarray_node.c (if no nodes
+               could be allocated).
+               

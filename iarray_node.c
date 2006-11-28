@@ -16,6 +16,7 @@ int iarray_newnodes(struct iarray_node **headptr, struct iarray_node **tailptr,
   for (ind = 0; ind < num; ++ind) {
     in = alloc(sizeof(struct iarray_node));
     if (!in) {
+      if (!head) return 0;
       in = head;
       for (;;) {
         in_next = in->next;
