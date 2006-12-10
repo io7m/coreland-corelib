@@ -8,5 +8,8 @@
 
 int closeonexec(int fd)
 {
+#ifdef F_SETFD
   return fcntl(fd, F_SETFD, FD_CLOEXEC);
+#endif
+  return 0;
 }

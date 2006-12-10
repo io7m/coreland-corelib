@@ -193,3 +193,6 @@
                sstring_chop().
 20061128 code: added array_zero().
 20061128 code: use of alloc_re() in dstring_catb() and dstring_cpyb().
+20061210 code: closeonexec() now always returns true on non UNIX-like
+               platforms.
+20061210 version: corelib 0.51
