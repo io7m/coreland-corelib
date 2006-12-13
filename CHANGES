@@ -196,3 +196,4 @@
 20061210 code: closeonexec() now always returns true on non UNIX-like
                platforms.
 20061210 version: corelib 0.51
+20061213 code: fixed integer overflows in array and dstring.
