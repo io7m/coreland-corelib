@@ -6,7 +6,8 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
 {
   unsigned long da;
   unsigned long dlen;
-  unsigned long na;
+  unsigned long tmplen;
+  unsigned long tmpadd;
   char *ds;
   char *s;
 
@@ -14,12 +15,16 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
   dlen = d->len;
   ds = d->s;
 
-  if ((dlen + len) < dlen) return 0; /* detect int overflow */
+  tmplen = dlen + len;
+  if (tmplen < dlen) return 0; /* check overflow */
 
-  if ((dlen + len) >= da) {
-    na = da + len + DSTRING_OVERALLOC;
-    if (!alloc_re((void **) &d->s, da, na)) return 0;
-    da = na;
+  if (tmplen >= da) {
+    tmpadd = len + DSTRING_OVERALLOC;
+    if (tmpadd < len) return 0; /* check overflow */
+    tmplen = da + tmpadd;
+    if (tmplen < da) return 0; /* check overflow */
+    if (!alloc_re((void **) &d->s, da, tmplen)) return 0;
+    da = tmplen;
     ds = d->s;
   }
 

@@ -6,7 +6,7 @@ int dstring_cpyb(struct dstring *d, const char *s, unsigned long len)
 {
   unsigned long dlen;
   unsigned long da;
-  unsigned long na;
+  unsigned long tmplen;
   char *ds;
 
   dlen = d->len;
@@ -14,10 +14,11 @@ int dstring_cpyb(struct dstring *d, const char *s, unsigned long len)
   ds = d->s;
 
   if (len >= da) {
-    na = len + 1 + DSTRING_OVERALLOC;
-    if (!alloc_re((void **) &d->s, da, na)) return 0;
+    tmplen = len + 1 + DSTRING_OVERALLOC;
+    if (tmplen < len) return 0;
+    if (!alloc_re((void **) &d->s, da, tmplen)) return 0;
     ds = d->s;
-    da = na;
+    da = tmplen;
   }
 
   bin_copy(s, ds, len);
