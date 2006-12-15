@@ -6,6 +6,10 @@
 
 void dir_array_rewind(struct dir_array *da) { da->p = 0; }
 
+void dir_array_setcmp(struct dir_array *da, int (*func)(const char *, const char *))
+{
+  da->cmp = func;
+}
 int dir_array_next(struct dir_array *da, char **p)
 {
   unsigned long m;
@@ -20,18 +24,56 @@ int dir_array_next(struct dir_array *da, char **p)
 
   return 1;
 }
-
-int dir_array_init(struct dir_array *da, const char *p)
+void dir_array_sort(struct dir_array *da)
 {
-  DIR *dir;
-  direntry *d_ent;
   unsigned long m;
   unsigned long n;
   unsigned long x;
   unsigned long y;
+  char **arr;
+  char *tmp;
+  int (*cmp)(const char *, const char *);
+
+  n = da->n;
+  m = (n >> 1);
+  arr = da->a;
+  tmp = 0;
+
+  if (!da->cmp) da->cmp = str_diff;
+  cmp = da->cmp;
+  for (;;) {
+    if (m > 0) {
+      --m;
+      tmp = arr[m];
+    } else {
+      --n;
+      if (!n) break;
+      tmp = arr[n];
+      arr[n] = arr[0];
+    }
+    x = m;
+    y = (m << 1) + 1;
+    
+    while (y < n) {
+      if ((y + 1 < n) && (cmp(arr[y + 1], arr[y]) > 0)) ++y;
+      if (cmp(arr[y], tmp) > 0) {
+        arr[x] = arr[y];
+        x = y;
+        y = (x << 1) + 1;
+      } else {
+        break;
+      }
+    }
+    arr[x] = tmp;
+  } 
+}
+int dir_array_init(struct dir_array *da, const char *p)
+{
+  DIR *dir;
+  direntry *d_ent;
+  unsigned long n;
   unsigned long len;
   char *tmp;
-  char **arr;
 
   dir = opendir(p);
   if (!dir) return 0;
@@ -68,37 +110,7 @@ int dir_array_init(struct dir_array *da, const char *p)
 
   closedir(dir);
 
-  n = da->n;
-  m = (n >> 1);
-  arr = da->a;
-  tmp = 0;
-
-  for (;;) {
-    if (m > 0) {
-      --m;
-      tmp = arr[m];
-    } else {
-      --n;
-      if (!n) break;
-      tmp = arr[n];
-      arr[n] = arr[0];
-    }
-    x = m;
-    y = (m << 1) + 1;
-    
-    while (y < n) {
-      if ((y + 1 < n) && (str_diff(arr[y + 1], arr[y]) > 0)) ++y;
-      if (str_diff(arr[y], tmp) > 0) {
-        arr[x] = arr[y];
-        x = y;
-        y = (x << 1) + 1;
-      } else {
-        break;
-      }
-    }
-    arr[x] = tmp;
-  } 
-
+  dir_array_sort(da);
   return 1;
 NOMEM:
   closedir(dir);
@@ -121,6 +133,7 @@ void dir_array_free(struct dir_array *da)
   dealloc((char *) da->a);
   da->p = 0;
   da->n = 0;
+  da->cmp = 0;
 
   return;
 }

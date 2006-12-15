@@ -197,3 +197,4 @@
                platforms.
 20061210 version: corelib 0.51
 20061213 code: fixed integer overflows in array and dstring.
+20061215 code: dir_array interface upgrade. new functions and tests.
