@@ -5,7 +5,6 @@
 #include "str.h"
 
 void dir_array_rewind(struct dir_array *da) { da->p = 0; }
-
 void dir_array_setcmp(struct dir_array *da, int (*func)(const char *, const char *))
 {
   da->cmp = func;
@@ -38,8 +37,8 @@ void dir_array_sort(struct dir_array *da)
   m = (n >> 1);
   arr = da->a;
   tmp = 0;
+  cmp = 0;
 
-  if (!da->cmp) da->cmp = str_diff;
   cmp = da->cmp;
   for (;;) {
     if (m > 0) {
@@ -86,6 +85,7 @@ int dir_array_init(struct dir_array *da, const char *p)
   }
   rewinddir(dir);
 
+  da->cmp = str_diff;
   da->p = 0;
   da->n = n;
   da->a = (char **) alloc(n * sizeof(char *));
@@ -109,7 +109,6 @@ int dir_array_init(struct dir_array *da, const char *p)
   }
 
   closedir(dir);
-
   dir_array_sort(da);
   return 1;
 NOMEM:
