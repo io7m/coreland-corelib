@@ -4,10 +4,10 @@ default: all
 
 all:\
 	t_alloc t_array t_base_name t_bin t_buffer t_dir_array t_dir_hash \
-	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt_spec \
-	t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 t_hashtable4 \
-	t_hashtable5 t_iarray1 t_iarray2 t_iarray3 t_iarray4 t_iarray5 \
-	t_iarray6 t_int t_open t_scan t_scan2 t_scan3 t_scan_float \
+	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt3 \
+	t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
+	t_hashtable4 t_hashtable5 t_iarray1 t_iarray2 t_iarray3 t_iarray4 \
+	t_iarray5 t_iarray6 t_int t_open t_scan t_scan2 t_scan3 t_scan_float \
 	t_scan_fspec t_scan_spec t_seek t_sgetline t_sig t_sstring t_stalloc \
 	t_str t_uint 
 
@@ -69,7 +69,7 @@ t_dir_array:\
 	./ld t_dir_array t_dir_array.o ../dir_array.a ../alloc.a ../bin.a \
 	../str.a 
 t_dir_array.o:\
-	cc t_dir_array.c ../dir_array.h 
+	cc t_dir_array.c ../dir_array.h ../str.h 
 	./cc t_dir_array.c
 t_dir_hash:\
 	ld t_dir_hash.ld t_dir_hash.o ../dir_hash.a ../dir_array.a \
@@ -125,6 +125,12 @@ t_fmt2:\
 t_fmt2.o:\
 	cc t_fmt2.c ../fmt.h ../str.h 
 	./cc t_fmt2.c
+t_fmt3:\
+	ld t_fmt3.ld t_fmt3.o ../fmt.a ../str.a 
+	./ld t_fmt3 t_fmt3.o ../fmt.a ../str.a 
+t_fmt3.o:\
+	cc t_fmt3.c ../fmt.h ../str.h 
+	./cc t_fmt3.c
 t_fmt_spec:\
 	ld t_fmt_spec.ld t_fmt_spec.o ../fmt_spec.a 
 	./ld t_fmt_spec t_fmt_spec.o ../fmt_spec.a 
@@ -338,18 +344,18 @@ clean: tests_clean
 	t_array.o t_base_name t_base_name.o t_bin t_bin.o t_buffer \
 	t_buffer.o t_dir_array t_dir_array.o t_dir_hash t_dir_hash.o \
 	t_dir_name t_dir_name.o t_dstring t_dstring.o t_env t_env.o t_fd \
-	t_fd.o t_float t_float.o t_fmt t_fmt.o t_fmt2 t_fmt2.o t_fmt_spec \
-	t_fmt_spec.o t_get_opt t_get_opt.o t_hashtable1 t_hashtable1.o \
-	t_hashtable2 t_hashtable2.o t_hashtable3 t_hashtable3.o t_hashtable4 \
-	t_hashtable4.o t_hashtable5 t_hashtable5.o t_hashtable_c.o \
-	t_hashtable_d.o t_iarray.o t_iarray1 t_iarray1.o t_iarray2 \
-	t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 \
-	t_iarray5.o t_iarray6 t_iarray6.o t_iarray_util.o t_int 
-	rm -f t_int.o t_open t_open.o t_scan t_scan.o t_scan2 t_scan2.o \
-	t_scan3 t_scan3.o t_scan_float t_scan_float.o t_scan_fspec \
-	t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline \
-	t_sgetline.o t_sig t_sig.o t_sstring t_sstring.o t_stalloc \
-	t_stalloc.o t_str t_str.o t_uint t_uint.o 
+	t_fd.o t_float t_float.o t_fmt t_fmt.o t_fmt2 t_fmt2.o t_fmt3 \
+	t_fmt3.o t_fmt_spec t_fmt_spec.o t_get_opt t_get_opt.o t_hashtable1 \
+	t_hashtable1.o t_hashtable2 t_hashtable2.o t_hashtable3 \
+	t_hashtable3.o t_hashtable4 t_hashtable4.o t_hashtable5 \
+	t_hashtable5.o t_hashtable_c.o t_hashtable_d.o t_iarray.o t_iarray1 \
+	t_iarray1.o t_iarray2 t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 \
+	t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 t_iarray6.o 
+	rm -f t_iarray_util.o t_int t_int.o t_open t_open.o t_scan t_scan.o \
+	t_scan2 t_scan2.o t_scan3 t_scan3.o t_scan_float t_scan_float.o \
+	t_scan_fspec t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek \
+	t_seek.o t_sgetline t_sgetline.o t_sig t_sig.o t_sstring t_sstring.o \
+	t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
 
 tests: list_tests run_tests
 tests_clean:

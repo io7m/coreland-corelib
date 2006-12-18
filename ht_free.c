@@ -3,6 +3,11 @@
 
 void ht_free(struct hashtable *h)
 {
+  ht_free_ext(struct hashtable *h, 0);
+}
+
+void ht_free_ext(struct hashtable *h, void (*cleanup)(void *))
+{
   unsigned long ind;
   struct ht_table_head *th;
   struct ht_table_node *tn;
@@ -15,6 +20,8 @@ void ht_free(struct hashtable *h)
       while (tn) {
         tn_next = tn->next;
         if (tn->state == HT_SLOT_USED) {
+          if (cleanup)
+            cleanup(tn->data);
           dealloc(tn->key);
           dealloc(tn->data);
         }

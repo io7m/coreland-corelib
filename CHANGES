@@ -199,3 +199,6 @@
 20061213 code: fixed integer overflows in array and dstring.
 20061215 code: dir_array interface upgrade. new functions and tests.
 20061215 version: corelib 0.52
+20061218 code: ht_free_ext() added.
+20061218 code: fmt_u*b() functions added.
+20061218 code: fixed integer overflow in iarray.

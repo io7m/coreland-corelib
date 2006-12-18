@@ -319,28 +319,33 @@ float64_upack.o:\
 	cc float64_upack.c byteorder.h float64.h 
 	./cc float64_upack.c
 fmt.a:\
-	mk-slib fmt.sld fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharo.o \
-	fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o fmt_ullong.o \
-	fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o fmt_ulongx.o \
-	fmt_ushort.o fmt_ushorto.o fmt_ushortx.o 
-	./mk-slib fmt fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharo.o \
-	fmt_ucharx.o fmt_uint.o fmt_uinto.o fmt_uintx.o fmt_ullong.o \
-	fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongo.o fmt_ulongx.o \
-	fmt_ushort.o fmt_ushorto.o fmt_ushortx.o 
+	mk-slib fmt.sld fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
+	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
+	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
+	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
+	fmt_ushorto.o fmt_ushortx.o 
+	./mk-slib fmt fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
+	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
+	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
+	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
+	fmt_ushorto.o fmt_ushortx.o 
 fmt_nstr.o:\
 	cc fmt_nstr.c fmt.h 
 	./cc fmt_nstr.c
 fmt_spec.a:\
-	mk-slib fmt_spec.sld fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o \
-	fmt_u64o.o fmt_u64x.o 
-	./mk-slib fmt_spec fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o \
-	fmt_u64o.o fmt_u64x.o 
+	mk-slib fmt_spec.sld fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
+	fmt_u64.o fmt_u64b.o fmt_u64o.o fmt_u64x.o 
+	./mk-slib fmt_spec fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
+	fmt_u64.o fmt_u64b.o fmt_u64o.o fmt_u64x.o 
 fmt_str.o:\
 	cc fmt_str.c fmt.h 
 	./cc fmt_str.c
 fmt_u32.o:\
 	cc fmt_u32.c fmt_spec.h uint32.h uint64.h 
 	./cc fmt_u32.c
+fmt_u32b.o:\
+	cc fmt_u32b.c fmt_spec.h uint32.h uint64.h 
+	./cc fmt_u32b.c
 fmt_u32o.o:\
 	cc fmt_u32o.c fmt_spec.h uint32.h uint64.h 
 	./cc fmt_u32o.c
@@ -350,6 +355,9 @@ fmt_u32x.o:\
 fmt_u64.o:\
 	cc fmt_u64.c fmt_spec.h uint64.h 
 	./cc fmt_u64.c
+fmt_u64b.o:\
+	cc fmt_u64b.c fmt_spec.h uint64.h 
+	./cc fmt_u64b.c
 fmt_u64o.o:\
 	cc fmt_u64o.c fmt_spec.h uint64.h 
 	./cc fmt_u64o.c
@@ -359,6 +367,9 @@ fmt_u64x.o:\
 fmt_uchar.o:\
 	cc fmt_uchar.c fmt.h 
 	./cc fmt_uchar.c
+fmt_ucharb.o:\
+	cc fmt_ucharb.c fmt.h 
+	./cc fmt_ucharb.c
 fmt_ucharo.o:\
 	cc fmt_ucharo.c fmt.h 
 	./cc fmt_ucharo.c
@@ -368,6 +379,9 @@ fmt_ucharx.o:\
 fmt_uint.o:\
 	cc fmt_uint.c fmt.h 
 	./cc fmt_uint.c
+fmt_uintb.o:\
+	cc fmt_uintb.c fmt.h 
+	./cc fmt_uintb.c
 fmt_uinto.o:\
 	cc fmt_uinto.c fmt.h 
 	./cc fmt_uinto.c
@@ -386,6 +400,9 @@ fmt_ullongx.o:\
 fmt_ulong.o:\
 	cc fmt_ulong.c fmt.h 
 	./cc fmt_ulong.c
+fmt_ulongb.o:\
+	cc fmt_ulongb.c fmt.h 
+	./cc fmt_ulongb.c
 fmt_ulongo.o:\
 	cc fmt_ulongo.c fmt.h 
 	./cc fmt_ulongo.c
@@ -395,6 +412,9 @@ fmt_ulongx.o:\
 fmt_ushort.o:\
 	cc fmt_ushort.c fmt.h 
 	./cc fmt_ushort.c
+fmt_ushortb.o:\
+	cc fmt_ushortb.c fmt.h 
+	./cc fmt_ushortb.c
 fmt_ushorto.o:\
 	cc fmt_ushorto.c fmt.h 
 	./cc fmt_ushorto.c
@@ -907,14 +927,15 @@ clean: sysdeps_clean tests_clean
 	env.o env_get.o error.a error.o error_str.o fd.a fd_dup.o fd_move.o \
 	fd_reset.o float32.a float32_pack.o float32_upack.o float64.a \
 	float64_pack.o float64_upack.o fmt.a fmt_nstr.o fmt_spec.a fmt_str.o \
-	fmt_u32.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64o.o fmt_u64x.o \
-	fmt_uchar.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uinto.o \
-	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
-	fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushorto.o fmt_ushortx.o \
-	get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o \
-	ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o \
-	ht_init.o ht_replaceb.o ht_replaces.o 
-	rm -f iarray.a iarray_bytes.o iarray_cat.o iarray_chop.o \
+	fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64b.o \
+	fmt_u64o.o fmt_u64x.o fmt_uchar.o fmt_ucharb.o fmt_ucharo.o \
+	fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o fmt_uintx.o \
+	fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongb.o \
+	fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o fmt_ushorto.o \
+	fmt_ushortx.o get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o \
+	ht_bytes.o ht_deleteb.o ht_deletes.o ht_free.o 
+	rm -f ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_replaceb.o \
+	ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o iarray_chop.o \
 	iarray_copy.o iarray_free.o iarray_index.o iarray_init.o \
 	iarray_insert.o iarray_node.o iarray_remove.o iarray_size.o \
 	iarray_zero.o inst-check inst-check.o inst-copy inst-copy.o inst-dir \
@@ -925,9 +946,9 @@ clean: sysdeps_clean tests_clean
 	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
 	open_trunc.o open_wo.o scan.a scan_charset.o scan_double.o \
 	scan_f32.o scan_f64.o scan_float.o scan_fspec.a scan_ncharset.o \
-	scan_newline.o scan_space.o scan_spec.a scan_u32.o scan_u32o.o \
-	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o 
-	rm -f scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o \
+	scan_newline.o scan_space.o scan_spec.a 
+	rm -f scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o \
+	scan_u64x.o scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o \
 	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongo.o \
 	scan_ullongx.o scan_ulong.o scan_ulongo.o scan_ulongx.o \
 	scan_ushort.o scan_ushorto.o scan_ushortx.o seek.a seek_cur.o \
@@ -938,9 +959,10 @@ clean: sysdeps_clean tests_clean
 	sstring_cpys.o sstring_init.o stalloc.a stalloc.o str.a str_char.o \
 	str_chr.o str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o \
 	str_ends.o str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
-	uint16.a uint16_pack.o uint16_unpack.o uint32.a uint32_pack.o 
-	rm -f uint32_unpack.o uint64.a uint64_pack.o uint64_unpack.o 
+	str_tolower.o str_toupper.o syserr.a syserr_die.o 
+	rm -f syserr_init.o uint16.a uint16_pack.o uint16_unpack.o uint32.a \
+	uint32_pack.o uint32_unpack.o uint64.a uint64_pack.o uint64_unpack.o \
+	
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller

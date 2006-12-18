@@ -27,6 +27,7 @@ struct hashtable {
 
 void ht_init(struct hashtable *);
 void ht_free(struct hashtable *);
+void ht_free_ext(struct hashtable *, void (*cleanup)(void *));
 
 int ht_addb(struct hashtable *, const void *, unsigned long, const void *, unsigned long);
 int ht_adds(struct hashtable *, const void *, const void *);
