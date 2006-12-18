@@ -3,7 +3,7 @@
 
 void ht_free(struct hashtable *h)
 {
-  ht_free_ext(struct hashtable *h, 0);
+  ht_free_ext(h, 0);
 }
 
 void ht_free_ext(struct hashtable *h, void (*cleanup)(void *))

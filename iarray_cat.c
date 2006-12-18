@@ -8,7 +8,7 @@ int iarray_cat(struct iarray *ia, void *dat, unsigned long dlen)
   struct iarray_node *nt;
   struct iarray_node *lu;
  
-  if (ia->u + 1 IARRAY_OVERALLOC < ia->u) return 0; /* detect overflow */
+  if (ia->u + 1 + IARRAY_OVERALLOC < ia->u) return 0; /* detect overflow */
 
   nx = 1 + IARRAY_OVERALLOC;
   if (ia->u == ia->a) {
