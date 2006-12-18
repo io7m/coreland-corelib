@@ -1,12 +1,8 @@
 #include "alloc.h"
 #include "hashtable.h"
 
-void ht_free(struct hashtable *h)
-{
-  ht_free_ext(h, 0);
-}
-
-void ht_free_ext(struct hashtable *h, void (*cleanup)(void *))
+static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
+                         unsigned int node_free)
 {
   unsigned long ind;
   struct ht_table_head *th;
@@ -15,6 +11,7 @@ void ht_free_ext(struct hashtable *h, void (*cleanup)(void *))
 
   for (ind = 0; ind < HT_HASH_BUCKETS; ++ind) {
     th = &h->slots[ind];
+    if (!th->used && !node_free) continue;
     if (th->allocd) {
       tn = th->head;
       while (tn) {
@@ -25,12 +22,31 @@ void ht_free_ext(struct hashtable *h, void (*cleanup)(void *))
           dealloc(tn->key);
           dealloc(tn->data);
         }
-        dealloc(tn);
-        --th->allocd;
+        if (node_free) {
+          dealloc(tn);
+          --th->allocd;
+        }
         --th->used;
         tn = tn_next;
       }
-      th->head = 0;
+      if (node_free) th->head = 0;
     }
   }
+}
+
+void ht_free(struct hashtable *h)
+{
+  ht_free_core(h, 0, 1);
+}
+void ht_free_ext(struct hashtable *h, void (*cb)(void *))
+{
+  ht_free_core(h, cb, 1);
+}
+void ht_clear(struct hashtable *h)
+{
+  ht_free_core(h, 0, 0);
+}
+void ht_clear_ext(struct hashtable *h, void (*cb)(void *))
+{
+  ht_free_core(h, cb, 1);
 }

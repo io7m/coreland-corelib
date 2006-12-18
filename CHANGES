@@ -202,3 +202,4 @@
 20061218 code: ht_free_ext() added.
 20061218 code: fmt_u*b() functions added.
 20061218 code: fixed integer overflow in iarray.
+20061218 code: ht_clear() ht_clear_ext() added.
