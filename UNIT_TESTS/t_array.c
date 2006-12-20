@@ -90,7 +90,14 @@ int chop_test(struct array *arr)
   array_chop(arr, 10);
   u = array_size(arr);
   if (u != 10) {
-    printf("fail: chop_test: u == %lu\n", u);
+    printf("fail: chop_test: chop u == %lu\n", u);
+    return 0;
+  }
+
+  array_trunc(arr);
+  u = array_size(arr);
+  if (u != 0) {
+    printf("fail: chop_test: trunc u == %lu\n", u);
     return 0;
   }
   return 1;

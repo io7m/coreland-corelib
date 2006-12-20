@@ -16,7 +16,7 @@ void array_zero(struct array *);
 
 void *array_index(const struct array *, unsigned long);
 void array_chop(struct array *, unsigned long);
-void array_trunc(struct array *, unsigned long);
+void array_trunc(struct array *);
 int array_cat(struct array *, void *);
 int array_copy(struct array *, const struct array *);
 int array_resize(struct array *, unsigned long);
