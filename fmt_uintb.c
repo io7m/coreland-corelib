@@ -1,7 +1,7 @@
 #include "fmt.h"
 
-unsigned int fmt_uintb(char *s, unsigned int uib)
+unsigned int fmt_uintb(char *str, unsigned int uib)
 {
-  return fmt_ulongb(s, (unsigned long) uib);
+  return fmt_ulongb(str, (unsigned long) uib);
 }
 

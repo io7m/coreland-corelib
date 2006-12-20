@@ -1,18 +1,20 @@
 #include "fmt.h"
 
-unsigned int fmt_ulongb(char *s, unsigned long ul)
+unsigned int fmt_ulongb(char *str, unsigned long ul)
 {
+  unsigned long quo;
   unsigned int len;
-  unsigned long q;
-  len = 1; q = ul;
+
+  len = 1;
+  quo = ul;
 
   /* number of digits */
-  while (q > 1) { ++len; q >>= 1; }
+  while (quo > 1) { ++len; quo >>= 1; }
 
   /* digits -> ascii base2 */
-  if (s) {
-    s += len;
-    do { *--s = '0' + (ul & 1); ul >>= 1; } while(ul);
+  if (str) {
+    str += len;
+    do { *--str = '0' + (ul & 1); ul >>= 1; } while(ul);
   }
   return len;
 }

@@ -2,8 +2,8 @@
 #include "uint32.h"
 #include "uint64.h"
 
-unsigned int fmt_u32(char *s, uint32 ui)
+unsigned int fmt_u32(char *str, uint32 ui)
 {
-  return fmt_u64(s, (uint64) ui);
+  return fmt_u64(str, (uint64) ui);
 }
 

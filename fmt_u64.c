@@ -1,19 +1,21 @@
 #include "fmt_spec.h"
 #include "uint64.h"
 
-unsigned int fmt_u64(char *s, uint64 ul)
+unsigned int fmt_u64(char *str, uint64 ul)
 {
   uint64 len; 
-  uint64 q;
-  len = 1; q = ul;
+  uint64 quo;
+
+  len = 1;
+  quo = ul;
   
   /* no. digits */
-  while (q > 9) { ++len; q /= 10; }
+  while (quo > 9) { ++len; quo /= 10; }
   
   /* digit -> ascii (base10) */
-  if (s) {
-    s += len;
-    do { *--s = '0' + (ul % 10); ul /= 10; } while (ul);
+  if (str) {
+    str += len;
+    do { *--str = '0' + (ul % 10); ul /= 10; } while (ul);
   }
   return len;
 }
