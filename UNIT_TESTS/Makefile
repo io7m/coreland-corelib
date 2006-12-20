@@ -9,7 +9,7 @@ all:\
 	t_hashtable4 t_hashtable5 t_hashtable6 t_iarray1 t_iarray2 t_iarray3 \
 	t_iarray4 t_iarray5 t_iarray6 t_int t_open t_sarray1 t_scan t_scan2 \
 	t_scan3 t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline \
-	t_sig t_squeue1 t_sstring t_stalloc t_str t_uint 
+	t_sig t_squeue1 t_sstack1 t_sstring t_stalloc t_str t_uint 
 
 cc: ../cc conf-cctype conf-cc
 	rm -f cc
@@ -335,6 +335,12 @@ t_squeue1:\
 t_squeue1.o:\
 	cc t_squeue1.c ../squeue.h 
 	./cc t_squeue1.c
+t_sstack1:\
+	ld t_sstack1.ld t_sstack1.o ../sstack.a ../sarray.a 
+	./ld t_sstack1 t_sstack1.o ../sstack.a ../sarray.a 
+t_sstack1.o:\
+	cc t_sstack1.c ../sstack.h 
+	./cc t_sstack1.c
 t_sstring:\
 	ld t_sstring.ld t_sstring.o ../sstring.a 
 	./ld t_sstring t_sstring.o ../sstring.a 
@@ -376,8 +382,9 @@ clean: tests_clean
 	t_open.o t_sarray1 t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o \
 	t_scan3 t_scan3.o t_scan_float t_scan_float.o t_scan_fspec \
 	t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline \
-	t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o t_sstring \
-	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
+	t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 \
+	t_sstack1.o t_sstring t_sstring.o t_stalloc t_stalloc.o t_str \
+	t_str.o t_uint t_uint.o 
 
 tests: list_tests run_tests
 tests_clean:

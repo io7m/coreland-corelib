@@ -1,25 +1,23 @@
-#include "squeue.h"
+#include "sstack.h"
 
-int squeue_enq(struct squeue *sq, void *p)
+int sstack_push(struct sstack *st, void *dat)
 {
   register unsigned char *dp;
   register unsigned char *sp;
   unsigned int es;
 
-  if (sq->u == sq->a) return 0;
+  if (st->u == st->a) return 0;
+  
+  es = st->es;
+  dp = ((unsigned char *) st->x) + (st->u * es);
+  sp = dat;
 
-  sq->tpos = (sq->tpos + 1) % sq->a;
-  ++sq->u;
-
-  es = sq->es;
-  dp = ((unsigned char *) sq->x) + (sq->tpos * es);
-  sp = p;
- 
   for (;;) {
     if (!es) break; *dp++ = *sp++; --es;
     if (!es) break; *dp++ = *sp++; --es;
     if (!es) break; *dp++ = *sp++; --es;
     if (!es) break; *dp++ = *sp++; --es;
   }
+  ++st->u;
   return 1;
 }

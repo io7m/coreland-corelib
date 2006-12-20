@@ -9,7 +9,7 @@ int sarray_cat(struct sarray *sa, void *dat)
   if (sa->u == sa->a) return 0;
   
   es = sa->es;
-  dp = sa->x + (sa->u * es);
+  dp = ((unsigned char *) sa->x) + (sa->u * es);
   sp = dat;
 
   for (;;) {

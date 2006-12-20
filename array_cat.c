@@ -32,7 +32,7 @@ int array_cat(struct array *a, void *dat)
   if (au)
     if (tmpb1 / au != es) return 0;
 
-  bin_copy(dat, a->x + tmpb1, es);
+  bin_copy(dat, ((char *) a->x) + tmpb1, es);
   a->u++;
   return 1;
 }

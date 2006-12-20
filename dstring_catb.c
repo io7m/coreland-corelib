@@ -9,7 +9,6 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
   unsigned long tmplen;
   unsigned long tmpadd;
   char *ds;
-  char *s;
 
   da = d->a;
   dlen = d->len;

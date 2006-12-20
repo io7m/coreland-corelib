@@ -7,5 +7,5 @@ void *array_index(const struct array *a, unsigned long p)
   unsigned long ind = p * es;
 
   if (ind > (es * u)) return 0;
-  return a->x + ind;
+  return ((char *) a->x) + ind;
 }
