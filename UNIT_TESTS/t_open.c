@@ -22,7 +22,7 @@ int main()
   if (fd == -1) { perror("open_trunc"); return 1; }
   if (close(fd) == -1) perror("close");
   fd = open_excl("./abcxyz.tmp");
-  if (fd != -1) { printf("open_excl: opened existing file!\n"); return 1; }
+  if (fd != -1) { printf("fail: open_excl: opened existing file!\n"); return 1; }
 
   fd = open_rw("./abcxyz.tmp");
   if (fd == -1) { perror("open_rw"); return 1; }

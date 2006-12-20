@@ -39,19 +39,19 @@ int main()
           case 10:
             scan_u32(int_list[i].str, &ui);
             if (ui != (uint32) int_list[i].n) {
-              printf("scan_u32: [%u] ui == %lu\n", i, ui); return 1;
+              printf("fail: scan_u32: [%u] ui == %lu\n", i, ui); return 1;
             }
             break;
           case 16:
             scan_u32x(int_list[i].str, &ui);
             if (ui != (uint32) int_list[i].n) {
-              printf("scan_u32x: [%u] ui == %lx\n", i, ui); return 1;
+              printf("fail: scan_u32x: [%u] ui == %lx\n", i, ui); return 1;
             }
             break;
           case 8:
             scan_u32o(int_list[i].str, &ui);
             if (ui != (uint32) int_list[i].n) {
-              printf("scan_u32o: [%u] ui == %lo\n", i, ui); return 1;
+              printf("fail: scan_u32o: [%u] ui == %lo\n", i, ui); return 1;
             }
             break;
           default: break;
@@ -63,19 +63,19 @@ int main()
           case 10:
             scan_u64(int_list[i].str, &u64);
             if (u64 != (uint64) int_list[i].n) {
-              printf("scan_u64: [%u] u64 == %llu\n", i, u64); return 1;
+              printf("fail: scan_u64: [%u] u64 == %llu\n", i, u64); return 1;
             }
             break;
           case 16:
             scan_u64x(int_list[i].str, &u64);
             if (u64 != (uint64) int_list[i].n) {
-              printf("scan_u64x: [%u] u64 == %llx\n", i, u64); return 1;
+              printf("fail: scan_u64x: [%u] u64 == %llx\n", i, u64); return 1;
             }
             break;
           case 8:
             scan_u64o(int_list[i].str, &u64);
             if (u64 != (uint64) int_list[i].n) {
-              printf("scan_u64o: [%u] u64 == %llo\n", i, u64); return 1;
+              printf("fail: scan_u64o: [%u] u64 == %llo\n", i, u64); return 1;
             }
             break;
           default: break;

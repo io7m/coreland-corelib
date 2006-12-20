@@ -7,9 +7,9 @@ all:\
 	t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 t_fmt3 \
 	t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
 	t_hashtable4 t_hashtable5 t_hashtable6 t_iarray1 t_iarray2 t_iarray3 \
-	t_iarray4 t_iarray5 t_iarray6 t_int t_open t_scan t_scan2 t_scan3 \
-	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_sig \
-	t_sstring t_stalloc t_str t_uint 
+	t_iarray4 t_iarray5 t_iarray6 t_int t_open t_sarray1 t_scan t_scan2 \
+	t_scan3 t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline \
+	t_sig t_squeue1 t_sstring t_stalloc t_str t_uint 
 
 cc: ../cc conf-cctype conf-cc
 	rm -f cc
@@ -267,6 +267,12 @@ t_open:\
 t_open.o:\
 	cc t_open.c ../open.h 
 	./cc t_open.c
+t_sarray1:\
+	ld t_sarray1.ld t_sarray1.o ../sarray.a 
+	./ld t_sarray1 t_sarray1.o ../sarray.a 
+t_sarray1.o:\
+	cc t_sarray1.c ../sarray.h 
+	./cc t_sarray1.c
 t_scan:\
 	ld t_scan.ld t_scan.o ../scan.a 
 	./ld t_scan t_scan.o ../scan.a 
@@ -323,6 +329,12 @@ t_sig:\
 t_sig.o:\
 	cc t_sig.c ../sig.h 
 	./cc t_sig.c
+t_squeue1:\
+	ld t_squeue1.ld t_squeue1.o ../squeue.a 
+	./ld t_squeue1 t_squeue1.o ../squeue.a 
+t_squeue1.o:\
+	cc t_squeue1.c ../squeue.h 
+	./cc t_squeue1.c
 t_sstring:\
 	ld t_sstring.ld t_sstring.o ../sstring.a 
 	./ld t_sstring t_sstring.o ../sstring.a 
@@ -361,11 +373,11 @@ clean: tests_clean
 	t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 \
 	t_iarray5.o 
 	rm -f t_iarray6 t_iarray6.o t_iarray_util.o t_int t_int.o t_open \
-	t_open.o t_scan t_scan.o t_scan2 t_scan2.o t_scan3 t_scan3.o \
-	t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o t_scan_spec \
-	t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o t_sig t_sig.o \
-	t_sstring t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint \
-	t_uint.o 
+	t_open.o t_sarray1 t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o \
+	t_scan3 t_scan3.o t_scan_float t_scan_float.o t_scan_fspec \
+	t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline \
+	t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o t_sstring \
+	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
 
 tests: list_tests run_tests
 tests_clean:

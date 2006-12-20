@@ -17,26 +17,26 @@ int main()
   float32_packl(c32, f32);
   float32_unpackl(c32, &f32);
   if (f32 != 12.567f) {
-    printf("float32_unpackl: f32 == %f\n", f32); return 1;
+    printf("fail: float32_unpackl: f32 == %f\n", f32); return 1;
   }
   f32 = 16.123f;
   float32_packb(c32, f32);
   float32_unpackb(c32, &f32);
   if (f32 != 16.123f) {
-    printf("float32_unpackl: f32 == %f\n", f32); return 1;
+    printf("fail: float32_unpackl: f32 == %f\n", f32); return 1;
   }
 
   f64 = 12.567f;
   float64_packl(c64, f64);
   float64_unpackl(c64, &f64);
   if (f64 != 12.567f) {
-    printf("float64_unpackl: f64 == %f\n", f64); return 1;
+    printf("fail: float64_unpackl: f64 == %f\n", f64); return 1;
   }
   f64 = 16.123f;
   float64_packb(c64, f64);
   float64_unpackb(c64, &f64);
   if (f64 != 16.123f) {
-    printf("float64_unpackl: f64 == %f\n", f64); return 1;
+    printf("fail: float64_unpackl: f64 == %f\n", f64); return 1;
   }
 
   return 0;

@@ -53,14 +53,14 @@ int main()
         ff = 0;
         scan_float32(ssfloats[i].str, &ff);
         if (!approx_equal32(ff, ssfloats[i].ff, MAX_ERROR)) {
-          printf("scan_float32: [%u] ff == %f\n", i, ff); return 1;
+          printf("fail: scan_float32: [%u] ff == %f\n", i, ff); return 1;
         }
         break;
       case 64:
         fd = 0;
         scan_float64(ssfloats[i].str, &fd);
         if (!approx_equal64(fd, ssfloats[i].fd, MAX_ERROR)) {
-          printf("scan_float64: [%u] fd == %f\n", i, fd); return 1;
+          printf("fail: scan_float64: [%u] fd == %f\n", i, fd); return 1;
         }
         break;
       default: break;

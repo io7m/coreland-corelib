@@ -20,7 +20,7 @@ int main()
   *str = 0;
  
   if (!str_same(buf, exp)) {
-    printf("1 buf == %s\n", buf);
+    printf("fail: 1 buf == %s\n", buf);
     return 1;
   }
 

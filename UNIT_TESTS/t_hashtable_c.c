@@ -22,18 +22,18 @@ void addb(struct hashtable *h, const char *key, unsigned long klen,
       break;
     case 1:
       if (exp != 1) {
-        printf("ht_add: unexpectedly returned 1\n");
+        printf("fail: ht_add: unexpectedly returned 1\n");
         _exit(1);
       }
       break;
     case 0:
       if (exp != 0) {
-        printf("ht_add: unexpectedly returned 0\n");
+        printf("fail: ht_add: unexpectedly returned 0\n");
         _exit(1);
       }
       break;
     default:
-      printf("add: reached default case statement, should never happen\n");
+      printf("fail: add: reached default case statement, should never happen\n");
       _exit(1);
   }
 }
@@ -49,18 +49,18 @@ void delete_keyb(struct hashtable *h, const char *key, unsigned long len, int ex
       break;
     case 1:
       if (exp != 1) {
-        printf("ht_delete: unexpectedly returned 1\n");
+        printf("fail: ht_delete: unexpectedly returned 1\n");
         _exit(1);
       }
       break;
     case 0:
       if (exp != 0) {
-        printf("ht_delete: unexpectedly returned 0\n");
+        printf("fail: ht_delete: unexpectedly returned 0\n");
         _exit(1);
       }
       break;
     default:
-      printf("delete_key: reached default case statement, should never happen\n");
+      printf("fail: delete_key: reached default case statement, should never happen\n");
       _exit(1);
   }
 }
@@ -77,18 +77,18 @@ void getb(struct hashtable *h, const char *key, unsigned long klen,
       break;
     case 1:
       if (exp != 1) {
-        printf("ht_get: unexpectedly returned 1\n");
+        printf("fail: ht_get: unexpectedly returned 1\n");
         _exit(1);
       }
       break;
     case 0:
       if (exp != 0) {
-        printf("ht_get: unexpectedly returned 0\n");
+        printf("fail: ht_get: unexpectedly returned 0\n");
         _exit(1);
       }
       break;
     default:
-      printf("get: reached default case statement, should never happen\n");
+      printf("fail: get: reached default case statement, should never happen\n");
       _exit(1);
   }
 }
@@ -105,18 +105,18 @@ void replaceb(struct hashtable *h, const char *key, unsigned long klen,
       break;
     case 1:
       if (exp != 1) {
-        printf("ht_replace: unexpectedly returned 1\n");
+        printf("fail: ht_replace: unexpectedly returned 1\n");
         _exit(1);
       }
       break;
     case 0:
       if (exp != 0) {
-        printf("ht_replace: unexpectedly returned 0\n");
+        printf("fail: ht_replace: unexpectedly returned 0\n");
         _exit(1);
       }
       break;
     default:
-      printf("replace: reached default case statement, should never happen\n");
+      printf("fail: replace: reached default case statement, should never happen\n");
       _exit(1);
   }
 }

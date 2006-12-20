@@ -40,19 +40,19 @@ int main()
           case 10:
             scan_uint(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("scan_uint: [%u] ui == %lu\n", i, ui); return 1;
+              printf("fail: scan_uint: [%u] ui == %lu\n", i, ui); return 1;
             }
             break;
           case 16:
             scan_uintx(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("scan_uintx: [%u] ui == %lx\n", i, ui); return 1;
+              printf("fail: scan_uintx: [%u] ui == %lx\n", i, ui); return 1;
             }
             break;
           case 8:
             scan_uinto(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("scan_uinto: [%u] ui == %lo\n", i, ui); return 1;
+              printf("fail: scan_uinto: [%u] ui == %lo\n", i, ui); return 1;
             }
             break;
           default: break;
@@ -64,19 +64,19 @@ int main()
           case 10:
             scan_ulonglong(int_list[i].str, &ull);
             if (ull != (unsigned long long) int_list[i].n) {
-              printf("scan_ulonglong: [%u] ull == %llu\n", i, ull); return 1;
+              printf("fail: scan_ulonglong: [%u] ull == %llu\n", i, ull); return 1;
             }
             break;
           case 16:
             scan_ulonglongx(int_list[i].str, &ull);
             if (ull != (unsigned long long) int_list[i].n) {
-              printf("scan_ulonglongx: [%u] ull == %llx\n", i, ull); return 1;
+              printf("fail: scan_ulonglongx: [%u] ull == %llx\n", i, ull); return 1;
             }
             break;
           case 8:
             scan_ulonglongo(int_list[i].str, &ull);
             if (ull != (unsigned long long) int_list[i].n) {
-              printf("scan_ulonglongo: [%u] ull == %llo\n", i, ull); return 1;
+              printf("fail: scan_ulonglongo: [%u] ull == %llo\n", i, ull); return 1;
             }
             break;
           default: break;

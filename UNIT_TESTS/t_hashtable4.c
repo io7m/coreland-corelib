@@ -28,7 +28,7 @@ void replace1(struct hashtable *h)
   get(h, key, &dat, &len, 1);
 
   if (num_allocs != 3) {
-    printf("replace1: 1 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: replace1: 1 num_allocs == %lu\n", num_allocs); _exit(1);
   }
 
   dat = "123456";
@@ -36,10 +36,10 @@ void replace1(struct hashtable *h)
   get(h, key, &dat, &nlen, 1);
 
   if (num_allocs != 4) {
-    printf("replace1: 2 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: replace1: 2 num_allocs == %lu\n", num_allocs); _exit(1);
   }
   if (nlen == len) {
-    printf("replace1: 3 nlen == len\n"); _exit(1);
+    printf("fail: replace1: 3 nlen == len\n"); _exit(1);
   }
 }
 

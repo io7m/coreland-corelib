@@ -18,18 +18,18 @@ void check(int tnum, const char *tname, struct hashtable *h, const char *key,
            unsigned long used, struct ht_table_node *tnode)
 {
   if (h->slots[slot].allocd != allocd) {
-    printf("%d %s slots[%d].allocd %lu != %lu\n",
+    printf("fail: %d %s slots[%d].allocd %lu != %lu\n",
             tnum, tname, slot, h->slots[slot].allocd, allocd);
     _exit(1);
   }
   if (h->slots[slot].used != used) {
-    printf("%d %s slots[%d].used %lu != %lu\n",
+    printf("fail: %d %s slots[%d].used %lu != %lu\n",
             tnum, tname, slot, h->slots[slot].used, used);
     _exit(1);
   }
   if (key) {
     if (!bin_same(key, tnode->key, tnode->keylen)) {
-      printf("%d) %s node->key ", tnum, tname);
+      printf("fail: %d) %s node->key ", tnum, tname);
       printn(tnode->key, tnode->keylen);
       printf(" != %s\n", key);
       _exit(1);
@@ -37,7 +37,7 @@ void check(int tnum, const char *tname, struct hashtable *h, const char *key,
   }
   if (data) {
     if (!bin_same(data, tnode->data, tnode->keylen)) {
-      printf("%d) %s node->data ", tnum, tname);
+      printf("fail: %d) %s node->data ", tnum, tname);
       printn(tnode->data, tnode->datalen);
       printf(" != %s\n", data);
       _exit(1);
@@ -56,7 +56,7 @@ void add1(struct hashtable *h)
   check(1, "add1", h, ch1str[0], ch1str[0], slot, 1, 1, tn);
 
   if (num_allocs != 3) {
-    printf("1 add1 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: 1 add1 num_allocs == %lu\n", num_allocs); _exit(1);
   }
 
   /* should refuse duplicate */
@@ -70,7 +70,7 @@ void add1(struct hashtable *h)
   check(3, "add1", h, ch1str[0], ch1str[0], slot, 1, 1, tn);
 
   if (num_allocs != 5) {
-    printf("3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
   }
 
   /* should add new node */
@@ -79,7 +79,7 @@ void add1(struct hashtable *h)
   check(4, "add1", h, ch1str[1], ch1str[1], slot, 2, 2, tn);
 
   if (num_allocs != 8) {
-    printf("3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
   }
 
   /* should add new node */
@@ -88,7 +88,7 @@ void add1(struct hashtable *h)
   check(5, "add1", h, ch1str[2], ch1str[2], slot, 3, 3, tn);
 
   if (num_allocs != 11) {
-    printf("3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
+    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
   }
 
   /* delete middle node in chain */

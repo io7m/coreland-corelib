@@ -58,14 +58,14 @@ int main()
         f = 0;
         scan_float(mfloats[i].str, &f);
         if (!approx_equalf(f, mfloats[i].f, MAX_FERROR)) {
-          printf("scan_float: [%u] f == %f\n", i, f); return 1;
+          printf("fail: scan_float: [%u] f == %f\n", i, f); return 1;
         }
         break;
       case 2:
         d = 0;
         scan_double(mfloats[i].str, &d);
         if (!approx_equald(d, mfloats[i].d, MAX_DERROR)) {
-          printf("scan_double: [%u] d == %f\n", i, d); return 1;
+          printf("fail: scan_double: [%u] d == %f\n", i, d); return 1;
         }
         break;
       default: break;

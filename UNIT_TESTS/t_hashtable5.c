@@ -23,14 +23,14 @@ void except1(struct hashtable *h)
 
   add(h, ch1str[0], ch1str[0], -1);
   if (errno != error_overflow) {
-    printf("1 except1 errno == %d\n", errno); _exit(1);
+    printf("fail: 1 except1 errno == %d\n", errno); _exit(1);
   }
 
   ht_free(h);
   ht_init(h);
 
   if (h->slots[1].used != 0) {
-    printf("1 except1 slots[1].used == %lu\n", h->slots[1].used); _exit(1);
+    printf("fail: 1 except1 slots[1].used == %lu\n", h->slots[1].used); _exit(1);
   }
 }
 

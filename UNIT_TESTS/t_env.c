@@ -31,19 +31,20 @@ int test_basic()
       perror("env_put"); return 0;
     }
     if (!env_get(exp_tab[ind].exp_key, &s)) {
-      printf("env_get returned 0\n");
+      printf("fail: env_get returned 0\n");
       return 0;
     }
     if (!str_same(s, exp_tab[ind].exp_val)) {
-      printf("env_get expected %s got %s\n", exp_tab[ind].exp_val, s);
+      printf("fail: env_get expected %s got %s\n", exp_tab[ind].exp_val, s);
+      return 0;
     }
   }
   if (!env_unset(exp_tab[0].exp_key)) {
-    printf("env_unset no such key\n");
+    printf("fail: env_unset no such key\n");
     return 0;
   }
   if (env_get(exp_tab[0].exp_key, &s)) {
-    printf("env_get returned 1 for nonexistant key\n");
+    printf("fail: env_get returned 1 for nonexistant key\n");
     return 0;
   }
   if (!env_put(exp_tab[0].exp_key, exp_tab[0].exp_val)) {
@@ -61,7 +62,7 @@ int test_hammer()
     if (snprintf(cnum, 32, "%x", ind) == -1) { perror("snprintf"); return 0; }
     if (!env_put(cnum, cnum)) { perror("env_put"); return 0; } 
     if (!env_get(cnum, &ptr)) {
-      printf("could not retrieve variable %s\n", cnum);
+      printf("fail: could not retrieve variable %s\n", cnum);
       return 0;
     }
   }
@@ -88,11 +89,11 @@ int main()
 
   if (!test_basic()) return 1;
   len = check();
-  if (len != 1) { printf("check (1) == %u\n", len); return 1; }
+  if (len != 1) { printf("fail: check 1 == %u\n", len); return 1; }
 
   if (!test_hammer()) return 1;
   len = check();
-  if (len != 1025U) { printf("check (2) == %u\n", len); return 1; }
+  if (len != 1025U) { printf("fail: check 2 == %u\n", len); return 1; }
 
   return 0;
 }

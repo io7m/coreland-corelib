@@ -56,14 +56,14 @@ int main()
         ff = 0;
         scan_float(ssfloats[i].str, &ff);
         if (!approx_equalf(ff, ssfloats[i].ff, MAX_ERROR)) {
-          printf("scan_float: [%u] ff == %f\n", i, ff); return 1;
+          printf("fail: scan_float: [%u] ff == %f\n", i, ff); return 1;
         }
         break;
       case DOUBLE:
         fd = 0;
         scan_double(ssfloats[i].str, &fd);
         if (!approx_equald(fd, ssfloats[i].fd, MAX_ERROR)) {
-          printf("scan_double: [%u] fd == %f\n", i, fd); return 1;
+          printf("fail: scan_double: [%u] fd == %f\n", i, fd); return 1;
         }
         break;
       default: break;

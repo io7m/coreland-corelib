@@ -17,11 +17,11 @@ void get1(struct hashtable *h)
   for (ind = 0; ind < ch1str_len; ++ind) {
     get(h, ch1str[ind], &str, &len, 1);
     if (len != str_len(ch1str[ind])) {
-      printf("get1: len %lu != %lu\n", len, str_len(ch1str[ind]));
+      printf("fail: get1: len %lu != %lu\n", len, str_len(ch1str[ind]));
       _exit(1);
     }
     if (!bin_same(str, ch1str[ind], len)) {
-      printf("get1: str ");
+      printf("fail: get1: str ");
       printn(str, len);
       printf(" != %s\n", ch1str[ind]);
       _exit(1);
@@ -55,17 +55,17 @@ void get2(struct hashtable *h)
   for (ind = 0; ind < ch1str_len; ++ind) {
     getb(h, (char *) &ind, sizeof(ind), (char **) &tp, &len, 1);
     if (len != sizeof(struct test)) {
-      printf("get2: len %lu != %u\n", len, (unsigned int) sizeof(struct test));
+      printf("fail: get2: len %lu != %u\n", len, (unsigned int) sizeof(struct test));
       _exit(1);
     }
     if (tp->x != ind) {
-      printf("get2: tp->x %u != %u\n", tp->x, ind);
+      printf("fail: get2: tp->x %u != %u\n", tp->x, ind);
     }
     if (tp->y != ind + 1) {
-      printf("get2: tp->y %u != %u\n", tp->y, ind + 1);
+      printf("fail: get2: tp->y %u != %u\n", tp->y, ind + 1);
     }
     if (tp->z != ind + 2) {
-      printf("get2: tp->z %u != %u\n", tp->z, ind + 2);
+      printf("fail: get2: tp->z %u != %u\n", tp->z, ind + 2);
     }
   }
 

@@ -9,41 +9,41 @@ int main()
     syserr_die1sys(1, "fatal: dir_hash_init: ");
 
   if (!dir_hash_check(&dh, "file001"))
-    syserr_die1x(1, "file001 not in table");
+    syserr_die1x(1, "fail: file001 not in table");
 
   if (!dir_hash_check(&dh, "file001"))
-    syserr_die1x(1, "file001 not in table");
+    syserr_die1x(1, "fail: file001 not in table");
   if (!dir_hash_check(&dh, "file002"))
-    syserr_die1x(1, "file002 not in table");
+    syserr_die1x(1, "fail: file002 not in table");
   if (!dir_hash_check(&dh, "file003"))
-    syserr_die1x(1, "file003 not in table");
+    syserr_die1x(1, "fail: file003 not in table");
   if (!dir_hash_check(&dh, "file004"))
-    syserr_die1x(1, "file004 not in table");
+    syserr_die1x(1, "fail: file004 not in table");
   if (!dir_hash_check(&dh, "file005"))
-    syserr_die1x(1, "file005 not in table");
+    syserr_die1x(1, "fail: file005 not in table");
   if (!dir_hash_check(&dh, "file006"))
-    syserr_die1x(1, "file006 not in table");
+    syserr_die1x(1, "fail: file006 not in table");
   if (!dir_hash_check(&dh, "file007"))
-    syserr_die1x(1, "file007 not in table");
+    syserr_die1x(1, "fail: file007 not in table");
   if (!dir_hash_check(&dh, "file008"))
-    syserr_die1x(1, "file008 not in table");
+    syserr_die1x(1, "fail: file008 not in table");
 
   if (!dir_hash_check(&dh, "A"))
-    syserr_die1x(1, "A not in table");
+    syserr_die1x(1, "fail: A not in table");
   if (!dir_hash_check(&dh, "B"))
-    syserr_die1x(1, "B not in table");
+    syserr_die1x(1, "fail: B not in table");
   if (!dir_hash_check(&dh, "C"))
-    syserr_die1x(1, "C not in table");
+    syserr_die1x(1, "fail: C not in table");
   if (!dir_hash_check(&dh, "D"))
-    syserr_die1x(1, "D not in table");
+    syserr_die1x(1, "fail: D not in table");
   if (!dir_hash_check(&dh, "E"))
-    syserr_die1x(1, "E not in table");
+    syserr_die1x(1, "fail: E not in table");
   if (!dir_hash_check(&dh, "F"))
-    syserr_die1x(1, "F not in table");
+    syserr_die1x(1, "fail: F not in table");
   if (!dir_hash_check(&dh, "G"))
-    syserr_die1x(1, "G not in table");
+    syserr_die1x(1, "fail: G not in table");
   if (!dir_hash_check(&dh, "H"))
-    syserr_die1x(1, "H not in table");
+    syserr_die1x(1, "fail: H not in table");
 
   dir_hash_free(&dh);
   return 0;

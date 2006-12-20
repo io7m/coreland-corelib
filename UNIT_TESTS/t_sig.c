@@ -42,12 +42,12 @@ int test1()
   if (kill(pid, sig_pipe) == -1) { perror("kill"); return 0; }
   if (kill(pid, sig_term) == -1) { perror("kill"); return 0; }
 
-  if (sig_alarm_num != 1) { printf("%s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
-  if (sig_child_num != 1) { printf("%s == %d\n", "sig_child", sig_child_num); return 0; }
-  if (sig_cont_num != 1) { printf("%s == %d\n", "sig_cont", sig_cont_num); return 0; }
-  if (sig_hangup_num != 1) { printf("%s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
-  if (sig_pipe_num != 1) { printf("%s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
-  if (sig_term_num != 1) { printf("%s == %d\n", "sig_term", sig_term_num); return 0; }
+  if (sig_alarm_num != 1) { printf("fail: %s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
+  if (sig_child_num != 1) { printf("fail: %s == %d\n", "sig_child", sig_child_num); return 0; }
+  if (sig_cont_num != 1) { printf("fail: %s == %d\n", "sig_cont", sig_cont_num); return 0; }
+  if (sig_hangup_num != 1) { printf("fail: %s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
+  if (sig_pipe_num != 1) { printf("fail: %s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
+  if (sig_term_num != 1) { printf("fail: %s == %d\n", "sig_term", sig_term_num); return 0; }
 
   /* block lots of signals */
 
@@ -65,12 +65,12 @@ int test1()
   if (kill(pid, sig_pipe) == -1) { perror("kill"); return 0; }
   if (kill(pid, sig_term) == -1) { perror("kill"); return 0; }
 
-  if (sig_alarm_num != 1) { printf("%s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
-  if (sig_child_num != 1) { printf("%s == %d\n", "sig_child", sig_child_num); return 0; }
-  if (sig_cont_num != 1) { printf("%s == %d\n", "sig_cont", sig_cont_num); return 0; }
-  if (sig_hangup_num != 1) { printf("%s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
-  if (sig_pipe_num != 1) { printf("%s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
-  if (sig_term_num != 1) { printf("%s == %d\n", "sig_term", sig_term_num); return 0; }
+  if (sig_alarm_num != 1) { printf("fail: %s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
+  if (sig_child_num != 1) { printf("fail: %s == %d\n", "sig_child", sig_child_num); return 0; }
+  if (sig_cont_num != 1) { printf("fail: %s == %d\n", "sig_cont", sig_cont_num); return 0; }
+  if (sig_hangup_num != 1) { printf("fail: %s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
+  if (sig_pipe_num != 1) { printf("fail: %s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
+  if (sig_term_num != 1) { printf("fail: %s == %d\n", "sig_term", sig_term_num); return 0; }
 
   /* XXX: how to check sig_pause? */
 

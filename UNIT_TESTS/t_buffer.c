@@ -24,7 +24,7 @@ int main()
  
   if (write(pfds1[1], str, 8) == -1) { perror("write"); return 2; }
   if (read(pfds1[0], buf, 8) == -1)  { perror("read"); return 2; }
-  if (buf[0] != 'A') { printf("buf[0] == %c\n", buf[0]); return 2; }
+  if (buf[0] != 'A') { printf("fail: buf[0] == %c\n", buf[0]); return 1; }
 
   r = buffer_puts(&buffer_pw, str);
   if (r == -1) { perror("buffer_puts"); return 1; }
@@ -35,10 +35,10 @@ int main()
   r = buffer_get(&buffer_pr, buf2, 8);
   if (r == -1) { perror("buffer_get"); return 1; }
 
-  if (buf2[0] != 'A') { printf("buf2[0] == %c\n", buf2[0]); return 1; }
-  if (buf2[1] != 'B') { printf("buf2[1] == %c\n", buf2[1]); return 1; }
-  if (buf2[2] != 'C') { printf("buf2[2] == %c\n", buf2[2]); return 1; }
-  if (buf2[3] != 'D') { printf("buf2[3] == %c\n", buf2[3]); return 1; }
+  if (buf2[0] != 'A') { printf("fail: buf2[0] == %c\n", buf2[0]); return 1; }
+  if (buf2[1] != 'B') { printf("fail: buf2[1] == %c\n", buf2[1]); return 1; }
+  if (buf2[2] != 'C') { printf("fail: buf2[2] == %c\n", buf2[2]); return 1; }
+  if (buf2[3] != 'D') { printf("fail: buf2[3] == %c\n", buf2[3]); return 1; }
 
   buffer_init(&buffer_pr, (buffer_op) read, pfds2[0], prbuf, sizeof(prbuf));
   buffer_init(&buffer_pw, (buffer_op) write, pfds1[1], pwbuf, sizeof(pwbuf));

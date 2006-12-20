@@ -35,7 +35,7 @@ int main()
   for (ind = 0; ind < sizeof(tests) / sizeof(struct fmt_test); ++ind) {
     cnum[fmt_ulongb(cnum, tests[ind].num)] = 0;
     if (!str_same(cnum, tests[ind].str)) {
-      printf("[%u] %s != %s\n", ind, cnum, tests[ind].str);
+      printf("fail: [%u] %s != %s\n", ind, cnum, tests[ind].str);
       return 1;
     }
   }

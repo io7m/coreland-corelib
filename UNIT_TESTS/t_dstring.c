@@ -16,13 +16,13 @@ void die_sys(const char *s)
 }
 void die_wrongnum(const char *s, unsigned int wanted, unsigned int got)
 {
-  printf("%s %u %u\n", s, wanted, got);
+  printf("fail: %s %u %u\n", s, wanted, got);
   exit(1);
 }
 void die_wrongnumt(unsigned int t, const char *s, unsigned int wanted,
                    unsigned int got)
 {
-  printf("(%u) ", t);
+  printf("fail: (%u) ", t);
   die_wrongnum(s, wanted, got);
 }
 
@@ -117,8 +117,8 @@ void cat_test(struct dstring *ds)
   ds->len = (unsigned long) -8;
 
   if (dstring_cats(ds, "ABCDEFGH12345678")) {
-    printf("cat_test: did not prevent integer overflow\n");
-    printf("ds.a = %lu\nds.len = %lu\n", ds->a, ds->len);
+    printf("fail: cat_test: did not prevent integer overflow\n");
+    printf("fail: ds.a = %lu\nds.len = %lu\n", ds->a, ds->len);
     exit(1);
   }
 
