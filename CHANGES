@@ -206,3 +206,4 @@
 20061220 code: added squeue, sarray and sstack.
 20061220 code: added fail: tags to tests.
 20061120 code: added array_trunc as function, not macro.
+20061120 code: scan cleanup.

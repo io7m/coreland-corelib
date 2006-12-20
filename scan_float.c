@@ -1,53 +1,79 @@
 #include <math.h> /* severe problems on PPC if this is not included */
 #include "scan.h"
 
-unsigned int scan_float(const char *s, float *f)
+unsigned int scan_float(const char *str, float *f)
 {
-  const char *t;
-  char c;
-  unsigned int pc;
-  unsigned int div;
+  const char *ptr;
   float tf;
   float df;
   float xf; 
+  unsigned int pos;
+  unsigned int div;
+  char ch;
 
-  t = s;
-  pc = 0;
+  ptr = str;
   tf = 0;
   df = 0;
   div = 1;
+  pos = 0;
 
-  if (s[0] == '-') ++s;
-
-  for (;;) {
-    c = s[pc];
-    if (!c) goto END;
-    if (c == '.') break;
-    if ((c < '0') || (c > '9')) goto END;
-    c -= '0';
-    tf = (tf * 10) + c;
-    ++pc;
-  }
-
-  /* skip '.' */
-  ++pc;
+  if (str[0] == '-') ++str;
 
   for (;;) {
-    c = s[pc];
-    if (!c) break;
-    if ((c < '0') || (c > '9')) break;
-    c -= '0';
-    xf = (float) c / pow(10, div);
-    df += xf;
-    ++pc;
-    ++div;
+    ch = str[pos];
+    switch (ch) {
+      case 0:
+        goto END;
+        break;
+      case '.':
+        goto DECIMAL_POINT;
+        break;
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        ch -= '0'; tf = (tf * 10) + ch; ++pos;
+        break;
+      default:
+        goto END;
+    }
   }
+
+  DECIMAL_POINT:
+  ++pos;
+
+  for (;;) {
+    ch = str[pos];
+    switch (ch) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        ch -= '0'; xf = (float) ch / pow(10, div); df += xf;
+        ++pos;
+        ++div;
+        break;
+      default:
+        goto END;
+    }
+  }
+
+  END:
 
   tf = df + tf;
-
-END:
-  if (t[0] == '-') tf = -tf;
+  if (ptr[0] == '-') tf = -tf;
   *f = tf;
-
-  return pc;
+  return pos;
 }

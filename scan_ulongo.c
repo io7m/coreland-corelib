@@ -2,21 +2,33 @@
 
 unsigned int scan_ulongo(const char *str, unsigned long *ul)
 {
-  const char *ptr;
-  unsigned long num;
-  char ch;
+  register unsigned long res;
+  register unsigned int pos;
+  register char ch;
 
-  ptr = str;
-  num = 0;
+  pos = 0;
+  res = 0;
+
   for (;;) {
-    ch = *ptr;
-    if (!ch) break;
-    if (ch >= '0' && ch < '8') {
-      ch -= '0';
-      num = (num * 8) + ch; ++ptr;
-    } else break;
+    ch = str[pos];
+    switch (ch) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+        ch -= '0'; res = (res * 8) + ch; ++pos;
+        break;
+      default:
+        goto END;
+        break;
+    }
   }
-  *ul = num;
-  return ptr - str;
-}
 
+  END:
+  if (ul) *ul = res;
+  return pos;
+}
