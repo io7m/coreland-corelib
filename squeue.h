@@ -17,7 +17,7 @@ int squeue_peek(struct squeue *, void **);
 
 unsigned long squeue_size(const struct squeue *);
 unsigned long squeue_bytes(const struct squeue *);
-void *squeue_data(const struct squeue *);
+const void *squeue_data(const struct squeue *);
 
 #define squeue_SIZE(q) ((q)->u)
 #define squeue_BYTES(q) ((q)->u * ((q)->es))

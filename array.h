@@ -23,7 +23,7 @@ int array_resize(struct array *, unsigned long);
 
 unsigned long array_size(const struct array *);
 unsigned long array_bytes(const struct array *);
-void *array_data(const struct array *);
+const void *array_data(const struct array *);
 
 #define array_TRUNC(a) array_chop((a),0)
 #define array_SIZE(a) ((a)->u)

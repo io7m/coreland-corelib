@@ -16,7 +16,7 @@ void sstack_free(struct sstack *);
 
 unsigned long sstack_size(const struct sstack *);
 unsigned long sstack_bytes(const struct sstack *);
-void *sstack_data(const struct sstack *);
+const void *sstack_data(const struct sstack *);
 
 #define sstack_SIZE(s) ((s)->u)
 #define sstack_BYTES(s) ((s)->u * (s)->es)

@@ -1,6 +1,6 @@
 #include "sarray.h"
 
-void *sarray_data(const struct sarray *sa)
+const void *sarray_data(const struct sarray *sa)
 {
   return sa->x;
 }

@@ -1,22 +1,22 @@
 #include "scan.h"
 
-unsigned int scan_ulongo(const char *s, unsigned long *ul)
+unsigned int scan_ulongo(const char *str, unsigned long *ul)
 {
-  const char *t;
-  unsigned long n;
-  char c;
+  const char *ptr;
+  unsigned long num;
+  char ch;
 
-  t = s;
-  n = 0;
+  ptr = str;
+  num = 0;
   for (;;) {
-    c = *t;
-    if (!c) break;
-    if (c >= '0' && c < '8') {
-      c -= '0';
-      n = (n * 8) + c; ++t;
+    ch = *ptr;
+    if (!ch) break;
+    if (ch >= '0' && ch < '8') {
+      ch -= '0';
+      num = (num * 8) + ch; ++ptr;
     } else break;
   }
-  *ul = n;
-  return t - s;
+  *ul = num;
+  return ptr - str;
 }
 

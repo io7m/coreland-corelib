@@ -203,5 +203,6 @@
 20061218 code: fmt_u*b() functions added.
 20061218 code: fixed integer overflow in iarray.
 20061218 code: ht_clear() ht_clear_ext() added.
-20061220 code: added squeue and sarray
+20061220 code: added squeue, sarray and sstack.
 20061220 code: added fail: tags to tests.
+20061120 code: added array_trunc as function, not macro.

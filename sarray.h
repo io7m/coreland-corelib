@@ -16,7 +16,7 @@ int sarray_cat(struct sarray *, void *);
 
 unsigned long sarray_size(const struct sarray *);
 unsigned long sarray_bytes(const struct sarray *);
-void *sarray_data(const struct sarray *);
+const void *sarray_data(const struct sarray *);
 
 #define sarray_TRUNC(s) (sarray_chop((s),0))
 #define sarray_SIZE(s) ((s)->u)
