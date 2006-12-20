@@ -3,8 +3,8 @@
 
 unsigned int fmt_u64o(char *str, uint64 ul)
 {
-  uint64 len; 
   uint64 quo;
+  unsigned int len; 
 
   len = 1;
   quo = ul;

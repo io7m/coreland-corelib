@@ -3,8 +3,8 @@
 
 unsigned int fmt_u64x(char *str, uint64 ul)
 {
-  uint64 len; 
   uint64 quo;
+  unsigned int len; 
   unsigned char ch;
 
   len = 1;
