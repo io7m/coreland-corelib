@@ -1,22 +1,34 @@
 #include "scan.h"
 
-unsigned int scan_ulonglongo(const char *s, unsigned long long *ul)
+unsigned int scan_ulonglongo(const char *str, unsigned long long *ull)
 {
-  const char *t;
-  unsigned long long n;
-  char c;
+  register unsigned long long res;
+  register unsigned int pos;
+  register char ch;
 
-  t = s;
-  n = 0;
+  pos = 0;
+  res = 0;
+
   for (;;) {
-    c = *t;
-    if (!c) break;
-    if (c >= '0' && c < '8') {
-      c -= '0';
-      n = (n * 8) + c; ++t;
-    } else break;
+    ch = str[pos];
+    switch (ch) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+        ch -= '0'; res = (res * 8) + ch; ++pos;
+        break;
+      default:
+        goto END;
+        break;
+    }
   }
-  *ul = n;
-  return t - s;
-}
 
+  END:
+  if (ull) *ull = res;
+  return pos;
+}

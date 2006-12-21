@@ -1,6 +1,6 @@
 #include "scan.h"
 
-unsigned long scan_whitespace(const char *s)
+unsigned long scan_whitespace(const char *str)
 {
-  return scan_charset(s, " \t");
+  return scan_charset(str, " \t");
 }

@@ -1,6 +1,6 @@
 #include "fmt.h"
 
-unsigned int fmt_ucharb(char *s, unsigned char uib)
+unsigned int fmt_ucharb(char *str, unsigned char uib)
 {
-  return fmt_ulongb(s, (unsigned long) uib);
+  return fmt_ulongb(str, (unsigned long) uib);
 }

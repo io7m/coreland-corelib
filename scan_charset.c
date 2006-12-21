@@ -1,6 +1,6 @@
 #include "scan.h"
 
-unsigned long scan_charset(const char *s, const char *chars)
+unsigned long scan_charset(const char *str, const char *chars)
 {
   unsigned long len;
   const char *cmp;
@@ -8,7 +8,7 @@ unsigned long scan_charset(const char *s, const char *chars)
 
   len = 0;
   for (;;) {
-    ch = s[len];
+    ch = str[len];
     if (!ch) break;
     for (cmp = chars;;) {
       if (!*cmp) return len; if (*cmp == ch) { ++len; break; } ++cmp;

@@ -1,13 +1,13 @@
 #include "fmt.h"
 
-unsigned long fmt_str(char *s, const char *t)
+unsigned long fmt_str(char *str, const char *t)
 {
   unsigned long len;
-  char c;
+  char ch;
 
   len = 0;
-  if (s)
-    while ((c = t[len])) s[len++] = c;
+  if (str)
+    while ((ch = t[len])) str[len++] = ch;
   else
     while (t[len]) len++;
 

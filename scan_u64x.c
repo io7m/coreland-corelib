@@ -3,29 +3,53 @@
 
 unsigned int scan_u64x(const char *s, uint64 *ul)
 {
-  uint64 p;
-  uint64 r;
-  char c;
+  register uint64 res;
+  register unsigned int pos;
+  register char ch;
 
-  p = 0;
-  r = 0;
+  pos = 0;
+  res = 0;
 
   for (;;) {
-    c = s[p];
-    if (!c) break;
-    if (c > 'f') break;
-    if (c < '0') break;
-    if ((c >= ':') && (c <= '@')) break;
-    if ((c >= '[') && (c <= '`')) break;  
-   
-    if ((c >= '0') && (c <= '9')) c -= '0';
-    if ((c >= 'A') && (c <= 'F')) c = c - 'A' + 10;
-    if ((c >= 'a') && (c <= 'f')) c = c - 'a' + 10;
-
-    r = (r << 4) + (unsigned char) c;
-    ++p;
+    ch = s[pos];
+    switch (ch) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        ch -= '0';
+        break;
+      case 'a':
+      case 'b':
+      case 'c':
+      case 'd':
+      case 'e':
+      case 'f':
+        ch = ch - 'a' + 10;
+        break;
+      case 'A':
+      case 'B':
+      case 'C':
+      case 'D':
+      case 'E':
+      case 'F':
+        ch = ch - 'A' + 10;
+        break;
+      default:
+        goto END; 
+    }
+    res = (res << 4) + (unsigned char) ch;
+    ++pos;
   }
-  if (ul) *ul = (uint64) r;
-  return p;
+
+  END:
+  if (ul) *ul = res;
+  return pos;
 }
 
