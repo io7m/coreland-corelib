@@ -1,80 +1,111 @@
-#include "buffer.h"
+#include <stdio.h>
 #include "ctxt.h"
-#include "get_opt.h"
-#include "str.h"
-#include "syserr.h"
 
-const char progname[] = "corelib-config";
+const char progname[] = "corelib-conf";
+
+int str_diff(register const char *, register const char *);
+long str_rchr(register const char *, register int);
+
+#define FLAG_INCDIR  0x0001
+#define FLAG_DLIBDIR 0x0002
+#define FLAG_SLIBDIR 0x0004
+#define FLAG_NEWLINE 0x0008
+#define FLAG_VERSION 0x0010
+#define FLAG_COMPILE 0x0020
+#define FLAG_HELP    0x0040
+
+struct flag { const char *flag; unsigned int val; const char *desc; };
+static const struct flag flags[] = {
+  { "incdir",  FLAG_INCDIR, "print include directory" },
+  { "dlibdir", FLAG_DLIBDIR, "print dynamic library directory" },
+  { "slibdir", FLAG_SLIBDIR, "print static library directory" },
+  { "compile", FLAG_COMPILE, "modify output for use as compiler flags" },
+  { "version", FLAG_VERSION, "print library version" },
+  { "help",    FLAG_HELP, "this message" },
+  { "newline", FLAG_NEWLINE, "print trailing newline" },
+};
 
 void usage()
 {
-  syserr_warn2x(progname, ": usage: [-ILchnsV]");
+  printf("%s: [help] ops ...\n", progname);
 }
 void help()
 {
-  syserr_warn1x(
-"  -I: print C include location\n"
-"  -L: print library location\n"
-"  -V: print library version\n"
-"  -c: print output as compiler flags, if applicable\n"
-"  -s: print output for compiling against static libraries\n"
-"  -h: this message\n"
-"  -n: print trailing newline");
+  unsigned int ind;
+  usage();
+  printf("possible operators:\n");
+  for (ind = 0; ind < sizeof(flags) / sizeof(struct flag); ++ind)
+    printf("%s - %s\n", flags[ind].flag, flags[ind].desc);
 }
-
-#define FLAG_INCDIR  0x0001
-#define FLAG_LIBDIR  0x0002
-#define FLAG_NEWLINE 0x0004
-#define FLAG_VER     0x0008
-#define FLAG_COMP    0x0010
-#define FLAG_STATIC  0x0020
 
 int main(int argc, char *argv[])
 {
   unsigned int flag;
-  int ch;
+  unsigned int ind;
+  unsigned int jnd;
 
-  if (argc < 2) { usage(); return 111; }
+  --argc;
+  ++argv;
+
+  if (!argc) { usage(); return 111; }
 
   flag = 0;
-  while ((ch = get_opt(argc, argv, "ILVchns")) != opteof)
-    switch (ch) {
-      case 'I': flag |= FLAG_INCDIR; break;
-      case 'L': flag |= FLAG_LIBDIR; break;
-      case 'c': flag |= FLAG_COMP; break;
-      case 'h': usage(); help(); return 0; break;
-      case 'n': flag |= FLAG_NEWLINE; break;
-      case 's': flag |= FLAG_STATIC; break;
-      case 'V': flag |= FLAG_VER; break;
-       default: usage(); return 111; break;
+  for (ind = 0; ind < argc; ++ind) {
+    for (jnd = 0; jnd < sizeof(flags) / sizeof(struct flag); ++jnd) {
+      if (str_diff(argv[ind], flags[jnd].flag) == 0) {
+        flag |= flags[jnd].val;
+        break;
+      }
     }
-
-  if (flag & FLAG_VER) {
-    buffer_puts(buffer1, ctxt_version);
-    buffer_puts(buffer1, " ");
   }
+  if (flag & FLAG_HELP) { help(); return 0; }
+  if (flag & FLAG_VERSION) printf("%s ", ctxt_version);
   if (flag & FLAG_INCDIR) {
-    if (flag & FLAG_COMP) {
-      buffer_puts(buffer1, "-I");
-      buffer_put(buffer1, ctxt_incdir, str_rchr(ctxt_incdir, '/'));
-      buffer_puts(buffer1, " ");
+    if (flag & FLAG_COMPILE) {
+      ctxt_incdir[str_rchr(ctxt_incdir, '/')] = 0;
+      printf("-I%s ", ctxt_incdir);
     } else {
-      buffer_puts(buffer1, ctxt_incdir);
+      printf("%s ", ctxt_incdir);
     }
   }
-  if (flag & FLAG_LIBDIR) {
-    if (flag & FLAG_COMP) buffer_puts(buffer1, "-L");
-    if (flag & FLAG_STATIC)
-      buffer_puts(buffer1, ctxt_slibdir);
-    else
-      buffer_puts(buffer1, ctxt_dlibdir);
-    buffer_puts(buffer1, " ");
+  if (flag & FLAG_DLIBDIR) {
+    if (flag & FLAG_COMPILE) printf("-L");
+    printf("%s ", ctxt_dlibdir);
   }
-  if (flag & FLAG_NEWLINE) {
-    buffer_puts(buffer1, "\n");
+  if (flag & FLAG_SLIBDIR) {
+    if (flag & FLAG_COMPILE) printf("-L");
+    printf("%s ", ctxt_slibdir);
   }
-  if (buffer_flush(buffer1) == -1)
-    syserr_die2sys(112, progname, ": fatal: write: ");
-
+  if (flag & FLAG_NEWLINE) printf("\n");
   return 0;
+}
+
+/* portability functions */
+int str_diff(register const char *s, register const char *t)
+{
+  register char u;
+  for (;;) {
+    u = *s; if (u != *t) break; if (!u) break; ++s; ++t;
+    u = *s; if (u != *t) break; if (!u) break; ++s; ++t;
+    u = *s; if (u != *t) break; if (!u) break; ++s; ++t;
+    u = *s; if (u != *t) break; if (!u) break; ++s; ++t;
+  }
+  return ((int)(unsigned int)(unsigned char) u) - 
+         ((int)(unsigned int)(unsigned char) *t);
+}
+long str_rchr(register const char *s, register int c)
+{
+  register const char *t;
+  register const char *u;
+  register char cc;
+  int f = 0;
+  for (t = s, cc = c, u = 0;;) {
+    if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
+    if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
+    if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
+    if (!*t) break; if (*t == cc) { u = t; f = 1; } ++t;
+  }
+  if (f == 0) return -1;
+  if (!u) u = t;
+  return u - s;
 }
