@@ -1,8 +1,8 @@
 default: sysdeps
 clean: sysdeps_clean
 
-sysdeps:  sd_byteorder sd_direntry sd_fd sd_float32 sd_float64 sd_int16 sd_int32 sd_int64 sd_signal sd_uint16 sd_uint32 sd_uint64 sd_sysinfo
-sysdeps_clean:  sd_byteorder_clean sd_direntry_clean sd_fd_clean sd_float32_clean sd_float64_clean sd_int16_clean sd_int32_clean sd_int64_clean sd_signal_clean sd_uint16_clean sd_uint32_clean sd_uint64_clean sd_sysinfo_clean
+sysdeps:  sd_byteorder sd_direntry sd_fd sd_float32 sd_float64 sd_int16 sd_int32 sd_int64 sd_signal sd_uint16 sd_uint32 sd_uint64 sd_sysinfo sd_fcntl
+sysdeps_clean:  sd_byteorder_clean sd_direntry_clean sd_fd_clean sd_float32_clean sd_float64_clean sd_int16_clean sd_int32_clean sd_int64_clean sd_signal_clean sd_uint16_clean sd_uint32_clean sd_uint64_clean sd_sysinfo_clean sd_fcntl_clean
 
 sd_byteorder:
 	@(cd modules/byteorder && ./run)
@@ -68,6 +68,11 @@ sd_sysinfo:
 	@(cd modules/sysinfo && ./run)
 sd_sysinfo_clean:
 	@(cd modules/sysinfo && ./clean)
+
+sd_fcntl:
+	@(cd modules/fcntl && ./run)
+sd_fcntl_clean:
+	@(cd modules/fcntl && ./clean)
 
 regen:
 	./gen-makefile > Makefile.tmp
