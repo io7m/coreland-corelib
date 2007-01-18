@@ -13,7 +13,7 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
   char *tmpkey;
   char *tmpdat;
 
-  pos = ht_hash(key, klen) % HT_HASH_BUCKETS;
+  pos = ht_hash(key, klen) & (HT_HASH_BUCKETS - 1);
   th = &(h->slots[pos]);
   np = th->head;
   tmpkey = 0;

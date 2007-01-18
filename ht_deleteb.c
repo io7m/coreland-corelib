@@ -10,7 +10,7 @@ int ht_deleteb(struct hashtable *h, const void *k, unsigned long len)
   const char *key;
 
   key = (const char *) k;
-  pos = ht_hash(key, len) % HT_HASH_BUCKETS;
+  pos = ht_hash(key, len) & (HT_HASH_BUCKETS - 1);
   th = &(h->slots[pos]);
   np = th->head;
 

@@ -39,7 +39,7 @@ int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
 
   key = (const char *) k;
   dat = (const char *) x;
-  pos = ht_hash(key, klen) % HT_HASH_BUCKETS;
+  pos = ht_hash(key, klen) & (HT_HASH_BUCKETS - 1);
   th = &(h->slots[pos]);
 
   /* check that more can be added */
