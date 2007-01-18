@@ -208,3 +208,5 @@
 20061120 code: added array_trunc as function, not macro.
 20061120 code: scan cleanup.
 20061120 code: fmt cleanup.
+20070118 code: sysdeps update.
+20070118 version: corelib 0.53
