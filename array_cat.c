@@ -6,9 +6,9 @@ int array_cat(struct array *a, void *dat)
 {
   unsigned long au;
   unsigned long aa;
-  unsigned long tmpa;
-  unsigned long tmpb1;
-  unsigned long tmpb2;
+  unsigned long na;
+  unsigned long b1;
+  unsigned long b2;
   unsigned int es;
 
   au = a->u;
@@ -18,21 +18,21 @@ int array_cat(struct array *a, void *dat)
   if ((au + 1) < au) return 0;
 
   if ((au + 1) > aa) {
-    tmpa = aa + 1 + ARRAY_OVERALLOC;
-    if (tmpa < aa) return 0;
-    tmpb1 = aa * es;
-    if (tmpb1 / aa != es) return 0;
-    tmpb2 = tmpa * es;
-    if (tmpb2 / tmpa != es) return 0;
-    if (!alloc_re((void **) &a->x, tmpb1, tmpb2)) return 0;
-    a->a = tmpa;
+    na = aa + 1 + ARRAY_OVERALLOC;
+    if (na < aa) return 0;
+    b1 = aa * es;
+    if (b1 / aa != es) return 0;
+    b2 = na * es;
+    if (b2 / na != es) return 0;
+    if (!alloc_re((void **) &a->x, b1, b2)) return 0;
+    a->a = na;
   }
 
-  tmpb1 = au * es;
+  b1 = au * es;
   if (au)
-    if (tmpb1 / au != es) return 0;
+    if (b1 / au != es) return 0;
 
-  bin_copy(dat, ((char *) a->x) + tmpb1, es);
-  a->u++;
+  bin_copy(dat, ((char *) a->x) + b1, es);
+  ++a->u;
   return 1;
 }
