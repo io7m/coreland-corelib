@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "../squeue.h"
 
 #define QUEUE_SIZE 8
@@ -18,7 +19,7 @@ int main()
 {
   struct object obj;
   struct object *obp;
-  void *vp;
+  const void *vp;
   unsigned long num;
   unsigned long cmp;
 

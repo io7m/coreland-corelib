@@ -74,10 +74,10 @@ int copy_test(struct array *arr)
     return 0; 
   }
   if (arr->u != brr.u) {
-    printf("fail: copy_test: u %lu != %lu\n", arr->u, brr.es); return 0;
+    printf("fail: copy_test: u %lu != %u\n", arr->u, brr.es); return 0;
   }
   if (arr->es != brr.es) {
-    printf("fail: copy_test: es %lu != %lu\n", arr->es, brr.es); return 0;
+    printf("fail: copy_test: es %u != %u\n", arr->es, brr.es); return 0;
   }
 
   array_free(&brr);
@@ -168,7 +168,7 @@ int overflow_test(struct array *arr)
   ch = 'z';
   if (array_cat(arr, &ch)) {
     printf("fail: overflow_test: array_cat did not prevent overflow\n");
-    printf("fail: arr.a: %llu\narr.u: %llu\n", arr->a, arr->u);
+    printf("fail: arr.a: %lu\narr.u: %lu\n", arr->a, arr->u);
     return 0;
   }
   return 1;

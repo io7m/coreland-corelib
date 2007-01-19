@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "../sarray.h"
 
 #define ARRAY_SIZE 8
@@ -13,7 +14,7 @@ int main()
 {
   struct object obj;
   struct object *obp;
-  void *vp;
+  const void *vp;
   unsigned long num;
   unsigned long cmp;
 

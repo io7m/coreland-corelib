@@ -51,8 +51,6 @@ void initfree_test(struct dstring *ds)
 
 void cat_test(struct dstring *ds)
 {
-  char *tmp;
-
   /* 223 + 32 == 255 */
   if (!dstring_init(ds, 223)) die_sys("dstring_init");
   T_COMPARE(0, ds->len, CATTEST" len", 1);

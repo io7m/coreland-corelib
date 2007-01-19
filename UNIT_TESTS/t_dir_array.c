@@ -21,7 +21,7 @@ int main()
     if (!dir_array_next(&da, &fname)) break;
     if (!fname) { printf("fail: fname == 0\n"); return 1; }
   }
-  if (da.n != 12) { printf("fail: da.n == %u expected %u\n", da.n, 12); return 1; }
+  if (da.n != 12) { printf("fail: da.n == %lu expected %u\n", da.n, 12); return 1; }
   if (da.a[0][0] != '.') { printf("fail: [%u] == %s\n", 0, da.a[0]); return 1; }
   if (da.a[1][0] != '.') { printf("fail: [%u] == %s\n", 1, da.a[1]); return 1; }
   if (da.a[2][0] != '1') { printf("fail: [%u] == %s\n", 2, da.a[2]); return 1; }
@@ -43,7 +43,7 @@ int main()
     if (!dir_array_next(&da, &fname)) break;
     if (!fname) { printf("fail: fname == 0\n"); return 1; }
   }
-  if (da.n != 12) { printf("fail: da.n == %u expected %u\n", da.n, 12); return 1; }
+  if (da.n != 12) { printf("fail: da.n == %lu expected %u\n", da.n, 12); return 1; }
   if (da.a[0][0] != '9') { printf("fail: [%u] == %s\n", 0, da.a[0]); return 1; }
   if (da.a[1][0] != '8') { printf("fail: [%u] == %s\n", 1, da.a[1]); return 1; }
   if (da.a[2][0] != '7') { printf("fail: [%u] == %s\n", 2, da.a[2]); return 1; }

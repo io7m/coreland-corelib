@@ -32,11 +32,11 @@ int main()
       default: break;
     }
     if (toolong) {
-      printf("skipped line %u, line too long\n", sg.line_nr);
+      printf("skipped line %lu, line too long\n", sg.line_nr);
       toolong = 0;
       continue;
     } 
-    printf("[%u](%u): %s\n", sg.line_nr, sg.len, sg.s);
+    printf("[%lu](%lu): %s\n", sg.line_nr, sg.len, sg.s);
   }
 
   END:

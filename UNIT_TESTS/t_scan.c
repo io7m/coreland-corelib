@@ -40,19 +40,19 @@ int main()
           case 10:
             scan_uint(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("fail: scan_uint: [%u] ui == %lu\n", i, ui); return 1;
+              printf("fail: scan_uint: [%u] ui == %u\n", i, ui); return 1;
             }
             break;
           case 16:
             scan_uintx(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("fail: scan_uintx: [%u] ui == %lx\n", i, ui); return 1;
+              printf("fail: scan_uintx: [%u] ui == %x\n", i, ui); return 1;
             }
             break;
           case 8:
             scan_uinto(int_list[i].str, &ui);
             if (ui != (unsigned int) int_list[i].n) {
-              printf("fail: scan_uinto: [%u] ui == %lo\n", i, ui); return 1;
+              printf("fail: scan_uinto: [%u] ui == %o\n", i, ui); return 1;
             }
             break;
           default: break;

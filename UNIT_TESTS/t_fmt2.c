@@ -7,7 +7,6 @@ static const char *exp = "100 multiplied by 256 is 25600.";
 
 int main()
 {
-  unsigned int num;
   char *str;
 
   str = buf;
