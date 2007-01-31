@@ -212,3 +212,4 @@
 20070118 version: corelib 0.53
 20070118 code: ht_() AND instead of modulo (HT_HASH_BUCKETS must be
                a power of two, this is not a problem).
+20070119 code: test cleanups.
