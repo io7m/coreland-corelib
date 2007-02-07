@@ -88,7 +88,7 @@ int dir_array_init(struct dir_array *da, const char *p)
   da->cmp = str_diff;
   da->p = 0;
   da->n = n;
-  da->a = (char **) alloc(n * sizeof(char *));
+  da->a = alloc(n * sizeof(char *));
   if (!da->a) {
     closedir(dir);
     return 0;
@@ -129,7 +129,7 @@ void dir_array_free(struct dir_array *da)
     if (da->a[m]) dealloc(da->a[m]); ++m;
   }
 
-  dealloc((char *) da->a);
+  dealloc(da->a);
   da->p = 0;
   da->n = 0;
   da->cmp = 0;

@@ -21,7 +21,7 @@ static int do_init()
     for (;;) if (environ[++esize] == 0) break;
 
   esize += 1 + ENV_OVERALLOC;
-  new_env = (char **) alloc(esize * sizeof(char *));
+  new_env = alloc(esize * sizeof(char *));
   if (!new_env) return 0;
 
   if (environ) {
@@ -79,7 +79,7 @@ static int add(const char *key, const char *val,
   delete_all(key, klen);
 
   if (eused == (esize - 1)) {
-    new_env = (char **) alloc((esize + 1 + ENV_OVERALLOC) * sizeof(char *));
+    new_env = alloc((esize + 1 + ENV_OVERALLOC) * sizeof(char *));
     if (!new_env) return 0;
     for (ind = 0; ind < (esize - 1); ++ind)
       new_env[ind] = environ[ind];
