@@ -8,8 +8,8 @@ then
 fi
 
 sd_tmp="sysdeps.out"
-f1_tmp="_fd.h"
-echo "SYSDEPS fd clean ${f1_tmp}"
+f1_tmp="_sd_fd.h"
+echo "SYSDEPS sd-fd clean ${f1_tmp}"
 
 f1_out="${SYSDEP_OUTDIR}/${f1_tmp}"
 
