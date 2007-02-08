@@ -1,7 +1,7 @@
 #ifndef OPEN_H
 #define OPEN_H
 
-#include "_fcntl.h"
+#include "_sd_fcntl.h"
 
 #ifndef O_NONBLOCK
   #define O_NONBLOCK 0x00
