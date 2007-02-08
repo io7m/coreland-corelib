@@ -4,8 +4,6 @@
 /* generate AFTER build, or generated headers will be missing! */
 
 struct install_item insthier[] = {
-
-ls: *.dld: No such file or directory
   {INST_MKDIR, 0, 0, ctxt_bindir, 0, 0, 0755},
   {INST_MKDIR, 0, 0, ctxt_incdir, 0, 0, 0755},
   {INST_MKDIR, 0, 0, ctxt_dlibdir, 0, 0, 0755},
