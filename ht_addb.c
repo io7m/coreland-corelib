@@ -34,6 +34,7 @@ int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
   struct ht_table_node *fu;
   struct ht_table_node *np;
   unsigned long pos;
+  unsigned long len;
   const char *key;
   const char *dat;
 
@@ -61,7 +62,11 @@ int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
       if (np->state == HT_SLOT_UNUSED) {
         if (!fu) fu = np;
       } else {
-        if (bin_same(np->key, key, klen)) return 0; /* key collision */
+        if (klen >= np->keylen)
+          len = klen;
+        else
+          len = np->keylen;
+        if (bin_same(np->key, key, len)) return 0; /* key collision */
       }
       if (np->next)
         np = np->next;

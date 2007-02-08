@@ -213,3 +213,6 @@
 20070118 code: ht_() AND instead of modulo (HT_HASH_BUCKETS must be
                a power of two, this is not a problem).
 20070119 code: test cleanups.
+20070208 code: fixed bug in hashtable that would select the wrong key
+               if two strings in the same slot shared a common prefix
+               equal in length to the smaller string.

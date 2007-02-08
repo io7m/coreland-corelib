@@ -8,6 +8,7 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
   struct ht_table_head *th;
   struct ht_table_node *np;
   unsigned long pos;
+  unsigned long len;
   const char *key = (const char *) k;
   const char *dat = (const char *) x;
   char *tmpkey;
@@ -23,6 +24,10 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
 
   for (;;) {
     if (np->state == HT_SLOT_USED)
+      if (klen >= np->keylen)
+        len = klen;
+      else
+        len = np->keylen;
       if (bin_same(np->key, key, klen)) {
         if (klen > np->keylen) {
           tmpkey = alloc(klen);
