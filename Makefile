@@ -21,128 +21,130 @@ sysdeps_clean:
 	rm -f sysdeps.out
 
 alloc.a:\
-	mk-slib alloc.sld alloc.o 
-	./mk-slib alloc alloc.o 
+	cc-slib alloc.sld alloc.o 
+	./cc-slib alloc alloc.o 
 alloc.o:\
-	cc alloc.c alloc.h 
-	./cc alloc.c
+	cc-compile alloc.c alloc.h 
+	./cc-compile alloc.c
 array.a:\
-	mk-slib array.sld array.o array_bytes.o array_cat.o array_chop.o \
+	cc-slib array.sld array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_index.o array_size.o array_trunc.o array_zero.o 
-	./mk-slib array array.o array_bytes.o array_cat.o array_chop.o \
+	./cc-slib array array.o array_bytes.o array_cat.o array_chop.o \
 	array_copy.o array_index.o array_size.o array_trunc.o array_zero.o 
 array.o:\
-	cc array.c alloc.h array.h 
-	./cc array.c
+	cc-compile array.c alloc.h array.h 
+	./cc-compile array.c
 array_bytes.o:\
-	cc array_bytes.c array.h 
-	./cc array_bytes.c
+	cc-compile array_bytes.c array.h 
+	./cc-compile array_bytes.c
 array_cat.o:\
-	cc array_cat.c alloc.h array.h bin.h 
-	./cc array_cat.c
+	cc-compile array_cat.c alloc.h array.h bin.h 
+	./cc-compile array_cat.c
 array_chop.o:\
-	cc array_chop.c array.h 
-	./cc array_chop.c
+	cc-compile array_chop.c array.h 
+	./cc-compile array_chop.c
 array_copy.o:\
-	cc array_copy.c array.h bin.h 
-	./cc array_copy.c
+	cc-compile array_copy.c array.h bin.h 
+	./cc-compile array_copy.c
 array_data.o:\
-	cc array_data.c array.h 
-	./cc array_data.c
+	cc-compile array_data.c array.h 
+	./cc-compile array_data.c
 array_index.o:\
-	cc array_index.c array.h 
-	./cc array_index.c
+	cc-compile array_index.c array.h 
+	./cc-compile array_index.c
 array_size.o:\
-	cc array_size.c array.h 
-	./cc array_size.c
+	cc-compile array_size.c array.h 
+	./cc-compile array_size.c
 array_trunc.o:\
-	cc array_trunc.c array.h 
-	./cc array_trunc.c
+	cc-compile array_trunc.c array.h 
+	./cc-compile array_trunc.c
 array_zero.o:\
-	cc array_zero.c array.h 
-	./cc array_zero.c
+	cc-compile array_zero.c array.h 
+	./cc-compile array_zero.c
 base_name.a:\
-	mk-slib base_name.sld base_name.o 
-	./mk-slib base_name base_name.o 
+	cc-slib base_name.sld base_name.o 
+	./cc-slib base_name base_name.o 
 base_name.o:\
-	cc base_name.c bin.h base_name.h str.h 
-	./cc base_name.c
+	cc-compile base_name.c bin.h base_name.h str.h 
+	./cc-compile base_name.c
 bin.a:\
-	mk-slib bin.sld bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
+	cc-slib bin.sld bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
 	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o 
-	./mk-slib bin bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
+	./cc-slib bin bin_char.o bin_rchar.o bin_chr.o bin_copy.o \
 	bin_copyr.o bin_count.o bin_diff.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o 
 bin_char.o:\
-	cc bin_char.c bin.h 
-	./cc bin_char.c
+	cc-compile bin_char.c bin.h 
+	./cc-compile bin_char.c
 bin_chr.o:\
-	cc bin_chr.c bin.h 
-	./cc bin_chr.c
+	cc-compile bin_chr.c bin.h 
+	./cc-compile bin_chr.c
 bin_copy.o:\
-	cc bin_copy.c bin.h 
-	./cc bin_copy.c
+	cc-compile bin_copy.c bin.h 
+	./cc-compile bin_copy.c
 bin_copyr.o:\
-	cc bin_copyr.c bin.h 
-	./cc bin_copyr.c
+	cc-compile bin_copyr.c bin.h 
+	./cc-compile bin_copyr.c
 bin_count.o:\
-	cc bin_count.c bin.h 
-	./cc bin_count.c
+	cc-compile bin_count.c bin.h 
+	./cc-compile bin_count.c
 bin_diff.o:\
-	cc bin_diff.c bin.h 
-	./cc bin_diff.c
+	cc-compile bin_diff.c bin.h 
+	./cc-compile bin_diff.c
 bin_rchar.o:\
-	cc bin_rchar.c bin.h 
-	./cc bin_rchar.c
+	cc-compile bin_rchar.c bin.h 
+	./cc-compile bin_rchar.c
 bin_rchr.o:\
-	cc bin_rchr.c bin.h 
-	./cc bin_rchr.c
+	cc-compile bin_rchr.c bin.h 
+	./cc-compile bin_rchr.c
 bin_set.o:\
-	cc bin_set.c bin.h 
-	./cc bin_set.c
+	cc-compile bin_set.c bin.h 
+	./cc-compile bin_set.c
 bin_tolower.o:\
-	cc bin_tolower.c bin.h 
-	./cc bin_tolower.c
+	cc-compile bin_tolower.c bin.h 
+	./cc-compile bin_tolower.c
 bin_toupper.o:\
-	cc bin_toupper.c bin.h 
-	./cc bin_toupper.c
+	cc-compile bin_toupper.c bin.h 
+	./cc-compile bin_toupper.c
 bin_zero.o:\
-	cc bin_zero.c bin.h 
-	./cc bin_zero.c
+	cc-compile bin_zero.c bin.h 
+	./cc-compile bin_zero.c
 buffer.a:\
-	mk-slib buffer.sld buffer0.o buffer1.o buffer2.o buffer_get.o \
+	cc-slib buffer.sld buffer0.o buffer1.o buffer2.o buffer_get.o \
 	buffer_init.o buffer_put.o buffer_copy.o 
-	./mk-slib buffer buffer0.o buffer1.o buffer2.o buffer_get.o \
+	./cc-slib buffer buffer0.o buffer1.o buffer2.o buffer_get.o \
 	buffer_init.o buffer_put.o buffer_copy.o 
 buffer0.o:\
-	cc buffer0.c buffer.h read.h 
-	./cc buffer0.c
+	cc-compile buffer0.c buffer.h read.h 
+	./cc-compile buffer0.c
 buffer1.o:\
-	cc buffer1.c buffer.h write.h 
-	./cc buffer1.c
+	cc-compile buffer1.c buffer.h write.h 
+	./cc-compile buffer1.c
 buffer2.o:\
-	cc buffer2.c buffer.h write.h 
-	./cc buffer2.c
+	cc-compile buffer2.c buffer.h write.h 
+	./cc-compile buffer2.c
 buffer_copy.o:\
-	cc buffer_copy.c buffer.h 
-	./cc buffer_copy.c
+	cc-compile buffer_copy.c buffer.h 
+	./cc-compile buffer_copy.c
 buffer_get.o:\
-	cc buffer_get.c bin.h buffer.h error.h 
-	./cc buffer_get.c
+	cc-compile buffer_get.c bin.h buffer.h error.h 
+	./cc-compile buffer_get.c
 buffer_init.o:\
-	cc buffer_init.c buffer.h 
-	./cc buffer_init.c
+	cc-compile buffer_init.c buffer.h 
+	./cc-compile buffer_init.c
 buffer_put.o:\
-	cc buffer_put.c bin.h buffer.h error.h str.h 
-	./cc buffer_put.c
-cc: conf-cc conf-cctype conf-cflags sysdeps.out 
+	cc-compile buffer_put.c bin.h buffer.h error.h str.h 
+	./cc-compile buffer_put.c
+cc-compile: conf-cc conf-cctype conf-cflags sysdeps.out 
+cc-link: conf-ld sysdeps.out libs-sysmath 
+cc-slib: conf-systype 
 closeonexec.a:\
-	mk-slib closeonexec.sld closeonexec.o 
-	./mk-slib closeonexec closeonexec.o 
+	cc-slib closeonexec.sld closeonexec.o 
+	./cc-slib closeonexec closeonexec.o 
 closeonexec.o:\
-	cc closeonexec.c closeonexec.h 
-	./cc closeonexec.c
+	cc-compile closeonexec.c closeonexec.h 
+	./cc-compile closeonexec.c
 conf-cctype:\
 	conf-systype conf-cc mk-cctype 
 	./mk-cctype > conf-cctype
@@ -153,848 +155,847 @@ conf-systype:\
 	mk-systype 
 	./mk-systype > conf-systype
 corelib-conf:\
-	ld corelib-conf.ld corelib-conf.o ctxt/ctxt.a 
-	./ld corelib-conf corelib-conf.o ctxt/ctxt.a 
+	cc-link corelib-conf.ld corelib-conf.o ctxt/ctxt.a 
+	./cc-link corelib-conf corelib-conf.o ctxt/ctxt.a 
 corelib-conf.o:\
-	cc corelib-conf.c ctxt.h 
-	./cc corelib-conf.c
+	cc-compile corelib-conf.c ctxt.h 
+	./cc-compile corelib-conf.c
 ctxt/bindir.c: mk-ctxt conf-bindir
 	rm -f ctxt/bindir.c
 	./mk-ctxt ctxt_bindir < conf-bindir > ctxt/bindir.c
 
 ctxt/bindir.o:\
-	cc ctxt/bindir.c 
-	./cc ctxt/bindir.c
+	cc-compile ctxt/bindir.c 
+	./cc-compile ctxt/bindir.c
 ctxt/ctxt.a:\
-	mk-slib ctxt/ctxt.sld ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
+	cc-slib ctxt/ctxt.sld ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
 	ctxt/repos.o ctxt/slibdir.o ctxt/version.o 
-	./mk-slib ctxt/ctxt ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
+	./cc-slib ctxt/ctxt ctxt/bindir.o ctxt/dlibdir.o ctxt/incdir.o \
 	ctxt/repos.o ctxt/slibdir.o ctxt/version.o 
 ctxt/dlibdir.c: mk-ctxt conf-dlibdir
 	rm -f ctxt/dlibdir.c
 	./mk-ctxt ctxt_dlibdir < conf-dlibdir > ctxt/dlibdir.c
 
 ctxt/dlibdir.o:\
-	cc ctxt/dlibdir.c 
-	./cc ctxt/dlibdir.c
+	cc-compile ctxt/dlibdir.c 
+	./cc-compile ctxt/dlibdir.c
 ctxt/incdir.c: mk-ctxt conf-incdir
 	rm -f ctxt/incdir.c
 	./mk-ctxt ctxt_incdir < conf-incdir > ctxt/incdir.c
 
 ctxt/incdir.o:\
-	cc ctxt/incdir.c 
-	./cc ctxt/incdir.c
+	cc-compile ctxt/incdir.c 
+	./cc-compile ctxt/incdir.c
 ctxt/repos.c: mk-ctxt conf-repos
 	rm -f ctxt/repos.c
 	./mk-ctxt ctxt_repos < conf-repos > ctxt/repos.c
 
 ctxt/repos.o:\
-	cc ctxt/repos.c 
-	./cc ctxt/repos.c
+	cc-compile ctxt/repos.c 
+	./cc-compile ctxt/repos.c
 ctxt/slibdir.c: mk-ctxt conf-slibdir
 	rm -f ctxt/slibdir.c
 	./mk-ctxt ctxt_slibdir < conf-slibdir > ctxt/slibdir.c
 
 ctxt/slibdir.o:\
-	cc ctxt/slibdir.c 
-	./cc ctxt/slibdir.c
+	cc-compile ctxt/slibdir.c 
+	./cc-compile ctxt/slibdir.c
 ctxt/version.c: mk-ctxt VERSION
 	rm -f ctxt/version.c
 	./mk-ctxt ctxt_version < VERSION > ctxt/version.c
 
 ctxt/version.o:\
-	cc ctxt/version.c 
-	./cc ctxt/version.c
+	cc-compile ctxt/version.c 
+	./cc-compile ctxt/version.c
 deinstaller:\
-	ld deinstaller.ld deinstaller.o insthier.o install_core.o \
+	cc-link deinstaller.ld deinstaller.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
-	./ld deinstaller deinstaller.o insthier.o install_core.o \
+	./cc-link deinstaller deinstaller.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
 deinstaller.o:\
-	cc deinstaller.c install.h 
-	./cc deinstaller.c
+	cc-compile deinstaller.c install.h 
+	./cc-compile deinstaller.c
 dir_array.a:\
-	mk-slib dir_array.sld dir_array.o 
-	./mk-slib dir_array dir_array.o 
+	cc-slib dir_array.sld dir_array.o 
+	./cc-slib dir_array dir_array.o 
 dir_array.o:\
-	cc dir_array.c alloc.h bin.h dir_array.h direntry.h str.h 
-	./cc dir_array.c
+	cc-compile dir_array.c alloc.h bin.h dir_array.h direntry.h str.h 
+	./cc-compile dir_array.c
 dir_hash.a:\
-	mk-slib dir_hash.sld dir_hash.o 
-	./mk-slib dir_hash dir_hash.o 
+	cc-slib dir_hash.sld dir_hash.o 
+	./cc-slib dir_hash dir_hash.o 
 dir_hash.o:\
-	cc dir_hash.c alloc.h bin.h dir_array.h dir_hash.h str.h 
-	./cc dir_hash.c
+	cc-compile dir_hash.c alloc.h bin.h dir_array.h dir_hash.h str.h 
+	./cc-compile dir_hash.c
 dir_name.a:\
-	mk-slib dir_name.sld dir_name.o 
-	./mk-slib dir_name dir_name.o 
+	cc-slib dir_name.sld dir_name.o 
+	./cc-slib dir_name dir_name.o 
 dir_name.o:\
-	cc dir_name.c bin.h dir_name.h str.h 
-	./cc dir_name.c
+	cc-compile dir_name.c bin.h dir_name.h str.h 
+	./cc-compile dir_name.c
 dstring.a:\
-	mk-slib dstring.sld dstring_cpyb.o dstring_cpys.o dstring_copy.o \
+	cc-slib dstring.sld dstring_cpyb.o dstring_cpys.o dstring_copy.o \
 	dstring_cat.o dstring_catb.o dstring_cats.o dstring_cat0.o \
 	dstring_0.o dstring_chop.o dstring_init.o dstring_trunc.o 
-	./mk-slib dstring dstring_cpyb.o dstring_cpys.o dstring_copy.o \
+	./cc-slib dstring dstring_cpyb.o dstring_cpys.o dstring_copy.o \
 	dstring_cat.o dstring_catb.o dstring_cats.o dstring_cat0.o \
 	dstring_0.o dstring_chop.o dstring_init.o dstring_trunc.o 
 dstring_0.o:\
-	cc dstring_0.c dstring.h 
-	./cc dstring_0.c
+	cc-compile dstring_0.c dstring.h 
+	./cc-compile dstring_0.c
 dstring_cat.o:\
-	cc dstring_cat.c dstring.h 
-	./cc dstring_cat.c
+	cc-compile dstring_cat.c dstring.h 
+	./cc-compile dstring_cat.c
 dstring_cat0.o:\
-	cc dstring_cat0.c dstring.h 
-	./cc dstring_cat0.c
+	cc-compile dstring_cat0.c dstring.h 
+	./cc-compile dstring_cat0.c
 dstring_catb.o:\
-	cc dstring_catb.c alloc.h bin.h dstring.h 
-	./cc dstring_catb.c
+	cc-compile dstring_catb.c alloc.h bin.h dstring.h 
+	./cc-compile dstring_catb.c
 dstring_cats.o:\
-	cc dstring_cats.c alloc.h bin.h dstring.h str.h 
-	./cc dstring_cats.c
+	cc-compile dstring_cats.c alloc.h bin.h dstring.h str.h 
+	./cc-compile dstring_cats.c
 dstring_chop.o:\
-	cc dstring_chop.c dstring.h 
-	./cc dstring_chop.c
+	cc-compile dstring_chop.c dstring.h 
+	./cc-compile dstring_chop.c
 dstring_copy.o:\
-	cc dstring_copy.c dstring.h 
-	./cc dstring_copy.c
+	cc-compile dstring_copy.c dstring.h 
+	./cc-compile dstring_copy.c
 dstring_cpyb.o:\
-	cc dstring_cpyb.c alloc.h bin.h dstring.h 
-	./cc dstring_cpyb.c
+	cc-compile dstring_cpyb.c alloc.h bin.h dstring.h 
+	./cc-compile dstring_cpyb.c
 dstring_cpys.o:\
-	cc dstring_cpys.c dstring.h str.h 
-	./cc dstring_cpys.c
+	cc-compile dstring_cpys.c dstring.h str.h 
+	./cc-compile dstring_cpys.c
 dstring_init.o:\
-	cc dstring_init.c alloc.h dstring.h 
-	./cc dstring_init.c
+	cc-compile dstring_init.c alloc.h dstring.h 
+	./cc-compile dstring_init.c
 dstring_trunc.o:\
-	cc dstring_trunc.c dstring.h 
-	./cc dstring_trunc.c
+	cc-compile dstring_trunc.c dstring.h 
+	./cc-compile dstring_trunc.c
 env.a:\
-	mk-slib env.sld env.o env_get.o 
-	./mk-slib env env.o env_get.o 
+	cc-slib env.sld env.o env_get.o 
+	./cc-slib env env.o env_get.o 
 env.o:\
-	cc env.c alloc.h bin.h env.h str.h 
-	./cc env.c
+	cc-compile env.c alloc.h bin.h env.h str.h 
+	./cc-compile env.c
 env_get.o:\
-	cc env_get.c env.h str.h 
-	./cc env_get.c
+	cc-compile env_get.c env.h str.h 
+	./cc-compile env_get.c
 error.a:\
-	mk-slib error.sld error.o error_str.o 
-	./mk-slib error error.o error_str.o 
+	cc-slib error.sld error.o error_str.o 
+	./cc-slib error error.o error_str.o 
 error.o:\
-	cc error.c error.h 
-	./cc error.c
+	cc-compile error.c error.h 
+	./cc-compile error.c
 error_str.o:\
-	cc error_str.c error.h 
-	./cc error_str.c
+	cc-compile error_str.c error.h 
+	./cc-compile error_str.c
 fd.a:\
-	mk-slib fd.sld fd_dup.o fd_move.o fd_reset.o 
-	./mk-slib fd fd_dup.o fd_move.o fd_reset.o 
+	cc-slib fd.sld fd_dup.o fd_move.o fd_reset.o 
+	./cc-slib fd fd_dup.o fd_move.o fd_reset.o 
 fd_dup.o:\
-	cc fd_dup.c close.h fd.h 
-	./cc fd_dup.c
+	cc-compile fd_dup.c close.h fd.h 
+	./cc-compile fd_dup.c
 fd_move.o:\
-	cc fd_move.c close.h fd.h 
-	./cc fd_move.c
+	cc-compile fd_move.c close.h fd.h 
+	./cc-compile fd_move.c
 fd_reset.o:\
-	cc fd_reset.c fd.h 
-	./cc fd_reset.c
+	cc-compile fd_reset.c fd.h 
+	./cc-compile fd_reset.c
 float32.a:\
-	mk-slib float32.sld float32_pack.o float32_upack.o 
-	./mk-slib float32 float32_pack.o float32_upack.o 
+	cc-slib float32.sld float32_pack.o float32_upack.o 
+	./cc-slib float32 float32_pack.o float32_upack.o 
 float32_pack.o:\
-	cc float32_pack.c byteorder.h float32.h 
-	./cc float32_pack.c
+	cc-compile float32_pack.c byteorder.h float32.h 
+	./cc-compile float32_pack.c
 float32_upack.o:\
-	cc float32_upack.c byteorder.h float32.h 
-	./cc float32_upack.c
+	cc-compile float32_upack.c byteorder.h float32.h 
+	./cc-compile float32_upack.c
 float64.a:\
-	mk-slib float64.sld float64_pack.o float64_upack.o 
-	./mk-slib float64 float64_pack.o float64_upack.o 
+	cc-slib float64.sld float64_pack.o float64_upack.o 
+	./cc-slib float64 float64_pack.o float64_upack.o 
 float64_pack.o:\
-	cc float64_pack.c byteorder.h float64.h 
-	./cc float64_pack.c
+	cc-compile float64_pack.c byteorder.h float64.h 
+	./cc-compile float64_pack.c
 float64_upack.o:\
-	cc float64_upack.c byteorder.h float64.h 
-	./cc float64_upack.c
+	cc-compile float64_upack.c byteorder.h float64.h 
+	./cc-compile float64_upack.c
 fmt.a:\
-	mk-slib fmt.sld fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
+	cc-slib fmt.sld fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
 	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
 	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
 	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
 	fmt_ushorto.o fmt_ushortx.o 
-	./mk-slib fmt fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
+	./cc-slib fmt fmt_nstr.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
 	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
 	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
 	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
 	fmt_ushorto.o fmt_ushortx.o 
 fmt_nstr.o:\
-	cc fmt_nstr.c fmt.h 
-	./cc fmt_nstr.c
+	cc-compile fmt_nstr.c fmt.h 
+	./cc-compile fmt_nstr.c
 fmt_spec.a:\
-	mk-slib fmt_spec.sld fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
+	cc-slib fmt_spec.sld fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
 	fmt_u64.o fmt_u64b.o fmt_u64o.o fmt_u64x.o 
-	./mk-slib fmt_spec fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
+	./cc-slib fmt_spec fmt_u32.o fmt_u32b.o fmt_u32o.o fmt_u32x.o \
 	fmt_u64.o fmt_u64b.o fmt_u64o.o fmt_u64x.o 
 fmt_str.o:\
-	cc fmt_str.c fmt.h 
-	./cc fmt_str.c
+	cc-compile fmt_str.c fmt.h 
+	./cc-compile fmt_str.c
 fmt_u32.o:\
-	cc fmt_u32.c fmt_spec.h uint32.h uint64.h 
-	./cc fmt_u32.c
+	cc-compile fmt_u32.c fmt_spec.h uint32.h uint64.h 
+	./cc-compile fmt_u32.c
 fmt_u32b.o:\
-	cc fmt_u32b.c fmt_spec.h uint32.h uint64.h 
-	./cc fmt_u32b.c
+	cc-compile fmt_u32b.c fmt_spec.h uint32.h uint64.h 
+	./cc-compile fmt_u32b.c
 fmt_u32o.o:\
-	cc fmt_u32o.c fmt_spec.h uint32.h uint64.h 
-	./cc fmt_u32o.c
+	cc-compile fmt_u32o.c fmt_spec.h uint32.h uint64.h 
+	./cc-compile fmt_u32o.c
 fmt_u32x.o:\
-	cc fmt_u32x.c fmt_spec.h uint32.h uint64.h 
-	./cc fmt_u32x.c
+	cc-compile fmt_u32x.c fmt_spec.h uint32.h uint64.h 
+	./cc-compile fmt_u32x.c
 fmt_u64.o:\
-	cc fmt_u64.c fmt_spec.h uint64.h 
-	./cc fmt_u64.c
+	cc-compile fmt_u64.c fmt_spec.h uint64.h 
+	./cc-compile fmt_u64.c
 fmt_u64b.o:\
-	cc fmt_u64b.c fmt_spec.h uint64.h 
-	./cc fmt_u64b.c
+	cc-compile fmt_u64b.c fmt_spec.h uint64.h 
+	./cc-compile fmt_u64b.c
 fmt_u64o.o:\
-	cc fmt_u64o.c fmt_spec.h uint64.h 
-	./cc fmt_u64o.c
+	cc-compile fmt_u64o.c fmt_spec.h uint64.h 
+	./cc-compile fmt_u64o.c
 fmt_u64x.o:\
-	cc fmt_u64x.c fmt_spec.h uint64.h 
-	./cc fmt_u64x.c
+	cc-compile fmt_u64x.c fmt_spec.h uint64.h 
+	./cc-compile fmt_u64x.c
 fmt_uchar.o:\
-	cc fmt_uchar.c fmt.h 
-	./cc fmt_uchar.c
+	cc-compile fmt_uchar.c fmt.h 
+	./cc-compile fmt_uchar.c
 fmt_ucharb.o:\
-	cc fmt_ucharb.c fmt.h 
-	./cc fmt_ucharb.c
+	cc-compile fmt_ucharb.c fmt.h 
+	./cc-compile fmt_ucharb.c
 fmt_ucharo.o:\
-	cc fmt_ucharo.c fmt.h 
-	./cc fmt_ucharo.c
+	cc-compile fmt_ucharo.c fmt.h 
+	./cc-compile fmt_ucharo.c
 fmt_ucharx.o:\
-	cc fmt_ucharx.c fmt.h 
-	./cc fmt_ucharx.c
+	cc-compile fmt_ucharx.c fmt.h 
+	./cc-compile fmt_ucharx.c
 fmt_uint.o:\
-	cc fmt_uint.c fmt.h 
-	./cc fmt_uint.c
+	cc-compile fmt_uint.c fmt.h 
+	./cc-compile fmt_uint.c
 fmt_uintb.o:\
-	cc fmt_uintb.c fmt.h 
-	./cc fmt_uintb.c
+	cc-compile fmt_uintb.c fmt.h 
+	./cc-compile fmt_uintb.c
 fmt_uinto.o:\
-	cc fmt_uinto.c fmt.h 
-	./cc fmt_uinto.c
+	cc-compile fmt_uinto.c fmt.h 
+	./cc-compile fmt_uinto.c
 fmt_uintx.o:\
-	cc fmt_uintx.c fmt.h 
-	./cc fmt_uintx.c
+	cc-compile fmt_uintx.c fmt.h 
+	./cc-compile fmt_uintx.c
 fmt_ullong.o:\
-	cc fmt_ullong.c fmt.h 
-	./cc fmt_ullong.c
+	cc-compile fmt_ullong.c fmt.h 
+	./cc-compile fmt_ullong.c
 fmt_ullongo.o:\
-	cc fmt_ullongo.c fmt.h 
-	./cc fmt_ullongo.c
+	cc-compile fmt_ullongo.c fmt.h 
+	./cc-compile fmt_ullongo.c
 fmt_ullongx.o:\
-	cc fmt_ullongx.c fmt.h 
-	./cc fmt_ullongx.c
+	cc-compile fmt_ullongx.c fmt.h 
+	./cc-compile fmt_ullongx.c
 fmt_ulong.o:\
-	cc fmt_ulong.c fmt.h 
-	./cc fmt_ulong.c
+	cc-compile fmt_ulong.c fmt.h 
+	./cc-compile fmt_ulong.c
 fmt_ulongb.o:\
-	cc fmt_ulongb.c fmt.h 
-	./cc fmt_ulongb.c
+	cc-compile fmt_ulongb.c fmt.h 
+	./cc-compile fmt_ulongb.c
 fmt_ulongo.o:\
-	cc fmt_ulongo.c fmt.h 
-	./cc fmt_ulongo.c
+	cc-compile fmt_ulongo.c fmt.h 
+	./cc-compile fmt_ulongo.c
 fmt_ulongx.o:\
-	cc fmt_ulongx.c fmt.h 
-	./cc fmt_ulongx.c
+	cc-compile fmt_ulongx.c fmt.h 
+	./cc-compile fmt_ulongx.c
 fmt_ushort.o:\
-	cc fmt_ushort.c fmt.h 
-	./cc fmt_ushort.c
+	cc-compile fmt_ushort.c fmt.h 
+	./cc-compile fmt_ushort.c
 fmt_ushortb.o:\
-	cc fmt_ushortb.c fmt.h 
-	./cc fmt_ushortb.c
+	cc-compile fmt_ushortb.c fmt.h 
+	./cc-compile fmt_ushortb.c
 fmt_ushorto.o:\
-	cc fmt_ushorto.c fmt.h 
-	./cc fmt_ushorto.c
+	cc-compile fmt_ushorto.c fmt.h 
+	./cc-compile fmt_ushorto.c
 fmt_ushortx.o:\
-	cc fmt_ushortx.c fmt.h 
-	./cc fmt_ushortx.c
+	cc-compile fmt_ushortx.c fmt.h 
+	./cc-compile fmt_ushortx.c
 get_opt.a:\
-	mk-slib get_opt.sld get_opt.o 
-	./mk-slib get_opt get_opt.o 
+	cc-slib get_opt.sld get_opt.o 
+	./cc-slib get_opt get_opt.o 
 get_opt.o:\
-	cc get_opt.c buffer.h get_opt.h 
-	./cc get_opt.c
+	cc-compile get_opt.c buffer.h get_opt.h 
+	./cc-compile get_opt.c
 hashtable.a:\
-	mk-slib hashtable.sld ht_init.o ht_hash.o ht_free.o ht_addb.o \
+	cc-slib hashtable.sld ht_init.o ht_hash.o ht_free.o ht_addb.o \
 	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
 	ht_replaceb.o ht_replaces.o ht_bytes.o 
-	./mk-slib hashtable ht_init.o ht_hash.o ht_free.o ht_addb.o \
+	./cc-slib hashtable ht_init.o ht_hash.o ht_free.o ht_addb.o \
 	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
 	ht_replaceb.o ht_replaces.o ht_bytes.o 
 ht_addb.o:\
-	cc ht_addb.c alloc.h bin.h error.h hashtable.h 
-	./cc ht_addb.c
+	cc-compile ht_addb.c alloc.h bin.h error.h hashtable.h 
+	./cc-compile ht_addb.c
 ht_adds.o:\
-	cc ht_adds.c hashtable.h str.h 
-	./cc ht_adds.c
+	cc-compile ht_adds.c hashtable.h str.h 
+	./cc-compile ht_adds.c
 ht_bytes.o:\
-	cc ht_bytes.c hashtable.h 
-	./cc ht_bytes.c
+	cc-compile ht_bytes.c hashtable.h 
+	./cc-compile ht_bytes.c
 ht_deleteb.o:\
-	cc ht_deleteb.c alloc.h bin.h hashtable.h 
-	./cc ht_deleteb.c
+	cc-compile ht_deleteb.c alloc.h bin.h hashtable.h 
+	./cc-compile ht_deleteb.c
 ht_deletes.o:\
-	cc ht_deletes.c hashtable.h str.h 
-	./cc ht_deletes.c
+	cc-compile ht_deletes.c hashtable.h str.h 
+	./cc-compile ht_deletes.c
 ht_free.o:\
-	cc ht_free.c alloc.h hashtable.h 
-	./cc ht_free.c
+	cc-compile ht_free.c alloc.h hashtable.h 
+	./cc-compile ht_free.c
 ht_getb.o:\
-	cc ht_getb.c bin.h hashtable.h 
-	./cc ht_getb.c
+	cc-compile ht_getb.c bin.h hashtable.h 
+	./cc-compile ht_getb.c
 ht_gets.o:\
-	cc ht_gets.c hashtable.h str.h 
-	./cc ht_gets.c
+	cc-compile ht_gets.c hashtable.h str.h 
+	./cc-compile ht_gets.c
 ht_hash.o:\
-	cc ht_hash.c hashtable.h 
-	./cc ht_hash.c
+	cc-compile ht_hash.c hashtable.h 
+	./cc-compile ht_hash.c
 ht_init.o:\
-	cc ht_init.c bin.h hashtable.h 
-	./cc ht_init.c
+	cc-compile ht_init.c bin.h hashtable.h 
+	./cc-compile ht_init.c
 ht_replaceb.o:\
-	cc ht_replaceb.c alloc.h bin.h hashtable.h 
-	./cc ht_replaceb.c
+	cc-compile ht_replaceb.c alloc.h bin.h hashtable.h 
+	./cc-compile ht_replaceb.c
 ht_replaces.o:\
-	cc ht_replaces.c hashtable.h str.h 
-	./cc ht_replaces.c
+	cc-compile ht_replaces.c hashtable.h str.h 
+	./cc-compile ht_replaces.c
 iarray.a:\
-	mk-slib iarray.sld iarray_bytes.o iarray_cat.o iarray_chop.o \
+	cc-slib iarray.sld iarray_bytes.o iarray_cat.o iarray_chop.o \
 	iarray_copy.o iarray_free.o iarray_index.o iarray_init.o \
 	iarray_insert.o iarray_node.o iarray_remove.o iarray_size.o \
 	iarray_trunc.o iarray_zero.o 
-	./mk-slib iarray iarray_bytes.o iarray_cat.o iarray_chop.o \
+	./cc-slib iarray iarray_bytes.o iarray_cat.o iarray_chop.o \
 	iarray_copy.o iarray_free.o iarray_index.o iarray_init.o \
 	iarray_insert.o iarray_node.o iarray_remove.o iarray_size.o \
 	iarray_trunc.o iarray_zero.o 
 iarray_bytes.o:\
-	cc iarray_bytes.c iarray.h 
-	./cc iarray_bytes.c
+	cc-compile iarray_bytes.c iarray.h 
+	./cc-compile iarray_bytes.c
 iarray_cat.o:\
-	cc iarray_cat.c alloc.h iarray.h 
-	./cc iarray_cat.c
+	cc-compile iarray_cat.c alloc.h iarray.h 
+	./cc-compile iarray_cat.c
 iarray_chop.o:\
-	cc iarray_chop.c alloc.h iarray.h 
-	./cc iarray_chop.c
+	cc-compile iarray_chop.c alloc.h iarray.h 
+	./cc-compile iarray_chop.c
 iarray_copy.o:\
-	cc iarray_copy.c alloc.h iarray.h 
-	./cc iarray_copy.c
+	cc-compile iarray_copy.c alloc.h iarray.h 
+	./cc-compile iarray_copy.c
 iarray_free.o:\
-	cc iarray_free.c alloc.h iarray.h 
-	./cc iarray_free.c
+	cc-compile iarray_free.c alloc.h iarray.h 
+	./cc-compile iarray_free.c
 iarray_index.o:\
-	cc iarray_index.c iarray.h 
-	./cc iarray_index.c
+	cc-compile iarray_index.c iarray.h 
+	./cc-compile iarray_index.c
 iarray_init.o:\
-	cc iarray_init.c alloc.h iarray.h 
-	./cc iarray_init.c
+	cc-compile iarray_init.c alloc.h iarray.h 
+	./cc-compile iarray_init.c
 iarray_insert.o:\
-	cc iarray_insert.c alloc.h iarray.h 
-	./cc iarray_insert.c
+	cc-compile iarray_insert.c alloc.h iarray.h 
+	./cc-compile iarray_insert.c
 iarray_node.o:\
-	cc iarray_node.c alloc.h bin.h iarray.h 
-	./cc iarray_node.c
+	cc-compile iarray_node.c alloc.h bin.h iarray.h 
+	./cc-compile iarray_node.c
 iarray_remove.o:\
-	cc iarray_remove.c alloc.h iarray.h 
-	./cc iarray_remove.c
+	cc-compile iarray_remove.c alloc.h iarray.h 
+	./cc-compile iarray_remove.c
 iarray_size.o:\
-	cc iarray_size.c iarray.h 
-	./cc iarray_size.c
+	cc-compile iarray_size.c iarray.h 
+	./cc-compile iarray_size.c
 iarray_trunc.o:\
-	cc iarray_trunc.c iarray.h 
-	./cc iarray_trunc.c
+	cc-compile iarray_trunc.c iarray.h 
+	./cc-compile iarray_trunc.c
 iarray_zero.o:\
-	cc iarray_zero.c iarray.h 
-	./cc iarray_zero.c
+	cc-compile iarray_zero.c iarray.h 
+	./cc-compile iarray_zero.c
 inst-check:\
-	ld inst-check.ld inst-check.o install_error.o 
-	./ld inst-check inst-check.o install_error.o 
+	cc-link inst-check.ld inst-check.o install_error.o 
+	./cc-link inst-check inst-check.o install_error.o 
 inst-check.o:\
-	cc inst-check.c install.h 
-	./cc inst-check.c
+	cc-compile inst-check.c install.h 
+	./cc-compile inst-check.c
 inst-copy:\
-	ld inst-copy.ld inst-copy.o install_error.o 
-	./ld inst-copy inst-copy.o install_error.o 
+	cc-link inst-copy.ld inst-copy.o install_error.o 
+	./cc-link inst-copy inst-copy.o install_error.o 
 inst-copy.o:\
-	cc inst-copy.c install.h 
-	./cc inst-copy.c
+	cc-compile inst-copy.c install.h 
+	./cc-compile inst-copy.c
 inst-dir:\
-	ld inst-dir.ld inst-dir.o install_error.o 
-	./ld inst-dir inst-dir.o install_error.o 
+	cc-link inst-dir.ld inst-dir.o install_error.o 
+	./cc-link inst-dir inst-dir.o install_error.o 
 inst-dir.o:\
-	cc inst-dir.c install.h 
-	./cc inst-dir.c
+	cc-compile inst-dir.c install.h 
+	./cc-compile inst-dir.c
 inst-link:\
-	ld inst-link.ld inst-link.o install_error.o 
-	./ld inst-link inst-link.o install_error.o 
+	cc-link inst-link.ld inst-link.o install_error.o 
+	./cc-link inst-link inst-link.o install_error.o 
 inst-link.o:\
-	cc inst-link.c install.h 
-	./cc inst-link.c
+	cc-compile inst-link.c install.h 
+	./cc-compile inst-link.c
 install_core.o:\
-	cc install_core.c install.h 
-	./cc install_core.c
+	cc-compile install_core.c install.h 
+	./cc-compile install_core.c
 install_error.o:\
-	cc install_error.c install.h 
-	./cc install_error.c
+	cc-compile install_error.c install.h 
+	./cc-compile install_error.c
 installer:\
-	ld installer.ld installer.o insthier.o install_core.o \
+	cc-link installer.ld installer.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
-	./ld installer installer.o insthier.o install_core.o \
+	./cc-link installer installer.o insthier.o install_core.o \
 	install_error.o ctxt/ctxt.a 
 installer.o:\
-	cc installer.c install.h 
-	./cc installer.c
+	cc-compile installer.c install.h 
+	./cc-compile installer.c
 instchk:\
-	ld instchk.ld instchk.o insthier.o install_core.o install_error.o \
-	ctxt/ctxt.a 
-	./ld instchk instchk.o insthier.o install_core.o install_error.o \
-	ctxt/ctxt.a 
+	cc-link instchk.ld instchk.o insthier.o install_core.o \
+	install_error.o ctxt/ctxt.a 
+	./cc-link instchk instchk.o insthier.o install_core.o \
+	install_error.o ctxt/ctxt.a 
 instchk.o:\
-	cc instchk.c install.h 
-	./cc instchk.c
+	cc-compile instchk.c install.h 
+	./cc-compile instchk.c
 insthier.o:\
-	cc insthier.c install.h ctxt.h 
-	./cc insthier.c
+	cc-compile insthier.c install.h ctxt.h 
+	./cc-compile insthier.c
 int16.a:\
-	mk-slib int16.sld int16_pack.o int16_unpack.o 
-	./mk-slib int16 int16_pack.o int16_unpack.o 
+	cc-slib int16.sld int16_pack.o int16_unpack.o 
+	./cc-slib int16 int16_pack.o int16_unpack.o 
 int16_pack.o:\
-	cc int16_pack.c int16.h 
-	./cc int16_pack.c
+	cc-compile int16_pack.c int16.h 
+	./cc-compile int16_pack.c
 int16_unpack.o:\
-	cc int16_unpack.c int16.h 
-	./cc int16_unpack.c
+	cc-compile int16_unpack.c int16.h 
+	./cc-compile int16_unpack.c
 int32.a:\
-	mk-slib int32.sld int32_pack.o int32_unpack.o 
-	./mk-slib int32 int32_pack.o int32_unpack.o 
+	cc-slib int32.sld int32_pack.o int32_unpack.o 
+	./cc-slib int32 int32_pack.o int32_unpack.o 
 int32_pack.o:\
-	cc int32_pack.c int32.h 
-	./cc int32_pack.c
+	cc-compile int32_pack.c int32.h 
+	./cc-compile int32_pack.c
 int32_unpack.o:\
-	cc int32_unpack.c int32.h 
-	./cc int32_unpack.c
+	cc-compile int32_unpack.c int32.h 
+	./cc-compile int32_unpack.c
 int64.a:\
-	mk-slib int64.sld int64_pack.o int64_unpack.o 
-	./mk-slib int64 int64_pack.o int64_unpack.o 
+	cc-slib int64.sld int64_pack.o int64_unpack.o 
+	./cc-slib int64 int64_pack.o int64_unpack.o 
 int64_pack.o:\
-	cc int64_pack.c int64.h 
-	./cc int64_pack.c
+	cc-compile int64_pack.c int64.h 
+	./cc-compile int64_pack.c
 int64_unpack.o:\
-	cc int64_unpack.c int64.h 
-	./cc int64_unpack.c
-ld: conf-ld sysdeps.out libs-sysmath 
+	cc-compile int64_unpack.c int64.h 
+	./cc-compile int64_unpack.c
 mk-cctype: conf-cc conf-systype 
 mk-ctxt.o:\
-	cc mk-ctxt.c
-	./cc mk-ctxt.c
+	cc-compile mk-ctxt.c
+	./cc-compile mk-ctxt.c
 mk-ctxt:\
-	ld mk-ctxt.o mk-ctxt.ld
-	./ld mk-ctxt mk-ctxt.o
-mk-slib: conf-systype 
+	cc-link mk-ctxt.o mk-ctxt.ld
+	./cc-link mk-ctxt mk-ctxt.o
 mk-sosuffix: conf-systype 
+mk-systype: conf-cc 
 nonblock.a:\
-	mk-slib nonblock.sld nonblock.o 
-	./mk-slib nonblock nonblock.o 
+	cc-slib nonblock.sld nonblock.o 
+	./cc-slib nonblock nonblock.o 
 nonblock.o:\
-	cc nonblock.c nonblock.h 
-	./cc nonblock.c
+	cc-compile nonblock.c nonblock.h 
+	./cc-compile nonblock.c
 open.a:\
-	mk-slib open.sld open_append.o open_creat.o open_excl.o open_ro.o \
+	cc-slib open.sld open_append.o open_creat.o open_excl.o open_ro.o \
 	open_rw.o open_trunc.o open_wo.o 
-	./mk-slib open open_append.o open_creat.o open_excl.o open_ro.o \
+	./cc-slib open open_append.o open_creat.o open_excl.o open_ro.o \
 	open_rw.o open_trunc.o open_wo.o 
 open_append.o:\
-	cc open_append.c open.h 
-	./cc open_append.c
+	cc-compile open_append.c open.h 
+	./cc-compile open_append.c
 open_creat.o:\
-	cc open_creat.c open.h 
-	./cc open_creat.c
+	cc-compile open_creat.c open.h 
+	./cc-compile open_creat.c
 open_excl.o:\
-	cc open_excl.c open.h 
-	./cc open_excl.c
+	cc-compile open_excl.c open.h 
+	./cc-compile open_excl.c
 open_ro.o:\
-	cc open_ro.c open.h 
-	./cc open_ro.c
+	cc-compile open_ro.c open.h 
+	./cc-compile open_ro.c
 open_rw.o:\
-	cc open_rw.c open.h 
-	./cc open_rw.c
+	cc-compile open_rw.c open.h 
+	./cc-compile open_rw.c
 open_trunc.o:\
-	cc open_trunc.c open.h 
-	./cc open_trunc.c
+	cc-compile open_trunc.c open.h 
+	./cc-compile open_trunc.c
 open_wo.o:\
-	cc open_wo.c open.h 
-	./cc open_wo.c
+	cc-compile open_wo.c open.h 
+	./cc-compile open_wo.c
 sarray.a:\
-	mk-slib sarray.sld sarray_bytes.o sarray_cat.o sarray_chop.o \
+	cc-slib sarray.sld sarray_bytes.o sarray_cat.o sarray_chop.o \
 	sarray_data.o sarray_index.o sarray_init.o sarray_size.o \
 	sarray_trunc.o 
-	./mk-slib sarray sarray_bytes.o sarray_cat.o sarray_chop.o \
+	./cc-slib sarray sarray_bytes.o sarray_cat.o sarray_chop.o \
 	sarray_data.o sarray_index.o sarray_init.o sarray_size.o \
 	sarray_trunc.o 
 sarray_bytes.o:\
-	cc sarray_bytes.c sarray.h 
-	./cc sarray_bytes.c
+	cc-compile sarray_bytes.c sarray.h 
+	./cc-compile sarray_bytes.c
 sarray_cat.o:\
-	cc sarray_cat.c sarray.h 
-	./cc sarray_cat.c
+	cc-compile sarray_cat.c sarray.h 
+	./cc-compile sarray_cat.c
 sarray_chop.o:\
-	cc sarray_chop.c sarray.h 
-	./cc sarray_chop.c
+	cc-compile sarray_chop.c sarray.h 
+	./cc-compile sarray_chop.c
 sarray_data.o:\
-	cc sarray_data.c sarray.h 
-	./cc sarray_data.c
+	cc-compile sarray_data.c sarray.h 
+	./cc-compile sarray_data.c
 sarray_index.o:\
-	cc sarray_index.c sarray.h 
-	./cc sarray_index.c
+	cc-compile sarray_index.c sarray.h 
+	./cc-compile sarray_index.c
 sarray_init.o:\
-	cc sarray_init.c sarray.h 
-	./cc sarray_init.c
+	cc-compile sarray_init.c sarray.h 
+	./cc-compile sarray_init.c
 sarray_size.o:\
-	cc sarray_size.c sarray.h 
-	./cc sarray_size.c
+	cc-compile sarray_size.c sarray.h 
+	./cc-compile sarray_size.c
 sarray_trunc.o:\
-	cc sarray_trunc.c sarray.h 
-	./cc sarray_trunc.c
+	cc-compile sarray_trunc.c sarray.h 
+	./cc-compile sarray_trunc.c
 scan.a:\
-	mk-slib scan.sld scan_charset.o scan_double.o scan_float.o \
+	cc-slib scan.sld scan_charset.o scan_double.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
 	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
 	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
 	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
 	scan_ushortx.o 
-	./mk-slib scan scan_charset.o scan_double.o scan_float.o \
+	./cc-slib scan scan_charset.o scan_double.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
 	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
 	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
 	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
 	scan_ushortx.o 
 scan_charset.o:\
-	cc scan_charset.c scan.h 
-	./cc scan_charset.c
+	cc-compile scan_charset.c scan.h 
+	./cc-compile scan_charset.c
 scan_double.o:\
-	cc scan_double.c scan.h 
-	./cc scan_double.c
+	cc-compile scan_double.c scan.h 
+	./cc-compile scan_double.c
 scan_f32.o:\
-	cc scan_f32.c scan_fspec.h 
-	./cc scan_f32.c
+	cc-compile scan_f32.c scan_fspec.h 
+	./cc-compile scan_f32.c
 scan_f64.o:\
-	cc scan_f64.c scan_fspec.h 
-	./cc scan_f64.c
+	cc-compile scan_f64.c scan_fspec.h 
+	./cc-compile scan_f64.c
 scan_float.o:\
-	cc scan_float.c scan.h 
-	./cc scan_float.c
+	cc-compile scan_float.c scan.h 
+	./cc-compile scan_float.c
 scan_fspec.a:\
-	mk-slib scan_fspec.sld scan_f32.o scan_f64.o 
-	./mk-slib scan_fspec scan_f32.o scan_f64.o 
+	cc-slib scan_fspec.sld scan_f32.o scan_f64.o 
+	./cc-slib scan_fspec scan_f32.o scan_f64.o 
 scan_ncharset.o:\
-	cc scan_ncharset.c scan.h 
-	./cc scan_ncharset.c
+	cc-compile scan_ncharset.c scan.h 
+	./cc-compile scan_ncharset.c
 scan_newline.o:\
-	cc scan_newline.c scan.h 
-	./cc scan_newline.c
+	cc-compile scan_newline.c scan.h 
+	./cc-compile scan_newline.c
 scan_space.o:\
-	cc scan_space.c scan.h 
-	./cc scan_space.c
+	cc-compile scan_space.c scan.h 
+	./cc-compile scan_space.c
 scan_spec.a:\
-	mk-slib scan_spec.sld scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
+	cc-slib scan_spec.sld scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
 	scan_u64o.o scan_u64x.o 
-	./mk-slib scan_spec scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
+	./cc-slib scan_spec scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o \
 	scan_u64o.o scan_u64x.o 
 scan_u32.o:\
-	cc scan_u32.c scan_spec.h uint32.h uint64.h 
-	./cc scan_u32.c
+	cc-compile scan_u32.c scan_spec.h uint32.h uint64.h 
+	./cc-compile scan_u32.c
 scan_u32o.o:\
-	cc scan_u32o.c scan_spec.h uint32.h uint64.h 
-	./cc scan_u32o.c
+	cc-compile scan_u32o.c scan_spec.h uint32.h uint64.h 
+	./cc-compile scan_u32o.c
 scan_u32x.o:\
-	cc scan_u32x.c scan_spec.h uint32.h uint64.h 
-	./cc scan_u32x.c
+	cc-compile scan_u32x.c scan_spec.h uint32.h uint64.h 
+	./cc-compile scan_u32x.c
 scan_u64.o:\
-	cc scan_u64.c scan_spec.h uint64.h 
-	./cc scan_u64.c
+	cc-compile scan_u64.c scan_spec.h uint64.h 
+	./cc-compile scan_u64.c
 scan_u64o.o:\
-	cc scan_u64o.c scan_spec.h uint64.h 
-	./cc scan_u64o.c
+	cc-compile scan_u64o.c scan_spec.h uint64.h 
+	./cc-compile scan_u64o.c
 scan_u64x.o:\
-	cc scan_u64x.c scan_spec.h uint64.h 
-	./cc scan_u64x.c
+	cc-compile scan_u64x.c scan_spec.h uint64.h 
+	./cc-compile scan_u64x.c
 scan_uchar.o:\
-	cc scan_uchar.c scan.h 
-	./cc scan_uchar.c
+	cc-compile scan_uchar.c scan.h 
+	./cc-compile scan_uchar.c
 scan_ucharo.o:\
-	cc scan_ucharo.c scan.h 
-	./cc scan_ucharo.c
+	cc-compile scan_ucharo.c scan.h 
+	./cc-compile scan_ucharo.c
 scan_ucharx.o:\
-	cc scan_ucharx.c scan.h 
-	./cc scan_ucharx.c
+	cc-compile scan_ucharx.c scan.h 
+	./cc-compile scan_ucharx.c
 scan_uint.o:\
-	cc scan_uint.c scan.h 
-	./cc scan_uint.c
+	cc-compile scan_uint.c scan.h 
+	./cc-compile scan_uint.c
 scan_uinto.o:\
-	cc scan_uinto.c scan.h 
-	./cc scan_uinto.c
+	cc-compile scan_uinto.c scan.h 
+	./cc-compile scan_uinto.c
 scan_uintx.o:\
-	cc scan_uintx.c scan.h 
-	./cc scan_uintx.c
+	cc-compile scan_uintx.c scan.h 
+	./cc-compile scan_uintx.c
 scan_ullong.o:\
-	cc scan_ullong.c scan.h 
-	./cc scan_ullong.c
+	cc-compile scan_ullong.c scan.h 
+	./cc-compile scan_ullong.c
 scan_ullongo.o:\
-	cc scan_ullongo.c scan.h 
-	./cc scan_ullongo.c
+	cc-compile scan_ullongo.c scan.h 
+	./cc-compile scan_ullongo.c
 scan_ullongx.o:\
-	cc scan_ullongx.c scan.h 
-	./cc scan_ullongx.c
+	cc-compile scan_ullongx.c scan.h 
+	./cc-compile scan_ullongx.c
 scan_ulong.o:\
-	cc scan_ulong.c scan.h 
-	./cc scan_ulong.c
+	cc-compile scan_ulong.c scan.h 
+	./cc-compile scan_ulong.c
 scan_ulongo.o:\
-	cc scan_ulongo.c scan.h 
-	./cc scan_ulongo.c
+	cc-compile scan_ulongo.c scan.h 
+	./cc-compile scan_ulongo.c
 scan_ulongx.o:\
-	cc scan_ulongx.c scan.h 
-	./cc scan_ulongx.c
+	cc-compile scan_ulongx.c scan.h 
+	./cc-compile scan_ulongx.c
 scan_ushort.o:\
-	cc scan_ushort.c scan.h 
-	./cc scan_ushort.c
+	cc-compile scan_ushort.c scan.h 
+	./cc-compile scan_ushort.c
 scan_ushorto.o:\
-	cc scan_ushorto.c scan.h 
-	./cc scan_ushorto.c
+	cc-compile scan_ushorto.c scan.h 
+	./cc-compile scan_ushorto.c
 scan_ushortx.o:\
-	cc scan_ushortx.c scan.h 
-	./cc scan_ushortx.c
+	cc-compile scan_ushortx.c scan.h 
+	./cc-compile scan_ushortx.c
 seek.a:\
-	mk-slib seek.sld seek_cur.o seek_end.o seek_pos.o seek_start.o 
-	./mk-slib seek seek_cur.o seek_end.o seek_pos.o seek_start.o 
+	cc-slib seek.sld seek_cur.o seek_end.o seek_pos.o seek_start.o 
+	./cc-slib seek seek_cur.o seek_end.o seek_pos.o seek_start.o 
 seek_cur.o:\
-	cc seek_cur.c int64.h seek.h 
-	./cc seek_cur.c
+	cc-compile seek_cur.c int64.h seek.h 
+	./cc-compile seek_cur.c
 seek_end.o:\
-	cc seek_end.c int64.h seek.h 
-	./cc seek_end.c
+	cc-compile seek_end.c int64.h seek.h 
+	./cc-compile seek_end.c
 seek_pos.o:\
-	cc seek_pos.c int64.h seek.h 
-	./cc seek_pos.c
+	cc-compile seek_pos.c int64.h seek.h 
+	./cc-compile seek_pos.c
 seek_start.o:\
-	cc seek_start.c int64.h seek.h 
-	./cc seek_start.c
+	cc-compile seek_start.c int64.h seek.h 
+	./cc-compile seek_start.c
 sgetline.a:\
-	mk-slib sgetline.sld sgetline.o sgetline_chop.o sgetline_get.o 
-	./mk-slib sgetline sgetline.o sgetline_chop.o sgetline_get.o 
+	cc-slib sgetline.sld sgetline.o sgetline_chop.o sgetline_get.o 
+	./cc-slib sgetline sgetline.o sgetline_chop.o sgetline_get.o 
 sgetline.o:\
-	cc sgetline.c sgetline.h 
-	./cc sgetline.c
+	cc-compile sgetline.c sgetline.h 
+	./cc-compile sgetline.c
 sgetline_chop.o:\
-	cc sgetline_chop.c sgetline.h 
-	./cc sgetline_chop.c
+	cc-compile sgetline_chop.c sgetline.h 
+	./cc-compile sgetline_chop.c
 sgetline_get.o:\
-	cc sgetline_get.c bin.h buffer.h sgetline.h sstring.h 
-	./cc sgetline_get.c
+	cc-compile sgetline_get.c bin.h buffer.h sgetline.h sstring.h 
+	./cc-compile sgetline_get.c
 sig.a:\
-	mk-slib sig.sld sig.o sig_block.o sig_catch.o sig_pause.o 
-	./mk-slib sig sig.o sig_block.o sig_catch.o sig_pause.o 
+	cc-slib sig.sld sig.o sig_block.o sig_catch.o sig_pause.o 
+	./cc-slib sig sig.o sig_block.o sig_catch.o sig_pause.o 
 sig.o:\
-	cc sig.c sig.h 
-	./cc sig.c
+	cc-compile sig.c sig.h 
+	./cc-compile sig.c
 sig_block.o:\
-	cc sig_block.c sig.h sig_pmask.h 
-	./cc sig_block.c
+	cc-compile sig_block.c sig.h sig_pmask.h 
+	./cc-compile sig_block.c
 sig_catch.o:\
-	cc sig_catch.c sig.h sig_action.h 
-	./cc sig_catch.c
+	cc-compile sig_catch.c sig.h sig_action.h 
+	./cc-compile sig_catch.c
 sig_pause.o:\
-	cc sig_pause.c sig.h sig_pmask.h 
-	./cc sig_pause.c
+	cc-compile sig_pause.c sig.h sig_pmask.h 
+	./cc-compile sig_pause.c
 squeue.a:\
-	mk-slib squeue.sld squeue_bytes.o squeue_data.o squeue_deq.o \
+	cc-slib squeue.sld squeue_bytes.o squeue_data.o squeue_deq.o \
 	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o 
-	./mk-slib squeue squeue_bytes.o squeue_data.o squeue_deq.o \
+	./cc-slib squeue squeue_bytes.o squeue_data.o squeue_deq.o \
 	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o 
 squeue_bytes.o:\
-	cc squeue_bytes.c squeue.h 
-	./cc squeue_bytes.c
+	cc-compile squeue_bytes.c squeue.h 
+	./cc-compile squeue_bytes.c
 squeue_data.o:\
-	cc squeue_data.c squeue.h 
-	./cc squeue_data.c
+	cc-compile squeue_data.c squeue.h 
+	./cc-compile squeue_data.c
 squeue_deq.o:\
-	cc squeue_deq.c squeue.h 
-	./cc squeue_deq.c
+	cc-compile squeue_deq.c squeue.h 
+	./cc-compile squeue_deq.c
 squeue_enq.o:\
-	cc squeue_enq.c squeue.h 
-	./cc squeue_enq.c
+	cc-compile squeue_enq.c squeue.h 
+	./cc-compile squeue_enq.c
 squeue_init.o:\
-	cc squeue_init.c squeue.h 
-	./cc squeue_init.c
+	cc-compile squeue_init.c squeue.h 
+	./cc-compile squeue_init.c
 squeue_peek.o:\
-	cc squeue_peek.c squeue.h 
-	./cc squeue_peek.c
+	cc-compile squeue_peek.c squeue.h 
+	./cc-compile squeue_peek.c
 squeue_size.o:\
-	cc squeue_size.c squeue.h 
-	./cc squeue_size.c
+	cc-compile squeue_size.c squeue.h 
+	./cc-compile squeue_size.c
 sstack.a:\
-	mk-slib sstack.sld sstack_bytes.o sstack_data.o sstack_init.o \
+	cc-slib sstack.sld sstack_bytes.o sstack_data.o sstack_init.o \
 	sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o 
-	./mk-slib sstack sstack_bytes.o sstack_data.o sstack_init.o \
+	./cc-slib sstack sstack_bytes.o sstack_data.o sstack_init.o \
 	sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o 
 sstack_bytes.o:\
-	cc sstack_bytes.c sstack.h 
-	./cc sstack_bytes.c
+	cc-compile sstack_bytes.c sstack.h 
+	./cc-compile sstack_bytes.c
 sstack_data.o:\
-	cc sstack_data.c sstack.h 
-	./cc sstack_data.c
+	cc-compile sstack_data.c sstack.h 
+	./cc-compile sstack_data.c
 sstack_init.o:\
-	cc sstack_init.c sstack.h 
-	./cc sstack_init.c
+	cc-compile sstack_init.c sstack.h 
+	./cc-compile sstack_init.c
 sstack_peek.o:\
-	cc sstack_peek.c sstack.h 
-	./cc sstack_peek.c
+	cc-compile sstack_peek.c sstack.h 
+	./cc-compile sstack_peek.c
 sstack_pop.o:\
-	cc sstack_pop.c sstack.h 
-	./cc sstack_pop.c
+	cc-compile sstack_pop.c sstack.h 
+	./cc-compile sstack_pop.c
 sstack_push.o:\
-	cc sstack_push.c sstack.h 
-	./cc sstack_push.c
+	cc-compile sstack_push.c sstack.h 
+	./cc-compile sstack_push.c
 sstack_size.o:\
-	cc sstack_size.c sstack.h 
-	./cc sstack_size.c
+	cc-compile sstack_size.c sstack.h 
+	./cc-compile sstack_size.c
 sstring.a:\
-	mk-slib sstring.sld sstring_0.o sstring_cat.o sstring_catb.o \
+	cc-slib sstring.sld sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
 	sstring_init.o sstring_chop.o 
-	./mk-slib sstring sstring_0.o sstring_cat.o sstring_catb.o \
+	./cc-slib sstring sstring_0.o sstring_cat.o sstring_catb.o \
 	sstring_cats.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
 	sstring_init.o sstring_chop.o 
 sstring_0.o:\
-	cc sstring_0.c sstring.h 
-	./cc sstring_0.c
+	cc-compile sstring_0.c sstring.h 
+	./cc-compile sstring_0.c
 sstring_cat.o:\
-	cc sstring_cat.c sstring.h 
-	./cc sstring_cat.c
+	cc-compile sstring_cat.c sstring.h 
+	./cc-compile sstring_cat.c
 sstring_catb.o:\
-	cc sstring_catb.c sstring.h 
-	./cc sstring_catb.c
+	cc-compile sstring_catb.c sstring.h 
+	./cc-compile sstring_catb.c
 sstring_cats.o:\
-	cc sstring_cats.c sstring.h 
-	./cc sstring_cats.c
+	cc-compile sstring_cats.c sstring.h 
+	./cc-compile sstring_cats.c
 sstring_chop.o:\
-	cc sstring_chop.c sstring.h 
-	./cc sstring_chop.c
+	cc-compile sstring_chop.c sstring.h 
+	./cc-compile sstring_chop.c
 sstring_copy.o:\
-	cc sstring_copy.c sstring.h 
-	./cc sstring_copy.c
+	cc-compile sstring_copy.c sstring.h 
+	./cc-compile sstring_copy.c
 sstring_cpyb.o:\
-	cc sstring_cpyb.c sstring.h 
-	./cc sstring_cpyb.c
+	cc-compile sstring_cpyb.c sstring.h 
+	./cc-compile sstring_cpyb.c
 sstring_cpys.o:\
-	cc sstring_cpys.c sstring.h 
-	./cc sstring_cpys.c
+	cc-compile sstring_cpys.c sstring.h 
+	./cc-compile sstring_cpys.c
 sstring_init.o:\
-	cc sstring_init.c sstring.h 
-	./cc sstring_init.c
+	cc-compile sstring_init.c sstring.h 
+	./cc-compile sstring_init.c
 stalloc.a:\
-	mk-slib stalloc.sld stalloc.o 
-	./mk-slib stalloc stalloc.o 
+	cc-slib stalloc.sld stalloc.o 
+	./cc-slib stalloc stalloc.o 
 stalloc.o:\
-	cc stalloc.c error.h stalloc.h 
-	./cc stalloc.c
+	cc-compile stalloc.c error.h stalloc.h 
+	./cc-compile stalloc.c
 str.a:\
-	mk-slib str.sld str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o \
+	cc-slib str.sld str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o \
 	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o \
 	str_rchr.o str_starts.o str_tolower.o str_toupper.o 
-	./mk-slib str str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o \
+	./cc-slib str str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o \
 	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o \
 	str_rchr.o str_starts.o str_tolower.o str_toupper.o 
 str_char.o:\
-	cc str_char.c str.h 
-	./cc str_char.c
+	cc-compile str_char.c str.h 
+	./cc-compile str_char.c
 str_chr.o:\
-	cc str_chr.c str.h 
-	./cc str_chr.c
+	cc-compile str_chr.c str.h 
+	./cc-compile str_chr.c
 str_ci_diff.o:\
-	cc str_ci_diff.c str.h 
-	./cc str_ci_diff.c
+	cc-compile str_ci_diff.c str.h 
+	./cc-compile str_ci_diff.c
 str_ci_ndiff.o:\
-	cc str_ci_ndiff.c str.h 
-	./cc str_ci_ndiff.c
+	cc-compile str_ci_ndiff.c str.h 
+	./cc-compile str_ci_ndiff.c
 str_diff.o:\
-	cc str_diff.c str.h 
-	./cc str_diff.c
+	cc-compile str_diff.c str.h 
+	./cc-compile str_diff.c
 str_dup.o:\
-	cc str_dup.c alloc.h bin.h str.h 
-	./cc str_dup.c
+	cc-compile str_dup.c alloc.h bin.h str.h 
+	./cc-compile str_dup.c
 str_ends.o:\
-	cc str_ends.c str.h 
-	./cc str_ends.c
+	cc-compile str_ends.c str.h 
+	./cc-compile str_ends.c
 str_len.o:\
-	cc str_len.c str.h 
-	./cc str_len.c
+	cc-compile str_len.c str.h 
+	./cc-compile str_len.c
 str_ndiff.o:\
-	cc str_ndiff.c str.h 
-	./cc str_ndiff.c
+	cc-compile str_ndiff.c str.h 
+	./cc-compile str_ndiff.c
 str_rchar.o:\
-	cc str_rchar.c str.h 
-	./cc str_rchar.c
+	cc-compile str_rchar.c str.h 
+	./cc-compile str_rchar.c
 str_rchr.o:\
-	cc str_rchr.c str.h 
-	./cc str_rchr.c
+	cc-compile str_rchr.c str.h 
+	./cc-compile str_rchr.c
 str_starts.o:\
-	cc str_starts.c str.h 
-	./cc str_starts.c
+	cc-compile str_starts.c str.h 
+	./cc-compile str_starts.c
 str_tolower.o:\
-	cc str_tolower.c str.h 
-	./cc str_tolower.c
+	cc-compile str_tolower.c str.h 
+	./cc-compile str_tolower.c
 str_toupper.o:\
-	cc str_toupper.c str.h 
-	./cc str_toupper.c
+	cc-compile str_toupper.c str.h 
+	./cc-compile str_toupper.c
 syserr.a:\
-	mk-slib syserr.sld syserr_die.o syserr_init.o 
-	./mk-slib syserr syserr_die.o syserr_init.o 
+	cc-slib syserr.sld syserr_die.o syserr_init.o 
+	./cc-slib syserr syserr_die.o syserr_init.o 
 syserr_die.o:\
-	cc syserr_die.c buffer.h exit.h syserr.h 
-	./cc syserr_die.c
+	cc-compile syserr_die.c buffer.h exit.h syserr.h 
+	./cc-compile syserr_die.c
 syserr_init.o:\
-	cc syserr_init.c error.h syserr.h 
-	./cc syserr_init.c
+	cc-compile syserr_init.c error.h syserr.h 
+	./cc-compile syserr_init.c
 uint16.a:\
-	mk-slib uint16.sld uint16_pack.o uint16_unpack.o 
-	./mk-slib uint16 uint16_pack.o uint16_unpack.o 
+	cc-slib uint16.sld uint16_pack.o uint16_unpack.o 
+	./cc-slib uint16 uint16_pack.o uint16_unpack.o 
 uint16_pack.o:\
-	cc uint16_pack.c uint16.h 
-	./cc uint16_pack.c
+	cc-compile uint16_pack.c uint16.h 
+	./cc-compile uint16_pack.c
 uint16_unpack.o:\
-	cc uint16_unpack.c uint16.h 
-	./cc uint16_unpack.c
+	cc-compile uint16_unpack.c uint16.h 
+	./cc-compile uint16_unpack.c
 uint32.a:\
-	mk-slib uint32.sld uint32_pack.o uint32_unpack.o 
-	./mk-slib uint32 uint32_pack.o uint32_unpack.o 
+	cc-slib uint32.sld uint32_pack.o uint32_unpack.o 
+	./cc-slib uint32 uint32_pack.o uint32_unpack.o 
 uint32_pack.o:\
-	cc uint32_pack.c uint32.h 
-	./cc uint32_pack.c
+	cc-compile uint32_pack.c uint32.h 
+	./cc-compile uint32_pack.c
 uint32_unpack.o:\
-	cc uint32_unpack.c uint32.h 
-	./cc uint32_unpack.c
+	cc-compile uint32_unpack.c uint32.h 
+	./cc-compile uint32_unpack.c
 uint64.a:\
-	mk-slib uint64.sld uint64_pack.o uint64_unpack.o 
-	./mk-slib uint64 uint64_pack.o uint64_unpack.o 
+	cc-slib uint64.sld uint64_pack.o uint64_unpack.o 
+	./cc-slib uint64 uint64_pack.o uint64_unpack.o 
 uint64_pack.o:\
-	cc uint64_pack.c uint64.h 
-	./cc uint64_pack.c
+	cc-compile uint64_pack.c uint64.h 
+	./cc-compile uint64_pack.c
 uint64_unpack.o:\
-	cc uint64_unpack.c uint64.h 
-	./cc uint64_unpack.c
+	cc-compile uint64_unpack.c uint64.h 
+	./cc-compile uint64_unpack.c
 clean: sysdeps_clean tests_clean 
 	rm -f alloc.a alloc.o array.a array.o array_bytes.o array_cat.o \
 	array_chop.o array_copy.o array_data.o array_index.o array_size.o \
@@ -1002,39 +1003,40 @@ clean: sysdeps_clean tests_clean
 	bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchar.o \
 	bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o bin_zero.o buffer.a \
 	buffer0.o buffer1.o buffer2.o buffer_copy.o buffer_get.o \
-	buffer_init.o buffer_put.o closeonexec.a closeonexec.o corelib-conf \
-	corelib-conf.o ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a \
-	ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c ctxt/incdir.o \
-	ctxt/repos.c ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o \
-	ctxt/version.c ctxt/version.o deinstaller deinstaller.o dir_array.a \
-	dir_array.o dir_hash.a dir_hash.o dir_name.a dir_name.o dstring.a \
-	dstring_0.o dstring_cat.o 
-	rm -f dstring_cat0.o dstring_catb.o dstring_cats.o dstring_chop.o \
-	dstring_copy.o dstring_cpyb.o dstring_cpys.o dstring_init.o \
-	dstring_trunc.o env.a env.o env_get.o error.a error.o error_str.o \
-	fd.a fd_dup.o fd_move.o fd_reset.o float32.a float32_pack.o \
-	float32_upack.o float64.a float64_pack.o float64_upack.o fmt.a \
-	fmt_nstr.o fmt_spec.a fmt_str.o fmt_u32.o fmt_u32b.o fmt_u32o.o \
-	fmt_u32x.o fmt_u64.o fmt_u64b.o fmt_u64o.o fmt_u64x.o fmt_uchar.o \
-	fmt_ucharb.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o \
-	fmt_uinto.o fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o \
-	fmt_ulong.o fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o \
-	fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o get_opt.a get_opt.o \
-	hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o ht_deletes.o 
-	rm -f ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o \
-	ht_replaceb.o ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o \
-	iarray_chop.o iarray_copy.o iarray_free.o iarray_index.o \
-	iarray_init.o iarray_insert.o iarray_node.o iarray_remove.o \
-	iarray_size.o iarray_trunc.o iarray_zero.o inst-check inst-check.o \
-	inst-copy inst-copy.o inst-dir inst-dir.o inst-link inst-link.o \
-	install_core.o install_error.o installer installer.o instchk \
-	instchk.o insthier.o int16.a int16_pack.o int16_unpack.o int32.a \
-	int32_pack.o int32_unpack.o int64.a int64_pack.o int64_unpack.o \
-	nonblock.a nonblock.o open.a open_append.o open_creat.o open_excl.o \
-	open_ro.o open_rw.o open_trunc.o open_wo.o sarray.a sarray_bytes.o \
-	sarray_cat.o sarray_chop.o sarray_data.o sarray_index.o \
-	sarray_init.o sarray_size.o sarray_trunc.o 
-	rm -f scan.a scan_charset.o scan_double.o scan_f32.o scan_f64.o \
+	buffer_init.o buffer_put.o closeonexec.a closeonexec.o conf-cctype \
+	conf-systype corelib-conf corelib-conf.o ctxt/bindir.c ctxt/bindir.o \
+	ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c \
+	ctxt/incdir.o ctxt/repos.c ctxt/repos.o ctxt/slibdir.c \
+	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller \
+	deinstaller.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
+	dir_name.a dir_name.o dstring.a 
+	rm -f dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
+	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
+	dstring_cpys.o dstring_init.o dstring_trunc.o env.a env.o env_get.o \
+	error.a error.o error_str.o fd.a fd_dup.o fd_move.o fd_reset.o \
+	float32.a float32_pack.o float32_upack.o float64.a float64_pack.o \
+	float64_upack.o fmt.a fmt_nstr.o fmt_spec.a fmt_str.o fmt_u32.o \
+	fmt_u32b.o fmt_u32o.o fmt_u32x.o fmt_u64.o fmt_u64b.o fmt_u64o.o \
+	fmt_u64x.o fmt_uchar.o fmt_ucharb.o fmt_ucharo.o fmt_ucharx.o \
+	fmt_uint.o fmt_uintb.o fmt_uinto.o fmt_uintx.o fmt_ullong.o \
+	fmt_ullongo.o fmt_ullongx.o fmt_ulong.o fmt_ulongb.o fmt_ulongo.o \
+	fmt_ulongx.o fmt_ushort.o fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o \
+	get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o 
+	rm -f ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o \
+	ht_hash.o ht_init.o ht_replaceb.o ht_replaces.o iarray.a \
+	iarray_bytes.o iarray_cat.o iarray_chop.o iarray_copy.o \
+	iarray_free.o iarray_index.o iarray_init.o iarray_insert.o \
+	iarray_node.o iarray_remove.o iarray_size.o iarray_trunc.o \
+	iarray_zero.o inst-check inst-check.o inst-copy inst-copy.o inst-dir \
+	inst-dir.o inst-link inst-link.o install_core.o install_error.o \
+	installer installer.o instchk instchk.o insthier.o int16.a \
+	int16_pack.o int16_unpack.o int32.a int32_pack.o int32_unpack.o \
+	int64.a int64_pack.o int64_unpack.o mk-ctxt mk-ctxt.o nonblock.a \
+	nonblock.o open.a open_append.o open_creat.o open_excl.o open_ro.o \
+	open_rw.o open_trunc.o open_wo.o sarray.a sarray_bytes.o \
+	sarray_cat.o sarray_chop.o sarray_data.o 
+	rm -f sarray_index.o sarray_init.o sarray_size.o sarray_trunc.o \
+	scan.a scan_charset.o scan_double.o scan_f32.o scan_f64.o \
 	scan_float.o scan_fspec.a scan_ncharset.o scan_newline.o \
 	scan_space.o scan_spec.a scan_u32.o scan_u32o.o scan_u32x.o \
 	scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o scan_ucharo.o \
@@ -1046,8 +1048,9 @@ clean: sysdeps_clean tests_clean
 	sig_pause.o squeue.a squeue_bytes.o squeue_data.o squeue_deq.o \
 	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o sstack.a \
 	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
-	sstack_pop.o sstack_push.o sstack_size.o sstring.a sstring_0.o 
-	rm -f sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstack_pop.o 
+	rm -f sstack_push.o sstack_size.o sstring.a sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
 	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
 	stalloc.a stalloc.o str.a str_char.o str_chr.o str_ci_diff.o \
 	str_ci_ndiff.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \

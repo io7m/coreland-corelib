@@ -216,3 +216,4 @@
 20070208 code: fixed bug in hashtable that would select the wrong key
                if two strings in the same slot shared a common prefix
                equal in length to the smaller string.
+20070208 code: new cpj tools.
