@@ -11,7 +11,7 @@ int ht_getb(const struct hashtable *h, const void *k, unsigned long klen,
   const char *key = (const char *) k;
 
   pos = ht_hash(key, klen) & (HT_HASH_BUCKETS - 1);
-  th = &(h->slots[pos]);
+  th = (struct ht_table_head *) &h->slots[pos];
   np = th->head;
 
   if (!th->used) return 0;
