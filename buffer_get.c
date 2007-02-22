@@ -55,6 +55,8 @@ char *buffer_peek(struct buffer *b)
 
 void buffer_seek(struct buffer *b, unsigned long len)
 {
-  b->size += len;
-  b->pos -= len;
+  if (b->pos >= len) {
+    b->size += len;
+    b->pos -= len;
+  }
 }
