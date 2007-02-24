@@ -41,7 +41,6 @@ void initfree_test(struct dstring *ds)
   num = 1 + DSTRING_OVERALLOC;
   T_COMPARE(num, ds->a, INITTEST" a", 1);
   T_COMPARE(0, ds->len, INITTEST" len", 2);
-  T_COMPARE(0, ds->s[0], INITTEST" s[0]", 3);
 
   dstring_free(ds);
   T_COMPARE(0, ds->a, INITTEST" a", 1);
