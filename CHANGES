@@ -218,3 +218,4 @@
                equal in length to the smaller string.
 20070208 code: new cpj tools.
 20070225 code: new installer.
+20070225 code: libs-math, new sysdeps.
