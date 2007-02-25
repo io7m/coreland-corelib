@@ -137,7 +137,7 @@ buffer_put.o:\
 	cc-compile buffer_put.c bin.h buffer.h error.h str.h 
 	./cc-compile buffer_put.c
 cc-compile: conf-cc conf-cctype conf-cflags sysdeps.out 
-cc-link: conf-ld sysdeps.out libs-sysmath 
+cc-link: conf-ld conf-ldflags sysdeps.out libs-math 
 cc-slib: conf-systype 
 closeonexec.a:\
 	cc-slib closeonexec.sld closeonexec.o 

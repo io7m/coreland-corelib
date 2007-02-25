@@ -1,0 +1,3 @@
+libs-math: ../libs-math
+	rm -f libs-math
+	ln -s ../libs-math libs-math
