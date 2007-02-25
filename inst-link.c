@@ -1,3 +1,5 @@
+/* $Rev: 1800 $ */
+
 #include <sys/stat.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -27,8 +29,6 @@ void complain(const char *s)
 }
 int create_link()
 {
-  int dirfd;
-
   if (chdir(dir) == -1) { complain("chdir"); return 113; }
   if (symlink(src, dst) == -1) { complain("symlink"); return 114; }
   return 0;

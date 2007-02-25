@@ -1,3 +1,5 @@
+/* $Rev: 1800 $ */
+
 #include <stdio.h>
 #include "install.h"
 
