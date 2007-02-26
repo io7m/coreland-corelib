@@ -2,7 +2,7 @@
 
 default: all
 
-all:\
+all: local \
 	t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 t_dir_array \
 	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 \
 	t_fmt3 t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
@@ -12,26 +12,8 @@ all:\
 	t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 t_sstring \
 	t_stalloc t_str t_uint 
 
-cc-compile: ../cc-compile conf-cctype conf-cc
-	rm -f cc-compile
-	ln -s ../cc-compile cc-compile
-
-cc-link: ../cc-link conf-ld
-	rm -f cc-link
-	ln -s ../cc-link cc-link
-
-conf-cc: ../conf-cc
-	rm -f conf-cc
-	ln -s ../conf-cc conf-cc
-
-conf-cctype: ../conf-cctype
-	rm -f conf-cctype
-	ln -s ../conf-cctype conf-cctype
-
-conf-ld: ../conf-ld
-	rm -f conf-ld
-	ln -s ../conf-ld conf-ld
-
+cc-compile: conf-cc conf-cctype conf-cflags 
+cc-link: conf-ld libs-math 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
 	./cc-link t_alloc t_alloc.o ../alloc.a 
@@ -398,26 +380,25 @@ t_uint:\
 t_uint.o:\
 	cc-compile t_uint.c ../uint16.h ../uint32.h ../uint64.h 
 	./cc-compile t_uint.c
-clean: tests_clean 
-	rm -f cc-compile cc-link conf-cc conf-cctype conf-ld t_alloc \
-	t_alloc.o t_array t_array.o t_base_name t_base_name.o t_bin t_bin.o \
-	t_buffer1 t_buffer1.o t_buffer2 t_buffer2.o t_dir_array \
-	t_dir_array.o t_dir_hash t_dir_hash.o t_dir_name t_dir_name.o \
-	t_dstring t_dstring.o t_env t_env.o t_fd t_fd.o t_float t_float.o \
-	t_fmt t_fmt.o t_fmt2 t_fmt2.o t_fmt3 t_fmt3.o t_fmt_spec \
+clean: tests_clean local_clean 
+	rm -f t_alloc t_alloc.o t_array t_array.o t_base_name t_base_name.o \
+	t_bin t_bin.o t_buffer1 t_buffer1.o t_buffer2 t_buffer2.o \
+	t_dir_array t_dir_array.o t_dir_hash t_dir_hash.o t_dir_name \
+	t_dir_name.o t_dstring t_dstring.o t_env t_env.o t_fd t_fd.o t_float \
+	t_float.o t_fmt t_fmt.o t_fmt2 t_fmt2.o t_fmt3 t_fmt3.o t_fmt_spec \
 	t_fmt_spec.o t_get_opt t_get_opt.o t_hashtable1 t_hashtable1.o \
 	t_hashtable2 t_hashtable2.o t_hashtable3 t_hashtable3.o t_hashtable4 \
 	t_hashtable4.o t_hashtable5 t_hashtable5.o t_hashtable6 \
 	t_hashtable6.o t_hashtable7 t_hashtable7.o t_hashtable_c.o \
 	t_hashtable_d.o t_iarray.o t_iarray1 t_iarray1.o t_iarray2 \
-	t_iarray2.o t_iarray3 t_iarray3.o 
-	rm -f t_iarray4 t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 \
-	t_iarray6.o t_iarray_util.o t_int t_int.o t_open t_open.o t_sarray1 \
-	t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o t_scan3 t_scan3.o \
-	t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o t_scan_spec \
-	t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o t_sig t_sig.o \
-	t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring t_sstring.o \
-	t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
+	t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 \
+	t_iarray5.o t_iarray6 
+	rm -f t_iarray6.o t_iarray_util.o t_int t_int.o t_open t_open.o \
+	t_sarray1 t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o t_scan3 \
+	t_scan3.o t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o \
+	t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o \
+	t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring \
+	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
 
 tests: list_tests run_tests
 tests_clean:
@@ -428,6 +409,36 @@ list_tests:
 
 run_tests:
 	./run-tests -v
+local:
+local_clean:
+
+cc-compile: ../cc-compile conf-cctype conf-cc
+	rm -f cc-compile
+	ln -s ../cc-compile cc-compile
+
+cc-link: ../cc-link conf-ld conf-ldfflist libs-math
+	rm -f cc-link
+	ln -s ../cc-link cc-link
+
+conf-cc: ../conf-cc
+	rm -f conf-cc
+	ln -s ../conf-cc conf-cc
+
+conf-cctype: ../conf-cctype
+	rm -f conf-cctype
+	ln -s ../conf-cctype conf-cctype
+
+conf-systype: ../conf-systype
+	rm -f conf-systype
+	ln -s ../conf-systype conf-systype
+
+conf-ld: ../conf-ld
+	rm -f conf-ld
+	ln -s ../conf-ld conf-ld
+
+libs-math: ../libs-math
+	rm -f libs-math
+	ln -s ../libs-math libs-math
 regen:
 	cpj-genmk > Makefile.tmp
 	mv Makefile.tmp Makefile

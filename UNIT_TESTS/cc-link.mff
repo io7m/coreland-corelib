@@ -1,3 +1,0 @@
-cc-link: ../cc-link conf-ld
-	rm -f cc-link
-	ln -s ../cc-link cc-link

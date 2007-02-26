@@ -1,3 +1,0 @@
-cc-compile: ../cc-compile conf-cctype conf-cc
-	rm -f cc-compile
-	ln -s ../cc-compile cc-compile
