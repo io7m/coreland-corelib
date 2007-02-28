@@ -7,7 +7,11 @@ struct int_str {
   unsigned int sz;
   unsigned int base;
   const char *str;
+#if defined(HAVE_LONGLONG)
   unsigned long long n;
+#else
+  unsigned long n;
+#endif
 };
 
 #define UINT 1
@@ -17,10 +21,12 @@ static struct int_str int_list[] = {
   { UINT,      10, "2147483648",         2147483648U            },
   { UINT,      16, "80000000",           0x80000000U            },
   { UINT,      8,  "20000000000",        020000000000U          },
+#if defined(HAVE_LONGLONG)
   { ULONGLONG, 10, "4503599627370480",   4503599627370480ULL    },
   { ULONGLONG, 16, "ffffffffffff0",      0xffffffffffff0ULL     },
   { ULONGLONG, 16, "16FC461",            0x16FC461ULL           },
   { ULONGLONG, 8,  "177777777777777760", 0177777777777777760ULL },
+#endif
   { 0, 0, 0, 0 },
 };
 
@@ -58,6 +64,7 @@ int main()
           default: break;
         }
         break;
+#if defined(HAVE_LONGLONG)
       case ULONGLONG:
         ull = 0;
         switch (int_list[i].base) {
@@ -82,6 +89,7 @@ int main()
           default: break;
         }
         break;
+#endif
       default: break;
     }
     ++i;

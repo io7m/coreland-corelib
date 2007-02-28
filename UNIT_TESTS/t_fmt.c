@@ -1,20 +1,22 @@
 #include "../fmt.h"
 #include <stdio.h>
 
+char cuc[FMT_ULONG];
+char cui[FMT_ULONG];
+char cull[FMT_ULONGLONG];
+
 int main()
 {
   unsigned char uc;
   unsigned int ui;
+#if defined(HAVE_LONGLONG)
   unsigned long long ull;
-  char cuc[FMT_ULONG];
-  char cui[FMT_ULONG];
-  char cull[FMT_ULONGLONG];
+#endif
 
   printf("FMT_ULONG %u\n", FMT_ULONG);
   printf("FMT_ULONGLONG %u\n", FMT_ULONGLONG);
 
   /* uchar */
-
   uc = 100U;
   cuc[fmt_uchar(cuc, uc)] = 0;
   if (cuc[0] != '1') { printf("fail: cuc[0] == %c\n", cuc[0]); return 1; }
@@ -33,7 +35,6 @@ int main()
   if (cuc[2] != '7') { printf("fail: cuc[2] == %c\n", cuc[2]); return 1; }
 
   /* uint */
-
   ui = 10000U;
   cui[fmt_uint(cui, ui)] = 0;
   if (cui[0] != '1') { printf("fail: cui[0] == %c\n", cui[0]); return 1; }
@@ -62,8 +63,8 @@ int main()
   if (cui[4] != '5') { printf("fail: cui[4] == %c\n", cui[4]); return 1; }
   if (cui[5] != '6') { printf("fail: cui[5] == %c\n", cui[5]); return 1; }
 
+#if defined(HAVE_LONGLONG)
   /* ull */
-
   ull = 12302652060662212828ULL;
   cull[fmt_ulonglong(cull, ull)] = 0;  
   if (cull[0] != '1') { printf("fail: cull[0] == %c\n", cull[0]); return 1; }
@@ -130,6 +131,7 @@ int main()
   if (cull[19] != '0') { printf("fail: cull[19] == %c\n", cull[19]); return 1; }
   if (cull[20] != '0') { printf("fail: cull[20] == %c\n", cull[20]); return 1; }
   if (cull[21] != '0') { printf("fail: cull[21] == %c\n", cull[21]); return 1; }
+#endif
 
   return 0;
 }

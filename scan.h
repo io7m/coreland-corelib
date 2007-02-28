@@ -1,6 +1,8 @@
 #ifndef SCAN_H
 #define SCAN_H
 
+#include "_sd_longlong.h"
+
 unsigned int scan_ulong(const char *, unsigned long *);
 unsigned int scan_ulongx(const char *, unsigned long *);
 unsigned int scan_ulongo(const char *, unsigned long *);
@@ -21,10 +23,12 @@ unsigned int scan_ucharx(const char *, unsigned char *);
 unsigned int scan_ucharo(const char *, unsigned char *);
 unsigned int scan_ucharb(const char *, unsigned char *);
 
+#if defined(HAVE_LONGLONG)
 unsigned int scan_ulonglong(const char *, unsigned long long *);
 unsigned int scan_ulonglongx(const char *, unsigned long long *);
 unsigned int scan_ulonglongo(const char *, unsigned long long *);
 unsigned int scan_ulonglongb(const char *, unsigned long long *);
+#endif
 
 unsigned int scan_float(const char *, float *);
 unsigned int scan_double(const char *, double *);

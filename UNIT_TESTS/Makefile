@@ -12,8 +12,6 @@ all: local \
 	t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 t_sstring \
 	t_stalloc t_str t_uint 
 
-cc-compile: conf-cc conf-cctype conf-cflags 
-cc-link: conf-ld libs-math 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
 	./cc-link t_alloc t_alloc.o ../alloc.a 
@@ -375,10 +373,12 @@ t_str.o:\
 	cc-compile t_str.c ../error.h ../str.h 
 	./cc-compile t_str.c
 t_uint:\
-	cc-link t_uint.ld t_uint.o ../uint16.a ../uint32.a ../uint64.a 
-	./cc-link t_uint t_uint.o ../uint16.a ../uint32.a ../uint64.a 
+	cc-link t_uint.ld t_uint.o ../uint16.a ../uint32.a ../uint64.a \
+	../uint.a 
+	./cc-link t_uint t_uint.o ../uint16.a ../uint32.a ../uint64.a \
+	../uint.a 
 t_uint.o:\
-	cc-compile t_uint.c ../uint16.h ../uint32.h ../uint64.h 
+	cc-compile t_uint.c ../uint16.h ../uint32.h ../uint64.h ../uint.h 
 	./cc-compile t_uint.c
 clean: tests_clean local_clean 
 	rm -f t_alloc t_alloc.o t_array t_array.o t_base_name t_base_name.o \
@@ -411,6 +411,8 @@ run_tests:
 	./run-tests -v
 local:
 local_clean:
+	rm -f cc-compile cc-link conf-cc conf-cctype conf-systype \
+	conf-ld libs-math
 
 cc-compile: ../cc-compile conf-cctype conf-cc
 	rm -f cc-compile

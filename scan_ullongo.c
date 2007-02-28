@@ -1,5 +1,6 @@
 #include "scan.h"
 
+#if defined(HAVE_LONGLONG)
 unsigned int scan_ulonglongo(const char *str, unsigned long long *ull)
 {
   register unsigned long long res;
@@ -32,3 +33,4 @@ unsigned int scan_ulonglongo(const char *str, unsigned long long *ull)
   if (ull) *ull = res;
   return pos;
 }
+#endif

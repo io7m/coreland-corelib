@@ -221,3 +221,6 @@
 20070225 code: libs-math, new sysdeps.
 20070228 code: workaround in scan_u* for apparent gcc 3.4.6 compiler
                bug.
+20070228 code: added sd-longlong sysdep. added HAVE_LONGLONG test to
+               fmt and scan headers for better C90 compatibility.
+20070228 code: added uint.

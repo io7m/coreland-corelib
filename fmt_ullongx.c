@@ -1,5 +1,6 @@
 #include "fmt.h"
 
+#if defined(HAVE_LONGLONG)
 unsigned int fmt_ulonglongx(char *str, unsigned long long ul)
 {
   unsigned long long quo;
@@ -24,4 +25,4 @@ unsigned int fmt_ulonglongx(char *str, unsigned long long ul)
   }
   return len;
 }
-
+#endif

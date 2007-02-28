@@ -1,9 +1,16 @@
 #ifndef FMT_H
 #define FMT_H
 
+#include "_sd_longlong.h"
+
 #define FMT_ULONG ((sizeof(long) * 8) + 1)
-#define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
 #define FMT_LEN ((char *) 0)
+
+#if defined(HAVE_LONGLONG)
+#define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
+#else
+#define FMT_ULONGLONG FMT_ULONG
+#endif
 
 unsigned int fmt_ulong(char *, unsigned long);
 unsigned int fmt_ulongx(char *, unsigned long);
@@ -25,10 +32,12 @@ unsigned int fmt_ucharx(char *, unsigned char);
 unsigned int fmt_ucharo(char *, unsigned char);
 unsigned int fmt_ucharb(char *, unsigned char);
 
+#if defined(HAVE_LONGLONG)
 unsigned int fmt_ulonglong(char *, unsigned long long);
 unsigned int fmt_ulonglongx(char *, unsigned long long);
 unsigned int fmt_ulonglongo(char *, unsigned long long);
 unsigned int fmt_ulonglongb(char *, unsigned long long);
+#endif
 
 unsigned int fmt_float(char *, float *);
 unsigned int fmt_double(char *, double *);
