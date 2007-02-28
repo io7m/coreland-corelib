@@ -1,7 +1,11 @@
 #include "scan.h"
 
-unsigned int scan_ucharx(const char *str, unsigned char *ul)
+unsigned int scan_ucharx(const char *s, unsigned char *up)
 {
-  return scan_ulongx(str, (unsigned long *) ul);
-}
+  unsigned long ul;
+  unsigned char uc;
+  unsigned int len;
 
+  len = scan_ulongx(s, &ul); uc = (unsigned char) ul; *up = ul;
+  return len;
+}

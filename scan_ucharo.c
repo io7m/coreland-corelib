@@ -1,6 +1,11 @@
 #include "scan.h"
 
-unsigned int scan_ucharo(const char *str, unsigned char *ul)
+unsigned int scan_ucharo(const char *s, unsigned char *up)
 {
-  return scan_ulongo(str, (unsigned long *) ul);
+  unsigned long ul;
+  unsigned char uc;
+  unsigned int len;
+
+  len = scan_ulongo(s, &ul); uc = (unsigned char) ul; *up = ul;
+  return len;
 }
