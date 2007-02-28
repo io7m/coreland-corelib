@@ -219,3 +219,5 @@
 20070208 code: new cpj tools.
 20070225 code: new installer.
 20070225 code: libs-math, new sysdeps.
+20070228 code: workaround in scan_u* for apparent gcc 3.4.6 compiler
+               bug.
