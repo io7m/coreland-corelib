@@ -1,8 +1,6 @@
 #ifndef ALLOC_H
 #define ALLOC_H
 
-/* read ALLOC for details */
-
 typedef void * (*alloc_proto)(unsigned long);
 typedef void  (*dealloc_proto)(void *);
 typedef int   (*realloc_proto)(void **, unsigned long, unsigned long);
