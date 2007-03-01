@@ -58,7 +58,7 @@ int ushort()
   uint_unpackl(buf, &us, sizeof(us));
   if (us != 52394) return fail_unpack("b", "us", us, 52394);
 
-  return 0;
+  return 1;
 }
 
 int uint()

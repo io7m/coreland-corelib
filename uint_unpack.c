@@ -7,7 +7,7 @@ static void uint_copy(const void *a, void *b, unsigned long len)
   while (len--) bp[len] = ap[len];
 }
 
-void uint_unpackl(const unsigned char *buf, unsigned long *ul, unsigned long num)
+void uint_unpackl(const unsigned char *buf, void *ul, unsigned long num)
 {
   unsigned long tmp = 0;
   unsigned long len = num;
@@ -16,7 +16,7 @@ void uint_unpackl(const unsigned char *buf, unsigned long *ul, unsigned long num
   }
   uint_copy(&tmp, ul, len);
 }
-void uint_unpackb(const unsigned char *buf, unsigned long *ul, unsigned long num)
+void uint_unpackb(const unsigned char *buf, void *ul, unsigned long num)
 {
   unsigned long tmp = 0;
   unsigned long len = num;

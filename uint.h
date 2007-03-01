@@ -5,7 +5,7 @@
 
 void uint_packl(unsigned char *, unsigned long, unsigned long);
 void uint_packb(unsigned char *, unsigned long, unsigned long);
-void uint_unpackl(const unsigned char *, unsigned long *, unsigned long);
-void uint_unpackb(const unsigned char *, unsigned long *, unsigned long);
+void uint_unpackl(const unsigned char *, void *, unsigned long);
+void uint_unpackb(const unsigned char *, void *, unsigned long);
 
 #endif
