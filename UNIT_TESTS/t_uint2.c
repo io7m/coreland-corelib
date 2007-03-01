@@ -63,12 +63,64 @@ int ushort()
 
 int uint()
 {
-  return 0;
+  unsigned int ui;
+
+  /* uint */
+  ui = 52394;
+  uint_packb(buf, ui, sizeof(ui));
+  if (buf[sizeof(ui) - 1] != 170)
+    return fail_pack("b", "ui", sizeof(ui) - 1, 170, buf[sizeof(ui) - 1]);
+  if (buf[sizeof(ui) - 2] != 204)
+    return fail_pack("b", "ui", sizeof(ui) - 2, 204, buf[sizeof(ui) - 2]);
+  uint_unpackb(buf, &ui, sizeof(ui));
+  if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
+
+  ui = 52394;
+  uint_packl(buf, ui, sizeof(ui));
+  if (buf[0] != 170)
+    return fail_pack("l", "ui", 0, 170, buf[0]);
+  if (buf[1] != 204)
+    return fail_pack("l", "ui", 1, 204, buf[1]);
+  uint_unpackl(buf, &ui, sizeof(ui));
+  if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
+
+  return 1;
 }
 
 int ulong()
 {
-  return 0;
+  unsigned long ul;
+
+  /* ulong */
+  ul = 3433745578U;
+  uint_packb(buf, ul, sizeof(ul));
+  if (buf[sizeof(ul) - 1] != 170)
+    return fail_pack("b", "ul", sizeof(ul) - 1, 170, buf[sizeof(ul) - 1]);
+  if (buf[sizeof(ul) - 2] != 204)
+    return fail_pack("b", "ul", sizeof(ul) - 2, 204, buf[sizeof(ul) - 2]);
+  if (buf[sizeof(ul) - 3] != 170)
+    return fail_pack("b", "ul", sizeof(ul) - 1, 170, buf[sizeof(ul) - 3]);
+  if (buf[sizeof(ul) - 4] != 204)
+    return fail_pack("b", "ul", sizeof(ul) - 2, 204, buf[sizeof(ul) - 4]);
+ 
+  uint_unpackb(buf, &ul, sizeof(ul));
+  if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
+
+  ul = 3433745578U;
+  uint_packl(buf, ul, sizeof(ul));
+  if (buf[0] != 170)
+    return fail_pack("l", "ul", 0, 170, buf[0]);
+  if (buf[1] != 204)
+    return fail_pack("l", "ul", 1, 204, buf[1]);
+  if (buf[2] != 170)
+    return fail_pack("l", "ul", 0, 170, buf[2]);
+  if (buf[3] != 204)
+    return fail_pack("l", "ul", 1, 204, buf[3]);
+ 
+  uint_unpackl(buf, &ul, sizeof(ul));
+  if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
+
+  return 1;
 }
 
 int main()
@@ -78,6 +130,8 @@ int main()
 
   if (!uchar()) return 1;
   if (!ushort()) return 1;
+  if (!uint()) return 1;
+  if (!ulong()) return 1;
 
   return 0;
 }
