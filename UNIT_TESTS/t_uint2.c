@@ -77,7 +77,7 @@ int main()
   unsigned int ui;
 
   if (!uchar()) return 1;
-/*  if (!ushort()) return 1; */
+  if (!ushort()) return 1;
 
   return 0;
 }
