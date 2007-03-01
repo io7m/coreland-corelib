@@ -1,5 +1,4 @@
-t_uint.o
+t_uint1.o
 ../uint16.a
 ../uint32.a
 ../uint64.a
-../uint.a

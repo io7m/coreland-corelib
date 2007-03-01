@@ -2,18 +2,15 @@
 #include "../uint16.h"
 #include "../uint32.h"
 #include "../uint64.h"
-#include "../uint.h"
 
 int main()
 {
   unsigned char p16[sizeof(uint16)];
   unsigned char p32[sizeof(uint32)];
   unsigned char p64[sizeof(uint64)];
-  unsigned char pui[UINT_PACKBUF];
   uint16 u16;
   uint32 u32;
   uint64 u64;
-  unsigned long ui;
 
   u16 = 0xffU;
   uint16_packl(p16, u16);
@@ -39,12 +36,5 @@ int main()
   uint64_unpackb(p64, &u64);
   if (u64 != 0xfffffaabbccULL) { printf("fail: 2 u64 == %u\n", u64); return 1; }
 
-  ui = 0xfffffU;
-  uint_packl(pui, ui, sizeof(ui));
-  uint_unpackl(pui, &ui, sizeof(ui));
-  if (ui != 0xfffffU) { printf("fail: 1 ui == %lu\n", ui); return 1; }
-  uint_packb(pui, ui, sizeof(ui));
-  uint_unpackb(pui, &ui, sizeof(ui));
-  if (ui != 0xfffffU) { printf("fail: 2 ui == %lu\n", ui); return 1; }
   return 0;
 }

@@ -10,7 +10,7 @@ all: local \
 	t_iarray2 t_iarray3 t_iarray4 t_iarray5 t_iarray6 t_int t_open \
 	t_sarray1 t_scan t_scan2 t_scan3 t_scan_float t_scan_fspec \
 	t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 t_sstring \
-	t_stalloc t_str t_uint 
+	t_stalloc t_str t_uint1 t_uint2 
 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
@@ -372,14 +372,18 @@ t_str:\
 t_str.o:\
 	cc-compile t_str.c ../error.h ../str.h 
 	./cc-compile t_str.c
-t_uint:\
-	cc-link t_uint.ld t_uint.o ../uint16.a ../uint32.a ../uint64.a \
-	../uint.a 
-	./cc-link t_uint t_uint.o ../uint16.a ../uint32.a ../uint64.a \
-	../uint.a 
-t_uint.o:\
-	cc-compile t_uint.c ../uint16.h ../uint32.h ../uint64.h ../uint.h 
-	./cc-compile t_uint.c
+t_uint1:\
+	cc-link t_uint1.ld t_uint1.o ../uint16.a ../uint32.a ../uint64.a 
+	./cc-link t_uint1 t_uint1.o ../uint16.a ../uint32.a ../uint64.a 
+t_uint1.o:\
+	cc-compile t_uint1.c ../uint16.h ../uint32.h ../uint64.h 
+	./cc-compile t_uint1.c
+t_uint2:\
+	cc-link t_uint2.ld t_uint2.o ../uint.a 
+	./cc-link t_uint2 t_uint2.o ../uint.a 
+t_uint2.o:\
+	cc-compile t_uint2.c ../uint.h 
+	./cc-compile t_uint2.c
 clean: tests_clean local_clean 
 	rm -f t_alloc t_alloc.o t_array t_array.o t_base_name t_base_name.o \
 	t_bin t_bin.o t_buffer1 t_buffer1.o t_buffer2 t_buffer2.o \
@@ -398,7 +402,8 @@ clean: tests_clean local_clean
 	t_scan3.o t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o \
 	t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o \
 	t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring \
-	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint t_uint.o 
+	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint1 t_uint1.o \
+	t_uint2 t_uint2.o 
 
 tests: list_tests run_tests
 tests_clean:
