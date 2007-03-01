@@ -23,7 +23,7 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
   if (!th->used) return 0;
 
   for (;;) {
-    if (np->state == HT_SLOT_USED)
+    if (np->state == HT_SLOT_USED) {
       if (klen >= np->keylen)
         len = klen;
       else
@@ -46,6 +46,7 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
         np->datalen = dlen;
         return 1;
       }
+    }
     if (np->next)
       np = np->next;
     else
