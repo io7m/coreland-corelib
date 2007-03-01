@@ -11,8 +11,9 @@ void uint_unpackl(const unsigned char *buf, unsigned long *ul, unsigned long num
 void uint_unpackb(const unsigned char *buf, unsigned long *ul, unsigned long num)
 {
   register unsigned long tmp = 0;
+  register unsigned long len = num;
   for (;;) {
-    tmp += buf[UINT_PACKBUF - num]; --num; if (!num) break; tmp <<= 8u;
+    tmp += buf[len - num]; --num; if (!num) break; tmp <<= 8u;
   }
   *ul = tmp;
 }
