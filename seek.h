@@ -6,9 +6,9 @@
 #include <unistd.h>   /* seems to be required for lseek on OSX
                          and possibly others
                        */
-#define SET 0
-#define CUR 1
-#define END 2
+#define _SEEK_SET 0
+#define _SEEK_CUR 1
+#define _SEEK_END 2
 
 /* assumes filesystem max file size > 4gb */
 

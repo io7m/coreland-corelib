@@ -13,6 +13,8 @@ long str_rchr(register const char *, register int);
 #define FLAG_VERSION 0x0010
 #define FLAG_COMPILE 0x0020
 #define FLAG_HELP    0x0040
+#define FLAG_LDFLAGS 0x0080
+#define FLAG_CFLAGS  0x0100
 
 struct flag { const char *flag; unsigned int val; const char *desc; };
 static const struct flag flags[] = {

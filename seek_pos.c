@@ -3,5 +3,5 @@
 
 int64 seek_pos(int fd, int64 pos)
 {
-  return lseek(fd, pos, 0);
+  return lseek(fd, pos, _SEEK_SET);
 }

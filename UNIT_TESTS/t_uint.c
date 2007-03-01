@@ -40,11 +40,11 @@ int main()
   if (u64 != 0xfffffaabbccULL) { printf("fail: 2 u64 == %u\n", u64); return 1; }
 
   ui = 0xfffffU;
-  uint_packl(pui, ui);
-  uint_unpackl(pui, &ui);
+  uint_packl(pui, ui, sizeof(ui));
+  uint_unpackl(pui, &ui, sizeof(ui));
   if (ui != 0xfffffU) { printf("fail: 1 ui == %lu\n", ui); return 1; }
-  uint_packb(pui, ui);
-  uint_unpackb(pui, &ui);
+  uint_packb(pui, ui, sizeof(ui));
+  uint_unpackb(pui, &ui, sizeof(ui));
   if (ui != 0xfffffU) { printf("fail: 2 ui == %lu\n", ui); return 1; }
   return 0;
 }
