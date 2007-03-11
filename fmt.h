@@ -39,8 +39,8 @@ unsigned int fmt_ulonglongo(char *, unsigned long long);
 unsigned int fmt_ulonglongb(char *, unsigned long long);
 #endif
 
-unsigned int fmt_float(char *, float *);
-unsigned int fmt_double(char *, double *);
+unsigned int fmt_float(char *, float, unsigned int);
+unsigned int fmt_double(char *, double, unsigned int);
 
 unsigned long fmt_str(char *, const char *);
 unsigned long fmt_nstr(char *, const char *, unsigned long);

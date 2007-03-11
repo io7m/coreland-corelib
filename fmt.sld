@@ -1,3 +1,5 @@
+fmt_double.o
+fmt_float.o
 fmt_nstr.o
 fmt_str.o
 fmt_uchar.o
