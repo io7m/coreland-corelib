@@ -1,12 +1,22 @@
 #include "uint.h"
 
+static int uint_big_endian()
+{
+  unsigned int i = 127;
+  unsigned char b = * (unsigned char *) &i;
+  return (i != b);
+}
 static void uint_copy(const void *a, void *b, unsigned long len)
 {
   const unsigned char *ap = a;
   unsigned char *bp = b;
-  while (len--) bp[len] = ap[len];
-}
+  unsigned long ind = 0;
 
+  if (uint_big_endian()) {
+    while (len--) bp[ind] = ap[len]; --ind;
+  } else
+    while (len--) bp[len] = ap[len];
+}
 void uint_unpackl(const unsigned char *buf, void *ul, unsigned long num)
 {
   unsigned long tmp = 0;
