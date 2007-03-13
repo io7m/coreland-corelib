@@ -1,8 +1,9 @@
+#include <stdio.h>
 #include "../uint.h"
 
 unsigned char buf[UINT_PACKBUF];
 
-void show(const char *name, const char *buf,
+void show(const char *name, const unsigned char *buf,
           unsigned long len, unsigned long num)
 {
   unsigned long ind;
