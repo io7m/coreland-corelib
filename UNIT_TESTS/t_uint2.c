@@ -2,6 +2,17 @@
 
 unsigned char buf[UINT_PACKBUF];
 
+void show(const char *name, const char *buf,
+          unsigned long len, unsigned long num)
+{
+  unsigned long ind;
+  printf("info: %s %lu %lu [", name, num, len);
+  for (ind = 0; ind < len; ++ind) {
+    printf("%hhx", buf[ind]);
+    if (ind != len - 1) printf(" ");
+  } 
+  printf("]\n");
+}
 int fail_pack(const char *endian, const char *type, unsigned int ind,
          unsigned int exp, unsigned int got)
 {
@@ -26,12 +37,15 @@ int uchar()
   uint_unpackb(buf, &uc, sizeof(unsigned char));
   if (uc != 170) return fail_unpack("b", "uc", uc, 170);
 
+  show("uchar packb", buf, sizeof(unsigned char), uc);
+
   uc = 170;
   uint_packl(buf, uc, sizeof(unsigned char));
   if (buf[0] != 170) return fail_pack("l", "uc", 0, 170, buf[0]);
   uint_unpackl(buf, &uc, sizeof(unsigned char));
   if (uc != 170) return fail_unpack("l", "uc", uc, 170);
 
+  show("uchar packl", buf, sizeof(unsigned char), uc);
   return 1;
 }
 
@@ -49,6 +63,8 @@ int ushort()
   uint_unpackb(buf, &us, sizeof(us));
   if (us != 52394) return fail_unpack("b", "us", us, 52394);
 
+  show("ushort packb", buf, sizeof(unsigned short), us);
+
   us = 52394;
   uint_packl(buf, us, sizeof(us));
   if (buf[0] != 170)
@@ -58,6 +74,7 @@ int ushort()
   uint_unpackl(buf, &us, sizeof(us));
   if (us != 52394) return fail_unpack("b", "us", us, 52394);
 
+  show("ushort packl", buf, sizeof(unsigned short), us);
   return 1;
 }
 
@@ -75,6 +92,8 @@ int uint()
   uint_unpackb(buf, &ui, sizeof(ui));
   if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
 
+  show("uint packb", buf, sizeof(unsigned int), ui);
+
   ui = 52394;
   uint_packl(buf, ui, sizeof(ui));
   if (buf[0] != 170)
@@ -84,6 +103,7 @@ int uint()
   uint_unpackl(buf, &ui, sizeof(ui));
   if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
 
+  show("uint packl", buf, sizeof(unsigned int), ui);
   return 1;
 }
 
@@ -106,6 +126,8 @@ int ulong()
   uint_unpackb(buf, &ul, sizeof(ul));
   if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
 
+  show("ulong packb", buf, sizeof(unsigned long), ul);
+
   ul = 3433745578U;
   uint_packl(buf, ul, sizeof(ul));
   if (buf[0] != 170)
@@ -120,6 +142,7 @@ int ulong()
   uint_unpackl(buf, &ul, sizeof(ul));
   if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
 
+  show("ulong packl", buf, sizeof(unsigned long), ul);
   return 1;
 }
 

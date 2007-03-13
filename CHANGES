@@ -224,3 +224,4 @@
 20070228 code: added sd-longlong sysdep. added HAVE_LONGLONG test to
                fmt and scan headers for better C90 compatibility.
 20070228 code: added uint.
+20070313 code: fixed uint...

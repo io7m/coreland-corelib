@@ -1,22 +1,35 @@
 #include "uint.h"
 
+/* test if current system is big endian */
 static int uint_big_endian()
 {
-  unsigned int i = 127;
-  unsigned char b = * (unsigned char *) &i;
-  return (i != b);
+  unsigned int i = 0x7f;
+  unsigned char c = * (unsigned char *) &i;
+  return (c != i);
 }
-static void uint_copy(const void *a, void *b, unsigned long len)
-{
-  const unsigned char *ap = a;
-  unsigned char *bp = b;
-  unsigned long ind = 0;
 
-  if (uint_big_endian()) {
-    while (len--) bp[ind] = ap[len]; --ind;
-  } else
-    while (len--) bp[len] = ap[len];
+/* copy src_len bytes of data from src into dst_len bytes of data
+ * at dst. this is necessary to take care of endianness and the fact
+ * that 'unsigned long' is used internally to hold a temporary value
+ * but client code may be requesting the unpacking of an 'unsigned
+ * short', for example.
+ */
+
+static void uint_convert(const void *src, unsigned long src_len,
+                               void *dst, unsigned long dst_len)
+{
+  unsigned long ind;
+  const unsigned char *src_p = src;
+  unsigned char *dst_p = dst;
+
+  if (uint_big_endian())
+    for (ind = 0; ind < dst_len; ++ind)
+      dst_p[dst_len - ind] = src_p[src_len - ind];
+  else
+    for (ind = 0; ind < dst_len; ++ind)
+      dst_p[ind] = src_p[ind];
 }
+
 void uint_unpackl(const unsigned char *buf, void *ul, unsigned long num)
 {
   unsigned long tmp = 0;
@@ -24,7 +37,7 @@ void uint_unpackl(const unsigned char *buf, void *ul, unsigned long num)
   for (;;) {
     --num; tmp += buf[num]; if (!num) break; tmp <<= 8u; 
   }
-  uint_copy(&tmp, ul, len);
+  uint_convert(&tmp, sizeof(unsigned long), ul, len);
 }
 void uint_unpackb(const unsigned char *buf, void *ul, unsigned long num)
 {
@@ -33,5 +46,5 @@ void uint_unpackb(const unsigned char *buf, void *ul, unsigned long num)
   for (;;) {
     tmp += buf[len - num]; --num; if (!num) break; tmp <<= 8u;
   }
-  uint_copy(&tmp, ul, len);
+  uint_convert(&tmp, sizeof(unsigned long), ul, len);
 }
