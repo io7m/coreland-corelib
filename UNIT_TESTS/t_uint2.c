@@ -27,7 +27,7 @@ int fail_unpack(const char *endian, const char *type,
   return 0;
 }
 
-int uchar()
+int test_uchar()
 {
   unsigned char uc;
 
@@ -50,7 +50,7 @@ int uchar()
   return 1;
 }
 
-int ushort()
+int test_ushort()
 {
   unsigned short us;
 
@@ -79,7 +79,7 @@ int ushort()
   return 1;
 }
 
-int uint()
+int test_uint()
 {
   unsigned int ui;
 
@@ -108,7 +108,7 @@ int uint()
   return 1;
 }
 
-int ulong()
+int test_ulong()
 {
   unsigned long ul;
 
@@ -152,10 +152,10 @@ int main()
   unsigned long ul;
   unsigned int ui;
 
-  if (!uchar()) return 1;
-  if (!ushort()) return 1;
-  if (!uint()) return 1;
-  if (!ulong()) return 1;
+  if (!test_uchar()) return 1;
+  if (!test_ushort()) return 1;
+  if (!test_uint()) return 1;
+  if (!test_ulong()) return 1;
 
   return 0;
 }

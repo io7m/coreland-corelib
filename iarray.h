@@ -39,5 +39,7 @@ unsigned long iarray_bytes(const struct iarray *);
 int iarray_nindex(const struct iarray *, unsigned long, struct iarray_node **);
 int iarray_newnodes(struct iarray_node **, struct iarray_node **, unsigned long);
 int iarray_fillnode(struct iarray_node *, void *, unsigned long);
+int iarray_findnext(struct iarray_node *, struct iarray_node **);
+int iarray_findprev(struct iarray_node *, struct iarray_node **);
 
 #endif

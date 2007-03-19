@@ -59,3 +59,33 @@ int iarray_fillnode(struct iarray_node *n, void *dat, unsigned long len)
   n->len = len;
   return 1;
 }
+
+int iarray_findnext(struct iarray_node *base, struct iarray_node **nptr)
+{
+  struct iarray_node *ptr = base;
+
+  for (;;) {
+    ptr = ptr->next;
+    if (ptr) {
+      if (ptr->data) {
+        *nptr = ptr;
+        return 1;
+      }
+    } else return 0;
+  }
+}
+
+int iarray_findprev(struct iarray_node *base, struct iarray_node **nptr)
+{
+  struct iarray_node *ptr = base;
+
+  for (;;) {
+    ptr = ptr->prev;
+    if (ptr) {
+      if (ptr->data) {
+        *nptr = ptr;
+        return 1;
+      }
+    } else return 0;
+  }
+}
