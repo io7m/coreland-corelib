@@ -57,6 +57,7 @@ int main()
     return 1;
   }
 
+  iarray_dump(&ia, IARRAY_DUMP_INT);
   iarray_free(&ia);
   return 0;
 }

@@ -9,5 +9,6 @@ iarray_insert.o
 iarray_node.o
 iarray_remove.o
 iarray_size.o
+iarray_sort.o
 iarray_trunc.o
 iarray_zero.o

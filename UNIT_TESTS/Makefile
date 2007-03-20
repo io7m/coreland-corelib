@@ -2,15 +2,14 @@
 
 default: all
 
-all: local \
-	t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 t_dir_array \
-	t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt t_fmt2 \
-	t_fmt3 t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
-	t_hashtable4 t_hashtable5 t_hashtable6 t_hashtable7 t_iarray1 \
-	t_iarray2 t_iarray3 t_iarray4 t_iarray5 t_iarray6 t_int t_open \
-	t_sarray1 t_scan t_scan2 t_scan3 t_scan_float t_scan_fspec \
-	t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 t_sstring \
-	t_stalloc t_str t_uint1 t_uint2 
+all: local t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 \
+	t_dir_array t_dir_hash t_dir_name t_dstring t_env t_fd t_float t_fmt \
+	t_fmt2 t_fmt3 t_fmt_spec t_get_opt t_hashtable1 t_hashtable2 \
+	t_hashtable3 t_hashtable4 t_hashtable5 t_hashtable6 t_hashtable7 \
+	t_iarray1 t_iarray2 t_iarray3 t_iarray4 t_iarray5 t_iarray6 \
+	t_iarray7 t_int t_open t_sarray1 t_scan t_scan2 t_scan3 t_scan_float \
+	t_scan_fspec t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 \
+	t_sstring t_stalloc t_str t_uint1 t_uint2 
 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
@@ -264,6 +263,14 @@ t_iarray6:\
 t_iarray6.o:\
 	cc-compile t_iarray6.c t_iarray.h ../iarray.h 
 	./cc-compile t_iarray6.c
+t_iarray7:\
+	cc-link t_iarray7.ld t_iarray7.o t_iarray.o ../iarray.a ../alloc.a \
+	../bin.a 
+	./cc-link t_iarray7 t_iarray7.o t_iarray.o ../iarray.a ../alloc.a \
+	../bin.a 
+t_iarray7.o:\
+	cc-compile t_iarray7.c t_iarray.h ../iarray.h 
+	./cc-compile t_iarray7.c
 t_iarray_util.o:\
 	cc-compile t_iarray_util.c 
 	./cc-compile t_iarray_util.c
@@ -397,13 +404,13 @@ clean: tests_clean local_clean
 	t_hashtable_d.o t_iarray.o t_iarray1 t_iarray1.o t_iarray2 \
 	t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 \
 	t_iarray5.o t_iarray6 
-	rm -f t_iarray6.o t_iarray_util.o t_int t_int.o t_open t_open.o \
-	t_sarray1 t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o t_scan3 \
-	t_scan3.o t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o \
-	t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o \
-	t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring \
-	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint1 t_uint1.o \
-	t_uint2 t_uint2.o 
+	rm -f t_iarray6.o t_iarray7 t_iarray7.o t_iarray_util.o t_int \
+	t_int.o t_open t_open.o t_sarray1 t_sarray1.o t_scan t_scan.o \
+	t_scan2 t_scan2.o t_scan3 t_scan3.o t_scan_float t_scan_float.o \
+	t_scan_fspec t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek \
+	t_seek.o t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o \
+	t_sstack1 t_sstack1.o t_sstring t_sstring.o t_stalloc t_stalloc.o \
+	t_str t_str.o t_uint1 t_uint1.o t_uint2 t_uint2.o 
 
 tests: list_tests run_tests
 tests_clean:

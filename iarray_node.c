@@ -2,6 +2,7 @@
 #include "bin.h"
 #include "iarray.h"
 
+/* allocate list of new nodes */
 int iarray_newnodes(struct iarray_node **headptr, struct iarray_node **tailptr, 
                     unsigned long num)
 {
@@ -58,34 +59,4 @@ int iarray_fillnode(struct iarray_node *n, void *dat, unsigned long len)
   n->data = xdat;
   n->len = len;
   return 1;
-}
-
-int iarray_findnext(struct iarray_node *base, struct iarray_node **nptr)
-{
-  struct iarray_node *ptr = base;
-
-  for (;;) {
-    ptr = ptr->next;
-    if (ptr) {
-      if (ptr->data) {
-        *nptr = ptr;
-        return 1;
-      }
-    } else return 0;
-  }
-}
-
-int iarray_findprev(struct iarray_node *base, struct iarray_node **nptr)
-{
-  struct iarray_node *ptr = base;
-
-  for (;;) {
-    ptr = ptr->prev;
-    if (ptr) {
-      if (ptr->data) {
-        *nptr = ptr;
-        return 1;
-      }
-    } else return 0;
-  }
 }

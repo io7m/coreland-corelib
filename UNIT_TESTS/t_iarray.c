@@ -13,6 +13,7 @@ int iarray_integrity(struct iarray *ia)
   x = ia->a;
   in = ia->head;
   in_prev = 0;
+
   for (ind = 0; ind < x; ++ind) {
     if (in->prev != in_prev) {
       printf("fail: integrity: prev corrupted at %lu\n", ind);
@@ -31,6 +32,7 @@ int iarray_integrity(struct iarray *ia)
   x = ia->a;
   in = ia->tail;
   in_next = 0;
+
   for (ind = 0; ind < x; ++ind) {
     if (in->next != in_next) {
       printf("fail: integrity: next corrupted at %lu\n", ind);
@@ -47,4 +49,37 @@ int iarray_integrity(struct iarray *ia)
   }
 
   return 1;
+}
+
+void iarray_dump(struct iarray *ia, unsigned int type)
+{
+  struct iarray_node *ptr;
+  unsigned long ind = 0;
+  unsigned long num;
+  char *str;
+
+  ptr = ia->head;
+  for (;;) {
+    if (ptr) {
+      printf("[%lu] [%p] ", ind, ptr);
+      if (ptr->data) {
+        switch (type) {
+          case IARRAY_DUMP_STRING:
+            str = ptr->data;
+            printf("%s %lu", str, ptr->len);
+            break;
+          case IARRAY_DUMP_INT:
+            num = * (unsigned long *) ptr->data;
+            printf("%lu %lu", num, ptr->len);
+            break;
+          default:
+            break;
+        }
+      } else printf("(null) (null)");
+      printf(" %p %p\n", ptr->prev, ptr->next);
+      ptr = ptr->next;
+      ++ind;
+    } else break;
+  }
+  printf("\n");
 }
