@@ -1,2 +1,4 @@
 
+-g -W -Wall -pedantic -ansi -Wno-long-long
+
 These are passed to the C compiler.

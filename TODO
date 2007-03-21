@@ -1,6 +1,13 @@
 fmt_float()
 fmt_double()
 
+scan_ucharb();
+scan_uintb();
+scan_ulongb();
+scan_ulonglongb();
+scan_u32b();
+scan_u64b();
+
 iarray_sort() incorrectly handles unused nodes (it should always make
 sure that unused nodes are pushed to the end of the list, for performance
 reasons. currently, data is sorted incorrectly, or unused nodes appear
