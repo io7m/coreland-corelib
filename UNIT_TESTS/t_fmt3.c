@@ -38,6 +38,7 @@ int main()
       printf("fail: [%u] %s != %s\n", ind, cnum, tests[ind].str);
       return 1;
     }
+    printf("[%u] %s\n", ind, cnum);
   }
 
   return 0;

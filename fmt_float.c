@@ -7,6 +7,7 @@
 #define FLOAT_SIGN_BITS     31
 #define FLOAT_MANTISSA_BITS 23
 #define FLOAT_EXPONENT_MASK 0x0ff00000
+#define FLOAT_EXPONENT_BITS 8
 
 unsigned int fmt_float(char *str, float f, unsigned int rnd)
 {
@@ -18,11 +19,21 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   signed long expo;
   signed long mant;
   signed long sign;
-  unsigned long ind;
+  unsigned int ind;
 
   if (!rnd) return 0;
 
   real.f = f;
+  real.f *= powf(10, rnd);
+
+  printf("%f\n", real.f);
+
+  real.f = roundf(real.f);
+
+  printf("%f\n", real.f);
+
+  real.f /= powf(10, rnd);
+
   sign = real.u >> FLOAT_SIGN_BITS;
   expo = real.u >> FLOAT_MANTISSA_BITS;
   mant = real.u & FLOAT_EXPONENT_MASK;
@@ -33,6 +44,7 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
     if (str) *str++ = '-';
   }
 
+  printf("%f\n", real.f);
   return len;
 }
 
