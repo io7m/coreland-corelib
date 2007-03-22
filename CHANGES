@@ -226,3 +226,4 @@
 20070228 code: added uint.
 20070313 code: fixed uint...
 20070320 code: iarray_sort and improved iarray tests.
+20070322 code: fmt_float fmt_double
