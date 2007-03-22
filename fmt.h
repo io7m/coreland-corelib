@@ -5,13 +5,14 @@
 
 #define FMT_ULONG ((sizeof(long) * 8) + 1)
 #define FMT_LEN ((char *) 0)
-#define FMT_FLOAT 256 /* XXX: work out correct value! */
-#define FMT_DOUBLE 256 /* XXX: work out correct value! */
+#define FMT_FLOAT (FMT_ULONG + 1 + FMT_ULONG)
 
 #if defined(HAVE_LONGLONG)
-#define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
+  #define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
+  #define FMT_DOUBLE (FMT_ULONGLONG + 1 + FMT_ULONGLONG)
 #else
-#define FMT_ULONGLONG FMT_ULONG
+  #define FMT_ULONGLONG FMT_ULONG
+  #define FMT_DOUBLE (FMT_ULONG + 1 + FMT_ULONG)
 #endif
 
 unsigned int fmt_ulong(char *, unsigned long);

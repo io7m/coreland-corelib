@@ -4,72 +4,86 @@
 
 /* IEEE 754 single precision only */
 
-#define FLOAT_SIGN_BITS     31
-#define FLOAT_MANTISSA_BITS 23
-#define FLOAT_EXPONENT_MASK 0x0ff00000
-#define FLOAT_EXPONENT_BITS 8
+#define FLOAT_EXPONENT_MASK  0x7F800000UL
+#define FLOAT_MANTISSA_MASK  0x007FFFFFUL
+#define FLOAT_INF            0x7F800000UL
+#define FLOAT_NEG_INF        0xFFF00000UL
+#define FLOAT_SIGN_BITS      31
 
 unsigned int fmt_float(char *str, float f, unsigned int rnd)
 {
   unsigned int len = 0;
+  unsigned int pos;
+
   union {
-    float f;
     unsigned long u;
+    float f;
   } real;
-  signed long expo;
-  signed long mant;
-  signed long sign;
-  unsigned int ind;
+  unsigned long num;
+  unsigned long sign;
 
   if (!rnd) return 0;
 
   real.f = f;
-  real.f *= powf(10, rnd);
+  sign = real.u >> FLOAT_SIGN_BITS;
 
-  printf("%f\n", real.f);
+  /* check infinity */
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) == 0) {
+    if (str) {
+      str[0] = 'i';
+      str[1] = 'n';
+      str[2] = 'f';
+    }
+    return 3;
+  }
 
+  /* check negative infinity */
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_NEG_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) == 0) {
+    if (str) {
+      str[0] = '-';
+      str[1] = 'i';
+      str[2] = 'n';
+      str[3] = 'f';
+    }
+    return 4;
+  }
+
+  /* check nan */
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) != 0) {
+    if (str) {
+      str[0] = 'n';
+      str[1] = 'a';
+      str[2] = 'n';
+    }
+    return 3;
+  }
+
+  if (sign) { ++len; if (str) *str++ = '-'; }
+
+  /* treat number as positive */
+  real.f = fabsf(real.f);
+
+  /* integral */
+  num = (unsigned long) floorf(real.f);
+  pos = fmt_ulong(str, num);
+  len += pos;
+  if (str) str += pos;
+
+  /* radix point */
+  len += 1;
+  if (str) *str++ = '.';
+
+  /* extract fractional */
+  real.f = fmodf(real.f, 1);
+  real.f = real.f * powf(10, rnd);
   real.f = roundf(real.f);
 
-  printf("%f\n", real.f);
+  num = (unsigned long) floorf(real.f);
+  pos = fmt_ulong(str, num);
+  len += pos;
 
-  real.f /= powf(10, rnd);
-
-  sign = real.u >> FLOAT_SIGN_BITS;
-  expo = real.u >> FLOAT_MANTISSA_BITS;
-  mant = real.u & FLOAT_EXPONENT_MASK;
-
-  /* format string */
-  if (sign) {
-    ++len;
-    if (str) *str++ = '-';
-  }
-
-  printf("%f\n", real.f);
   return len;
 }
-
-/*
-  if (!expo && !mant) {
-    if (sign) {
-      if (str) *str++ = '-';
-      ++len;
-    }
-    if (rnd > 1) {
-      if (str) {
-        str[0] = '0';
-        str[1] = '.';
-        str += 2;
-      }
-      len += 2;
-      rnd -= 1;
-      for (ind = 0; ind < rnd; ++ind) {
-        if (str) *str++ = '0';
-        ++len;
-      }
-      return len;
-    } else {
-      if (str) *str = '0';
-      return 1;
-    }
-  }
-*/

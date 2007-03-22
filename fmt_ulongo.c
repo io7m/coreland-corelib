@@ -11,7 +11,7 @@ unsigned int fmt_ulongo(char *str, unsigned long ul)
   /* no. digits */
   while (quo > 7) { ++len; quo >>= 3; }
   
-  /* digit -> ascii (base10) */
+  /* digit -> ascii (base8) */
   if (str) {
     str += len;
     do { *--str = '0' + (ul & 7); ul >>= 3; } while (ul);
