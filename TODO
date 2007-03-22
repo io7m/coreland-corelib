@@ -1,6 +1,3 @@
-fmt_float()
-fmt_double()
-
 scan_ucharb();
 scan_uintb();
 scan_ulongb();
