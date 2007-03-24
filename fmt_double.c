@@ -16,7 +16,7 @@
   #define DOUBLE_NEG_INF        0xFFF0000000000000UL
 #endif
 
-#define DOUBLE_SIGN_BITS      63
+#define DOUBLE_SIGN_BITS 63
 
 unsigned int fmt_double(char *str, double d, unsigned int rnd)
 {
