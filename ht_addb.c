@@ -59,7 +59,7 @@ int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
   np = th->head;
   if (th->used) {
     for (;;) {
-      if (np->state == HT_SLOT_UNUSED) {
+      if (!np->key) {
         if (!fu) fu = np;
       } else {
         if (klen >= np->keylen)
@@ -91,7 +91,6 @@ int ht_addb(struct hashtable *h, const void *k, unsigned long klen,
 
   SET:
   ++th->used;
-  tn->state = HT_SLOT_USED;
   tn->keylen = klen;
   tn->datalen = xlen;
   bin_copy(key, tn->key, klen);

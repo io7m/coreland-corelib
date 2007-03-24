@@ -16,12 +16,13 @@ static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
       tn = th->head;
       while (tn) {
         tn_next = tn->next;
-        if (tn->state == HT_SLOT_USED) {
+        if (tn->key) {
           if (cleanup)
             cleanup(tn->data);
           dealloc(tn->key);
           dealloc(tn->data);
-          tn->state = HT_SLOT_UNUSED;
+          tn->key = 0;
+          tn->data = 0;
         }
         if (node_free) {
           dealloc(tn);

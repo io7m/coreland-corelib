@@ -12,7 +12,7 @@ unsigned long ht_bytes(const struct hashtable *h)
     if (h->slots[ind].allocd) {
       np = h->slots[ind].head;
       while (np) {
-        if (np->state == HT_SLOT_USED) {
+        if (np->key) {
           b += np->keylen;
           b += np->datalen;
         }

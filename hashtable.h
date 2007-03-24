@@ -12,7 +12,6 @@ struct ht_table_node {
   char *data;
   unsigned long keylen;
   unsigned long datalen;
-  unsigned int state;
 };
 
 struct ht_table_head {

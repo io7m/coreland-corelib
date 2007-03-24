@@ -13,6 +13,7 @@ void printn(const char *s, unsigned int len)
 void addb(struct hashtable *h, const char *key, unsigned long klen,
                                const char *dat, unsigned long dlen, int exp)
 {
+  printf("info: add: %p %p %lu %lu\n", key, dat, klen, dlen);
   switch (ht_addb(h, key, klen, dat, dlen)) {
     case -1:
       if (exp != -1) {
@@ -40,6 +41,7 @@ void addb(struct hashtable *h, const char *key, unsigned long klen,
 
 void delete_keyb(struct hashtable *h, const char *key, unsigned long len, int exp)
 {
+  printf("info: delete: %p %lu\n", key, len);
   switch (ht_deleteb(h, key, len)) {
     case -1:
       if (exp != -1) {
@@ -68,6 +70,7 @@ void delete_keyb(struct hashtable *h, const char *key, unsigned long len, int ex
 void getb(struct hashtable *h, const char *key, unsigned long klen,
                                char **x, unsigned long *len, int exp)
 {
+  printf("info: get: %p %lu\n", key, klen);
   switch (ht_getb(h, key, klen, (void **) x, len)) {
     case -1:
       if (exp != -1) {
@@ -96,6 +99,7 @@ void getb(struct hashtable *h, const char *key, unsigned long klen,
 void replaceb(struct hashtable *h, const char *key, unsigned long klen,
                                    const char *dat, unsigned long dlen, int exp)
 {
+  printf("info: replace: %p %p %lu %lu\n", key, dat, klen, dlen);
   switch (ht_replaceb(h, key, klen, dat, dlen)) {
     case -1:
       if (exp != -1) {

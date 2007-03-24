@@ -17,7 +17,7 @@ int ht_getb(const struct hashtable *h, const void *k, unsigned long klen,
   if (!th->used) return 0;
 
   for (;;) {
-    if (np->state == HT_SLOT_USED) {
+    if (np->key) {
       if (klen >= np->keylen)
         len = klen;
       else

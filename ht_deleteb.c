@@ -17,13 +17,14 @@ int ht_deleteb(struct hashtable *h, const void *k, unsigned long len)
   if (!th->used) return 0;
 
   for (;;) {
-    if (np->state == HT_SLOT_USED) {
+    if (np->key) {
       if (bin_same(np->key, key, len)) {
         dealloc(np->data);
         dealloc(np->key);
+        np->key = 0;
+        np->data = 0;
         np->datalen = 0;
         np->keylen = 0;
-        np->state = HT_SLOT_UNUSED;
         --th->used;
         return 1;
       }
