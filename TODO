@@ -6,3 +6,15 @@ scan_u32b();
 scan_u64b();
 
 iarray_sort() needs more automated testing.
+
+scan_float()
+scan_double()
+
+  Must accept scientific notation.
+
+fmt_float()
+fmt_double()
+
+  Must be adjusted to produce scientific notation.
+
+  Explicit maximum size parameter?
