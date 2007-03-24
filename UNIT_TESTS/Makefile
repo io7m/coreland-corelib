@@ -8,8 +8,9 @@ all: local t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 \
 	t_hashtable2 t_hashtable3 t_hashtable4 t_hashtable5 t_hashtable6 \
 	t_hashtable7 t_iarray1 t_iarray2 t_iarray3 t_iarray4 t_iarray5 \
 	t_iarray6 t_iarray7 t_int t_open t_sarray1 t_scan t_scan2 t_scan3 \
-	t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline t_sig \
-	t_squeue1 t_sstack1 t_sstring t_stalloc t_str t_uint1 t_uint2 
+	t_scan_doub t_scan_float t_scan_fspec t_scan_spec t_seek t_sgetline \
+	t_sig t_squeue1 t_sstack1 t_sstring t_stalloc t_str t_uint1 t_uint2 \
+	
 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
@@ -322,6 +323,12 @@ t_scan3:\
 t_scan3.o:\
 	cc-compile t_scan3.c ../scan.h 
 	./cc-compile t_scan3.c
+t_scan_doub:\
+	cc-link t_scan_doub.ld t_scan_doub.o ../scan.a 
+	./cc-link t_scan_doub t_scan_doub.o ../scan.a 
+t_scan_doub.o:\
+	cc-compile t_scan_doub.c ../scan.h 
+	./cc-compile t_scan_doub.c
 t_scan_float:\
 	cc-link t_scan_float.ld t_scan_float.o ../scan.a 
 	./cc-link t_scan_float t_scan_float.o ../scan.a 
@@ -418,11 +425,11 @@ clean: tests_clean local_clean
 	rm -f t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 t_iarray6.o \
 	t_iarray7 t_iarray7.o t_iarray_util.o t_int t_int.o t_open t_open.o \
 	t_sarray1 t_sarray1.o t_scan t_scan.o t_scan2 t_scan2.o t_scan3 \
-	t_scan3.o t_scan_float t_scan_float.o t_scan_fspec t_scan_fspec.o \
-	t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline t_sgetline.o \
-	t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring \
-	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint1 t_uint1.o \
-	t_uint2 t_uint2.o 
+	t_scan3.o t_scan_doub t_scan_doub.o t_scan_float t_scan_float.o \
+	t_scan_fspec t_scan_fspec.o t_scan_spec t_scan_spec.o t_seek \
+	t_seek.o t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o \
+	t_sstack1 t_sstack1.o t_sstring t_sstring.o t_stalloc t_stalloc.o \
+	t_str t_str.o t_uint1 t_uint1.o t_uint2 t_uint2.o 
 
 tests: list_tests run_tests
 tests_clean:

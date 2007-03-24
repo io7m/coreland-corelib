@@ -228,3 +228,4 @@
 20070320 code: iarray_sort and improved iarray tests.
 20070322 code: fmt_float fmt_double
 20070324 code: ht_clear_ext() no longer calls free(). thanks JN.
+20070324 code: improved scan_double() tests.
