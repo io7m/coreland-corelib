@@ -90,7 +90,7 @@ static const struct test tests[] = {
   { "-1.0e-10", -1.0e-10 },
 };
 
-#define MAX_ERROR 0.000000000000001
+#define MAX_ERROR 0.00000000000001
 
 int approx_equald(double a, double b, double merr)
 {

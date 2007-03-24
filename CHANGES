@@ -229,3 +229,5 @@
 20070322 code: fmt_float fmt_double
 20070324 code: ht_clear_ext() no longer calls free(). thanks JN.
 20070324 code: improved scan_double() tests.
+20070324 code: scan_float() and scan_double() now accept scientific
+               notation.
