@@ -3,9 +3,6 @@
 
 #define HT_HASH_BUCKETS 2048UL
 
-#define HT_SLOT_UNUSED  0x00
-#define HT_SLOT_USED    0x01
-
 struct ht_table_node {
   struct ht_table_node *next;
   char *key;
