@@ -185,7 +185,7 @@ void chop_test(struct dstring *ds)
   T_COMPARE(289, ds->a, CHOPTEST" a", 7);
 }
 
-int main()
+int main(void)
 {
   static struct dstring ds;
 

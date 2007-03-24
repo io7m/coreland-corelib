@@ -13,11 +13,11 @@ void readchar(int fd, char *c)
   int r;
   r = read(fd, c, 1);
   if (r == -1) { perror("read"); exit(2); }
-  if (r == 0) { printf("fail: %u unexpected end of file\n", n); exit(2); }
+  if (r == 0) { printf("fail: %lu unexpected end of file\n", n); exit(2); }
   ++n;
 }
 
-int main()
+int main(void)
 {
   int fd;
   int64 s;

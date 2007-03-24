@@ -24,7 +24,7 @@ void X(void *x)
   printf("info: X called\n");
 }
 
-int main()
+int main(void)
 {
   unsigned long al1;
   unsigned long al2;

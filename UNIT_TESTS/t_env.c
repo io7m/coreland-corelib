@@ -81,7 +81,7 @@ unsigned int check()
   return ind;
 }
 
-int main()
+int main(void)
 {
   unsigned int len;
 

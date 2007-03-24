@@ -20,7 +20,7 @@ void set(char *p, unsigned long len)
   }
 }
 
-int main()
+int main(void)
 {
   char *p1;
   char *p2;

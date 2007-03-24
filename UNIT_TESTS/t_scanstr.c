@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../scan.h"
 
-int main()
+int main(void)
 {
   const char *a = "AAAABBBBCCCCDDDD    \nAAAA";
   const char *str;

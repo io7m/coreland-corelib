@@ -6,6 +6,9 @@ unsigned int scan_uchar(const char *s, unsigned char *up)
   unsigned char uc;
   unsigned int len;
 
-  len = scan_ulong(s, &ul); uc = (unsigned char) ul; *up = ul;
+  len = scan_ulong(s, &ul);
+  if (!len) return 0;
+
+  uc = (unsigned char) ul; *up = uc;
   return len;
 }

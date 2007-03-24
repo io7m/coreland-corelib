@@ -22,7 +22,7 @@ static const struct exp explist[] = {
   {"path", "path"},
 };
 
-int main()
+int main(void)
 {
   char *newname;
   unsigned int ind;

@@ -680,16 +680,18 @@ sarray_trunc.o:\
 scan.a:\
 	cc-slib scan.sld scan_charset.o scan_double.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
-	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
-	scan_ushortx.o 
+	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
+	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
+	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
+	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
+	scan_ushortb.o scan_ushorto.o scan_ushortx.o 
 	./cc-slib scan scan_charset.o scan_double.o scan_float.o \
 	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uinto.o scan_uintx.o \
-	scan_ullong.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushorto.o \
-	scan_ushortx.o 
+	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
+	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
+	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
+	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
+	scan_ushortb.o scan_ushorto.o scan_ushortx.o 
 scan_charset.o:\
 	cc-compile scan_charset.c scan.h 
 	./cc-compile scan_charset.c
@@ -743,6 +745,9 @@ scan_u64x.o:\
 scan_uchar.o:\
 	cc-compile scan_uchar.c scan.h 
 	./cc-compile scan_uchar.c
+scan_ucharb.o:\
+	cc-compile scan_ucharb.c scan.h 
+	./cc-compile scan_ucharb.c
 scan_ucharo.o:\
 	cc-compile scan_ucharo.c scan.h 
 	./cc-compile scan_ucharo.c
@@ -752,6 +757,9 @@ scan_ucharx.o:\
 scan_uint.o:\
 	cc-compile scan_uint.c scan.h 
 	./cc-compile scan_uint.c
+scan_uintb.o:\
+	cc-compile scan_uintb.c scan.h 
+	./cc-compile scan_uintb.c
 scan_uinto.o:\
 	cc-compile scan_uinto.c scan.h 
 	./cc-compile scan_uinto.c
@@ -761,6 +769,9 @@ scan_uintx.o:\
 scan_ullong.o:\
 	cc-compile scan_ullong.c scan.h 
 	./cc-compile scan_ullong.c
+scan_ullongb.o:\
+	cc-compile scan_ullongb.c scan.h 
+	./cc-compile scan_ullongb.c
 scan_ullongo.o:\
 	cc-compile scan_ullongo.c scan.h 
 	./cc-compile scan_ullongo.c
@@ -770,6 +781,9 @@ scan_ullongx.o:\
 scan_ulong.o:\
 	cc-compile scan_ulong.c scan.h 
 	./cc-compile scan_ulong.c
+scan_ulongb.o:\
+	cc-compile scan_ulongb.c scan.h 
+	./cc-compile scan_ulongb.c
 scan_ulongo.o:\
 	cc-compile scan_ulongo.c scan.h 
 	./cc-compile scan_ulongo.c
@@ -779,6 +793,9 @@ scan_ulongx.o:\
 scan_ushort.o:\
 	cc-compile scan_ushort.c scan.h 
 	./cc-compile scan_ushort.c
+scan_ushortb.o:\
+	cc-compile scan_ushortb.c scan.h 
+	./cc-compile scan_ushortb.c
 scan_ushorto.o:\
 	cc-compile scan_ushorto.c scan.h 
 	./cc-compile scan_ushorto.c
@@ -1056,17 +1073,18 @@ clean: sysdeps_clean tests_clean
 	scan_charset.o scan_double.o scan_f32.o scan_f64.o scan_float.o \
 	scan_fspec.a scan_ncharset.o scan_newline.o scan_space.o scan_spec.a \
 	scan_u32.o scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o \
-	scan_u64x.o scan_uchar.o scan_ucharo.o scan_ucharx.o scan_uint.o \
-	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongo.o \
-	scan_ullongx.o scan_ulong.o scan_ulongo.o scan_ulongx.o \
-	scan_ushort.o scan_ushorto.o scan_ushortx.o seek.a seek_cur.o \
+	scan_u64x.o scan_uchar.o scan_ucharb.o scan_ucharo.o scan_ucharx.o \
+	scan_uint.o scan_uintb.o scan_uinto.o scan_uintx.o scan_ullong.o \
+	scan_ullongb.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
+	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
+	scan_ushortb.o scan_ushorto.o scan_ushortx.o seek.a seek_cur.o \
 	seek_end.o seek_pos.o seek_start.o sgetline.a sgetline.o \
 	sgetline_chop.o sgetline_get.o sig.a sig.o sig_block.o sig_catch.o \
 	sig_pause.o squeue.a squeue_bytes.o squeue_data.o squeue_deq.o \
 	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o sstack.a \
-	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
-	sstack_pop.o sstack_push.o 
-	rm -f sstack_size.o sstring.a sstring_0.o sstring_cat.o \
+	sstack_bytes.o 
+	rm -f sstack_data.o sstack_init.o sstack_peek.o sstack_pop.o \
+	sstack_push.o sstack_size.o sstring.a sstring_0.o sstring_cat.o \
 	sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
 	sstring_cpyb.o sstring_cpys.o sstring_init.o stalloc.a stalloc.o \
 	str.a str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o str_diff.o \

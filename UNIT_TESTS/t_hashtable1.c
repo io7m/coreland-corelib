@@ -3,7 +3,7 @@
 #include "t_hashtable.h"
 #include "../hashtable.h"
 
-int main()
+int main(void)
 {
   struct hashtable ht;
   ht_init(&ht);

@@ -10,7 +10,7 @@ static char linebuf[1024]; /* very short line buffer */
 static struct buffer inbuf;
 static struct sgetline sg;
 
-int main()
+int main(void)
 {
   int fd;
   int r;

@@ -5,7 +5,7 @@
 
 static int flags8_1[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
-int main()
+int main(void)
 {
   int ch;
   char *opt8_1;

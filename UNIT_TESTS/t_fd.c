@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int main()
+int main(void)
 {
   int fd0;
   int fd1;

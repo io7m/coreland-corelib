@@ -109,7 +109,7 @@ void add1(struct hashtable *h)
   check(7, "add1", h, 0, 0, slot, 3, 0, 0);
 }
 
-int main()
+int main(void)
 {
   struct hashtable ht;
 

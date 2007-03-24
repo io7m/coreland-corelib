@@ -3,7 +3,7 @@
 
 #define BSIZE 32
 
-int main()
+int main(void)
 {
   unsigned long len;
   static char buf[BSIZE];

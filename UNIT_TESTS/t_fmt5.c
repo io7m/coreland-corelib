@@ -177,7 +177,7 @@ int main(void)
       printf("fail: [%u] %s != %s\n", ind, cnum, tests[ind].str);
       return 1;
     }
-    printf("[%lu] %s == %s\n", ind, tests[ind].str, cnum);
+    printf("[%u] %s == %s\n", ind, tests[ind].str, cnum);
   }
 
   return 0;

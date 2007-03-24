@@ -7,7 +7,7 @@ int cmp(const char *a, const char *b)
   return -str_diff(a, b);
 }
 
-int main()
+int main(void)
 {
   struct dir_array da;
   char *fname;

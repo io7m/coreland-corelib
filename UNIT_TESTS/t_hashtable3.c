@@ -73,7 +73,7 @@ void get2(struct hashtable *h)
     delete_keyb(h, (char *) &ind, sizeof(ind), 1);
 }
 
-int main()
+int main(void)
 {
   struct hashtable ht;
   ht_init(&ht);

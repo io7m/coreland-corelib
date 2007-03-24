@@ -54,6 +54,7 @@ int test1()
   }
 
   iarray_free(&ia);
+  return 1;
 }
 
 /* reverse numeric odd -> numeric odd */
@@ -92,6 +93,7 @@ int test2()
   }
 
   iarray_free(&ia);
+  return 1;
 }
 
 /* reverse numeric -> reverse numeric */
@@ -127,6 +129,7 @@ int test3()
   }
 
   iarray_free(&ia);
+  return 1;
 }
 
 int test4()
@@ -186,9 +189,10 @@ int test4()
   }
 
   iarray_free(&ia);
+  return 1;
 }
 
-int main()
+int main(void)
 {
   if (!test1()) return 1;
   if (!test2()) return 1;

@@ -5,7 +5,7 @@
 
 #define ITERS 20
 
-int main()
+int main(void)
 {
   struct iarray ia;
   struct iarray_node *in;

@@ -102,9 +102,8 @@ int approx_equald(float64 a, float64 b, float64 merr)
   return (tmp <= merr);
 }
 
-int main()
+int main(void)
 {
-  float64 ff;
   float64 fd;
   unsigned int ind;
 

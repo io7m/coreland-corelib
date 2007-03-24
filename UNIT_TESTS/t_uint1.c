@@ -3,7 +3,7 @@
 #include "../uint32.h"
 #include "../uint64.h"
 
-int main()
+int main(void)
 {
   unsigned char p16[sizeof(uint16)];
   unsigned char p32[sizeof(uint32)];

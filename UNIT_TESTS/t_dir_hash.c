@@ -1,7 +1,7 @@
 #include "../dir_hash.h"
 #include "../syserr.h"
 
-int main()
+int main(void)
 {
   struct dir_hash dh;
 

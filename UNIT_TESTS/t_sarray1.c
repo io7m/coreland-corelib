@@ -10,7 +10,7 @@ struct object {
 char buf[ARRAY_SIZE * sizeof(struct object)];
 struct sarray sa;
 
-int main()
+int main(void)
 {
   struct object obj;
   struct object *obp;

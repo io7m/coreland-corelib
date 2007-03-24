@@ -233,3 +233,6 @@
                notation.
 20070324 code: improved scan_fspec tests.
 20070324 code: fixed double free() in ht_clear()
+20070324 code: large test cleanup
+20070324 code: scan_u*b() and re-wrote all scan tests.
+20070118 version: corelib 0.531

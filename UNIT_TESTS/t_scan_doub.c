@@ -102,9 +102,8 @@ int approx_equald(double a, double b, double merr)
   return (tmp <= merr);
 }
 
-int main()
+int main(void)
 {
-  double ff;
   double fd;
   unsigned int ind;
 

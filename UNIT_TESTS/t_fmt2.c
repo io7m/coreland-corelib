@@ -5,7 +5,7 @@
 static char buf[32];
 static const char *exp = "100 multiplied by 256 is 25600.";
 
-int main()
+int main(void)
 {
   char *str;
 

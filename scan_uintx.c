@@ -6,6 +6,9 @@ unsigned int scan_uintx(const char *s, unsigned int *up)
   unsigned int ui;
   unsigned int len;
 
-  len = scan_ulongx(s, &ul); ui = (unsigned int) ul; *up = ul;
+  len = scan_ulongx(s, &ul);
+  if (!len) return 0;
+
+  ui = (unsigned int) ul; *up = ui;
   return len;
 }

@@ -6,7 +6,7 @@
    floating point number size silliness. the test should still
    work but the diagnostics on failure may be wrong */
 
-int main()
+int main(void)
 {
   float32 f32;
   float64 f64;

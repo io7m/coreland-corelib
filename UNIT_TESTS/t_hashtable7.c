@@ -27,7 +27,7 @@ void addkey(const char *key)
   }
 }
 
-int main()
+int main(void)
 {
   ht_init(&ht);
 

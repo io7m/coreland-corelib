@@ -174,7 +174,7 @@ int overflow_test(struct array *arr)
   return 1;
 }
 
-int main()
+int main(void)
 {
   static struct array arr;
 

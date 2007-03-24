@@ -2,7 +2,7 @@
 #include "../str.h"
 #include <stdio.h>
 
-int main()
+int main(void)
 {
   const char *s = "ABCD1234EFGHXXXX";
   const char *t = "ABCD1234EFGHXXXX";

@@ -7,10 +7,12 @@ all: local t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 \
 	t_fmt2 t_fmt3 t_fmt4 t_fmt5 t_fmt_spec t_get_opt t_hashtable1 \
 	t_hashtable2 t_hashtable3 t_hashtable4 t_hashtable5 t_hashtable6 \
 	t_hashtable7 t_hashtable8 t_iarray1 t_iarray2 t_iarray3 t_iarray4 \
-	t_iarray5 t_iarray6 t_iarray7 t_int t_open t_sarray1 t_scan t_scan2 \
-	t_scan3 t_scan_doub t_scan_float t_scan_fspe1 t_scan_fspe2 \
-	t_scan_spec t_seek t_sgetline t_sig t_squeue1 t_sstack1 t_sstring \
-	t_stalloc t_str t_uint1 t_uint2 
+	t_iarray5 t_iarray6 t_iarray7 t_int t_open t_sarray1 t_scan_doub \
+	t_scan_float t_scan_fspe1 t_scan_fspe2 t_scan_spec t_scan_uc \
+	t_scan_ucb t_scan_uco t_scan_ucx t_scan_ui t_scan_uib t_scan_uio \
+	t_scan_uix t_scan_ul t_scan_ulb t_scan_ulo t_scan_ulx t_scan_us \
+	t_scan_usb t_scan_uso t_scan_usx t_scanstr t_seek t_sgetline t_sig \
+	t_squeue1 t_sstack1 t_sstring t_stalloc t_str t_uint1 t_uint2 
 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o ../alloc.a 
@@ -313,24 +315,6 @@ t_sarray1:\
 t_sarray1.o:\
 	cc-compile t_sarray1.c ../sarray.h 
 	./cc-compile t_sarray1.c
-t_scan:\
-	cc-link t_scan.ld t_scan.o ../scan.a 
-	./cc-link t_scan t_scan.o ../scan.a 
-t_scan.o:\
-	cc-compile t_scan.c ../scan.h 
-	./cc-compile t_scan.c
-t_scan2:\
-	cc-link t_scan2.ld t_scan2.o ../scan.a 
-	./cc-link t_scan2 t_scan2.o ../scan.a 
-t_scan2.o:\
-	cc-compile t_scan2.c ../scan.h 
-	./cc-compile t_scan2.c
-t_scan3:\
-	cc-link t_scan3.ld t_scan3.o ../scan.a 
-	./cc-link t_scan3 t_scan3.o ../scan.a 
-t_scan3.o:\
-	cc-compile t_scan3.c ../scan.h 
-	./cc-compile t_scan3.c
 t_scan_doub:\
 	cc-link t_scan_doub.ld t_scan_doub.o ../scan.a 
 	./cc-link t_scan_doub t_scan_doub.o ../scan.a 
@@ -361,6 +345,108 @@ t_scan_spec:\
 t_scan_spec.o:\
 	cc-compile t_scan_spec.c ../scan_spec.h ../uint32.h ../uint64.h 
 	./cc-compile t_scan_spec.c
+t_scan_uc:\
+	cc-link t_scan_uc.ld t_scan_uc.o ../scan.a 
+	./cc-link t_scan_uc t_scan_uc.o ../scan.a 
+t_scan_uc.o:\
+	cc-compile t_scan_uc.c ../scan.h 
+	./cc-compile t_scan_uc.c
+t_scan_ucb:\
+	cc-link t_scan_ucb.ld t_scan_ucb.o ../scan.a 
+	./cc-link t_scan_ucb t_scan_ucb.o ../scan.a 
+t_scan_ucb.o:\
+	cc-compile t_scan_ucb.c ../scan.h 
+	./cc-compile t_scan_ucb.c
+t_scan_uco:\
+	cc-link t_scan_uco.ld t_scan_uco.o ../scan.a 
+	./cc-link t_scan_uco t_scan_uco.o ../scan.a 
+t_scan_uco.o:\
+	cc-compile t_scan_uco.c ../scan.h 
+	./cc-compile t_scan_uco.c
+t_scan_ucx:\
+	cc-link t_scan_ucx.ld t_scan_ucx.o ../scan.a 
+	./cc-link t_scan_ucx t_scan_ucx.o ../scan.a 
+t_scan_ucx.o:\
+	cc-compile t_scan_ucx.c ../scan.h 
+	./cc-compile t_scan_ucx.c
+t_scan_ui:\
+	cc-link t_scan_ui.ld t_scan_ui.o ../scan.a 
+	./cc-link t_scan_ui t_scan_ui.o ../scan.a 
+t_scan_ui.o:\
+	cc-compile t_scan_ui.c ../scan.h 
+	./cc-compile t_scan_ui.c
+t_scan_uib:\
+	cc-link t_scan_uib.ld t_scan_uib.o ../scan.a 
+	./cc-link t_scan_uib t_scan_uib.o ../scan.a 
+t_scan_uib.o:\
+	cc-compile t_scan_uib.c ../scan.h 
+	./cc-compile t_scan_uib.c
+t_scan_uio:\
+	cc-link t_scan_uio.ld t_scan_uio.o ../scan.a 
+	./cc-link t_scan_uio t_scan_uio.o ../scan.a 
+t_scan_uio.o:\
+	cc-compile t_scan_uio.c ../scan.h 
+	./cc-compile t_scan_uio.c
+t_scan_uix:\
+	cc-link t_scan_uix.ld t_scan_uix.o ../scan.a 
+	./cc-link t_scan_uix t_scan_uix.o ../scan.a 
+t_scan_uix.o:\
+	cc-compile t_scan_uix.c ../scan.h 
+	./cc-compile t_scan_uix.c
+t_scan_ul:\
+	cc-link t_scan_ul.ld t_scan_ul.o ../scan.a 
+	./cc-link t_scan_ul t_scan_ul.o ../scan.a 
+t_scan_ul.o:\
+	cc-compile t_scan_ul.c ../scan.h 
+	./cc-compile t_scan_ul.c
+t_scan_ulb:\
+	cc-link t_scan_ulb.ld t_scan_ulb.o ../scan.a 
+	./cc-link t_scan_ulb t_scan_ulb.o ../scan.a 
+t_scan_ulb.o:\
+	cc-compile t_scan_ulb.c ../scan.h 
+	./cc-compile t_scan_ulb.c
+t_scan_ulo:\
+	cc-link t_scan_ulo.ld t_scan_ulo.o ../scan.a 
+	./cc-link t_scan_ulo t_scan_ulo.o ../scan.a 
+t_scan_ulo.o:\
+	cc-compile t_scan_ulo.c ../scan.h 
+	./cc-compile t_scan_ulo.c
+t_scan_ulx:\
+	cc-link t_scan_ulx.ld t_scan_ulx.o ../scan.a 
+	./cc-link t_scan_ulx t_scan_ulx.o ../scan.a 
+t_scan_ulx.o:\
+	cc-compile t_scan_ulx.c ../scan.h 
+	./cc-compile t_scan_ulx.c
+t_scan_us:\
+	cc-link t_scan_us.ld t_scan_us.o ../scan.a 
+	./cc-link t_scan_us t_scan_us.o ../scan.a 
+t_scan_us.o:\
+	cc-compile t_scan_us.c ../scan.h 
+	./cc-compile t_scan_us.c
+t_scan_usb:\
+	cc-link t_scan_usb.ld t_scan_usb.o ../scan.a 
+	./cc-link t_scan_usb t_scan_usb.o ../scan.a 
+t_scan_usb.o:\
+	cc-compile t_scan_usb.c ../scan.h 
+	./cc-compile t_scan_usb.c
+t_scan_uso:\
+	cc-link t_scan_uso.ld t_scan_uso.o ../scan.a 
+	./cc-link t_scan_uso t_scan_uso.o ../scan.a 
+t_scan_uso.o:\
+	cc-compile t_scan_uso.c ../scan.h 
+	./cc-compile t_scan_uso.c
+t_scan_usx:\
+	cc-link t_scan_usx.ld t_scan_usx.o ../scan.a 
+	./cc-link t_scan_usx t_scan_usx.o ../scan.a 
+t_scan_usx.o:\
+	cc-compile t_scan_usx.c ../scan.h 
+	./cc-compile t_scan_usx.c
+t_scanstr:\
+	cc-link t_scanstr.ld t_scanstr.o ../scan.a 
+	./cc-link t_scanstr t_scanstr.o ../scan.a 
+t_scanstr.o:\
+	cc-compile t_scanstr.c ../scan.h 
+	./cc-compile t_scanstr.c
 t_seek:\
 	cc-link t_seek.ld t_seek.o ../seek.a 
 	./cc-link t_seek t_seek.o ../seek.a 
@@ -439,13 +525,20 @@ clean: tests_clean local_clean
 	t_iarray2.o t_iarray3 
 	rm -f t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 t_iarray5.o \
 	t_iarray6 t_iarray6.o t_iarray7 t_iarray7.o t_iarray_util.o t_int \
-	t_int.o t_open t_open.o t_sarray1 t_sarray1.o t_scan t_scan.o \
-	t_scan2 t_scan2.o t_scan3 t_scan3.o t_scan_doub t_scan_doub.o \
-	t_scan_float t_scan_float.o t_scan_fspe1 t_scan_fspe1.o t_scan_fspe2 \
-	t_scan_fspe2.o t_scan_spec t_scan_spec.o t_seek t_seek.o t_sgetline \
-	t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 \
-	t_sstack1.o t_sstring t_sstring.o t_stalloc t_stalloc.o t_str \
-	t_str.o t_uint1 t_uint1.o t_uint2 t_uint2.o 
+	t_int.o t_open t_open.o t_sarray1 t_sarray1.o t_scan_doub \
+	t_scan_doub.o t_scan_float t_scan_float.o t_scan_fspe1 \
+	t_scan_fspe1.o t_scan_fspe2 t_scan_fspe2.o t_scan_spec t_scan_spec.o \
+	t_scan_uc t_scan_uc.o t_scan_ucb t_scan_ucb.o t_scan_uco \
+	t_scan_uco.o t_scan_ucx t_scan_ucx.o t_scan_ui t_scan_ui.o \
+	t_scan_uib t_scan_uib.o t_scan_uio t_scan_uio.o t_scan_uix \
+	t_scan_uix.o t_scan_ul t_scan_ul.o t_scan_ulb t_scan_ulb.o \
+	t_scan_ulo t_scan_ulo.o t_scan_ulx t_scan_ulx.o t_scan_us \
+	t_scan_us.o t_scan_usb t_scan_usb.o t_scan_uso t_scan_uso.o \
+	t_scan_usx t_scan_usx.o t_scanstr t_scanstr.o t_seek t_seek.o \
+	t_sgetline t_sgetline.o 
+	rm -f t_sig t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o \
+	t_sstring t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint1 \
+	t_uint1.o t_uint2 t_uint2.o 
 
 tests: list_tests run_tests
 tests_clean:

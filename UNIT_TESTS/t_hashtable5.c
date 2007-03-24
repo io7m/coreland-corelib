@@ -34,7 +34,7 @@ void except1(struct hashtable *h)
   }
 }
 
-int main()
+int main(void)
 {
   struct hashtable ht;
 

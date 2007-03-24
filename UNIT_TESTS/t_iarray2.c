@@ -4,7 +4,7 @@
 
 #define ITERS 20UL
 
-int main()
+int main(void)
 {
   struct iarray ia;
   unsigned long *iptr;

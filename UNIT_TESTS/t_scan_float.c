@@ -102,9 +102,8 @@ int approx_equalf(float a, float b, float merr)
   return (tmp <= merr);
 }
 
-int main()
+int main(void)
 {
-  float ff;
   float fd;
   unsigned int ind;
 

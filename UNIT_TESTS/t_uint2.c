@@ -147,11 +147,8 @@ int test_ulong()
   return 1;
 }
 
-int main()
+int main(void)
 {
-  unsigned long ul;
-  unsigned int ui;
-
   if (!test_uchar()) return 1;
   if (!test_ushort()) return 1;
   if (!test_uint()) return 1;

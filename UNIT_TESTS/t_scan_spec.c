@@ -23,7 +23,7 @@ static struct int_str int_list[] = {
   { 0, 0, 0, 0 },
 };
 
-int main()
+int main(void)
 {
   uint32 ui;
   uint64 u64;

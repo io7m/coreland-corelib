@@ -7,7 +7,7 @@ static char prbuf[1024];
 static struct buffer buffer_pw;
 static struct buffer buffer_pr;
 
-int main()
+int main(void)
 {
   static char buf[16];
   static char buf2[16];

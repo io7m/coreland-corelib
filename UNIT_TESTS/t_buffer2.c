@@ -7,10 +7,9 @@ static char prbuf[256];
 static struct buffer buffer_pw;
 static struct buffer buffer_pr;
 
-int main()
+int main(void)
 {
   int pfds1[2];
-  const char *str = "ABCD1234";
   long r;
 
   if (pipe(pfds1) == -1) { perror("pipe"); return 2; }

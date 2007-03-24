@@ -1,4 +1,5 @@
 #include <sys/types.h>
+#include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
 #include "../sig.h"
@@ -77,7 +78,7 @@ int test1()
   return 1;
 }
 
-int main()
+int main(void)
 {
   if (!test1()) return 1;
 

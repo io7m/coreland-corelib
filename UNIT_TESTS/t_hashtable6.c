@@ -18,7 +18,7 @@ void datafree(void *vp)
   dealloc(dp->z);
 }
 
-int main()
+int main(void)
 {
   struct hashtable ht;
   struct data d;

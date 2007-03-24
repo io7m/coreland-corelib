@@ -27,7 +27,7 @@ static const struct fmt_test tests[] = {
   { 0xffff0000UL, "11111111111111110000000000000000" },
 };
 
-int main()
+int main(void)
 {
   char cnum[FMT_ULONG];
   unsigned int ind;

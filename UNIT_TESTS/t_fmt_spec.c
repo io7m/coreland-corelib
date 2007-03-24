@@ -1,7 +1,7 @@
 #include "../fmt_spec.h"
 #include <stdio.h>
 
-int main()
+int main(void)
 {
   uint32 u32;
   uint64 u64;

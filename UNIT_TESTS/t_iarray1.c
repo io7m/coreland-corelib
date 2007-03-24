@@ -2,7 +2,7 @@
 #include "t_iarray.h"
 #include "../iarray.h"
 
-int main()
+int main(void)
 {
   struct iarray ia;
   unsigned long x;

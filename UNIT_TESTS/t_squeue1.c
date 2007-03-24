@@ -15,7 +15,7 @@ void dump()
   printf("%lu %lu %lu\n", sq.hpos, sq.tpos, sq.u);
 }
 
-int main()
+int main(void)
 {
   struct object obj;
   struct object *obp;

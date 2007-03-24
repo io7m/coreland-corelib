@@ -10,7 +10,7 @@ struct object {
 char buf[STACK_SIZE * sizeof(struct object)];
 struct sstack st;
 
-int main()
+int main(void)
 {
   struct object obj;
   struct object *obp;

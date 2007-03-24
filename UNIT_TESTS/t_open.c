@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "../open.h"
 
-int main()
+int main(void)
 {
   int fd;
 

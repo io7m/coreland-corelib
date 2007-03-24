@@ -5,7 +5,7 @@ char cuc[FMT_ULONG];
 char cui[FMT_ULONG];
 char cull[FMT_ULONGLONG];
 
-int main()
+int main(void)
 {
   unsigned char uc;
   unsigned int ui;
