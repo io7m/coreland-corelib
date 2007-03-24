@@ -11,8 +11,8 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
   unsigned long len;
   const char *key = (const char *) k;
   const char *dat = (const char *) x;
-  char *tmpkey;
-  char *tmpdat;
+  unsigned char *tmpkey;
+  unsigned char *tmpdat;
 
   pos = ht_hash(key, klen) & (HT_HASH_BUCKETS - 1);
   th = &(h->slots[pos]);
@@ -32,7 +32,8 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
         if (klen > np->keylen) {
           tmpkey = alloc(klen);
           if (!tmpkey) return -1;
-        } else tmpkey = np->key;
+        } else
+          tmpkey = np->key;
         if (dlen > np->datalen) {
           tmpdat = alloc(dlen);
           if (!tmpdat) {

@@ -14,7 +14,6 @@ void iarray_sort(struct iarray *ia, int (*cmp)(const void *, unsigned long,
   unsigned long subl1_len;
   unsigned long subl2_len;
   unsigned long ind;
-  unsigned long max;
 
   /* initial size of sub-list */
   base_size = 1;

@@ -5,8 +5,8 @@
 
 struct ht_table_node {
   struct ht_table_node *next;
-  char *key;
-  char *data;
+  unsigned char *key;
+  unsigned char *data;
   unsigned long keylen;
   unsigned long datalen;
 };
