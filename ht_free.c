@@ -48,5 +48,5 @@ void ht_clear(struct hashtable *h)
 }
 void ht_clear_ext(struct hashtable *h, void (*cb)(void *))
 {
-  ht_free_core(h, cb, 1);
+  ht_free_core(h, cb, 0);
 }
