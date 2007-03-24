@@ -231,3 +231,4 @@
 20070324 code: improved scan_double() tests.
 20070324 code: scan_float() and scan_double() now accept scientific
                notation.
+20070324 code: improved scan_fspec tests.
