@@ -21,6 +21,7 @@ static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
             cleanup(tn->data);
           dealloc(tn->key);
           dealloc(tn->data);
+          tn->state = HT_SLOT_UNUSED;
         }
         if (node_free) {
           dealloc(tn);
