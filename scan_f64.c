@@ -7,8 +7,10 @@ unsigned int scan_float64(const char *str, float64 *f)
   float64 tf;
   float64 df;
   float64 xf; 
+  float64 exp;
   unsigned int pos;
   unsigned int div;
+  unsigned int exp_sign;
   char ch;
 
   ptr = str;
@@ -16,6 +18,8 @@ unsigned int scan_float64(const char *str, float64 *f)
   df = 0;
   div = 1;
   pos = 0;
+  exp = 0;
+  exp_sign = 0;
 
   if (str[0] == '-') ++str;
 
@@ -40,6 +44,9 @@ unsigned int scan_float64(const char *str, float64 *f)
       case '9':
         ch -= '0'; tf = (tf * 10) + ch; ++pos;
         break;
+      case 'e':
+      case 'E':
+        goto SCI_NOTATION;
       default:
         goto END;
     }
@@ -65,14 +72,47 @@ unsigned int scan_float64(const char *str, float64 *f)
         ++pos;
         ++div;
         break;
+      case 'e':
+      case 'E':
+        goto SCI_NOTATION;
+      default:
+        goto END;
+    }
+  }
+
+  SCI_NOTATION:
+
+  /* skip 'e' */
+  ++pos;
+
+  /* check sign */
+  if (str[pos] == '-') { exp_sign = 1; ++pos; }
+
+  for (;;) {
+    ch = str[pos];
+    switch (ch) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        ch -= '0'; exp = (exp * 10) + ch; ++pos;
+        break;
       default:
         goto END;
     }
   }
 
   END:
-
   tf = df + tf;
+  if (exp_sign) exp = -exp;
+  tf *= pow(10, exp);
+
   if (ptr[0] == '-') tf = -tf;
   *f = tf;
   return pos;
