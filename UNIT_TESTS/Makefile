@@ -578,7 +578,7 @@ run_tests:
 local:
 local_clean:
 	rm -f cc-compile cc-link conf-cc conf-cctype conf-systype \
-	conf-ld libs-math
+	conf-ld libs-math flags-math
 
 cc-compile: ../cc-compile conf-cctype conf-cc
 	rm -f cc-compile
@@ -607,6 +607,10 @@ conf-ld: ../conf-ld
 libs-math: ../libs-math
 	rm -f libs-math
 	ln -s ../libs-math libs-math
+
+flags-math: ../flags-math
+	rm -f flags-math
+	ln -s ../flags-math flags-math
 regen:
 	cpj-genmk > Makefile.tmp
 	mv Makefile.tmp Makefile
