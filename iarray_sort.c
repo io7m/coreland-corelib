@@ -1,6 +1,6 @@
 #include "iarray.h"
 
-/* in-place mergesort. does not require extra space. */
+/* in-place mergesort. */
 void iarray_sort(struct iarray *ia, int (*cmp)(const void *, unsigned long,
                                                const void *, unsigned long))
 {
