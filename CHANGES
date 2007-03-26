@@ -236,3 +236,4 @@
 20070324 code: large test cleanup
 20070324 code: scan_u*b() and re-wrote all scan tests.
 20070118 version: corelib 0.531
+20070326 code: renamed seek to fd_seek to clear possible name conflicts.
