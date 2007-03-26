@@ -21,14 +21,13 @@ inst-link.c
 inst-link.ld
 install.c
 install.h
+install_core.c
 install_error.c
 installer.c
 installer.ld
 instchk.c
 instchk.ld
 insthier.c
-corelib-conf.c
-corelib-conf.ld
 mk-ctxt.c
 mk-ctxt.ld
 "
@@ -113,9 +112,3 @@ EOF
   fi
 
 done
-
-# corelib-conf is a special case
-cat <<EOF
-  {INST_COPY, "corelib-conf", 0, $bindir, 0, 0, 0755},
-EOF
-

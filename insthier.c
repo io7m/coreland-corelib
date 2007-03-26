@@ -128,7 +128,6 @@ struct install_item insthier[] = {
   {INST_COPY, "iarray_sort.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "iarray_trunc.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "iarray_zero.c", 0, ctxt_repos, 0, 0, 0644},
-  {INST_COPY, "install_core.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "int16_pack.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "int16_unpack.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "int32_pack.c", 0, ctxt_repos, 0, 0, 0644},
