@@ -1,6 +1,33 @@
 #include <float.h>
 #include <math.h>
 #include "fmt.h"
+#include "sd_math.h"
+
+#if !defined(HAVE_MATH_FABSF)
+static float fabsf(float x) { return (float) fabs(x); }
+#endif
+#if !defined(HAVE_MATH_FLOORF)
+static float floorf(float x) { return (float) floor(x); }
+#endif
+#if !defined(HAVE_MATH_CEILF)
+static float ceilf(float x) { return (float) ceil(x); }
+#endif
+#if !defined(HAVE_MATH_FMODF)
+static float fmodf(float x, float y) { return (float) fmod(x, y); }
+#endif
+#if !defined(HAVE_MATH_POWF)
+static float powf(float x, float y) { return (float) pow(x, y); }
+#endif
+#if !defined(HAVE_MATH_ROUNDF)
+  #if defined(HAVE_MATH_ROUND)
+    static float roundf(float x) { return (float) round(x);
+  #else
+    static float roundf(float x)
+    {
+      return (float) (fmodf(x, 1) < 0.5) ? floorf(x) : ceilf(x);
+    }
+  #endif
+#endif
 
 /* IEEE 754 single precision only */
 

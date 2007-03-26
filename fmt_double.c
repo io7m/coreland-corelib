@@ -2,6 +2,13 @@
 #include <math.h>
 #include "fmt.h"
 
+#if !defined(HAVE_MATH_ROUND)
+static double round(double x)
+{
+  return (fmod(x, 1) < 0.5) ? floor(x) : ceil(x);
+}
+#endif
+
 /* IEEE 754 double precision only */
 
 #if defined(HAVE_LONGLONG)

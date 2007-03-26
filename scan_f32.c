@@ -1,5 +1,10 @@
 #include <math.h> /* severe problems on PPC if this is not included */
 #include "scan_fspec.h"
+#include "sd_math.h"
+
+#if !defined(HAVE_MATH_POWF)
+static float32 powf(float32 x, float32 y) { return pow(x, y); }
+#endif
 
 unsigned int scan_float32(const char *str, float32 *f)
 {
