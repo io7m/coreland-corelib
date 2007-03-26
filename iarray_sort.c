@@ -47,6 +47,8 @@ void iarray_sort(struct iarray *ia, int (*cmp)(const void *, unsigned long,
           enext = subl1; subl1 = subl1->next; --subl1_len;
           goto ADD_ELEMENT;
         }
+
+        /* if node is unused, pick from other list to push unused nodes to end */
         if (!subl2->data) {
           if (!subl1->data) {
             enext = subl2; subl2 = subl2->next; --subl2_len;
