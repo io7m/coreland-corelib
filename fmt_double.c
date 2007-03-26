@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include "sd_math.h"
 #include "fmt.h"
 
 #if !defined(HAVE_MATH_ROUND)

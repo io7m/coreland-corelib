@@ -20,7 +20,7 @@ static float powf(float x, float y) { return (float) pow(x, y); }
 #endif
 #if !defined(HAVE_MATH_ROUNDF)
   #if defined(HAVE_MATH_ROUND)
-    static float roundf(float x) { return (float) round(x);
+    static float roundf(float x) { return (float) round(x); }
   #else
     static float roundf(float x)
     {
