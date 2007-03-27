@@ -20,13 +20,18 @@ static float powf(float x, float y) { return (float) pow(x, y); }
 #endif
 #if !defined(HAVE_MATH_ROUNDF)
   #if defined(HAVE_MATH_ROUND)
-    static float roundf(float x) { return (float) round(x); }
+  static float roundf(float x) { return (float) round(x); }
   #else
-    static float roundf(float x)
-    {
-      return (float) floor(x + 0.5);
-    }
+  static float roundf(float x)
+  {
+    return (float) floor(x + 0.5);
+  }
   #endif
+#endif
+#if defined(HAVE_MATH_LRINTF)
+  #define FLOAT_CAST(n) lrintf((n))
+#else
+  #define FLOAT_CAST(n) (long)(n)
 #endif
 
 /* IEEE 754 single precision only */
@@ -115,7 +120,7 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   FORMAT:
 
   /* format integral */
-  num = (unsigned long) floorf(real.f);
+  num = FLOAT_CAST(floorf(real.f));
   pos = fmt_ulong(str, num);
   len += pos;
   if (str) str += pos;
@@ -124,15 +129,16 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   len += 1;
   if (str) *str++ = '.';
 
-  real.f = fmodf(real.f, 1);
-  real.f = real.f * powf(10, rnd);
-  real.f = roundf(real.f);
-
   /* format fractional */
-  num = (unsigned long) floorf(real.f);
-  pos = fmt_ulong(str, num);
-  len += pos;
-  if (str) str += pos;
+  while (rnd--) {
+    real.f = fmodf(real.f, 1);
+    real.f = real.f * 10;
+    if (!rnd) real.f = roundf(real.f);
+    num = FLOAT_CAST(real.f);
+    pos = fmt_ulong(str, num);
+    len += pos;
+    if (str) str += pos;
+  }
 
   /* sci notation */
   if (sci) {

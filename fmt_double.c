@@ -3,6 +3,20 @@
 #include "sd_math.h"
 #include "fmt.h"
 
+#if defined(HAVE_LONGLONG)
+  #if defined(HAVE_MATH_LLRINT)
+    #define DOUBLE_CAST(n) llrint((n))
+  #else
+    #define DOUBLE_CAST(n) (long long)(n)
+  #endif
+#else
+  #if defined(HAVE_MATH_LRINT)
+    #define DOUBLE_CAST(n) lrint((n))
+  #else
+    #define DOUBLE_CAST(n) (long)(n)
+  #endif
+#endif
+
 #if !defined(HAVE_MATH_ROUND)
 static double round(double x)
 {
@@ -34,7 +48,6 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
 
   /* try and get the largest available integer type for double */
 #if defined(HAVE_LONGLONG)
-  #define DL_CAST(n) ((unsigned long long)(n))
   union {
     unsigned long long u;
     double d;
@@ -44,7 +57,6 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   long long exp;
   unsigned int (*fmt_func)(char *, unsigned long long) = fmt_ulonglong;
 #else
-  #define DL_CAST(n) ((unsigned long)(n))
   union {
     unsigned long u;
     double d;
@@ -119,7 +131,7 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   FORMAT:
 
   /* format integral */
-  num = DL_CAST(floor(real.d));
+  num = DOUBLE_CAST(floor(real.d));
   pos = fmt_func(str, num);
   len += pos;
   if (str) str += pos;
@@ -128,15 +140,16 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   len += 1;
   if (str) *str++ = '.';
 
-  real.d = fmod(real.d, 1);
-  real.d = real.d * pow(10, rnd);
-  real.d = round(real.d);
-
   /* format fractional */
-  num = DL_CAST(floor(real.d));
-  pos = fmt_func(str, num);
-  len += pos;
-  if (str) str += pos;
+  while (rnd--) {
+    real.d = fmod(real.d, 1);
+    real.d = real.d * 10;
+    if (!rnd) real.d = round(real.d);
+    num = DOUBLE_CAST(real.d);
+    pos = fmt_func(str, num);
+    len += pos;
+    if (str) str += pos;
+  }
 
   /* sci notation */
   if (sci) {
