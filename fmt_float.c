@@ -45,18 +45,18 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   union {
     unsigned long u;
     float f;
-  } real;
+  } real_tmp;
   unsigned long num;
   unsigned long sign;
 
   if (!rnd) return 0;
 
-  real.f = f;
-  sign = real.u >> FLOAT_SIGN_BITS;
+  real_tmp.f = f;
+  sign = real_tmp.u >> FLOAT_SIGN_BITS;
 
   /* check infinity */
-  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
-      (real.u & FLOAT_MANTISSA_MASK) == 0) {
+  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real_tmp.u & FLOAT_MANTISSA_MASK) == 0) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -66,8 +66,8 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   }
 
   /* check negative infinity */
-  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_NEG_INF &&
-      (real.u & FLOAT_MANTISSA_MASK) == 0) {
+  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_NEG_INF &&
+      (real_tmp.u & FLOAT_MANTISSA_MASK) == 0) {
     if (str) {
       str[0] = '-';
       str[1] = 'i';
@@ -78,8 +78,8 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   }
 
   /* check nan */
-  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
-      (real.u & FLOAT_MANTISSA_MASK) != 0) {
+  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real_tmp.u & FLOAT_MANTISSA_MASK) != 0) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -91,10 +91,10 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   if (sign) { ++len; if (str) *str++ = '-'; }
 
   /* treat number as positive */
-  real.f = fabsf(real.f);
+  real_tmp.f = fabsf(real_tmp.f);
 
   /* integral */
-  num = (unsigned long) floorf(real.f);
+  num = (unsigned long) floorf(real_tmp.f);
   pos = fmt_ulong(str, num);
   len += pos;
   if (str) str += pos;
@@ -104,11 +104,11 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   if (str) *str++ = '.';
 
   /* extract fractional */
-  real.f = fmodf(real.f, 1);
-  real.f = real.f * powf(10, rnd);
-  real.f = roundf(real.f);
+  real_tmp.f = fmodf(real_tmp.f, 1);
+  real_tmp.f = real_tmp.f * powf(10, rnd);
+  real_tmp.f = roundf(real_tmp.f);
 
-  num = (unsigned long) floorf(real.f);
+  num = (unsigned long) floorf(real_tmp.f);
   pos = fmt_ulong(str, num);
   len += pos;
 

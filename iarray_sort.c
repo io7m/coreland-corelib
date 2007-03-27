@@ -30,6 +30,7 @@ void iarray_sort(struct iarray *ia, int (*cmp)(const void *, unsigned long,
 
       /* work out size of sublist1 */
       subl2 = subl1;
+      subl1_len = 0;
       for (ind = 0; ind < base_size; ++ind) {
         subl1_len++;
         subl2 = subl2->next;
