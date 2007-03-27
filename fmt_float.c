@@ -24,7 +24,7 @@ static float powf(float x, float y) { return (float) pow(x, y); }
   #else
     static float roundf(float x)
     {
-      return (float) (fmodf(x, 1) < 0.5) ? floorf(x) : ceilf(x);
+      return (float) floor(x + 0.5);
     }
   #endif
 #endif
@@ -105,7 +105,7 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   ftmp = real.f;
   exp = 0;
   while (ftmp >= 10.0) { ++exp; ftmp *= 0.1; }
-  while (ftmp <= 1.0) { --exp; ftmp *= 10.0; }
+  while (ftmp < 1.0) { --exp; ftmp *= 10.0; }
 
   if (exp >= FLT_DIG || exp <= -FLT_DIG) {
     real.f = ftmp;

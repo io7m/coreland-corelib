@@ -6,7 +6,7 @@
 #if !defined(HAVE_MATH_ROUND)
 static double round(double x)
 {
-  return (fmod(x, 1) < 0.5) ? floor(x) : ceil(x);
+  return floor(x + 0.5);
 }
 #endif
 
@@ -109,7 +109,7 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   dtmp = real.d;
   exp = 0;
   while (dtmp >= 10.0) { ++exp; dtmp *= 0.1; }
-  while (dtmp <= 1.0) { --exp; dtmp *= 10.0; }
+  while (dtmp < 1.0) { --exp; dtmp *= 10.0; }
 
   if (exp >= DBL_DIG || exp <= -DBL_DIG) {
     real.d = dtmp;
