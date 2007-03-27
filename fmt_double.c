@@ -29,7 +29,8 @@ static double round(double x)
 unsigned int fmt_double(char *str, double d, unsigned int rnd)
 {
   unsigned int len = 0;
-  unsigned int pos;
+  unsigned int pos = 0;
+  unsigned int sci = 0;
 
   /* try and get the largest available integer type for double */
 #if defined(HAVE_LONGLONG)
@@ -40,6 +41,7 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   } real;
   unsigned long long num;
   unsigned long long sign;
+  long long exp;
   unsigned int (*fmt_func)(char *, unsigned long long) = fmt_ulonglong;
 #else
   #define DL_CAST(n) ((unsigned long)(n))
@@ -49,8 +51,10 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   } real;
   unsigned long num;
   unsigned long sign;
+  long exp;
   unsigned int (*fmt_func)(char *, unsigned long) = fmt_ulong;
 #endif
+  double dtmp;
 
   if (!rnd) return 0;
 
@@ -91,12 +95,30 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
     return 3;
   }
 
-  if (sign) { ++len; if (str) *str++ = '-'; }
+  /* if number is negative, convert to positive */
+  if (sign) {
+    if (str) *str++ = '-';
+    ++len;
+    real.d = fabs(d);
+  }
 
-  /* treat number as positive */
-  real.d = fabs(real.d);
+  /* zero is a special case */
+  if (real.d == 0.0) goto FORMAT;
 
-  /* integral */
+  /* work out if scientific notation is required */
+  dtmp = real.d;
+  exp = 0;
+  while (dtmp >= 10.0) { ++exp; dtmp *= 0.1; }
+  while (dtmp <= 1.0) { --exp; dtmp *= 10.0; }
+
+  if (exp >= DBL_DIG || exp <= -DBL_DIG) {
+    real.d = dtmp;
+    sci = 1;
+  }
+
+  FORMAT:
+
+  /* format integral */
   num = DL_CAST(floor(real.d));
   pos = fmt_func(str, num);
   len += pos;
@@ -106,14 +128,29 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   len += 1;
   if (str) *str++ = '.';
 
-  /* extract fractional */
   real.d = fmod(real.d, 1);
   real.d = real.d * pow(10, rnd);
   real.d = round(real.d);
 
+  /* format fractional */
   num = DL_CAST(floor(real.d));
   pos = fmt_func(str, num);
   len += pos;
+  if (str) str += pos;
+
+  /* sci notation */
+  if (sci) {
+    if (str) *str++ = 'e';
+    ++len;
+    if (exp < 0) {
+      if (str) *str++ = '-';
+      ++len;
+      exp = -exp;
+    }
+    pos = fmt_func(str, exp);
+    len += pos;
+    if (str) str += pos;
+  }
 
   return len;
 }

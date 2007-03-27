@@ -40,23 +40,26 @@ static float powf(float x, float y) { return (float) pow(x, y); }
 unsigned int fmt_float(char *str, float f, unsigned int rnd)
 {
   unsigned int len = 0;
-  unsigned int pos;
+  unsigned int pos = 0;
+  unsigned int sci = 0;
 
   union {
     unsigned long u;
     float f;
-  } real_tmp;
+  } real;
   unsigned long num;
   unsigned long sign;
+  float ftmp;
+  long exp;
 
   if (!rnd) return 0;
 
-  real_tmp.f = f;
-  sign = real_tmp.u >> FLOAT_SIGN_BITS;
+  real.f = f;
+  sign = real.u >> FLOAT_SIGN_BITS;
 
   /* check infinity */
-  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
-      (real_tmp.u & FLOAT_MANTISSA_MASK) == 0) {
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) == 0) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -66,8 +69,8 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   }
 
   /* check negative infinity */
-  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_NEG_INF &&
-      (real_tmp.u & FLOAT_MANTISSA_MASK) == 0) {
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_NEG_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) == 0) {
     if (str) {
       str[0] = '-';
       str[1] = 'i';
@@ -78,8 +81,8 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   }
 
   /* check nan */
-  if ((real_tmp.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
-      (real_tmp.u & FLOAT_MANTISSA_MASK) != 0) {
+  if ((real.u & FLOAT_EXPONENT_MASK) == FLOAT_INF &&
+      (real.u & FLOAT_MANTISSA_MASK) != 0) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -88,13 +91,31 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
     return 3;
   }
 
-  if (sign) { ++len; if (str) *str++ = '-'; }
+  /* if number is negative, convert to positive */
+  if (sign) {
+    if (str) *str++ = '-';
+    ++len;
+    real.f = fabsf(f);
+  }
 
-  /* treat number as positive */
-  real_tmp.f = fabsf(real_tmp.f);
+  /* zero is a special case */
+  if (real.f == 0.0) goto FORMAT;
 
-  /* integral */
-  num = (unsigned long) floorf(real_tmp.f);
+  /* work out if scientific notation is required */
+  ftmp = real.f;
+  exp = 0;
+  while (ftmp >= 10.0) { ++exp; ftmp *= 0.1; }
+  while (ftmp <= 1.0) { --exp; ftmp *= 10.0; }
+
+  if (exp >= FLT_DIG || exp <= -FLT_DIG) {
+    real.f = ftmp;
+    sci = 1;
+  }
+
+  FORMAT:
+
+  /* format integral */
+  num = (unsigned long) floorf(real.f);
   pos = fmt_ulong(str, num);
   len += pos;
   if (str) str += pos;
@@ -103,14 +124,29 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   len += 1;
   if (str) *str++ = '.';
 
-  /* extract fractional */
-  real_tmp.f = fmodf(real_tmp.f, 1);
-  real_tmp.f = real_tmp.f * powf(10, rnd);
-  real_tmp.f = roundf(real_tmp.f);
+  real.f = fmodf(real.f, 1);
+  real.f = real.f * powf(10, rnd);
+  real.f = roundf(real.f);
 
-  num = (unsigned long) floorf(real_tmp.f);
+  /* format fractional */
+  num = (unsigned long) floorf(real.f);
   pos = fmt_ulong(str, num);
   len += pos;
+  if (str) str += pos;
+
+  /* sci notation */
+  if (sci) {
+    if (str) *str++ = 'e';
+    ++len;
+    if (exp < 0) {
+      if (str) *str++ = '-';
+      ++len;
+      exp = -exp;
+    }
+    pos = fmt_ulong(str, exp);
+    len += pos;
+    if (str) str += pos;
+  }
 
   return len;
 }
