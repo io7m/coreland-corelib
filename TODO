@@ -3,9 +3,7 @@ scan_u64b();
 
 iarray_sort() needs more automated testing.
 
-fmt_float()
 fmt_double()
+fmt_float()
 
-  Must be adjusted to produce scientific notation.
-
-  Explicit maximum size parameter?
+  Make sure these functions pass all tests.
