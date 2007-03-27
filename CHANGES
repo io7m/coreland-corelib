@@ -238,3 +238,5 @@
 20070118 version: corelib 0.531
 20070326 code: renamed seek to fd_seek to clear possible name conflicts.
 20070326 code: solaris 9 fixes for math related functions.
+20070327 code: rewrite fmt_double() and fmt_float for scientific
+               precision.
