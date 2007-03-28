@@ -2,27 +2,28 @@
 #include <math.h>
 #include "fmt.h"
 #include "sd_math.h"
+#include "sd_inline.h"
 
 #if !defined(HAVE_MATH_FABSF)
-static float fabsf(float x) { return (float) fabs(x); }
+static inline float fabsf(float x) { return (float) fabs(x); }
 #endif
 #if !defined(HAVE_MATH_FLOORF)
-static float floorf(float x) { return (float) floor(x); }
+static inline float floorf(float x) { return (float) floor(x); }
 #endif
 #if !defined(HAVE_MATH_CEILF)
-static float ceilf(float x) { return (float) ceil(x); }
+static inline float ceilf(float x) { return (float) ceil(x); }
 #endif
 #if !defined(HAVE_MATH_FMODF)
-static float fmodf(float x, float y) { return (float) fmod(x, y); }
+static inline float fmodf(float x, float y) { return (float) fmod(x, y); }
 #endif
 #if !defined(HAVE_MATH_POWF)
-static float powf(float x, float y) { return (float) pow(x, y); }
+static inline float powf(float x, float y) { return (float) pow(x, y); }
 #endif
 #if !defined(HAVE_MATH_ROUNDF)
   #if defined(HAVE_MATH_ROUND)
-  static float roundf(float x) { return (float) round(x); }
+  static inline float roundf(float x) { return (float) round(x); }
   #else
-  static float roundf(float x)
+  static inline float roundf(float x)
   {
     return (float) floor(x + 0.5);
   }

@@ -1,5 +1,5 @@
-#ifndef INLINE_H
-#define INLINE_H
+#ifndef SD_INLINE_H
+#define SD_INLINE_H
 
 #include "_sd_inline.h"
 
