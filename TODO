@@ -2,8 +2,3 @@ scan_u32b();
 scan_u64b();
 
 iarray_sort() needs more automated testing.
-
-fmt_double()
-fmt_float()
-
-  Make sure these functions pass all tests.

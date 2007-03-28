@@ -57,6 +57,7 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
   float ftmp;
   long exp;
 
+  if (rnd > FLT_DIG) rnd = FLT_DIG;
   if (!rnd) return 0;
 
   real.f = f;
@@ -134,7 +135,7 @@ unsigned int fmt_float(char *str, float f, unsigned int rnd)
     real.f = fmodf(real.f, 1);
     real.f = real.f * 10;
     if (!rnd) real.f = roundf(real.f);
-    num = FLOAT_CAST(real.f);
+    num = FLOAT_CAST(floorf(real.f));
     pos = fmt_ulong(str, num);
     len += pos;
     if (str) str += pos;

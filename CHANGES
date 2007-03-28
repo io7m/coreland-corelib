@@ -240,3 +240,4 @@
 20070326 code: solaris 9 fixes for math related functions.
 20070327 code: rewrite fmt_double() and fmt_float for scientific
                precision.
+20070328 code: full tests for fmt_double() and fmt_float().

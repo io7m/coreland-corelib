@@ -68,6 +68,7 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
 #endif
   double dtmp;
 
+  if (rnd > DBL_DIG) rnd = DBL_DIG;
   if (!rnd) return 0;
 
   real.d = d;
@@ -145,7 +146,7 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
     real.d = fmod(real.d, 1);
     real.d = real.d * 10;
     if (!rnd) real.d = round(real.d);
-    num = DOUBLE_CAST(real.d);
+    num = DOUBLE_CAST(floor(real.d));
     pos = fmt_func(str, num);
     len += pos;
     if (str) str += pos;
