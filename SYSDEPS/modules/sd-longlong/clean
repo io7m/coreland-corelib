@@ -8,7 +8,11 @@ then
 fi
 
 f1_tmp="_sd_longlong.h"
+sd_tmp="sysdeps.out"
 echo "SYSDEPS sd-longlong clean ${f1_tmp}"
 
 f1_out="${SYSDEP_OUTDIR}/${f1_tmp}"
+sd_out="${SYSDEP_OUTDIR}/${sd_tmp}"
+
 rm -f ${f1_tmp} ${f1_out}
+rm -f ${sd_tmp} ${sd_out}
