@@ -1,7 +1,7 @@
 #ifndef SCAN_H
 #define SCAN_H
 
-#include "_sd_longlong.h"
+#include "sd_longlong.h"
 
 unsigned int scan_ulong(const char *, unsigned long *);
 unsigned int scan_ulongx(const char *, unsigned long *);
