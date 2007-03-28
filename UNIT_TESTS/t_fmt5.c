@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "../fmt.h"
 #include "../str.h"
 
@@ -10,6 +11,10 @@ struct fmt_test {
 };
 
 static const struct fmt_test tests[] = {
+  /* constant tests */
+  { 1, 3, NAN, "nan" },
+  { 1, 3, INFINITY, "inf" },
+
   /* zero tests */
   { 0, 0, 0.0, "" },
   { 1, 3, 0.0, "0.0" },
