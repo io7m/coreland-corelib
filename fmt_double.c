@@ -24,23 +24,20 @@ static double round(double x)
 }
 #endif
 
-/* IEEE 754 double precision only */
-
-#if defined(HAVE_LONGLONG)
-  #define DOUBLE_EXPONENT_MASK  0x7FF0000000000000ULL
-  #define DOUBLE_MANTISSA_MASK  0x000FFFFFFFFFFFFFULL
-  #define DOUBLE_INF            0x7FF0000000000000ULL
-  #define DOUBLE_NEG_INF        0xFFF0000000000000ULL
+#if defined(HAVE_MATH_ISINF)
+  #define IS_INFINITE(n) isinf((n))
 #else
-  #define DOUBLE_EXPONENT_MASK  0x7FF0000000000000UL
-  #define DOUBLE_MANTISSA_MASK  0x000FFFFFFFFFFFFFUL
-  #define DOUBLE_INF            0x7FF0000000000000UL
-  #define DOUBLE_NEG_INF        0xFFF0000000000000UL
+  #if defined(HAVE_MATH_ISFINITE)
+    #define IS_INFINITE(n) !isfinite((n))
+  #endif
 #endif
 
-#define DOUBLE_SIGN_BITS 63
+#define IS_NAN(n)       isnan((n))
+#define IS_NEGATIVE(n)  (((n) >> 63) & 0x00000001)
 
-unsigned int fmt_double(char *str, double d, unsigned int rnd)
+/* IEEE 754 double precision only */
+
+unsigned int fmt_double(char *str, double dou, unsigned int rnd)
 {
   unsigned int len = 0;
   unsigned int pos = 0;
@@ -49,20 +46,18 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   /* try and get the largest available integer type for double */
 #if defined(HAVE_LONGLONG)
   union {
-    unsigned long long u;
     double d;
+    unsigned long long n;
   } real;
   unsigned long long num;
-  unsigned long long sign;
   long long exp;
   unsigned int (*fmt_func)(char *, unsigned long long) = fmt_ulonglong;
 #else
   union {
-    unsigned long u;
     double d;
+    unsigned long n;
   } real;
   unsigned long num;
-  unsigned long sign;
   long exp;
   unsigned int (*fmt_func)(char *, unsigned long) = fmt_ulong;
 #endif
@@ -71,12 +66,10 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
   if (rnd > DBL_DIG) rnd = DBL_DIG;
   if (!rnd) return 0;
 
-  real.d = d;
-  sign = real.u >> DOUBLE_SIGN_BITS;
+  real.d = dou;
 
   /* check infinity */
-  if ((real.u & DOUBLE_EXPONENT_MASK) == DOUBLE_INF &&
-      (real.u & DOUBLE_MANTISSA_MASK) == 0) {
+  if (IS_INFINITE(real.d)) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -85,21 +78,8 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
     return 3;
   }
 
-  /* check negative infinity */
-  if ((real.u & DOUBLE_EXPONENT_MASK) == DOUBLE_NEG_INF &&
-      (real.u & DOUBLE_MANTISSA_MASK) == 0) {
-    if (str) {
-      str[0] = '-';
-      str[1] = 'i';
-      str[2] = 'n';
-      str[3] = 'f';
-    }
-    return 4;
-  }
-
   /* check nan */
-  if ((real.u & DOUBLE_EXPONENT_MASK) == DOUBLE_INF &&
-      (real.u & DOUBLE_MANTISSA_MASK) != 0) {
+  if (IS_NAN(real.d)) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -108,11 +88,10 @@ unsigned int fmt_double(char *str, double d, unsigned int rnd)
     return 3;
   }
 
-  /* if number is negative, convert to positive */
-  if (sign) {
+  if (IS_NEGATIVE(real.n)) {
     if (str) *str++ = '-';
     ++len;
-    real.d = fabs(d);
+    real.d = fabs(real.d);
   }
 
   /* zero is a special case */
