@@ -1,8 +1,8 @@
 default: sysdeps
 clean: sysdeps_clean
 
-sysdeps:  sd_byteorder sd_float64 sd_int32 sd_direntry sd_int16 sd_int64 sd_uint32 sd_sd-math sd_uint16 sd_uint64 sd_float32 sd_sysinfo sd_sd_math sd_sd-fd sd_sd-fcntl sd_sd-signal sd_sd-longlong sd_sd-inline
-sysdeps_clean:  sd_byteorder_clean sd_float64_clean sd_int32_clean sd_direntry_clean sd_int16_clean sd_int64_clean sd_uint32_clean sd_sd-math_clean sd_uint16_clean sd_uint64_clean sd_float32_clean sd_sysinfo_clean sd_sd_math_clean sd_sd-fd_clean sd_sd-fcntl_clean sd_sd-signal_clean sd_sd-longlong_clean sd_sd-inline_clean
+sysdeps:  sd_byteorder sd_float64 sd_int32 sd_direntry sd_int16 sd_int64 sd_uint32 sd_sd-math sd_uint16 sd_uint64 sd_float32 sd_sysinfo sd_sd-fd sd_sd-fcntl sd_sd-signal sd_sd-longlong sd_sd-inline
+sysdeps_clean:  sd_byteorder_clean sd_float64_clean sd_int32_clean sd_direntry_clean sd_int16_clean sd_int64_clean sd_uint32_clean sd_sd-math_clean sd_uint16_clean sd_uint64_clean sd_float32_clean sd_sysinfo_clean sd_sd-fd_clean sd_sd-fcntl_clean sd_sd-signal_clean sd_sd-longlong_clean sd_sd-inline_clean
 
 sd_byteorder:
 	@(cd modules/byteorder && ./run)
@@ -63,11 +63,6 @@ sd_sysinfo:
 	@(cd modules/sysinfo && ./run)
 sd_sysinfo_clean:
 	@(cd modules/sysinfo && ./clean)
-
-sd_sd_math:
-	@(cd modules/sd_math && ./run)
-sd_sd_math_clean:
-	@(cd modules/sd_math && ./clean)
 
 sd_sd-fd:
 	@(cd modules/sd-fd && ./run)
