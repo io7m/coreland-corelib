@@ -1,4 +1,6 @@
 scan_u32b();
 scan_u64b();
 
+scan_ulongb() is not 64-bit clean.
+
 iarray_sort() needs more automated testing.
