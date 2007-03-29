@@ -45,7 +45,7 @@ static inline float powf(float x, float y) { return (float) pow(x, y); }
 #endif
 
 #define IS_NAN(n)       isnan((n))
-#define IS_NEGATIVE(n)  ((n) < 0.0)
+#define IS_NEGATIVE(n)  (((n) >> 31) & 0x00000001)
 
 /* IEEE 754 single precision only */
 
@@ -55,14 +55,20 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   unsigned int pos = 0;
   unsigned int sci = 0;
   unsigned long num;
+  union real {
+    unsigned long n;
+    float f; 
+  } real;
   float ftmp;
   long exp;
 
   if (rnd > FLT_DIG) rnd = FLT_DIG;
   if (!rnd) return 0;
 
+  real.f = flo;
+
   /* check infinity */
-  if (IS_INFINITE(flo)) {
+  if (IS_INFINITE(real.f)) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -72,7 +78,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   }
 
   /* check nan */
-  if (IS_NAN(flo)) {
+  if (IS_NAN(real.f)) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -82,30 +88,30 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   }
 
   /* if number is negative, convert to positive */
-  if (!IS_NEGATIVE(flo)) {
+  if (IS_NEGATIVE(real.n)) {
     if (str) *str++ = '-';
     ++len;
-    flo = fabsf(flo);
+    real.f = fabsf(real.f);
   }
 
   /* zero is a special case */
-  if (flo == 0.0) goto FORMAT;
+  if (real.f == 0.0) goto FORMAT;
 
   /* work out if scientific notation is required */
-  ftmp = flo;
+  ftmp = real.f;
   exp = 0;
   while (ftmp >= 10.0) { ++exp; ftmp *= 0.1; }
   while (ftmp < 1.0) { --exp; ftmp *= 10.0; }
 
   if (exp >= FLT_DIG || exp <= -FLT_DIG) {
-    flo = ftmp;
+    real.f = ftmp;
     sci = 1;
   }
 
   FORMAT:
 
   /* format integral */
-  num = FLOAT_CAST(floorf(flo));
+  num = FLOAT_CAST(floorf(real.f));
   pos = fmt_ulong(str, num);
   len += pos;
   if (str) str += pos;
@@ -116,10 +122,10 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
 
   /* format fractional */
   while (rnd--) {
-    flo = fmodf(flo, 1);
-    flo = flo * 10;
-    if (!rnd) flo = roundf(flo);
-    num = FLOAT_CAST(floorf(flo));
+    real.f = fmodf(real.f, 1);
+    real.f = real.f * 10;
+    if (!rnd) real.f = roundf(real.f);
+    num = FLOAT_CAST(floorf(real.f));
     pos = fmt_ulong(str, num);
     len += pos;
     if (str) str += pos;
