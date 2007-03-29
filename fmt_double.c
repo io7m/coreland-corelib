@@ -1,6 +1,7 @@
 #include <float.h>
 #include <math.h>
 #include "sd_math.h"
+#include "sd_inline.h"
 #include "fmt.h"
 
 #if defined(HAVE_LONGLONG)
@@ -18,7 +19,7 @@
 #endif
 
 #if !defined(HAVE_MATH_ROUND)
-static double round(double x)
+static inline double round(double x)
 {
   return floor(x + 0.5);
 }
@@ -29,6 +30,11 @@ static double round(double x)
 #else
   #if defined(HAVE_MATH_ISFINITE)
     #define IS_INFINITE(n) !isfinite((n))
+  #else
+    #if defined(HAVE_MATH_FINITE)
+      #include <ieeefp.h>
+      #define IS_INFINITE(n) !finite((n))
+    #endif
   #endif
 #endif
 

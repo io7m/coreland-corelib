@@ -41,6 +41,11 @@ static inline float powf(float x, float y) { return (float) pow(x, y); }
 #else
   #if defined(HAVE_MATH_ISFINITE)
     #define IS_INFINITE(n) !isfinite((n))
+  #else
+    #if defined(HAVE_MATH_FINITE)
+      #include <ieeefp.h>
+      #define IS_INFINITE(n) !finite((n))
+    #endif
   #endif
 #endif
 
