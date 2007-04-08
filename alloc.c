@@ -1,7 +1,5 @@
+#include <stdlib.h>
 #include "alloc.h"
-
-extern void *malloc();
-extern void free();
 
 /* pointers to default mem functions */
 static void *def_alloc(unsigned long);
@@ -12,31 +10,39 @@ static alloc_proto allocfunc = def_alloc;
 static realloc_proto reallocfunc = def_realloc;
 static dealloc_proto deallocfunc = def_dealloc;
 
-static void copy_bytes(const char *sc, char *dc, unsigned long n)
+static void copy_bytes(const char *sc, char *dc, unsigned long size)
 {
   for (;;) {
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
-    if (!n) return; *dc++ = *sc++; --n;
+    if (!size) return; *dc++ = *sc++; --size;
+    if (!size) return; *dc++ = *sc++; --size;
+    if (!size) return; *dc++ = *sc++; --size;
+    if (!size) return; *dc++ = *sc++; --size;
   }
 }
-static void *def_alloc(unsigned long n)
+static void zero_bytes(char *sc, unsigned long size)
 {
-  return malloc(n);
+  for (;;) {
+    if (!size) return; *sc++ = 0; --size;
+    if (!size) return; *sc++ = 0; --size;
+    if (!size) return; *sc++ = 0; --size;
+    if (!size) return; *sc++ = 0; --size;
+  }
 }
-static void def_dealloc(void *p)
+static void *def_alloc(unsigned long size)
 {
-  free(p);
+  return malloc(size);
 }
-static int def_realloc(void **p, unsigned long m, unsigned long n)
+static void def_dealloc(void *ptr)
 {
-  char *q;
-  q = def_alloc(n); /* avoid indirect call */
-  if (q == 0) return 0;
-  copy_bytes(*p, q, m);
-  def_dealloc(*p);
-  *p = q;
+  free(ptr);
+}
+static int def_realloc(void **ptr, unsigned long size_old, unsigned long size_new)
+{
+  char *ptr_new = def_alloc(size_new);
+  if (!ptr_new) return 0;
+  copy_bytes(*ptr, ptr_new, size_old);
+  def_dealloc(*ptr);
+  *ptr = ptr_new;
   return 1;
 }
 
@@ -57,17 +63,24 @@ int set_dealloc(dealloc_proto dp)
   if (dp) { deallocfunc = dp; } return 0;
 }
 
-void* alloc(unsigned long n)
+void *alloc(unsigned long size)
 {
-  return allocfunc(n);
+  return allocfunc(size);
 }
 
-int alloc_re(void **p, unsigned long m, unsigned long n)
+void *alloc_zero(unsigned long size)
 {
-  return reallocfunc(p, m, n);
+  void *ptr = allocfunc(size);
+  if (ptr) zero_bytes(ptr, size);
+  return ptr;
 }
 
-void dealloc(void *p)
+int alloc_re(void **ptr, unsigned long size_old, unsigned long size_new)
 {
-  deallocfunc(p);
+  return reallocfunc(ptr, size_old, size_new);
+}
+
+void dealloc(void *ptr)
+{
+  deallocfunc(ptr);
 }

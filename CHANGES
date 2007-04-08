@@ -243,3 +243,4 @@
 20070328 code: full tests for fmt_double() and fmt_float().
 20070328 code: sysdeps update.
 20070408 code: array_data.o was not being compiled. fixed.
+20070408 code: cleaned up alloc.c and added alloc_zero().

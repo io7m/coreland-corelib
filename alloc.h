@@ -11,6 +11,7 @@ int set_dealloc(dealloc_proto);
 int set_realloc(realloc_proto);
 
 void *alloc(unsigned long);
+void *alloc_zero(unsigned long);
 int   alloc_re(void **, unsigned long, unsigned long);
 void  dealloc(void *);
 
