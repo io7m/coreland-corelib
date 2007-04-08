@@ -24,6 +24,7 @@ int main(void)
   char *p1;
   char *p2;
   char *p3;
+  unsigned int ind;
 
   p1 = alloc(CHUNK);
   p2 = alloc(CHUNK);
@@ -92,6 +93,16 @@ int main(void)
   dealloc(sp1);
   dealloc(sp2);
   dealloc(sp3);
+
+  p1 = alloc_zero(CHUNK);
+  if (!p1) { printf("fail: !p1\n"); return 1; }
+
+  for (ind = 0; ind < CHUNK; ++ind) {
+    if (p1[ind] != 0) {
+      printf("fail: p1[%lu] == %u\n", ind, p1[ind]);
+      return 1;
+    }
+  }
 
   return 0;
 }
