@@ -1,8 +1,9 @@
-#include "../alloc.h"
-#include "../stalloc.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "../alloc.h"
+#include "../stalloc.h"
+#include "t_assert.h"
 
 #define CHUNK 128
 
@@ -34,9 +35,9 @@ int main(void)
   p2 = alloc(CHUNK);
   p3 = alloc(CHUNK);
 
-  if (!p1) { printf("fail: !p1\n"); return 1; }
-  if (!p2) { printf("fail: !p2\n"); return 1; }
-  if (!p3) { printf("fail: !p3\n"); return 1; }
+  test_assert(p1);
+  test_assert(p2);
+  test_assert(p3);
 
   set(p1, CHUNK);
   set(p2, CHUNK);
@@ -46,45 +47,33 @@ int main(void)
   sp2 = alloc(CHUNK);
   sp3 = alloc(CHUNK);
 
-  if (!sp1) { printf("fail: !sp1\n"); return 1; }
-  if (!sp2) { printf("fail: !sp2\n"); return 1; }
-  if (!sp3) { printf("fail: !sp3\n"); return 1; }
+  test_assert(sp1);
+  test_assert(sp2);
+  test_assert(sp3);
 
   set(sp1, CHUNK);
   set(sp2, CHUNK);
   set(sp3, CHUNK);
 
-  if (!alloc_re((void *) &p1, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(p1)\n"); return 1;
-  }
-  if (!alloc_re((void *) &p2, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(p2)\n"); return 1;
-  }
-  if (!alloc_re((void *) &p3, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(p3)\n"); return 1;
-  }
+  test_assert(alloc_re((void *) &p1, CHUNK, CHUNK * 2));
+  test_assert(alloc_re((void *) &p2, CHUNK, CHUNK * 2));
+  test_assert(alloc_re((void *) &p3, CHUNK, CHUNK * 2));
 
-  if (p1[0] != 0x41) { printf("fail: p1[0] == %c\n", p1[0]); return 1; }
-  if (p2[0] != 0x41) { printf("fail: p2[0] == %c\n", p2[0]); return 1; }
-  if (p3[0] != 0x41) { printf("fail: p3[0] == %c\n", p3[0]); return 1; }
+  test_assert(p1[0] == 0x41);
+  test_assert(p2[0] == 0x41);
+  test_assert(p3[0] == 0x41);
 
   set(p1, CHUNK * 2);
   set(p2, CHUNK * 2);
   set(p3, CHUNK * 2);
 
-  if (!alloc_re((void *) &sp1, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(sp1)\n"); return 1;
-  }
-  if (!alloc_re((void *) &sp2, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(sp2)\n"); return 1;
-  }
-  if (!alloc_re((void *) &sp3, CHUNK, CHUNK * 2)) {
-    printf("fail: !alloc_re(sp3)\n"); return 1;
-  }
+  test_assert(alloc_re((void *) &sp1, CHUNK, CHUNK * 2));
+  test_assert(alloc_re((void *) &sp2, CHUNK, CHUNK * 2));
+  test_assert(alloc_re((void *) &sp3, CHUNK, CHUNK * 2));
 
-  if (sp1[0] != 0x41) { printf("fail: sp1[0] == %c\n", sp1[0]); return 1; }
-  if (sp2[0] != 0x41) { printf("fail: sp2[0] == %c\n", sp2[0]); return 1; }
-  if (sp3[0] != 0x41) { printf("fail: sp3[0] == %c\n", sp3[0]); return 1; }
+  test_assert(sp1[0] == 0x41);
+  test_assert(sp2[0] == 0x41);
+  test_assert(sp3[0] == 0x41);
 
   set(sp1, CHUNK * 2);
   set(sp2, CHUNK * 2);
@@ -99,21 +88,19 @@ int main(void)
   dealloc(sp3);
 
   p1 = alloc(4);
-  if (!p1) { printf("fail: !p1\n"); return 1; }
+  test_assert(p1);
 
   set(p1, 4);
-  if (p1[0] != 0x41) { printf("fail: p1[0] == %c\n", p1[0]); return 1; }
-  if (p1[1] != 0x41) { printf("fail: p1[1] == %c\n", p1[1]); return 1; }
-  if (p1[2] != 0x41) { printf("fail: p1[2] == %c\n", p1[2]); return 1; }
-  if (p1[3] != 0x41) { printf("fail: p1[3] == %c\n", p1[3]); return 1; }
+  test_assert(p1[0] == 0x41);
+  test_assert(p1[1] == 0x41);
+  test_assert(p1[2] == 0x41);
+  test_assert(p1[3] == 0x41);
 
-  if (!alloc_re((void *) &p1, 4, 8)) {
-    printf("fail: !alloc_re(p1)\n"); return 1;
-  }
-  if (p1[0] != 0x41) { printf("fail: p1[0] == %c\n", p1[0]); return 1; }
-  if (p1[1] != 0x41) { printf("fail: p1[1] == %c\n", p1[1]); return 1; }
-  if (p1[2] != 0x41) { printf("fail: p1[2] == %c\n", p1[2]); return 1; }
-  if (p1[3] != 0x41) { printf("fail: p1[3] == %c\n", p1[3]); return 1; }
+  test_assert(alloc_re((void *) &p1, 4, 8));
+  test_assert(p1[0] == 0x41);
+  test_assert(p1[1] == 0x41);
+  test_assert(p1[2] == 0x41);
+  test_assert(p1[3] == 0x41);
 
   dealloc(p1);
   return 0;

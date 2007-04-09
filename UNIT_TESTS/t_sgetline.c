@@ -4,6 +4,7 @@
 #include "../close.h"
 #include "../read.h"
 #include "../sgetline.h"
+#include "t_assert.h"
 
 static char fbuf[BUFFER_INSIZE];
 static char linebuf[1024]; /* very short line buffer */
@@ -17,7 +18,7 @@ int main(void)
   int toolong = 0;
 
   fd = open("./t_sgetline.txt", O_RDONLY);
-  if (fd == -1) { perror("open"); return 1; }
+  test_assert(fd != -1);
 
   buffer_init(&inbuf, (buffer_op) read, fd, fbuf, sizeof(fbuf));
   sgetline_initbuf(&sg, linebuf, sizeof(linebuf), &inbuf);
@@ -41,6 +42,6 @@ int main(void)
 
   END:
 
-  if (close(fd) == -1) perror("close");
+  test_assert(close(fd) != -1);
   return 0;
 }

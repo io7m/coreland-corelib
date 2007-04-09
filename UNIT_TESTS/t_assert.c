@@ -6,6 +6,11 @@
 
 static unsigned long test_num;
 
+static void test_assert_fail(void)
+{
+  exit(1);
+}
+
 void test_assert_core(unsigned int cond, const char *fname,
                       unsigned long line, const char *text)
 {
@@ -16,7 +21,7 @@ void test_assert_core(unsigned int cond, const char *fname,
     else
       fprintf(stderr, "[%lu] fail: %s: %lu: (%s) is false (%s)\n",
                        test_num, fname, line, text, strerror(errno));
-    exit(1);
+    test_assert_fail();
   }
   fprintf(stderr, "[%lu] pass: %s: %lu: %s\n", test_num, fname, line, text);
   test_num++;
