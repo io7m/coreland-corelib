@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../sarray.h"
+#include "t_assert.h"
 
 #define ARRAY_SIZE 8
 
@@ -21,116 +22,64 @@ int main(void)
   sarray_init(&sa, buf, ARRAY_SIZE, sizeof(struct object));
 
   /* check size is zero */
-  if (sarray_size(&sa) != 0) {
-    printf("fail: sarray_size: %u != 0\n", sarray_size(&sa));
-    return 1;
-  }
-  if (sarray_SIZE(&sa) != 0) {
-    printf("fail: sarray_SIZE: %u != 0\n", sarray_SIZE(&sa));
-    return 1;
-  }
+  test_assert(sarray_size(&sa) == 0);
+  test_assert(sarray_SIZE(&sa) == 0);
 
   /* check cat works */
   for (num = 0; num < ARRAY_SIZE; ++num) {
     obj.num = num;
-    if (!sarray_cat(&sa, &obj)) {
-      printf("fail: sarray_cat: failed at %lu\n", num);
-      return 1;
-    }
+    test_assert(sarray_cat(&sa, &obj));
   }
 
   /* check size is correct */
-  if (sarray_bytes(&sa) != ARRAY_SIZE * sizeof(struct object)) {
-    printf("fail: sarray_bytes: %u != %u\n", sarray_bytes(&sa),
-            ARRAY_SIZE * sizeof(struct object));
-    return 1;
-  }
-  if (sarray_BYTES(&sa) != ARRAY_SIZE * sizeof(struct object)) {
-    printf("fail: sarray_bytes: %u != %u\n", sarray_BYTES(&sa),
-            ARRAY_SIZE * sizeof(struct object));
-    return 1;
-  }
-  if (sarray_size(&sa) != ARRAY_SIZE) {
-    printf("fail: sarray_size: %u != %u\n", sarray_size(&sa), ARRAY_SIZE);
-    return 1;
-  }
-  if (sarray_SIZE(&sa) != ARRAY_SIZE) {
-    printf("fail: sarray_SIZE: %u != %u\n", sarray_SIZE(&sa), ARRAY_SIZE);
-    return 1;
-  }
+  test_assert(sarray_bytes(&sa) == ARRAY_SIZE * sizeof(struct object));
+  test_assert(sarray_BYTES(&sa) == ARRAY_SIZE * sizeof(struct object));
+
+  test_assert(sarray_size(&sa) == ARRAY_SIZE);
+  test_assert(sarray_SIZE(&sa) == ARRAY_SIZE);
 
   /* check index works */
   for (num = 0; num < ARRAY_SIZE; ++num) {
     obp = sarray_index(&sa, num);
-    if (!obp) {
-      printf("fail: sarray_index: failed at %lu\n", num);
-      return 1;
-    }
+    test_assert(obp);
     cmp = obp->num;
-    if (cmp != num) {
-      printf("fail: sarray_index: %lu != %lu\n", cmp, num);
-      return 1;
-    }
+    test_assert(cmp == num);
   }
 
   /* check chop works */
   sarray_chop(&sa, ARRAY_SIZE >> 1);
-  if (sa.a != ARRAY_SIZE) {
-    printf("fail: sa.a == %u expected %u\n", sa.a, ARRAY_SIZE);
-    return 1;
-  }
-  if (sa.u != ARRAY_SIZE >> 1) {
-    printf("fail: sa.a == %u expected %u\n", sa.u, ARRAY_SIZE >> 1);
-    return 1;
-  }
+  test_assert(sa.a == ARRAY_SIZE);
+  test_assert(sa.u == ARRAY_SIZE >> 1);
 
   for (num = 0; num < ARRAY_SIZE; ++num) {
     obp = sarray_index(&sa, num);
+
     if (!obp) {
-      if (num != ARRAY_SIZE >> 1) {
-        printf("fail: sarray_index: failed at %lu\n", num);
-        return 1;
-      } else break;
+      test_assert(!obp && num == ARRAY_SIZE >> 1);
+      break;
     }
     cmp = obp->num;
-    if (cmp != num) {
-      printf("fail: sarray_index: %lu != %lu\n", cmp, num);
-      return 1;
-    }
+    test_assert(cmp == num);
   }
 
   /* check truncation works */
   sarray_trunc(&sa);
-  if (sarray_size(&sa) != 0) {
-    printf("fail: sarray_trunc: %u != 0\n", sarray_size(&sa));
-    return 1;
-  }
+  test_assert(sarray_size(&sa) == 0);
  
   for (num = 0; num < ARRAY_SIZE; ++num) {
     obj.num = num;
-    if (!sarray_cat(&sa, &obj)) {
-      printf("fail: sarray_cat: failed at %lu\n", num);
-      return 1;
-    }
+    test_assert(sarray_cat(&sa, &obj));
   }
 
   sarray_TRUNC(&sa);
-  if (sarray_size(&sa) != 0) {
-    printf("fail: sarray_TRUNC: %u != 0\n", sarray_size(&sa));
-    return 1;
-  }
+  test_assert(sarray_size(&sa) == 0);
  
   /* check data works */
   vp = sarray_data(&sa);
-  if (vp != buf) {
-    printf("fail: sarray_data: %p != %p\n", vp, buf);
-    return 1;
-  }
+  test_assert(vp == buf);
+
   vp = sarray_DATA(&sa);
-  if (vp != buf) {
-    printf("fail: sarray_DATA: %p != %p\n", vp, buf);
-    return 1;
-  }
+  test_assert(vp == buf);
 
   return 0;
 }
