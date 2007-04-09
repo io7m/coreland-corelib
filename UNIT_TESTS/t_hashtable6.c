@@ -1,8 +1,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "t_hashtable.h"
-#include "../alloc.h"
+#include "t_assert.h"
 #include "../hashtable.h"
+#include "../alloc.h"
 
 struct data {
   unsigned int *x;
@@ -24,27 +25,22 @@ int main(void)
   struct hashtable ht;
   struct data d;
   unsigned int ind;
+  int r;
 
-  ht_init(&ht);
+  test_assert(ht_init(&ht));
 
   for (ind = 0; ind < 100; ++ind) {
     d.x = alloc(sizeof(unsigned int));
     d.y = alloc(sizeof(unsigned int));
     d.z = alloc(sizeof(unsigned int));
-    if (!d.x || !d.y || !d.z) {
-      printf("could not allocate memory\n");
-      return 2;
-    }
-    switch (ht_addb(&ht, &ind, sizeof(unsigned int), &d, sizeof(struct data))) {
-      case 0:
-        printf("fail: key %u returned 0\n", ind);
-        return 1;
-      case -1:
-        printf("fail: key %u returned -1\n", ind);
-        return 1;
-      default:
-        break;
-    }
+
+    test_assert(d.x);
+    test_assert(d.y);
+    test_assert(d.z);
+
+    r = ht_addb(&ht, &ind, sizeof(unsigned int), &d, sizeof(struct data));
+    test_assert(r != 0);
+    test_assert(r != -1);
   }
 
   ht_free_ext(&ht, datafree, 0);

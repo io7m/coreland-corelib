@@ -5,6 +5,7 @@
 #include "../hashtable.h"
 #include "../bin.h"
 #include "../alloc.h"
+#include "t_assert.h"
 
 static unsigned long num_allocs = 0;
 static void *count_malloc(unsigned long n)
@@ -55,9 +56,7 @@ void add1(struct hashtable *h)
   tn = h->slots[slot].head;
   check(1, "add1", h, ch1str[0], ch1str[0], slot, 1, 1, tn);
 
-  if (num_allocs != 3) {
-    printf("fail: 1 add1 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
+  test_assert(num_allocs == 3);
 
   /* should refuse duplicate */
   add(h, ch1str[0], ch1str[0], 0);
@@ -69,27 +68,21 @@ void add1(struct hashtable *h)
   tn = h->slots[slot].head;
   check(3, "add1", h, ch1str[0], ch1str[0], slot, 1, 1, tn);
 
-  if (num_allocs != 5) {
-    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
+  test_assert(num_allocs == 5);
 
   /* should add new node */
   add(h, ch1str[1], ch1str[1], 1);
   tn = h->slots[slot].head->next;
   check(4, "add1", h, ch1str[1], ch1str[1], slot, 2, 2, tn);
 
-  if (num_allocs != 8) {
-    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
+  test_assert(num_allocs == 8);
 
   /* should add new node */
   add(h, ch1str[2], ch1str[2], 1);
   tn = h->slots[slot].head->next->next;
   check(5, "add1", h, ch1str[2], ch1str[2], slot, 3, 3, tn);
 
-  if (num_allocs != 11) {
-    printf("fail: 3 add1 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
+  test_assert(num_allocs == 11);
 
   /* delete middle node in chain */
   delete_key(h, ch1str[1], 1);
@@ -115,7 +108,7 @@ int main(void)
 
   set_alloc(count_malloc);
 
-  ht_init(&ht);
+  test_assert(ht_init(&ht));
   add1(&ht);
   ht_free(&ht);
   return 0;

@@ -6,6 +6,7 @@
 #include "../bin.h"
 #include "../alloc.h"
 #include "../str.h"
+#include "t_assert.h"
 
 static unsigned long num_allocs = 0;
 
@@ -27,20 +28,14 @@ void replace1(struct hashtable *h)
   add(h, key, dat, 1);
   get(h, key, &dat, &len, 1);
 
-  if (num_allocs != 3) {
-    printf("fail: replace1: 1 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
+  test_assert(num_allocs == 3);
 
   dat = "123456";
   replace(h, key, dat, 1);
   get(h, key, &dat, &nlen, 1);
 
-  if (num_allocs != 4) {
-    printf("fail: replace1: 2 num_allocs == %lu\n", num_allocs); _exit(1);
-  }
-  if (nlen == len) {
-    printf("fail: replace1: 3 nlen == len\n"); _exit(1);
-  }
+  test_assert(num_allocs == 4);
+  test_assert(nlen != len);
 }
 
 int main(void)
@@ -49,10 +44,8 @@ int main(void)
 
   set_alloc(count_malloc);
 
-  ht_init(&ht);
-
+  test_assert(ht_init(&ht));
   replace1(&ht);
-
   ht_free(&ht);
   return 0;
 }

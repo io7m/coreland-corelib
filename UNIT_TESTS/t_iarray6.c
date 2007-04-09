@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "t_iarray.h"
+#include "t_assert.h"
 #include "../iarray.h"
+
+/* test iarray_copy() */
 
 #define ITERS 20
 
@@ -12,20 +15,11 @@ int main(void)
   struct iarray_node *in_b;
   unsigned long ind;
 
-  if (!iarray_init(&ia, 2)) {
-    printf("fail: iarray_init\n");
-    return 1;
-  }
-
-  for (ind = 0; ind < ITERS; ++ind) {
-    if (!iarray_cat(&ia, &ind, sizeof(ind))) {
-      printf("fail: iarray_cat at %lu\n", ind);
-      return 1;
-    }
-  }
+  test_assert(iarray_init(&ia, 2));
+  for (ind = 0; ind < ITERS; ++ind)
+    test_assert(iarray_cat(&ia, &ind, sizeof(ind)));
 
   /* remove some nodes to show effect of rebuild */
-
   iarray_remove(&ia, 0);
   iarray_remove(&ia, ITERS - 1);
   iarray_remove(&ia, ITERS / 5);
@@ -33,20 +27,10 @@ int main(void)
   iarray_remove(&ia, ITERS / 2);
 
   iarray_zero(&ib);
-  if (!iarray_copy(&ib, &ia)) {
-    printf("fail: iarray_copy\n");
-    return 1;
-  }
+  test_assert(iarray_copy(&ib, &ia));
 
-  if (ib.u != ia.u) {
-    printf("fail: unexpected u value %lu != %lu\n", ib.u, ia.u);
-    return 1;
-  }
-
-  if (!iarray_integrity(&ib)) {
-    printf("fail: iarray_integrity\n");
-    return 1;
-  }
+  test_assert(ib.u == ia.u);
+  test_assert(iarray_integrity(&ib));
 
   ind = 0;
   in_a = ia.head;

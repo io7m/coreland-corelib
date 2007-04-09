@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "t_hashtable.h"
+#include "t_assert.h"
 #include "../hashtable.h"
 
 /* 
@@ -15,21 +16,16 @@ struct hashtable ht;
 
 void addkey(const char *key)
 {
-  switch (ht_adds(&ht, key, "ABCD")) {
-    case -1:
-      perror("ht_adds");
-      _exit(2);
-    case 0:
-      printf("fail: %s should not be in table\n", key);
-      _exit(1);
-    default:
-      break;
-  }
+  int r;
+
+  r = ht_adds(&ht, key, "ABCD");
+  test_assert(r != -1);
+  test_assert(r != 0);
 }
 
 int main(void)
 {
-  ht_init(&ht);
+  test_assert(ht_init(&ht));
 
   addkey("conf-ldfflistxx");
   addkey("conf-ldfflist");

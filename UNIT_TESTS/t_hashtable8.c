@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "t_hashtable.h"
+#include "t_assert.h"
 #include "../hashtable.h"
 
 /*
@@ -19,8 +20,11 @@ unsigned long count()
   return max;
 }
 
-int X(void *x, unsigned long xlen, void *udata)
+int X(void *xptr, unsigned long xlen, void *udat)
 {
+  xptr = 0;
+  xlen = 0;
+  udat = 0;
   printf("info: X called\n");
   return 1;
 }
@@ -30,7 +34,7 @@ int main(void)
   unsigned long al1;
   unsigned long al2;
 
-  ht_init(&ht);
+  test_assert(ht_init(&ht));
 
   add(&ht, "AAAAAAAAAAAA", "AAAAAAAAAAAA", 1);
   add(&ht, "BBBBBBBBBBBB", "BBBBBBBBBBBB", 1);
@@ -46,18 +50,12 @@ int main(void)
   add(&ht, "MMMMMMMMMMMM", "MMMMMMMMMMMM", 1);
 
   al1 = count();
-  if (al1 != 12) {
-    printf("fail: %lu != 12\n", al1);
-    return 1;
-  }
+  test_assert(al1 == 12);
 
   ht_clear_ext(&ht, X, 0);
 
   al2 = count();
-  if (al1 != al2) {
-    printf("fail: %lu != %lu\n", al1, al2);
-    return 1;
-  }
+  test_assert(al1 == al2);
 
   ht_free(&ht);
   return 0;

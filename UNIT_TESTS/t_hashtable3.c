@@ -4,6 +4,7 @@
 #include "../hashtable.h"
 #include "../bin.h"
 #include "../str.h"
+#include "t_assert.h"
 
 void get1(struct hashtable *h)
 {
@@ -16,16 +17,8 @@ void get1(struct hashtable *h)
 
   for (ind = 0; ind < ch1str_len; ++ind) {
     get(h, ch1str[ind], &str, &len, 1);
-    if (len != str_len(ch1str[ind])) {
-      printf("fail: get1: len %lu != %lu\n", len, str_len(ch1str[ind]));
-      _exit(1);
-    }
-    if (!bin_same(str, ch1str[ind], len)) {
-      printf("fail: get1: str ");
-      printn(str, len);
-      printf(" != %s\n", ch1str[ind]);
-      _exit(1);
-    }
+    test_assert(len == str_len(ch1str[ind]));
+    test_assert(bin_same(str, ch1str[ind], len));
   }
 
   for (ind = 0; ind < ch1str_len; ++ind)
@@ -54,19 +47,10 @@ void get2(struct hashtable *h)
 
   for (ind = 0; ind < ch1str_len; ++ind) {
     getb(h, (char *) &ind, sizeof(ind), (char **) &tp, &len, 1);
-    if (len != sizeof(struct test)) {
-      printf("fail: get2: len %lu != %u\n", len, (unsigned int) sizeof(struct test));
-      _exit(1);
-    }
-    if (tp->x != ind) {
-      printf("fail: get2: tp->x %u != %u\n", tp->x, ind);
-    }
-    if (tp->y != ind + 1) {
-      printf("fail: get2: tp->y %u != %u\n", tp->y, ind + 1);
-    }
-    if (tp->z != ind + 2) {
-      printf("fail: get2: tp->z %u != %u\n", tp->z, ind + 2);
-    }
+    test_assert(len == sizeof(struct test));
+    test_assert(tp->x == ind);
+    test_assert(tp->y == ind + 1);
+    test_assert(tp->z == ind + 2);
   }
 
   for (ind = 0; ind < ch1str_len; ++ind)
@@ -76,7 +60,7 @@ void get2(struct hashtable *h)
 int main(void)
 {
   struct hashtable ht;
-  ht_init(&ht);
+  test_assert(ht_init(&ht));
 
   get1(&ht);
   get2(&ht);

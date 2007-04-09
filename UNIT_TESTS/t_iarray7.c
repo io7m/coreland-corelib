@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "t_iarray.h"
+#include "t_assert.h"
 #include "../iarray.h"
+
+/* test iarray_sort() with various sorting functions */
 
 int sort_numeric(const void *ap, unsigned long asize,
                  const void *bp, unsigned long bsize)
@@ -27,28 +30,19 @@ int test1()
 {
   printf("--\n");
 
-  if (!iarray_init(&ia, 10)) {
-    printf("fail: iarray_init\n");
-    return 1;
-  }
-  for (ind = 10; ind; --ind) {
-    if (!iarray_cat(&ia, &ind, sizeof(unsigned long))) {
-      printf("fail: iarray_cat %lu\n", ind);
-      return 0;
-    }
-  }
+  test_assert(iarray_init(&ia, 10));
+  for (ind = 10; ind; --ind)
+    test_assert(iarray_cat(&ia, &ind, sizeof(unsigned long)));
+
   iarray_dump(&ia, IARRAY_DUMP_INT);
   iarray_sort(&ia, sort_numeric);
   iarray_dump(&ia, IARRAY_DUMP_INT);
-  if (!iarray_integrity(&ia)) return 0;
+  test_assert(iarray_integrity(&ia));
 
   nptr = ia.head;
   for (ind = 0; ind < 10; ++ind) {
     data = * (unsigned long *) nptr->data;
-    if (data != ind + 1) {
-      printf("[%lu] fail: expected %lu got %lu\n", ind, ind + 1, data);
-      return 0;
-    }
+    test_assert(data == ind + 1);
     nptr = nptr->next;
     if (!nptr) break;
   }
@@ -62,16 +56,10 @@ int test2()
 {
   printf("--\n");
 
-  if (!iarray_init(&ia, 10)) {
-    printf("fail: iarray_init\n");
-    return 1;
-  }
-  for (ind = 10; ind; --ind) {
-    if (!iarray_cat(&ia, &ind, sizeof(unsigned long))) {
-      printf("fail: iarray_cat %lu\n", ind);
-      return 0;
-    }
-  }
+  test_assert(iarray_init(&ia, 10));
+  for (ind = 10; ind; --ind)
+    test_assert(iarray_cat(&ia, &ind, sizeof(unsigned long)));
+
   for (ind = 10; ind; --ind)
     if (ind % 2 == 0)
       iarray_remove(&ia, ind);
@@ -79,15 +67,12 @@ int test2()
   iarray_dump(&ia, IARRAY_DUMP_INT);
   iarray_sort(&ia, sort_numeric);
   iarray_dump(&ia, IARRAY_DUMP_INT);
-  if (!iarray_integrity(&ia)) return 0;
+  test_assert(iarray_integrity(&ia));
 
   nptr = ia.head;
   for (ind = 0; ind < 5; ++ind) {
     data = * (unsigned long *) nptr->data;
-    if (data != ind * 2 + 1) {
-      printf("[%lu] fail: expected %lu got %lu\n", ind, ind * 2 + 1, data);
-      return 0;
-    }
+    test_assert(data == ind * 2 + 1);
     nptr = nptr->next;
     if (!nptr) break;
   }
@@ -101,29 +86,19 @@ int test3()
 {
   printf("--\n");
 
-  if (!iarray_init(&ia, 10)) {
-    printf("fail: iarray_init\n");
-    return 1;
-  }
-  for (ind = 10; ind; --ind) {
-    if (!iarray_cat(&ia, &ind, sizeof(unsigned long))) {
-      printf("fail: iarray_cat %lu\n", ind);
-      return 0;
-    }
-  }
+  test_assert(iarray_init(&ia, 10));
+  for (ind = 10; ind; --ind)
+    test_assert(iarray_cat(&ia, &ind, sizeof(unsigned long)));
 
   iarray_dump(&ia, IARRAY_DUMP_INT);
   iarray_sort(&ia, sort_numeric_rev);
   iarray_dump(&ia, IARRAY_DUMP_INT);
-  if (!iarray_integrity(&ia)) return 0;
+  test_assert(iarray_integrity(&ia));
 
   nptr = ia.head;
   for (ind = 0; ind < 10; ++ind) {
     data = * (unsigned long *) nptr->data;
-    if (data != 10 - ind) {
-      printf("[%lu] fail: expected %lu got %lu\n", ind, 10 - ind, data);
-      return 0;
-    }
+    test_assert(data == 10 - ind);
     nptr = nptr->next;
     if (!nptr) break;
   }
@@ -161,29 +136,19 @@ int test4()
 
   printf("--\n");
 
-  if (!iarray_init(&ia, 10)) {
-    printf("fail: iarray_init\n");
-    return 1;
-  }
-  for (ind = 0; ind < sizeof(unsorted) / sizeof(unsorted[0]); ++ind) {
-    if (!iarray_cat(&ia, &unsorted[ind], sizeof(unsigned long))) {
-      printf("fail: iarray_cat %lu\n", ind);
-      return 0;
-    }
-  }
+  test_assert(iarray_init(&ia, 10));
+  for (ind = 0; ind < sizeof(unsorted) / sizeof(unsorted[0]); ++ind)
+    test_assert(iarray_cat(&ia, &unsorted[ind], sizeof(unsigned long)));
 
   iarray_dump(&ia, IARRAY_DUMP_INT);
   iarray_sort(&ia, sort_numeric);
   iarray_dump(&ia, IARRAY_DUMP_INT);
-  if (!iarray_integrity(&ia)) return 0;
+  test_assert(iarray_integrity(&ia));
 
   nptr = ia.head;
   for (ind = 0; ind < sizeof(sorted) / sizeof(sorted[0]); ++ind) {
     data = * (unsigned long *) nptr->data;
-    if (data != sorted[ind]) {
-      printf("[%lu] fail: expected %lu got %lu\n", ind, sorted[ind], data);
-      return 0;
-    }
+    test_assert(data == sorted[ind]);
     nptr = nptr->next;
     if (!nptr) break;
   }
@@ -194,10 +159,10 @@ int test4()
 
 int main(void)
 {
-  if (!test1()) return 1;
-  if (!test2()) return 1;
-  if (!test3()) return 1;
-  if (!test4()) return 1;
+  test1();
+  test2();
+  test3();
+  test4();
 
   return 0;
 }
