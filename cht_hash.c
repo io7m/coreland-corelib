@@ -1,5 +1,4 @@
 #include "chashtable.h"
-#include "sd_ptr_uint.h"
 
 #define CHT_HASH_MAGIC 0x3107
 
