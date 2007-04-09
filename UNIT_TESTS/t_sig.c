@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "../sig.h"
+#include "t_assert.h"
 
 int sig_alarm_num;
 int sig_child_num;
@@ -23,12 +24,9 @@ void t1_handle(int sig)
 
 int test1()
 {
-  int pid;
-
-  pid = getpid();
+  int pid = getpid();
 
   /* catch lots of signals */
-
   sig_catch(sig_alarm, t1_handle);
   sig_catch(sig_child, t1_handle);
   sig_catch(sig_cont, t1_handle);
@@ -36,19 +34,19 @@ int test1()
   sig_catch(sig_pipe, t1_handle);
   sig_catch(sig_term, t1_handle);
  
-  if (kill(pid, sig_alarm) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_child) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_cont) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_hangup) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_pipe) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_term) == -1) { perror("kill"); return 0; }
+  test_assert(kill(pid, sig_alarm) != -1);
+  test_assert(kill(pid, sig_child) != -1);
+  test_assert(kill(pid, sig_cont) != -1);
+  test_assert(kill(pid, sig_hangup) != -1);
+  test_assert(kill(pid, sig_pipe) != -1);
+  test_assert(kill(pid, sig_term) != -1);
 
-  if (sig_alarm_num != 1) { printf("fail: %s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
-  if (sig_child_num != 1) { printf("fail: %s == %d\n", "sig_child", sig_child_num); return 0; }
-  if (sig_cont_num != 1) { printf("fail: %s == %d\n", "sig_cont", sig_cont_num); return 0; }
-  if (sig_hangup_num != 1) { printf("fail: %s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
-  if (sig_pipe_num != 1) { printf("fail: %s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
-  if (sig_term_num != 1) { printf("fail: %s == %d\n", "sig_term", sig_term_num); return 0; }
+  test_assert(sig_alarm_num == 1);
+  test_assert(sig_child_num == 1);
+  test_assert(sig_cont_num == 1);
+  test_assert(sig_hangup_num == 1);
+  test_assert(sig_pipe_num == 1);
+  test_assert(sig_term_num == 1);
 
   /* block lots of signals */
 
@@ -59,28 +57,27 @@ int test1()
   sig_block(sig_pipe);
   sig_block(sig_term);
 
-  if (kill(pid, sig_alarm) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_child) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_cont) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_hangup) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_pipe) == -1) { perror("kill"); return 0; }
-  if (kill(pid, sig_term) == -1) { perror("kill"); return 0; }
+  test_assert(kill(pid, sig_alarm) != -1);
+  test_assert(kill(pid, sig_child) != -1);
+  test_assert(kill(pid, sig_cont) != -1);
+  test_assert(kill(pid, sig_hangup) != -1);
+  test_assert(kill(pid, sig_pipe) != -1);
+  test_assert(kill(pid, sig_term) != -1);
 
-  if (sig_alarm_num != 1) { printf("fail: %s == %d\n", "sig_alarm", sig_alarm_num); return 0; }
-  if (sig_child_num != 1) { printf("fail: %s == %d\n", "sig_child", sig_child_num); return 0; }
-  if (sig_cont_num != 1) { printf("fail: %s == %d\n", "sig_cont", sig_cont_num); return 0; }
-  if (sig_hangup_num != 1) { printf("fail: %s == %d\n", "sig_hangup", sig_hangup_num); return 0; }
-  if (sig_pipe_num != 1) { printf("fail: %s == %d\n", "sig_pipe", sig_pipe_num); return 0; }
-  if (sig_term_num != 1) { printf("fail: %s == %d\n", "sig_term", sig_term_num); return 0; }
+  test_assert(sig_alarm_num == 1);
+  test_assert(sig_child_num == 1);
+  test_assert(sig_cont_num == 1);
+  test_assert(sig_hangup_num == 1);
+  test_assert(sig_pipe_num == 1);
+  test_assert(sig_term_num == 1);
 
   /* XXX: how to check sig_pause? */
-
   return 1;
 }
 
 int main(void)
 {
-  if (!test1()) return 1;
+  test1();
 
   return 0;
 }

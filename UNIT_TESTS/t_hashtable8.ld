@@ -5,3 +5,4 @@ t_hashtable_c.o
 ../bin.a
 ../str.a
 ../alloc.a
+t_assert.o

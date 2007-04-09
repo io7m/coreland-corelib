@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../get_opt.h"
+#include "t_assert.h"
 
 /* needs error condition testing */
 
@@ -35,13 +36,13 @@ int main(void)
       case 'd': flags8_1[3] = 1; break;
       case 'e': flags8_1[4] = 1; break;
       case 'f':
-        if (!optarg) { printf("fail: f: optarg == 0\n"); return 1; }
+        test_assert(optarg != 0);
         flags8_1[5] = 1; break;
       case 'g':
-        if (!optarg) { printf("fail: g: optarg == 0\n"); return 1; }
+        test_assert(optarg != 0);
         flags8_1[6] = 1; break;
       case 'h':
-        if (!optarg) { printf("fail: h: optarg == 0\n"); return 1; }
+        test_assert(optarg != 0);
         flags8_1[7] = 1; break;
       default:
         printf("fail: ended up in switch default statement!\n");
@@ -49,14 +50,13 @@ int main(void)
         break; 
     }
 
-  if (!flags8_1[0]) { printf("fail: flags[%u] not set\n", 0); return 1; }
-  if (!flags8_1[1]) { printf("fail: flags[%u] not set\n", 1); return 1; }
-  if (!flags8_1[2]) { printf("fail: flags[%u] not set\n", 2); return 1; }
-  if (!flags8_1[3]) { printf("fail: flags[%u] not set\n", 3); return 1; }
-  if (!flags8_1[4]) { printf("fail: flags[%u] not set\n", 4); return 1; }
-  if (!flags8_1[5]) { printf("fail: flags[%u] not set\n", 5); return 1; }
-  if (!flags8_1[6]) { printf("fail: flags[%u] not set\n", 6); return 1; }
-  if (!flags8_1[7]) { printf("fail: flags[%u] not set\n", 7); return 1; }
-
+  test_assert(flags8_1[0] != 0);
+  test_assert(flags8_1[1] != 0);
+  test_assert(flags8_1[2] != 0);
+  test_assert(flags8_1[3] != 0);
+  test_assert(flags8_1[4] != 0);
+  test_assert(flags8_1[5] != 0);
+  test_assert(flags8_1[6] != 0);
+  test_assert(flags8_1[7] != 0);
   return 0;
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "../fmt.h"
 #include "../str.h"
+#include "t_assert.h"
 
 static char buf[32];
 static const char *exp = "100 multiplied by 256 is 25600.";
@@ -18,11 +19,6 @@ int main(void)
   str += fmt_str(str, ".");
   *str = 0;
  
-  if (!str_same(buf, exp)) {
-    printf("fail: 1 buf == %s\n", buf);
-    return 1;
-  }
-
-  printf("%s\n", buf);
+  test_assert(str_same(buf, exp));
   return 0;
 }

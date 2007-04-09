@@ -5,3 +5,4 @@ t_sgetline.o
 ../error.a
 ../bin.a
 ../str.a
+t_assert.o

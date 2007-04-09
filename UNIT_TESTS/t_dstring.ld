@@ -3,3 +3,4 @@ t_dstring.o
 ../alloc.a
 ../bin.a
 ../str.a
+t_assert.o

@@ -3,3 +3,4 @@ t_env.o
 ../alloc.a
 ../str.a
 ../bin.a
+t_assert.o

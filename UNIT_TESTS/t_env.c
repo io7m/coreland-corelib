@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "../env.h"
 #include "../str.h"
+#include "t_assert.h"
 
 void env_dump()
 {
@@ -27,29 +28,13 @@ int test_basic()
   const char *s;
 
   for (ind = 0; ind < sizeof(exp_tab) / sizeof(struct exp); ++ind) {
-    if (!env_put(exp_tab[ind].exp_key, exp_tab[ind].exp_val)) {
-      perror("env_put"); return 0;
-    }
-    if (!env_get(exp_tab[ind].exp_key, &s)) {
-      printf("fail: env_get returned 0\n");
-      return 0;
-    }
-    if (!str_same(s, exp_tab[ind].exp_val)) {
-      printf("fail: env_get expected %s got %s\n", exp_tab[ind].exp_val, s);
-      return 0;
-    }
+    test_assert(env_put(exp_tab[ind].exp_key, exp_tab[ind].exp_val));
+    test_assert(env_get(exp_tab[ind].exp_key, &s));
+    test_assert(str_same(s, exp_tab[ind].exp_val));
   }
-  if (!env_unset(exp_tab[0].exp_key)) {
-    printf("fail: env_unset no such key\n");
-    return 0;
-  }
-  if (env_get(exp_tab[0].exp_key, &s)) {
-    printf("fail: env_get returned 1 for nonexistant key\n");
-    return 0;
-  }
-  if (!env_put(exp_tab[0].exp_key, exp_tab[0].exp_val)) {
-    perror("env_put"); return 0;
-  }
+  test_assert(env_unset(exp_tab[0].exp_key));
+  test_assert(!env_get(exp_tab[0].exp_key, &s));
+  test_assert(env_put(exp_tab[0].exp_key, exp_tab[0].exp_val));
   return 1;
 }
 int test_hammer()
@@ -59,12 +44,9 @@ int test_hammer()
   unsigned int ind;
   
   for (ind = 0; ind < 1024U; ++ind) {
-    if (snprintf(cnum, 32, "%x", ind) == -1) { perror("snprintf"); return 0; }
-    if (!env_put(cnum, cnum)) { perror("env_put"); return 0; } 
-    if (!env_get(cnum, &ptr)) {
-      printf("fail: could not retrieve variable %s\n", cnum);
-      return 0;
-    }
+    test_assert(snprintf(cnum, 32, "%x", ind) != -1);
+    test_assert(env_put(cnum, cnum));
+    test_assert(env_get(cnum, &ptr));
   }
   return 1;
 }
@@ -83,17 +65,12 @@ unsigned int check()
 
 int main(void)
 {
-  unsigned int len;
-
   env_clear();
 
-  if (!test_basic()) return 1;
-  len = check();
-  if (len != 1) { printf("fail: check 1 == %u\n", len); return 1; }
+  test_basic();
+  test_assert(check() == 1);
 
-  if (!test_hammer()) return 1;
-  len = check();
-  if (len != 1025U) { printf("fail: check 2 == %u\n", len); return 1; }
-
+  test_hammer();
+  test_assert(check() == 1025U);
   return 0;
 }

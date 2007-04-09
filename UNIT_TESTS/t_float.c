@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include "../float32.h"
 #include "../float64.h"
-
-/* the printf statements in this file are questionable due to
-   floating point number size silliness. the test should still
-   work but the diagnostics on failure may be wrong */
+#include "t_assert.h"
 
 int main(void)
 {
@@ -16,28 +13,22 @@ int main(void)
   f32 = 12.567f;
   float32_packl(c32, f32);
   float32_unpackl(c32, &f32);
-  if (f32 != 12.567f) {
-    printf("fail: float32_unpackl: f32 == %f\n", f32); return 1;
-  }
+  test_assert(f32 == 12.567f);
+
   f32 = 16.123f;
   float32_packb(c32, f32);
   float32_unpackb(c32, &f32);
-  if (f32 != 16.123f) {
-    printf("fail: float32_unpackl: f32 == %f\n", f32); return 1;
-  }
+  test_assert(f32 == 16.123f);
 
   f64 = 12.567f;
   float64_packl(c64, f64);
   float64_unpackl(c64, &f64);
-  if (f64 != 12.567f) {
-    printf("fail: float64_unpackl: f64 == %f\n", f64); return 1;
-  }
+  test_assert(f64 == 12.567f);
+
   f64 = 16.123f;
   float64_packb(c64, f64);
   float64_unpackb(c64, &f64);
-  if (f64 != 16.123f) {
-    printf("fail: float64_unpackl: f64 == %f\n", f64); return 1;
-  }
+  test_assert(f64 == 16.123f);
 
   return 0;
 }
