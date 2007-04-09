@@ -10,12 +10,13 @@ struct data {
   unsigned int *z;
 };
 
-void datafree(void *vp)
+int datafree(void *vp, unsigned long vlen, void *udata)
 {
   struct data *dp = (struct data *) vp;
   dealloc(dp->x);
   dealloc(dp->y);
   dealloc(dp->z);
+  return 1;
 }
 
 int main(void)
@@ -46,6 +47,6 @@ int main(void)
     }
   }
 
-  ht_free_ext(&ht, datafree);
+  ht_free_ext(&ht, datafree, 0);
   return 0;
 }

@@ -2,8 +2,8 @@
 #include "bin.h"
 #include "chashtable.h"
 
-int cht_addb(struct hashtable *ch, const void *key, unsigned long klen,
-                                   const void *dat, unsigned long dlen)
+int cht_addb(struct chashtable *ch, const void *key, unsigned long klen,
+                                    const void *dat, unsigned long dlen)
 {
   unsigned long ind;
   unsigned long hash;

@@ -6,7 +6,6 @@ int cht_getb(const struct chashtable *ch, const void *key, unsigned long klen,
 {
   unsigned long hash;
   unsigned long ind;
-  unsigned long len;
   struct cht_node *node;
 
   hash = cht_hash1(key, klen);

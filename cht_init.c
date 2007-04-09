@@ -11,7 +11,7 @@ int cht_init(struct chashtable *ch)
   t2 = alloc_zero(2 * sizeof(struct cht_node));
   if (!t2) goto FAIL;
 
-  ch->mask = 0x1;
+  ch->mask = 1;
   ch->table1 = t1;
   ch->table2 = t2;
   return 1;

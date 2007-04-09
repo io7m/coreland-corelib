@@ -502,12 +502,12 @@ get_opt.o:\
 	cc-compile get_opt.c buffer.h get_opt.h 
 	./cc-compile get_opt.c
 hashtable.a:\
-	cc-slib hashtable.sld ht_init.o ht_hash.o ht_free.o ht_addb.o \
-	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
-	ht_replaceb.o ht_replaces.o ht_bytes.o 
-	./cc-slib hashtable ht_init.o ht_hash.o ht_free.o ht_addb.o \
-	ht_adds.o ht_deleteb.o ht_deletes.o ht_getb.o ht_gets.o \
-	ht_replaceb.o ht_replaces.o ht_bytes.o 
+	cc-slib hashtable.sld ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o \
+	ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o \
+	ht_hash.o ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o 
+	./cc-slib hashtable ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o \
+	ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o \
+	ht_hash.o ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o 
 ht_addb.o:\
 	cc-compile ht_addb.c alloc.h bin.h error.h hashtable.h 
 	./cc-compile ht_addb.c
@@ -517,6 +517,12 @@ ht_adds.o:\
 ht_bytes.o:\
 	cc-compile ht_bytes.c hashtable.h 
 	./cc-compile ht_bytes.c
+ht_checkb.o:\
+	cc-compile ht_checkb.c hashtable.h 
+	./cc-compile ht_checkb.c
+ht_checks.o:\
+	cc-compile ht_checks.c hashtable.h str.h 
+	./cc-compile ht_checks.c
 ht_deleteb.o:\
 	cc-compile ht_deleteb.c alloc.h bin.h hashtable.h 
 	./cc-compile ht_deleteb.c
@@ -538,6 +544,9 @@ ht_hash.o:\
 ht_init.o:\
 	cc-compile ht_init.c bin.h hashtable.h 
 	./cc-compile ht_init.c
+ht_iter.o:\
+	cc-compile ht_iter.c hashtable.h 
+	./cc-compile ht_iter.c
 ht_replaceb.o:\
 	cc-compile ht_replaceb.c alloc.h bin.h hashtable.h 
 	./cc-compile ht_replaceb.c
@@ -1111,43 +1120,44 @@ clean: sysdeps_clean tests_clean
 	rm -f fmt_uinto.o fmt_uintx.o fmt_ullong.o fmt_ullongo.o \
 	fmt_ullongx.o fmt_ulong.o fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o \
 	fmt_ushort.o fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o get_opt.a \
-	get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_deleteb.o \
-	ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o \
-	ht_replaceb.o ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o \
-	iarray_chop.o iarray_copy.o iarray_free.o iarray_index.o \
-	iarray_init.o iarray_insert.o iarray_node.o iarray_remove.o \
-	iarray_size.o iarray_sort.o iarray_trunc.o iarray_zero.o inst-check \
-	inst-check.o inst-copy inst-copy.o inst-dir inst-dir.o inst-link \
-	inst-link.o install_core.o install_error.o installer installer.o \
-	instchk instchk.o insthier.o int16.a int16_pack.o int16_unpack.o \
-	int32.a int32_pack.o int32_unpack.o 
-	rm -f int64.a int64_pack.o int64_unpack.o mk-ctxt mk-ctxt.o \
-	nonblock.a nonblock.o open.a open_append.o open_creat.o open_excl.o \
-	open_ro.o open_rw.o open_trunc.o open_wo.o sarray.a sarray_bytes.o \
-	sarray_cat.o sarray_chop.o sarray_data.o sarray_index.o \
-	sarray_init.o sarray_size.o sarray_trunc.o scan.a scan_charset.o \
-	scan_double.o scan_f32.o scan_f64.o scan_float.o scan_fspec.a \
-	scan_ncharset.o scan_newline.o scan_space.o scan_spec.a scan_u32.o \
-	scan_u32o.o scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o \
-	scan_uchar.o scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o \
-	scan_uintb.o scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
+	get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o \
+	ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o \
+	ht_hash.o ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o iarray.a \
+	iarray_bytes.o iarray_cat.o iarray_chop.o iarray_copy.o \
+	iarray_free.o iarray_index.o iarray_init.o iarray_insert.o \
+	iarray_node.o iarray_remove.o iarray_size.o iarray_sort.o \
+	iarray_trunc.o iarray_zero.o inst-check inst-check.o inst-copy \
+	inst-copy.o inst-dir inst-dir.o inst-link inst-link.o install_core.o \
+	install_error.o installer installer.o instchk instchk.o insthier.o \
+	int16.a int16_pack.o int16_unpack.o 
+	rm -f int32.a int32_pack.o int32_unpack.o int64.a int64_pack.o \
+	int64_unpack.o mk-ctxt mk-ctxt.o nonblock.a nonblock.o open.a \
+	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
+	open_trunc.o open_wo.o sarray.a sarray_bytes.o sarray_cat.o \
+	sarray_chop.o sarray_data.o sarray_index.o sarray_init.o \
+	sarray_size.o sarray_trunc.o scan.a scan_charset.o scan_double.o \
+	scan_f32.o scan_f64.o scan_float.o scan_fspec.a scan_ncharset.o \
+	scan_newline.o scan_space.o scan_spec.a scan_u32.o scan_u32o.o \
+	scan_u32x.o scan_u64.o scan_u64o.o scan_u64x.o scan_uchar.o \
+	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
+	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
 	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
 	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushortb.o \
-	scan_ushorto.o scan_ushortx.o sgetline.a sgetline.o sgetline_chop.o 
-	rm -f sgetline_get.o sig.a sig.o sig_block.o sig_catch.o \
-	sig_pause.o squeue.a squeue_bytes.o squeue_data.o squeue_deq.o \
-	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o sstack.a \
-	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
-	sstack_pop.o sstack_push.o sstack_size.o sstring.a sstring_0.o \
-	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
-	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
-	stalloc.a stalloc.o str.a str_char.o str_chr.o str_ci_diff.o \
-	str_ci_ndiff.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
-	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
-	syserr.a syserr_die.o syserr_init.o uint.a uint16.a uint16_pack.o \
-	uint16_unpack.o uint32.a uint32_pack.o uint32_unpack.o uint64.a \
-	uint64_pack.o uint64_unpack.o uint_pack.o uint_unpack.o 
-	rm -f 
+	scan_ushorto.o scan_ushortx.o 
+	rm -f sgetline.a sgetline.o sgetline_chop.o sgetline_get.o sig.a \
+	sig.o sig_block.o sig_catch.o sig_pause.o squeue.a squeue_bytes.o \
+	squeue_data.o squeue_deq.o squeue_enq.o squeue_init.o squeue_peek.o \
+	squeue_size.o sstack.a sstack_bytes.o sstack_data.o sstack_init.o \
+	sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o sstring.a \
+	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
+	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
+	sstring_init.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
+	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
+	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
+	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
+	uint.a uint16.a uint16_pack.o uint16_unpack.o uint32.a uint32_pack.o \
+	uint32_unpack.o uint64.a uint64_pack.o 
+	rm -f uint64_unpack.o uint_pack.o uint_unpack.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller

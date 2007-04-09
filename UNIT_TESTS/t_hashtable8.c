@@ -19,9 +19,10 @@ unsigned long count()
   return max;
 }
 
-void X(void *x)
+int X(void *x, unsigned long xlen, void *udata)
 {
   printf("info: X called\n");
+  return 1;
 }
 
 int main(void)
@@ -50,7 +51,7 @@ int main(void)
     return 1;
   }
 
-  ht_clear_ext(&ht, X);
+  ht_clear_ext(&ht, X, 0);
 
   al2 = count();
   if (al1 != al2) {

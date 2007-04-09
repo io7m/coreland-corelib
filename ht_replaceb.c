@@ -2,8 +2,9 @@
 #include "bin.h"
 #include "hashtable.h"
 
-int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
-                                     const void *x, unsigned long dlen)
+int ht_replaceb_ext(struct hashtable *h, const void *k, unsigned long klen,
+                                         const void *x, unsigned long dlen,
+                                         ht_callback *callback, void *udat)
 {
   struct ht_table_head *th;
   struct ht_table_node *np;
@@ -29,6 +30,7 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
       else
         len = np->keylen;
       if (bin_same(np->key, key, klen)) {
+        if (callback) callback(np->data, np->datalen, udat);
         if (klen > np->keylen) {
           tmpkey = alloc(klen);
           if (!tmpkey) return -1;
@@ -53,4 +55,10 @@ int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
     else
       return 0;
   }
+}
+
+int ht_replaceb(struct hashtable *h, const void *k, unsigned long klen,
+                                     const void *x, unsigned long dlen)
+{
+  return ht_replaceb_ext(h, k, klen, x, dlen, 0, 0);
 }

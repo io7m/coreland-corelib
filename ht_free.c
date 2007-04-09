@@ -1,8 +1,8 @@
 #include "alloc.h"
 #include "hashtable.h"
 
-static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
-                         unsigned int node_free)
+static void ht_free_core(struct hashtable *h, ht_callback *cleanup,
+                         void *udat, unsigned int node_free)
 {
   unsigned long ind;
   struct ht_table_head *th;
@@ -18,7 +18,7 @@ static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
         tn_next = tn->next;
         if (tn->key) {
           if (cleanup)
-            cleanup(tn->data);
+            cleanup(tn->data, tn->datalen, udat);
           dealloc(tn->key);
           dealloc(tn->data);
           tn->key = 0;
@@ -38,17 +38,17 @@ static void ht_free_core(struct hashtable *h, void (*cleanup)(void *),
 
 void ht_free(struct hashtable *h)
 {
-  ht_free_core(h, 0, 1);
+  ht_free_core(h, 0, 0, 1);
 }
-void ht_free_ext(struct hashtable *h, void (*cb)(void *))
+void ht_free_ext(struct hashtable *h, ht_callback *cb, void *udat)
 {
-  ht_free_core(h, cb, 1);
+  ht_free_core(h, cb, udat, 1);
 }
 void ht_clear(struct hashtable *h)
 {
-  ht_free_core(h, 0, 0);
+  ht_free_core(h, 0, 0, 0);
 }
-void ht_clear_ext(struct hashtable *h, void (*cb)(void *))
+void ht_clear_ext(struct hashtable *h, ht_callback *cb, void *udat)
 {
-  ht_free_core(h, cb, 0);
+  ht_free_core(h, cb, udat, 0);
 }

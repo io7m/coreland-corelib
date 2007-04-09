@@ -2,7 +2,7 @@
 #include "hashtable.h"
 
 int ht_getb(const struct hashtable *h, const void *k, unsigned long klen,
-            void **dat, unsigned long *dlen)
+                                         void **data, unsigned long *dlen)
 {
   struct ht_table_head *th;
   struct ht_table_node *np;
@@ -23,8 +23,8 @@ int ht_getb(const struct hashtable *h, const void *k, unsigned long klen,
       else
         len = np->keylen;
       if (bin_same(np->key, key, len)) {
-        *dat = np->data;
-        *dlen = np->datalen;
+        if (data) *data = np->data;
+        if (dlen) *dlen = np->datalen;
         return 1;
       }
     }
