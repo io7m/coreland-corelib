@@ -1,12 +1,15 @@
 #ifndef CHASHTABLE_H
 #define CHASHTABLE_H
 
+#define CHT_TRIES_MULT 8
+
 typedef int (cht_callback)(void *, unsigned long, void *);
 
 struct cht_node {
-  unsigned long hash;
-  unsigned long dlen;
+  void *key;
   void *data;
+  unsigned long klen;
+  unsigned long dlen;
 };
 
 struct chashtable {
