@@ -59,27 +59,13 @@ int cht_addb(struct chashtable *ch, const void *key, unsigned long klen,
   t1.klen = klen;
   t1.dlen = dlen;
 
-  for (;;) {
-    mask = ch->mask;
-    tries = CHT_TRIES(mask);
-    while (tries--) {
-       ind = cht_hash1(key, klen) & ch->mask;
-      node = &ch->table1[ind];
-      if (node->key) {
+  /* XXX: this operation needs to be atomic. memory has been allocated
+          above and the table must not be left in an inconsistent state
+          if cht_grow() fails when a key + data pair has been inserted.
+          ideally, the table needs to be grown ahead of time and then
+          the keys inserted when available space is guaranteed. */
 
-      } else {
-
-      }
-       ind = cht_hash2(key, klen) & ch->mask;
-      node = &ch->table2[ind];
-      if (node->key) {
-
-      } else {
-
-      }
-    }
-    if (!cht_grow(ch)) goto FAIL;
-  }
+  /* add key atomically */
 
   return 1;
 
