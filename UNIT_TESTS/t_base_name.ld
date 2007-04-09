@@ -1,7 +1,5 @@
 t_base_name.o
+t_assert.o
 ../base_name.a
-../syserr.a
-../buffer.a
-../error.a
 ../bin.a
 ../str.a

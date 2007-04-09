@@ -15,64 +15,72 @@ all: local t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 \
 	t_scan_uso t_scan_usx t_scanstr t_sgetline t_sig t_squeue1 t_sstack1 \
 	t_sstring t_stalloc t_str t_uint1 t_uint2 
 
+bin.o:\
+	cc-compile bin.c 
+	./cc-compile bin.c
 t_alloc:\
-	cc-link t_alloc.ld t_alloc.o ../alloc.a 
-	./cc-link t_alloc t_alloc.o ../alloc.a 
+	cc-link t_alloc.ld t_alloc.o t_assert.o ../alloc.a 
+	./cc-link t_alloc t_alloc.o t_assert.o ../alloc.a 
 t_alloc.o:\
-	cc-compile t_alloc.c ../alloc.h 
+	cc-compile t_alloc.c ../alloc.h t_assert.h 
 	./cc-compile t_alloc.c
 t_array:\
-	cc-link t_array.ld t_array.o ../array.a ../bin.a ../alloc.a 
-	./cc-link t_array t_array.o ../array.a ../bin.a ../alloc.a 
+	cc-link t_array.ld t_array.o t_assert.o ../array.a ../bin.a \
+	../alloc.a 
+	./cc-link t_array t_array.o t_assert.o ../array.a ../bin.a \
+	../alloc.a 
 t_array.o:\
-	cc-compile t_array.c ../array.h 
+	cc-compile t_array.c ../array.h t_assert.h 
 	./cc-compile t_array.c
+t_assert.o:\
+	cc-compile t_assert.c t_assert.h 
+	./cc-compile t_assert.c
 t_base_name:\
-	cc-link t_base_name.ld t_base_name.o ../base_name.a ../syserr.a \
-	../buffer.a ../error.a ../bin.a ../str.a 
-	./cc-link t_base_name t_base_name.o ../base_name.a ../syserr.a \
-	../buffer.a ../error.a ../bin.a ../str.a 
+	cc-link t_base_name.ld t_base_name.o t_assert.o ../base_name.a \
+	../bin.a ../str.a 
+	./cc-link t_base_name t_base_name.o t_assert.o ../base_name.a \
+	../bin.a ../str.a 
 t_base_name.o:\
 	cc-compile t_base_name.c ../buffer.h ../base_name.h ../str.h \
-	../syserr.h 
+	t_assert.h 
 	./cc-compile t_base_name.c
 t_bin:\
-	cc-link t_bin.ld t_bin.o ../bin.a 
-	./cc-link t_bin t_bin.o ../bin.a 
+	cc-link t_bin.ld t_bin.o t_assert.o ../bin.a 
+	./cc-link t_bin t_bin.o t_assert.o ../bin.a 
 t_bin.o:\
-	cc-compile t_bin.c ../bin.h 
+	cc-compile t_bin.c ../bin.h t_assert.h 
 	./cc-compile t_bin.c
 t_buffer1:\
-	cc-link t_buffer1.ld t_buffer1.o ../buffer.a ../error.a ../bin.a \
-	../str.a 
-	./cc-link t_buffer1 t_buffer1.o ../buffer.a ../error.a ../bin.a \
-	../str.a 
+	cc-link t_buffer1.ld t_buffer1.o t_assert.o ../buffer.a ../error.a \
+	../bin.a ../str.a 
+	./cc-link t_buffer1 t_buffer1.o t_assert.o ../buffer.a ../error.a \
+	../bin.a ../str.a 
 t_buffer1.o:\
-	cc-compile t_buffer1.c ../buffer.h 
+	cc-compile t_buffer1.c ../buffer.h t_assert.h 
 	./cc-compile t_buffer1.c
 t_buffer2:\
-	cc-link t_buffer2.ld t_buffer2.o ../buffer.a ../error.a ../bin.a \
-	../str.a 
-	./cc-link t_buffer2 t_buffer2.o ../buffer.a ../error.a ../bin.a \
-	../str.a 
+	cc-link t_buffer2.ld t_buffer2.o t_assert.o ../buffer.a ../error.a \
+	../bin.a ../str.a 
+	./cc-link t_buffer2 t_buffer2.o t_assert.o ../buffer.a ../error.a \
+	../bin.a ../str.a 
 t_buffer2.o:\
-	cc-compile t_buffer2.c ../buffer.h 
+	cc-compile t_buffer2.c ../buffer.h t_assert.h 
 	./cc-compile t_buffer2.c
 t_dir_array:\
-	cc-link t_dir_array.ld t_dir_array.o ../dir_array.a ../alloc.a \
-	../bin.a ../str.a 
-	./cc-link t_dir_array t_dir_array.o ../dir_array.a ../alloc.a \
-	../bin.a ../str.a 
+	cc-link t_dir_array.ld t_dir_array.o t_assert.o ../dir_array.a \
+	../alloc.a ../bin.a ../str.a 
+	./cc-link t_dir_array t_dir_array.o t_assert.o ../dir_array.a \
+	../alloc.a ../bin.a ../str.a 
 t_dir_array.o:\
-	cc-compile t_dir_array.c ../dir_array.h ../str.h 
+	cc-compile t_dir_array.c ../dir_array.h ../str.h t_assert.h 
 	./cc-compile t_dir_array.c
 t_dir_hash:\
-	cc-link t_dir_hash.ld t_dir_hash.o ../dir_hash.a ../dir_array.a \
-	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
-	./cc-link t_dir_hash t_dir_hash.o ../dir_hash.a ../dir_array.a \
-	../alloc.a ../syserr.a ../buffer.a ../error.a ../bin.a ../str.a 
+	cc-link t_dir_hash.ld t_dir_hash.o t_assert.o ../dir_hash.a \
+	../dir_array.a ../alloc.a ../buffer.a ../error.a ../bin.a ../str.a 
+	./cc-link t_dir_hash t_dir_hash.o t_assert.o ../dir_hash.a \
+	../dir_array.a ../alloc.a ../buffer.a ../error.a ../bin.a ../str.a 
 t_dir_hash.o:\
-	cc-compile t_dir_hash.c ../dir_hash.h ../syserr.h 
+	cc-compile t_dir_hash.c ../dir_hash.h t_assert.h 
 	./cc-compile t_dir_hash.c
 t_dir_name:\
 	cc-link t_dir_name.ld t_dir_name.o ../dir_name.a ../dir_array.a \
@@ -536,35 +544,36 @@ t_uint2.o:\
 	cc-compile t_uint2.c ../uint.h 
 	./cc-compile t_uint2.c
 clean: tests_clean local_clean 
-	rm -f t_alloc t_alloc.o t_array t_array.o t_base_name t_base_name.o \
-	t_bin t_bin.o t_buffer1 t_buffer1.o t_buffer2 t_buffer2.o \
-	t_dir_array t_dir_array.o t_dir_hash t_dir_hash.o t_dir_name \
-	t_dir_name.o t_dstring t_dstring.o t_env t_env.o t_fd t_fd.o \
-	t_fd_seek t_fd_seek.o t_float t_float.o t_fmt t_fmt.o t_fmt2 \
-	t_fmt2.o t_fmt3 t_fmt3.o t_fmt4 t_fmt4.o t_fmt5 t_fmt5.o t_fmt_spec \
-	t_fmt_spec.o t_get_opt t_get_opt.o t_hashtable1 t_hashtable1.o \
-	t_hashtable2 t_hashtable2.o t_hashtable3 t_hashtable3.o t_hashtable4 \
-	t_hashtable4.o t_hashtable5 t_hashtable5.o t_hashtable6 \
-	t_hashtable6.o t_hashtable7 t_hashtable7.o t_hashtable8 \
-	t_hashtable8.o t_hashtable_c.o t_hashtable_d.o t_iarray.o t_iarray1 \
-	t_iarray1.o t_iarray2 
-	rm -f t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o \
-	t_iarray5 t_iarray5.o t_iarray6 t_iarray6.o t_iarray7 t_iarray7.o \
-	t_iarray_util.o t_int t_int.o t_open t_open.o t_sarray1 t_sarray1.o \
-	t_scan_doub t_scan_doub.o t_scan_float t_scan_float.o t_scan_fspe1 \
-	t_scan_fspe1.o t_scan_fspe2 t_scan_fspe2.o t_scan_spec t_scan_spec.o \
-	t_scan_uc t_scan_uc.o t_scan_ucb t_scan_ucb.o t_scan_uco \
-	t_scan_uco.o t_scan_ucx t_scan_ucx.o t_scan_ui t_scan_ui.o \
-	t_scan_uib t_scan_uib.o t_scan_uio t_scan_uio.o t_scan_uix \
-	t_scan_uix.o t_scan_ul t_scan_ul.o t_scan_ulb t_scan_ulb.o \
-	t_scan_ull t_scan_ull.o t_scan_ullb t_scan_ullb.o t_scan_ullo \
-	t_scan_ullo.o t_scan_ullx t_scan_ullx.o t_scan_ulo t_scan_ulo.o \
-	t_scan_ulx t_scan_ulx.o t_scan_us t_scan_us.o t_scan_usb \
-	t_scan_usb.o 
-	rm -f t_scan_uso t_scan_uso.o t_scan_usx t_scan_usx.o t_scanstr \
-	t_scanstr.o t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 \
-	t_squeue1.o t_sstack1 t_sstack1.o t_sstring t_sstring.o t_stalloc \
-	t_stalloc.o t_str t_str.o t_uint1 t_uint1.o t_uint2 t_uint2.o 
+	rm -f bin.o t_alloc t_alloc.o t_array t_array.o t_assert.o \
+	t_base_name t_base_name.o t_bin t_bin.o t_buffer1 t_buffer1.o \
+	t_buffer2 t_buffer2.o t_dir_array t_dir_array.o t_dir_hash \
+	t_dir_hash.o t_dir_name t_dir_name.o t_dstring t_dstring.o t_env \
+	t_env.o t_fd t_fd.o t_fd_seek t_fd_seek.o t_float t_float.o t_fmt \
+	t_fmt.o t_fmt2 t_fmt2.o t_fmt3 t_fmt3.o t_fmt4 t_fmt4.o t_fmt5 \
+	t_fmt5.o t_fmt_spec t_fmt_spec.o t_get_opt t_get_opt.o t_hashtable1 \
+	t_hashtable1.o t_hashtable2 t_hashtable2.o t_hashtable3 \
+	t_hashtable3.o t_hashtable4 t_hashtable4.o t_hashtable5 \
+	t_hashtable5.o t_hashtable6 t_hashtable6.o t_hashtable7 \
+	t_hashtable7.o t_hashtable8 t_hashtable8.o t_hashtable_c.o \
+	t_hashtable_d.o t_iarray.o t_iarray1 
+	rm -f t_iarray1.o t_iarray2 t_iarray2.o t_iarray3 t_iarray3.o \
+	t_iarray4 t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 t_iarray6.o \
+	t_iarray7 t_iarray7.o t_iarray_util.o t_int t_int.o t_open t_open.o \
+	t_sarray1 t_sarray1.o t_scan_doub t_scan_doub.o t_scan_float \
+	t_scan_float.o t_scan_fspe1 t_scan_fspe1.o t_scan_fspe2 \
+	t_scan_fspe2.o t_scan_spec t_scan_spec.o t_scan_uc t_scan_uc.o \
+	t_scan_ucb t_scan_ucb.o t_scan_uco t_scan_uco.o t_scan_ucx \
+	t_scan_ucx.o t_scan_ui t_scan_ui.o t_scan_uib t_scan_uib.o \
+	t_scan_uio t_scan_uio.o t_scan_uix t_scan_uix.o t_scan_ul \
+	t_scan_ul.o t_scan_ulb t_scan_ulb.o t_scan_ull t_scan_ull.o \
+	t_scan_ullb t_scan_ullb.o t_scan_ullo t_scan_ullo.o t_scan_ullx \
+	t_scan_ullx.o t_scan_ulo t_scan_ulo.o t_scan_ulx t_scan_ulx.o \
+	t_scan_us t_scan_us.o 
+	rm -f t_scan_usb t_scan_usb.o t_scan_uso t_scan_uso.o t_scan_usx \
+	t_scan_usx.o t_scanstr t_scanstr.o t_sgetline t_sgetline.o t_sig \
+	t_sig.o t_squeue1 t_squeue1.o t_sstack1 t_sstack1.o t_sstring \
+	t_sstring.o t_stalloc t_stalloc.o t_str t_str.o t_uint1 t_uint1.o \
+	t_uint2 t_uint2.o 
 
 tests: list_tests run_tests
 tests_clean:

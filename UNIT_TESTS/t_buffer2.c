@@ -1,6 +1,7 @@
-#include "../buffer.h"
 #include <stdio.h>
 #include <unistd.h>
+#include "../buffer.h"
+#include "t_assert.h"
 
 static char pwbuf[256];
 static char prbuf[256];
@@ -12,28 +13,21 @@ int main(void)
   int pfds1[2];
   long r;
 
-  if (pipe(pfds1) == -1) { perror("pipe"); return 2; }
+  test_assert(pipe(pfds1) != -1);
 
   buffer_init(&buffer_pr, (buffer_op) read, pfds1[0], prbuf, sizeof(prbuf));
   buffer_init(&buffer_pw, (buffer_op) write, pfds1[1], pwbuf, sizeof(pwbuf));
  
-  if (write(pfds1[1], prbuf, 128) == -1) { perror("write"); return 2; }
+  test_assert(write(pfds1[1], prbuf, 128) != -1);
 
   r = buffer_feed(&buffer_pr);
-  if (r == -1) { perror("read"); return 2; }
+  test_assert(r != -1);
  
   buffer_seek(&buffer_pr, r);
-  if (buffer_pr.pos != 0) {
-    printf("fail: unexpected pos value %lu\n", buffer_pr.pos);
-    return 1;
-  }
+  test_assert(buffer_pr.pos == 0);
 
   /* try to seek too much */
   buffer_seek(&buffer_pr, 1);
-  if (buffer_pr.pos != 0) {
-    printf("fail: unexpected pos value %lu\n", buffer_pr.pos);
-    return 1;
-  }
-
+  test_assert(buffer_pr.pos == 0);
   return 0;
 }

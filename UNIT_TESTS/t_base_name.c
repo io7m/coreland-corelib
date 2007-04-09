@@ -1,7 +1,7 @@
 #include "../buffer.h"
 #include "../base_name.h"
 #include "../str.h"
-#include "../syserr.h"
+#include "t_assert.h"
 
 struct exp {
   const char *given;
@@ -28,12 +28,8 @@ int main(void)
   unsigned int ind;
   
   for (ind = 0; ind < sizeof(explist) / sizeof(struct exp); ++ind) {
-    if (!base_name(explist[ind].given, &newname))
-      syserr_die2x(1, "fail: base_name returned 0 for ", explist[ind].given);
-    if (!str_same(explist[ind].expected, newname))
-      syserr_die6x(1, "fail: base_name returned ", newname, " for ", 
-                   explist[ind].given, " expected ",
-                   explist[ind].expected);
+    test_assert(base_name(explist[ind].given, &newname));
+    test_assert(str_same(explist[ind].expected, newname));
   }
 
   return 0;
