@@ -9,7 +9,7 @@ int cht_getb(const struct chashtable *ch, const void *key, unsigned long klen,
   unsigned long len;
   struct cht_node *node;
 
-   ind = cht_hash1(key, klen) & ch->mask;
+   ind = cht_hash1(key, klen) & (ch->len - 1);
   node = &ch->table1[ind];
 
   if (node->key) {
@@ -21,7 +21,7 @@ int cht_getb(const struct chashtable *ch, const void *key, unsigned long klen,
     }
   }
 
-   ind = cht_hash2(key, klen) & ch->mask;
+   ind = cht_hash2(key, klen) & (ch->len - 1);
   node = &ch->table2[ind];
 
   if (node->key) {

@@ -2,5 +2,6 @@
 
 unsigned long cht_bytes(const struct chashtable *ch)
 {
-  return ((ch->mask + 1) * 2 * sizeof(struct cht_node)) + sizeof(*ch); 
+  return (ch->len * 2 * sizeof(struct cht_node)) +
+         (ch->oflow_a * sizeof(struct cht_node)); 
 }

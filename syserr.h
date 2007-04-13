@@ -96,38 +96,38 @@ syserr_die((e),(x1),(x2),0,0,0,0,0,0,(se))
 #define syserr_die1(e,x1,se) \
 syserr_die((e),(x1),0,0,0,0,0,0,0,(se))
 
-#define syserr_die8sys(e,x1,x2,x3,x4,x5,x6,x7,x8,se) \
+#define syserr_die8sys(e,x1,x2,x3,x4,x5,x6,x7,x8) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),(x7),(x8),&syserr_sys)
-#define syserr_die7sys(e,x1,x2,x3,x4,x5,x6,x7,se) \
+#define syserr_die7sys(e,x1,x2,x3,x4,x5,x6,x7) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),(x7),0,&syserr_sys)
-#define syserr_die6sys(e,x1,x2,x3,x4,x5,x6,se) \
+#define syserr_die6sys(e,x1,x2,x3,x4,x5,x6) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),0,0,&syserr_sys)
-#define syserr_die5sys(e,x1,x2,x3,x4,x5,se) \
+#define syserr_die5sys(e,x1,x2,x3,x4,x5) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),0,0,0,&syserr_sys)
-#define syserr_die4sys(e,x1,x2,x3,x4,se) \
+#define syserr_die4sys(e,x1,x2,x3,x4) \
 syserr_die((e),(x1),(x2),(x3),(x4),0,0,0,0,&syserr_sys)
-#define syserr_die3sys(e,x1,x2,x3,se) \
+#define syserr_die3sys(e,x1,x2,x3) \
 syserr_die((e),(x1),(x2),(x3),0,0,0,0,0,&syserr_sys)
-#define syserr_die2sys(e,x1,x2,se) \
+#define syserr_die2sys(e,x1,x2) \
 syserr_die((e),(x1),(x2),0,0,0,0,0,0,&syserr_sys)
-#define syserr_die1sys(e,x1,se) \
+#define syserr_die1sys(e,x1) \
 syserr_die((e),(x1),0,0,0,0,0,0,0,&syserr_sys)
 
-#define syserr_die8x(e,x1,x2,x3,x4,x5,x6,x7,x8,se) \
+#define syserr_die8x(e,x1,x2,x3,x4,x5,x6,x7,x8) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),(x7),(x8),0)
-#define syserr_die7x(e,x1,x2,x3,x4,x5,x6,x7,se) \
+#define syserr_die7x(e,x1,x2,x3,x4,x5,x6,x7) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),(x7),0,0)
-#define syserr_die6x(e,x1,x2,x3,x4,x5,x6,se) \
+#define syserr_die6x(e,x1,x2,x3,x4,x5,x6) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),(x6),0,0,0)
-#define syserr_die5x(e,x1,x2,x3,x4,x5,se) \
+#define syserr_die5x(e,x1,x2,x3,x4,x5) \
 syserr_die((e),(x1),(x2),(x3),(x4),(x5),0,0,0,0)
-#define syserr_die4x(e,x1,x2,x3,x4,se) \
+#define syserr_die4x(e,x1,x2,x3,x4) \
 syserr_die((e),(x1),(x2),(x3),(x4),0,0,0,0,0)
-#define syserr_die3x(e,x1,x2,x3,se) \
+#define syserr_die3x(e,x1,x2,x3) \
 syserr_die((e),(x1),(x2),(x3),0,0,0,0,0,0)
-#define syserr_die2x(e,x1,x2,se) \
+#define syserr_die2x(e,x1,x2) \
 syserr_die((e),(x1),(x2),0,0,0,0,0,0,0)
-#define syserr_die1x(e,x1,se) \
+#define syserr_die1x(e,x1) \
 syserr_die((e),(x1),0,0,0,0,0,0,0,0)
 
 #endif

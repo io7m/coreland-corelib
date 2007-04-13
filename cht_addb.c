@@ -12,12 +12,12 @@ int cht_grow(struct chashtable *ch)
   unsigned long ind;
 
   /* check integer wrap */
-  if ((ch->mask + 1) * 2 <= ch->mask) {
+  if (ch->len * 2 <= ch->len) {
     errno = error_overflow;
     return 0;
   }
 
-  size = (ch->mask + 1) * 2;
+  size = ch->len * 2;
   mask = size - 1;
 
   t1 = alloc_zero(size * sizeof(struct cht_node));
@@ -27,7 +27,7 @@ int cht_grow(struct chashtable *ch)
  
   ch->table1 = t1;
   ch->table2 = t2;
-  ch->mask = mask;
+  ch->len = size;
   return 1;
 
   FAIL:

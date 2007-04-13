@@ -15,7 +15,10 @@ struct cht_node {
 struct chashtable {
   struct cht_node *table1;
   struct cht_node *table2;
-  unsigned long mask;
+  struct cht_node *oflow;
+  unsigned long len;
+  unsigned long oflow_a;
+  unsigned long oflow_len;
 };
 
 int cht_init(struct chashtable *);
