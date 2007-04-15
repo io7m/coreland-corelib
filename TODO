@@ -1,6 +1,16 @@
 scan_u32b();
 scan_u64b();
 
-scan_ulongb() is not 64-bit clean.
+scan_u*b() invokes undefined behaviour when working on sizeof(type) * CHAR_BIT.
+In other words, if sizeof(long) * CHAR_BIT == 64, scan_ulongb() will invoke
+undefined behaviour when processing the last bit.
+
+The current method of using HAVE_LONGLONG in header files is insufficient.
+If the library is compiled with compiler X, which supports long long and
+a user compiles code using compiler Y, which doesn't support long long, against
+the binaries and header files produced with compiler X, the compilation will
+fail.
+
+Header files should only import other public header files, not private ones.
 
 iarray_sort() needs more automated testing.
