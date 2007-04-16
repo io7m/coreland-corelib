@@ -11,7 +11,8 @@ struct data {
   unsigned int *z;
 };
 
-int datafree(void *vp, unsigned long vlen, void *udata)
+int datafree(void *key, unsigned long klen,
+             void *vp, unsigned long dlen, void *udata)
 {
   struct data *dp = (struct data *) vp;
   dealloc(dp->x);

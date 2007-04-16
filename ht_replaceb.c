@@ -30,7 +30,7 @@ int ht_replaceb_ext(struct hashtable *h, const void *k, unsigned long klen,
       else
         len = np->keylen;
       if (bin_same(np->key, key, klen)) {
-        if (callback) callback(np->data, np->datalen, udat);
+        if (callback) callback(np->key, np->keylen, np->data, np->datalen, udat);
         if (klen > np->keylen) {
           tmpkey = alloc(klen);
           if (!tmpkey) return -1;

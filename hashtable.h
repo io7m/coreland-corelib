@@ -3,7 +3,7 @@
 
 #define HT_HASH_BUCKETS 2048UL
 
-typedef int (ht_callback)(void *, unsigned long, void *);
+typedef int (ht_callback)(void *, unsigned long, void *, unsigned long, void *);
 
 struct ht_table_node {
   struct ht_table_node *next;

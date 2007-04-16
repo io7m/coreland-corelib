@@ -18,7 +18,7 @@ static void ht_free_core(struct hashtable *h, ht_callback *cleanup,
         tn_next = tn->next;
         if (tn->key) {
           if (cleanup)
-            cleanup(tn->data, tn->datalen, udat);
+            cleanup(tn->key, tn->keylen, tn->data, tn->datalen, udat);
           dealloc(tn->key);
           dealloc(tn->data);
           tn->key = 0;

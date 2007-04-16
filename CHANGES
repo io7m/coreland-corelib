@@ -246,3 +246,5 @@
 20070408 code: cleaned up alloc.c and added alloc_zero().
 20070409 code: API changes for hashtable. cleanups.
 20070409 code: syserr updated to allow eight string arguments instead of six.
+20070416 code: updated hashtable interface ht_callback to take key and keylen
+               parameters.

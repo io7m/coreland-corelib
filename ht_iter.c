@@ -13,7 +13,7 @@ void ht_iter(struct hashtable *h, ht_callback *cb, void *udat)
       tn = th->head;
       while (tn) {
         if (tn->key) 
-          if (cb(tn->data, tn->datalen, udat) == 0) return;
+          if (cb(tn->key, tn->keylen, tn->data, tn->datalen, udat) == 0) return;
         tn = tn->next;
       }
     }

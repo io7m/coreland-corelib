@@ -20,7 +20,8 @@ unsigned long count()
   return max;
 }
 
-int X(void *xptr, unsigned long xlen, void *udat)
+int X(void *kptr, unsigned long klen,
+      void *xptr, unsigned long xlen, void *udat)
 {
   xptr = 0;
   xlen = 0;
