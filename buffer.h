@@ -1,5 +1,5 @@
-#ifndef BUFFER_H
-#define BUFFER_H
+#ifndef CORELIB_BUFFER_H
+#define CORELIB_BUFFER_H
 
 #define BUFFER_OUTSIZE 8192
 #define BUFFER_INSIZE 8192

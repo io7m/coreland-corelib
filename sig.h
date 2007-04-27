@@ -1,5 +1,5 @@
-#ifndef SIGNAL_H
-#define SIGNAL_H
+#ifndef CORELIB_SIGNAL_H
+#define CORELIB_SIGNAL_H
 
 extern int sig_alarm;
 extern int sig_child;

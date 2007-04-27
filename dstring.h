@@ -1,5 +1,5 @@
-#ifndef DSTRING_H
-#define DSTRING_H
+#ifndef CORELIB_DSTRING_H
+#define CORELIB_DSTRING_H
 
 #define DSTRING_OVERALLOC 32
 #define dstring_INIT {0,0,0}

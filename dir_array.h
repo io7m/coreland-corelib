@@ -1,5 +1,5 @@
-#ifndef DIR_ARRAY_H
-#define DIR_ARRAY_H
+#ifndef CORELIB_DIR_ARRAY_H
+#define CORELIB_DIR_ARRAY_H
 
 struct dir_array {
   char **a;

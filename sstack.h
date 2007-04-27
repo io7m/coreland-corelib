@@ -1,5 +1,5 @@
-#ifndef SSTACK_H
-#define SSTACK_H
+#ifndef CORELIB_SSTACK_H
+#define CORELIB_SSTACK_H
 
 struct sstack {
   void *x;

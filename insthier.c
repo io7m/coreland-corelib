@@ -368,6 +368,8 @@ struct install_item insthier[] = {
   {INST_COPY, "scan_spec.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "sd_fcntl.h", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "sd_fcntl.h", 0, ctxt_incdir, 0, 0, 0644},
+  {INST_COPY, "sd_fd.h", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "sd_fd.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "sd_inline.h", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "sd_inline.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "sd_longlong.h", 0, ctxt_repos, 0, 0, 0644},

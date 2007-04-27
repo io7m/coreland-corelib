@@ -1,10 +1,19 @@
 #include <stdio.h>
+#include "../sd_longlong.h"
+
+#if defined(HAVE_LONGLONG)
+  #define CORELIB_USE_LONGLONG
+#endif
+
 #include "../fmt.h"
 #include "t_assert.h"
 
 char cuc[FMT_ULONG];
 char cui[FMT_ULONG];
-char cull[FMT_ULONGLONG];
+
+#if defined(HAVE_LONGLONG)
+  char cull[FMT_ULONGLONG];
+#endif
 
 int main(void)
 {
@@ -15,7 +24,10 @@ int main(void)
 #endif
 
   printf("FMT_ULONG %u\n", FMT_ULONG);
+
+#if defined(HAVE_LONGLONG)
   printf("FMT_ULONGLONG %u\n", FMT_ULONGLONG);
+#endif
 
   /* uchar */
   uc = 100U;

@@ -1,3 +1,4 @@
+#include "sd_longlong.h"
 #include "scan.h"
 
 #if defined(HAVE_LONGLONG)

@@ -1,3 +1,4 @@
+#include "sd_fcntl.h"
 #include "open.h"
 
 int open_creat(const char *f)

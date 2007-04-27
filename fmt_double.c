@@ -2,7 +2,12 @@
 #include <math.h>
 #include "sd_math.h"
 #include "sd_inline.h"
-#include "fmt.h"
+#include "sd_longlong.h"
+
+#if defined(HAVE_LONGLONG)
+  #define CORELIB_USE_LONGLONG
+  #include "fmt.h"
+#endif
 
 #if defined(HAVE_LONGLONG)
   #if defined(HAVE_MATH_LLRINT)

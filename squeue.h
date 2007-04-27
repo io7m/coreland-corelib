@@ -1,5 +1,5 @@
-#ifndef SQUEUE_H
-#define SQUEUE_H
+#ifndef CORELIB_SQUEUE_H
+#define CORELIB_SQUEUE_H
 
 struct squeue {
   void *x;

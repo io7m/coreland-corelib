@@ -1,5 +1,5 @@
-#ifndef FMT_SPEC_H
-#define FMT_SPEC_H
+#ifndef CORELIB_FMT_SPEC_H
+#define CORELIB_FMT_SPEC_H
 
 #define FMT_UINT32 33
 #define FMT_UINT64 65

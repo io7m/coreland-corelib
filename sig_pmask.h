@@ -1,5 +1,5 @@
-#ifndef SIG_PMASK_H
-#define SIG_PMASK_H
+#ifndef CORELIB_SIG_PMASK_H
+#define CORELIB_SIG_PMASK_H
 
 #include "_sig_pmask.h"
 

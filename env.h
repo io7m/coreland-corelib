@@ -1,5 +1,5 @@
-#ifndef ENV_H
-#define ENV_H
+#ifndef CORELIB_ENV_H
+#define CORELIB_ENV_H
 
 #define ENV_OVERALLOC 32
 

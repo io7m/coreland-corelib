@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include "../sd_longlong.h"
+
+#if defined(HAVE_LONGLONG)
+#define CORELIB_USE_LONGLONG
 #include "../scan.h"
 
 static const struct {
@@ -39,3 +43,11 @@ int main(void)
   }
   return 0;
 }
+#else
+int main(void)
+{
+  return 0;
+}
+#endif
+
+

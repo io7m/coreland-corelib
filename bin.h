@@ -1,5 +1,5 @@
-#ifndef BIN_H
-#define BIN_H
+#ifndef CORELIB_BIN_H
+#define CORELIB_BIN_H
 
 long bin_chr(const void *, unsigned long, int);
 long bin_rchr(const void *, unsigned long, int);

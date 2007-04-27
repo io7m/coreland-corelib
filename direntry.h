@@ -1,5 +1,5 @@
-#ifndef DIRENTRY_H
-#define DIRENTRY_H
+#ifndef CORELIB_DIRENTRY_H
+#define CORELIB_DIRENTRY_H
 
 #include "_direntry.h"
 

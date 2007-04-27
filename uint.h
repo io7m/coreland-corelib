@@ -1,5 +1,5 @@
-#ifndef UINT_H
-#define UINT_H
+#ifndef CORELIB_UINT_H
+#define CORELIB_UINT_H
 
 #define UINT_PACKBUF (sizeof(unsigned long))
 

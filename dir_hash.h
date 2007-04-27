@@ -1,5 +1,5 @@
-#ifndef DIR_HASH_H
-#define DIR_HASH_H
+#ifndef CORELIB_DIR_HASH_H
+#define CORELIB_DIR_HASH_H
 
 #include "dir_array.h"
 

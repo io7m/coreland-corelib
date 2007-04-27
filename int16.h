@@ -1,5 +1,5 @@
-#ifndef INT16_H
-#define INT16_H
+#ifndef CORELIB_INT16_H
+#define CORELIB_INT16_H
 
 #include "_int16.h"
 

@@ -248,3 +248,6 @@
 20070409 code: syserr updated to allow eight string arguments instead of six.
 20070416 code: updated hashtable interface ht_callback to take key and keylen
                parameters.
+20070427 code: library should now no longer leak implementation details,
+               allowing the client code to be compiled with a different
+               compiler than the library was compiled with, reliably.

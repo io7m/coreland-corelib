@@ -1,5 +1,5 @@
-#ifndef DIR_NAME_H
-#define DIR_NAME_H
+#ifndef CORELIB_DIR_NAME_H
+#define CORELIB_DIR_NAME_H
 
 #define DIR_NAME_MAX 1024
 

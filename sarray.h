@@ -1,5 +1,5 @@
-#ifndef SARRAY_H
-#define SARRAY_H
+#ifndef CORELIB_SARRAY_H
+#define CORELIB_SARRAY_H
 
 struct sarray {
   void *x;

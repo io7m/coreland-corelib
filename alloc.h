@@ -1,5 +1,5 @@
-#ifndef ALLOC_H
-#define ALLOC_H
+#ifndef CORELIB_ALLOC_H
+#define CORELIB_ALLOC_H
 
 typedef void * (*alloc_proto)(unsigned long);
 typedef void  (*dealloc_proto)(void *);

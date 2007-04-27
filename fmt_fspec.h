@@ -1,5 +1,5 @@
-#ifndef FMT_FSPEC_H
-#define FMT_FSPEC_H
+#ifndef CORELIB_FMT_FSPEC_H
+#define CORELIB_FMT_FSPEC_H
 
 #include "float32.h"
 #include "float64.h"

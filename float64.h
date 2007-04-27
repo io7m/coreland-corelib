@@ -1,5 +1,5 @@
-#ifndef FLOAT64_H
-#define FLOAT64_H
+#ifndef CORELIB_FLOAT64_H
+#define CORELIB_FLOAT64_H
 
 #include "_float64.h"
 

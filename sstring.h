@@ -1,5 +1,5 @@
-#ifndef SSTRING_H
-#define SSTRING_H
+#ifndef CORELIB_SSTRING_H
+#define CORELIB_SSTRING_H
 
 struct sstring {
   char *s;

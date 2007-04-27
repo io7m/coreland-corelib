@@ -1,4 +1,5 @@
 #include "scan.h"
+#include "sd_longlong.h"
 
 #if defined(HAVE_LONGLONG)
 unsigned int scan_ulonglongb(const char *str, unsigned long long *ul)

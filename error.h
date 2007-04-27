@@ -1,5 +1,5 @@
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef CORELIB_ERROR_H
+#define CORELIB_ERROR_H
 
 #include <errno.h>
 

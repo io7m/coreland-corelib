@@ -1,5 +1,5 @@
-#ifndef SYSERR_H
-#define SYSERR_H
+#ifndef CORELIB_SYSERR_H
+#define CORELIB_SYSERR_H
 
 struct syserr {
   struct syserr *w;

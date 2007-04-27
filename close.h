@@ -1,5 +1,5 @@
-#ifndef CLOSE_H
-#define CLOSE_H
+#ifndef CORELIB_CLOSE_H
+#define CORELIB_CLOSE_H
 
 extern int close(int);
 

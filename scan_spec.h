@@ -1,5 +1,5 @@
-#ifndef SCAN_SPEC_H
-#define SCAN_SPEC_H
+#ifndef CORELIB_SCAN_SPEC_H
+#define CORELIB_SCAN_SPEC_H
 
 #include "uint32.h"
 #include "uint64.h"

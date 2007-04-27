@@ -1,5 +1,5 @@
-#ifndef BASE_NAME_H
-#define BASE_NAME_H
+#ifndef CORELIB_BASE_NAME_H
+#define CORELIB_BASE_NAME_H
 
 #define BASE_NAME_MAX 1024
 

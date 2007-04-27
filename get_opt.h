@@ -1,5 +1,5 @@
-#ifndef GETOPT_H
-#define GETOPT_H
+#ifndef CORELIB_GETOPT_H
+#define CORELIB_GETOPT_H
 
 extern int opteof;
 extern int optproblem;

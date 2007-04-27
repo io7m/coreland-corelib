@@ -1,5 +1,5 @@
-#ifndef SCAN_FSPEC_H
-#define SCAN_FSPEC_H
+#ifndef CORELIB_SCAN_FSPEC_H
+#define CORELIB_SCAN_FSPEC_H
 
 #include "float32.h"
 #include "float64.h"

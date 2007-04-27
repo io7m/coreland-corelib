@@ -1,5 +1,5 @@
-#ifndef BYTEORDER_H
-#define BYTEORDER_H
+#ifndef CORELIB_BYTEORDER_H
+#define CORELIB_BYTEORDER_H
 
 #include "_byteorder.h"
 

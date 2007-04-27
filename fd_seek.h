@@ -1,5 +1,5 @@
-#ifndef FD_SEEK_H
-#define FD_SEEK_H
+#ifndef CORELIB_FD_SEEK_H
+#define CORELIB_FD_SEEK_H
 
 #include <sys/types.h>
 #include <unistd.h>

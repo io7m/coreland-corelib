@@ -1,5 +1,5 @@
-#ifndef UINT32_H
-#define UINT32_H
+#ifndef CORELIB_UINT32_H
+#define CORELIB_UINT32_H
 
 #include "_uint32.h"
 

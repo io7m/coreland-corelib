@@ -1,5 +1,5 @@
-#ifndef INT64_H
-#define INT64_H
+#ifndef CORELIB_INT64_H
+#define CORELIB_INT64_H
 
 #include "_int64.h"
 

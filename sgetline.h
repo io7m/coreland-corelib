@@ -1,5 +1,5 @@
-#ifndef SGETLINE_H
-#define SGETLINE_H
+#ifndef CORELIB_SGETLINE_H
+#define CORELIB_SGETLINE_H
 
 #include "buffer.h"
 

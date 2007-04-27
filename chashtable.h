@@ -1,5 +1,5 @@
-#ifndef CHASHTABLE_H
-#define CHASHTABLE_H
+#ifndef CORELIB_CHASHTABLE_H
+#define CORELIB_CHASHTABLE_H
 
 #define CHT_TRIES_MULT 8
 

@@ -1,5 +1,5 @@
-#ifndef STR_H
-#define STR_H
+#ifndef CORELIB_STR_H
+#define CORELIB_STR_H
 
 unsigned long str_len(const char *);
 

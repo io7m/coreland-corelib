@@ -1,5 +1,5 @@
-#ifndef IARRAY_H
-#define IARRAY_H
+#ifndef CORELIB_IARRAY_H
+#define CORELIB_IARRAY_H
 
 #define IARRAY_OVERALLOC 8
 

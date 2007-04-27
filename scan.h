@@ -1,7 +1,5 @@
-#ifndef SCAN_H
-#define SCAN_H
-
-#include "sd_longlong.h"
+#ifndef CORELIB_SCAN_H
+#define CORELIB_SCAN_H
 
 unsigned int scan_ulong(const char *, unsigned long *);
 unsigned int scan_ulongx(const char *, unsigned long *);
@@ -23,7 +21,7 @@ unsigned int scan_ucharx(const char *, unsigned char *);
 unsigned int scan_ucharo(const char *, unsigned char *);
 unsigned int scan_ucharb(const char *, unsigned char *);
 
-#if defined(HAVE_LONGLONG)
+#if defined(CORELIB_USE_LONGLONG)
 unsigned int scan_ulonglong(const char *, unsigned long long *);
 unsigned int scan_ulonglongx(const char *, unsigned long long *);
 unsigned int scan_ulonglongo(const char *, unsigned long long *);

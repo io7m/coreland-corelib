@@ -1,5 +1,5 @@
-#ifndef CLOSEONEXEC_H
-#define CLOSEONEXEC_H
+#ifndef CORELIB_CLOSEONEXEC_H
+#define CORELIB_CLOSEONEXEC_H
 
 int closeonexec(int);
 

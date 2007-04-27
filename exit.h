@@ -1,5 +1,5 @@
-#ifndef EXIT_H
-#define EXIT_H
+#ifndef CORELIB_EXIT_H
+#define CORELIB_EXIT_H
 
 extern void _exit();
 

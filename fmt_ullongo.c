@@ -1,3 +1,4 @@
+#include "sd_longlong.h"
 #include "fmt.h"
 
 #if defined(HAVE_LONGLONG)

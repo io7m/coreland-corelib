@@ -1,11 +1,5 @@
-#ifndef OPEN_H
-#define OPEN_H
-
-#include "sd_fcntl.h"
-
-#ifndef O_NONBLOCK
-  #define O_NONBLOCK 0x00
-#endif
+#ifndef CORELIB_OPEN_H
+#define CORELIB_OPEN_H
 
 int open_ro(const char *);
 int open_wo(const char *);
