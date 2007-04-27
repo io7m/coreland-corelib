@@ -251,3 +251,5 @@
 20070427 code: library should now no longer leak implementation details,
                allowing the client code to be compiled with a different
                compiler than the library was compiled with, reliably.
+20070427 code: seperated fixed sized integer functions into seperate
+               integers package.
