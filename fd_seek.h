@@ -4,8 +4,17 @@
 #include <sys/types.h>
 #include <unistd.h>
  
-#include "int64.h"
-                      
+#if defined(CORELIB_USE_LONGLONG)
+  #include "sd_longlong.h"
+  #if defined(HAVE_LONGLONG)
+    typedef long long fd_seek_int;
+  #else
+    typedef long fd_seek_int;
+  #endif
+#else
+  typedef long fd_seek_int;
+#endif
+
 #if defined(SEEK_SET)
   #define FD_SEEK_SET SEEK_SET
 #else
@@ -24,11 +33,9 @@
   #define FD_SEEK_END 2
 #endif
 
-/* assumes filesystem max file size > 4gb */
-
-int64 fd_seek_cur(int, int64);
-int64 fd_seek_pos(int, int64);
-int64 fd_seek_start(int);
-int64 fd_seek_end(int);
+fd_seek_int fd_seek_cur(int, fd_seek_int);
+fd_seek_int fd_seek_pos(int, fd_seek_int);
+fd_seek_int fd_seek_start(int);
+fd_seek_int fd_seek_end(int);
 
 #endif

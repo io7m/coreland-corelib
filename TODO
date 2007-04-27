@@ -1,6 +1,3 @@
-scan_u32b();
-scan_u64b();
-
 scan_u*b() invokes undefined behaviour when working on sizeof(type) * CHAR_BIT.
 In other words, if sizeof(long) * CHAR_BIT == 64, scan_ulongb() will invoke
 undefined behaviour when processing the last bit.
