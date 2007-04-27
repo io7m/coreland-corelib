@@ -6,8 +6,9 @@
 
 #if defined(HAVE_LONGLONG)
   #define CORELIB_USE_LONGLONG
-  #include "fmt.h"
 #endif
+
+#include "fmt.h"
 
 #if defined(HAVE_LONGLONG)
   #if defined(HAVE_MATH_LLRINT)
@@ -23,6 +24,21 @@
   #endif
 #endif
 
+/* try and get the largest available integer type for double */
+#if defined(HAVE_LONGLONG)
+union real {
+  double d;
+  unsigned long long n;
+};
+typedef unsigned int (fmt_func)(char *, unsigned long long);
+#else
+union real {
+  double d;
+  unsigned long n;
+};
+typedef unsigned int (fmt_func)(char *, unsigned long);
+#endif
+
 #if !defined(HAVE_MATH_ROUND)
 static inline double round(double x)
 {
@@ -30,23 +46,53 @@ static inline double round(double x)
 }
 #endif
 
+/* IEEE 754 double precision only */
+
+static inline unsigned int is_negative(double d)
+{
+  union real real;
+  real.d = d;
+
+#if defined(HAVE_MATH_SIGNBIT)
+  return signbit(real.d);
+#endif
+
+  if (sizeof(real.n) == sizeof(double) && sizeof(double) == 64)
+    return (real.n >> 63) & 1;    
+  else
+    return real.d != fabs(real.d);
+}
+
+static inline unsigned int is_nan(double d)
+{
+  return isnan(d);
+}
+
+static inline unsigned int is_infinite(double d)
+{
+  union real real;
+  real.d = d;
+
 #if defined(HAVE_MATH_ISINF)
-  #define IS_INFINITE(n) isinf((n))
+  return isinf(d);
 #else
   #if defined(HAVE_MATH_ISFINITE)
-    #define IS_INFINITE(n) !isfinite((n))
+    return !isfinite(d);
   #else
     #if defined(HAVE_MATH_FINITE)
       #include <ieeefp.h>
-      #define IS_INFINITE(n) !finite((n))
+      return !finite(d);
+    #else
+      return real.n == 0x7FF0000000000000;
     #endif
   #endif
 #endif
+}
 
-#define IS_NAN(n)       isnan((n))
-#define IS_NEGATIVE(n)  (((n) >> 63) & 0x00000001)
-
-/* IEEE 754 double precision only */
+static inline unsigned int fmt_integral(char *str, double d, fmt_func *fmt)
+{
+  return fmt(str, DOUBLE_CAST(floor(d)));
+}
 
 unsigned int fmt_double(char *str, double dou, unsigned int rnd)
 {
@@ -54,25 +100,17 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
   unsigned int pos = 0;
   unsigned int sci = 0;
 
-  /* try and get the largest available integer type for double */
 #if defined(HAVE_LONGLONG)
-  union {
-    double d;
-    unsigned long long n;
-  } real;
   unsigned long long num;
   long long exp;
-  unsigned int (*fmt_func)(char *, unsigned long long) = fmt_ulonglong;
+  fmt_func *fmt_func = fmt_ulonglong;
 #else
-  union {
-    double d;
-    unsigned long n;
-  } real;
   unsigned long num;
   long exp;
-  unsigned int (*fmt_func)(char *, unsigned long) = fmt_ulong;
+  fmt_func *fmt_func = fmt_ulong;
 #endif
   double dtmp;
+  union real real;
 
   if (rnd > DBL_DIG) rnd = DBL_DIG;
   if (!rnd) return 0;
@@ -80,7 +118,7 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
   real.d = dou;
 
   /* check infinity */
-  if (IS_INFINITE(real.d)) {
+  if (is_infinite(real.d)) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -90,7 +128,7 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
   }
 
   /* check nan */
-  if (IS_NAN(real.d)) {
+  if (is_nan(real.d)) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -99,13 +137,14 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
     return 3;
   }
 
-  if (IS_NEGATIVE(real.n)) {
+  /* check sign bit */
+  if (is_negative(real.d)) {
     if (str) *str++ = '-';
     ++len;
     real.d = fabs(real.d);
   }
 
-  /* zero is a special case */
+  /* check zero */
   if (real.d == 0.0) goto FORMAT;
 
   /* work out if scientific notation is required */
@@ -122,8 +161,7 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
   FORMAT:
 
   /* format integral */
-  num = DOUBLE_CAST(floor(real.d));
-  pos = fmt_func(str, num);
+  pos = fmt_integral(str, real.d, fmt_func);
   len += pos;
   if (str) str += pos;
 

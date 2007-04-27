@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../fd_seek.h"
-#include "../int64.h"
 #include "t_assert.h"
 
 void readchar(int fd, char *c)
@@ -20,6 +19,7 @@ void readchar(int fd, char *c)
 
 int main(void)
 {
+  fd_seek_int tmp;
   struct stat sb;
   int fd;
   char c;
@@ -28,12 +28,15 @@ int main(void)
   test_assert(fd != -1);
 
   test_assert(fd_seek_start(fd) == 0);
-  test_assert(fd_seek_cur(fd, 4) == 4);
+
+  tmp = 4;
+  test_assert(fd_seek_cur(fd, tmp) == tmp);
   readchar(fd, &c);
   test_assert(c == 'O');
 
   test_assert(fd_seek_start(fd) == 0);
-  test_assert(fd_seek_pos(fd, 8) == 8);
+  tmp = 8;
+  test_assert(fd_seek_pos(fd, tmp) == tmp);
   readchar(fd, &c);
   test_assert(c == 'T');
  

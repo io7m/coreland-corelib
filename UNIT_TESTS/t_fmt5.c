@@ -494,8 +494,9 @@ int main(void)
 
   for (ind = 0; ind < sizeof(tests) / sizeof(struct fmt_test); ++ind) {
     len = fmt_double(cnum, tests[ind].num, tests[ind].sig);
+    cnum[len] = 0;
     if (len != tests[ind].len) {
-      printf("[%u] fail: len %u != %u %s\n", ind, len, tests[ind].len, tests[ind].str);
+      printf("[%u] fail: len %u != %u %s %s\n", ind, len, tests[ind].len, cnum, tests[ind].str);
       return 1;
     }
     len = fmt_double(FMT_LEN, tests[ind].num, tests[ind].sig);
@@ -503,7 +504,6 @@ int main(void)
       printf("[%u] fail: FMT_LEN len %u != %u\n", ind, len, tests[ind].len);
       return 1;
     }
-    cnum[len] = 0;
     if (!str_same(cnum, tests[ind].str)) {
       printf("[%u] fail: %s != %s\n", ind, cnum, tests[ind].str);
       return 1;

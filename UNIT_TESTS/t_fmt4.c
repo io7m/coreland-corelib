@@ -283,7 +283,7 @@ int main(void)
   for (ind = 0; ind < sizeof(tests) / sizeof(struct fmt_test); ++ind) {
     len = fmt_float(cnum, tests[ind].num, tests[ind].sig);
     if (len != tests[ind].len) {
-      printf("[%u] fail: len %u != %u %s\n", ind, len, tests[ind].len, tests[ind].str);
+      printf("[%u] fail: len %u != %u %s %s\n", ind, len, tests[ind].len, cnum, tests[ind].str);
       return 1;
     }
     len = fmt_float(FMT_LEN, tests[ind].num, tests[ind].sig);

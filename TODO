@@ -2,11 +2,8 @@ scan_u*b() invokes undefined behaviour when working on sizeof(type) * CHAR_BIT.
 In other words, if sizeof(long) * CHAR_BIT == 64, scan_ulongb() will invoke
 undefined behaviour when processing the last bit.
 
-The current method of using HAVE_LONGLONG in header files is insufficient.
-If the library is compiled with compiler X, which supports long long and
-a user compiles code using compiler Y, which doesn't support long long, against
-the binaries and header files produced with compiler X, the compilation will
-fail.
+fmt_double() invokes undefined behaviour if the current system does not provide
+the long long type and long is 32 bits.
 
 Header files should only import other public header files, not private ones.
 

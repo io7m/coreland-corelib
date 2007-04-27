@@ -36,21 +36,57 @@ static inline float powf(float x, float y) { return (float) pow(x, y); }
   #define FLOAT_CAST(n) (long)(n)
 #endif
 
+union real {
+  unsigned long n;
+  float f;
+} real;
+typedef unsigned int fmt_func(char *, unsigned long);
+
+static inline unsigned int is_infinite(float f)
+{
+  union real real;
+  real.f = f;
+
 #if defined(HAVE_MATH_ISINF)
-  #define IS_INFINITE(n) isinf((n))
+  return isinf(f);
 #else
   #if defined(HAVE_MATH_ISFINITE)
-    #define IS_INFINITE(n) !isfinite((n))
+    return !isfinite(f);
   #else
     #if defined(HAVE_MATH_FINITE)
       #include <ieeefp.h>
-      #define IS_INFINITE(n) !finite((n))
+      return !finite(f);
+    #else
+      return real.n == 0x7F800000;
     #endif
   #endif
 #endif
+}
 
-#define IS_NAN(n)       isnan((n))
-#define IS_NEGATIVE(n)  (((n) >> 31) & 0x00000001)
+static inline unsigned int is_negative(float f)
+{
+  union real real;
+  real.f = f;
+
+#if defined(HAVE_MATH_SIGNBIT)
+  return signbit(real.f);
+#endif
+
+  if (sizeof(real.n) == sizeof(float) && sizeof(float) == 32)
+    return (real.n >> 31) & 1;    
+  else
+    return real.f != fabsf(real.f);
+}
+
+static inline unsigned int is_nan(float f)
+{
+  return isnan(f);
+}
+
+static inline unsigned int fmt_integral(char *str, float f, fmt_func *fmt)
+{
+  return fmt(str, FLOAT_CAST(floorf(f)));
+}
 
 /* IEEE 754 single precision only */
 
@@ -60,10 +96,8 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   unsigned int pos = 0;
   unsigned int sci = 0;
   unsigned long num;
-  union real {
-    unsigned long n;
-    float f; 
-  } real;
+  union real real;
+  fmt_func *fmt_func = fmt_ulong;
   float ftmp;
   long exp;
 
@@ -73,7 +107,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   real.f = flo;
 
   /* check infinity */
-  if (IS_INFINITE(real.f)) {
+  if (is_infinite(real.f)) {
     if (str) {
       str[0] = 'i';
       str[1] = 'n';
@@ -83,7 +117,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   }
 
   /* check nan */
-  if (IS_NAN(real.f)) {
+  if (is_nan(real.f)) {
     if (str) {
       str[0] = 'n';
       str[1] = 'a';
@@ -93,7 +127,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   }
 
   /* if number is negative, convert to positive */
-  if (IS_NEGATIVE(real.n)) {
+  if (is_negative(real.f)) {
     if (str) *str++ = '-';
     ++len;
     real.f = fabsf(real.f);
@@ -116,8 +150,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   FORMAT:
 
   /* format integral */
-  num = FLOAT_CAST(floorf(real.f));
-  pos = fmt_ulong(str, num);
+  pos = fmt_integral(str, real.f, fmt_func);
   len += pos;
   if (str) str += pos;
 
