@@ -253,3 +253,4 @@
                compiler than the library was compiled with, reliably.
 20070427 code: seperated fixed sized integer functions into seperate
                integers package.
+20070428 code: fixed scan_u*b() undefined behaviour.
