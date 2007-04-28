@@ -17,7 +17,7 @@ static const struct {
   { 17, 65536ULL, "10000000000000000" },
   { 31, 1234567890ULL, "1001001100101100000001011010010" },
   { 32, 0xFFFFFFFFULL, "11111111111111111111111111111111" },
-  { 64, 0xFFFFFFFFFFFFFFFFULL, "10000000000000000000000000000000000000000000000000000000000000000" },
+  { 64, 0xFFFFFFFFFFFFFFFFULL, "1111111111111111111111111111111111111111111111111111111111111111" },
   { 7, 123, "1111011 111001000" },
   { 0, 0, "2" },
   { 0, 0, "-" },
@@ -33,7 +33,7 @@ int main(void)
     u = 0;
     len = scan_ulonglongb(tests[ind].str, &u);
     if (len != tests[ind].len) {
-      printf("[%u] fail: len %lu != %lu\n", ind, len, tests[ind].len);
+      printf("[%u] fail: len %lu != %lu (%llu %s)\n", ind, len, tests[ind].len, u, tests[ind].str);
       return 1;
     }
     if (u != tests[ind].u) {

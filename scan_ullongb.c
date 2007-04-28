@@ -1,16 +1,22 @@
 #include <limits.h>
 #include "scan.h"
+#include "sd_inline.h"
 #include "sd_longlong.h"
 
 #if defined(HAVE_LONGLONG)
+static inline unsigned long long power2(unsigned long long p)
+{
+  register unsigned long long x = 1;
+  for (;;) {
+    if (!p) return x; x *= 2; --p;
+  }
+}
 unsigned int scan_ulonglongb(const char *str, unsigned long long *ul)
 {
   register unsigned long long res;
   register unsigned int pos;
   register unsigned int len;
   register unsigned int end;
-  register unsigned int ind;
-  register unsigned int mult;
   register char ch;
 
   len = 0;
@@ -40,9 +46,7 @@ unsigned int scan_ulonglongb(const char *str, unsigned long long *ul)
     switch (ch) {
       case '0':
       case '1':
-        mult = 1;
-        for (ind = 0; ind < pos; ++ind) mult <<= 1;
-        res += (ch - '0') * mult;
+        res += (ch - '0') * power2(pos);
         break;
       default:
         goto END;

@@ -1,3 +1,4 @@
+cc
 cc89_strict
 
 This will be used to compile C source files.

@@ -1,14 +1,20 @@
 #include <limits.h>
 #include "scan.h"
+#include "sd_inline.h"
 
+static unsigned long power2(unsigned long p)
+{
+  register unsigned long x = 1;
+  for (;;) {
+    if (!p) return x; x *= 2; --p;
+  }
+}
 unsigned int scan_ulongb(const char *str, unsigned long *ul)
 {
   register unsigned long res;
   register unsigned int pos;
   register unsigned int len;
   register unsigned int end;
-  register unsigned int ind;
-  register unsigned int mult;
   register char ch;
 
   len = 0;
@@ -38,9 +44,7 @@ unsigned int scan_ulongb(const char *str, unsigned long *ul)
     switch (ch) {
       case '0':
       case '1':
-        mult = 1;
-        for (ind = 0; ind < pos; ++ind) mult <<= 1;
-        res += (ch - '0') * mult;
+        res += (ch - '0') * power2(pos);
         break;
       default:
         goto END;
