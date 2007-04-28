@@ -38,7 +38,7 @@ static inline float powf(float x, float y) { return (float) pow(x, y); }
 #endif
 
 union real {
-  unsigned long n;
+  unsigned int n;
   float f;
 } real;
 typedef unsigned int fmt_func(char *, unsigned long);
