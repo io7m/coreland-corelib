@@ -1,9 +1,5 @@
-scan_u*b() invokes undefined behaviour when working on sizeof(type) * CHAR_BIT.
-In other words, if sizeof(long) * CHAR_BIT == 64, scan_ulongb() will invoke
-undefined behaviour when processing the last bit.
-
-fmt_double() invokes undefined behaviour if the current system does not provide
-the long long type and long is 32 bits.
+fmt_integral() must be modified to be able to print 64 bit values using only
+32 bit integers.
 
 Header files should only import other public header files, not private ones.
 

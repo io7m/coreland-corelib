@@ -1,3 +1,4 @@
+#include <limits.h>
 #include "scan.h"
 
 unsigned int scan_ulongb(const char *str, unsigned long *ul)
@@ -6,6 +7,8 @@ unsigned int scan_ulongb(const char *str, unsigned long *ul)
   register unsigned int pos;
   register unsigned int len;
   register unsigned int end;
+  register unsigned int ind;
+  register unsigned int mult;
   register char ch;
 
   len = 0;
@@ -15,8 +18,8 @@ unsigned int scan_ulongb(const char *str, unsigned long *ul)
   for (;;) {
     ch = str[pos];
     switch (ch) {
-      case '0':
       case '1':
+      case '0':
         ++pos;
         break;
       default:
@@ -35,7 +38,9 @@ unsigned int scan_ulongb(const char *str, unsigned long *ul)
     switch (ch) {
       case '0':
       case '1':
-        res += (ch - '0') * (1 << pos);
+        mult = 1;
+        for (ind = 0; ind < pos; ++ind) mult <<= 1;
+        res += (ch - '0') * mult;
         break;
       default:
         goto END;

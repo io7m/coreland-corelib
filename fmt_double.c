@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include <limits.h>
 #include "sd_math.h"
 #include "sd_inline.h"
 #include "sd_longlong.h"
@@ -57,7 +58,7 @@ static inline unsigned int is_negative(double d)
   return signbit(real.d);
 #endif
 
-  if (sizeof(real.n) == sizeof(double) && sizeof(double) == 64)
+  if (sizeof(real.n) == sizeof(double) && sizeof(double) * CHAR_BIT == 64)
     return (real.n >> 63) & 1;    
   else
     return real.d != fabs(real.d);

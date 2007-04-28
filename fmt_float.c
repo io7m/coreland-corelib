@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include <limits.h>
 #include "fmt.h"
 #include "sd_math.h"
 #include "sd_inline.h"
@@ -72,7 +73,7 @@ static inline unsigned int is_negative(float f)
   return signbit(real.f);
 #endif
 
-  if (sizeof(real.n) == sizeof(float) && sizeof(float) == 32)
+  if (sizeof(real.n) == sizeof(float) && sizeof(float) * CHAR_BIT == 32)
     return (real.n >> 31) & 1;    
   else
     return real.f != fabsf(real.f);

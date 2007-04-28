@@ -395,8 +395,8 @@ t_scan_ull.o:\
 	cc-compile t_scan_ull.c ../sd_longlong.h ../scan.h 
 	./cc-compile t_scan_ull.c
 t_scan_ullb:\
-	cc-link t_scan_ullb.ld t_scan_ulb.o ../scan.a t_assert.o 
-	./cc-link t_scan_ullb t_scan_ulb.o ../scan.a t_assert.o 
+	cc-link t_scan_ullb.ld t_scan_ullb.o ../scan.a t_assert.o 
+	./cc-link t_scan_ullb t_scan_ullb.o ../scan.a t_assert.o 
 t_scan_ullb.o:\
 	cc-compile t_scan_ullb.c ../sd_longlong.h ../scan.h 
 	./cc-compile t_scan_ullb.c
