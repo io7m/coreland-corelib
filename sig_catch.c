@@ -2,7 +2,7 @@
 #include "sig.h"
 #include "sig_action.h"
 
-void sig_catch(int sig, void (*func)())
+void sig_catch(int sig, void (*func)(int))
 {
 #ifdef HAVE_SIGACTION
   struct sigaction sa;

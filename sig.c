@@ -10,5 +10,5 @@ int sig_term = SIGTERM;
 int sig_int = SIGINT;
 int sig_segv = SIGSEGV;
 
-void (*sig_defaulthandler)() = SIG_DFL;
-void (*sig_ignorehandler)() = SIG_IGN;
+void (*sig_defaulthandler)(int) = SIG_DFL;
+void (*sig_ignorehandler)(int) = SIG_IGN;
