@@ -19,7 +19,7 @@ void readchar(int fd, char *c)
 
 int main(void)
 {
-  fd_seek_int tmp;
+  off_t tmp;
   struct stat sb;
   int fd;
   char c;

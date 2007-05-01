@@ -9,12 +9,9 @@
 #define FMT_DOUBLE (DBL_DIG << 2)
 
 #if defined(CORELIB_USE_LONGLONG)
-  #include "sd_longlong.h"
-  #if defined(HAVE_LONGLONG)
-    #define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
-  #else
-    #error "CORELIB_USE_LONGLONG defined but corelib was not compiled with long long support"
-  #endif
+  #define FMT_ULONGLONG ((sizeof(long long) * 8) + 1)
+#else
+  #define FMT_ULONGLONG FMT_ULONG
 #endif
 
 unsigned int fmt_ulong(char *, unsigned long);

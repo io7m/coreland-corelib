@@ -255,3 +255,6 @@
                integers package.
 20070428 code: fixed scan_u*b() undefined behaviour.
 20070430 code: sig now uses ANSI C sa_handler prototype.
+20070501 code: fd_seek now uses off_t.
+20070501 package: sd_*.h and _sd*.h are now no longer installed, to prevent
+                  any possibility of header collisions.
