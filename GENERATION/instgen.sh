@@ -30,8 +30,10 @@ instchk.ld
 insthier.c
 mk-ctxt.c
 mk-ctxt.ld
-_*.h
+_sd_*.h
 sd_*.h
+_byteorder.h
+_sysinfo.h
 "
 
 FILES=`ls *.c`
