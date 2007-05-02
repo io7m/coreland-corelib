@@ -258,3 +258,5 @@
 20070501 code: fd_seek now uses off_t.
 20070501 package: sd_*.h and _sd*.h are now no longer installed, to prevent
                   any possibility of header collisions.
+20070502 code: added array_index_ub() and array_size_ub() for io_poll
+               library. second argument of array_cat() is now const.

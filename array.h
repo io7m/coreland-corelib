@@ -15,13 +15,15 @@ void array_free(struct array *);
 void array_zero(struct array *);
 
 void *array_index(const struct array *, unsigned long);
+void *array_index_ub(const struct array *, unsigned long);
 void array_chop(struct array *, unsigned long);
 void array_trunc(struct array *);
-int array_cat(struct array *, void *);
+int array_cat(struct array *, const void *);
 int array_copy(struct array *, const struct array *);
 int array_resize(struct array *, unsigned long);
 
 unsigned long array_size(const struct array *);
+unsigned long array_size_ub(const struct array *);
 unsigned long array_bytes(const struct array *);
 const void *array_data(const struct array *);
 
