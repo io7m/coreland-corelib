@@ -50,5 +50,4 @@ sd_sd-inline_clean:
 	@(cd modules/sd-inline && ./clean)
 
 regen:
-	./gen-makefile > Makefile.tmp
-	mv Makefile.tmp Makefile
+	./gen-makefile > Makefile.tmp && mv Makefile.tmp Makefile

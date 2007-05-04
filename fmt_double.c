@@ -69,6 +69,10 @@ static inline unsigned int is_nan(double d)
   return isnan(d);
 }
 
+#if defined(HAVE_MATH_FINITE)
+  #include <ieeefp.h>
+#endif
+
 static inline unsigned int is_infinite(double d)
 {
   union real real;
@@ -81,7 +85,6 @@ static inline unsigned int is_infinite(double d)
     return !isfinite(d);
   #else
     #if defined(HAVE_MATH_FINITE)
-      #include <ieeefp.h>
       return !finite(d);
     #else
       return real.n == 0x7FF0000000000000;

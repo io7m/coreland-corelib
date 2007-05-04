@@ -43,6 +43,10 @@ union real {
 } real;
 typedef unsigned int fmt_func(char *, unsigned long);
 
+#if defined(HAVE_MATH_FINITE)
+  #include <ieeefp.h>
+#endif
+
 static inline unsigned int is_infinite(float f)
 {
   union real real;
@@ -55,7 +59,6 @@ static inline unsigned int is_infinite(float f)
     return !isfinite(f);
   #else
     #if defined(HAVE_MATH_FINITE)
-      #include <ieeefp.h>
       return !finite(f);
     #else
       return real.n == 0x7F800000;
