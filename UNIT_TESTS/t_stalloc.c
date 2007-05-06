@@ -27,9 +27,9 @@ int main(void)
   char *p2;
   char *p3;
 
-  set_alloc(stalloc);
-  set_dealloc(stdealloc);
-  set_realloc(strealloc);
+  alloc_set_alloc(stalloc);
+  alloc_set_dealloc(stdealloc);
+  alloc_set_realloc(strealloc);
 
   p1 = alloc(CHUNK);
   p2 = alloc(CHUNK);

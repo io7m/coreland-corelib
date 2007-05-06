@@ -48,17 +48,17 @@ static int def_realloc(void **ptr, unsigned long size_old, unsigned long size_ne
 
 /* interface */
 
-int set_alloc(alloc_proto ap)
+int alloc_set_alloc(alloc_proto ap)
 {
   if (ap) { allocfunc = ap; } return 0;
 }
 
-int set_realloc(realloc_proto rp)
+int alloc_set_realloc(realloc_proto rp)
 {
   if (rp) { reallocfunc = rp; } return 0;
 }
 
-int set_dealloc(dealloc_proto dp)
+int alloc_set_dealloc(dealloc_proto dp)
 {
   if (dp) { deallocfunc = dp; } return 0;
 }

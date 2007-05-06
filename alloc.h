@@ -6,9 +6,9 @@ typedef void  (*dealloc_proto)(void *);
 typedef int   (*realloc_proto)(void **, unsigned long, unsigned long);
 typedef void * vptr;
 
-int set_alloc(alloc_proto);
-int set_dealloc(dealloc_proto);
-int set_realloc(realloc_proto);
+int alloc_set_alloc(alloc_proto);
+int alloc_set_dealloc(dealloc_proto);
+int alloc_set_realloc(realloc_proto);
 
 void *alloc(unsigned long);
 void *alloc_zero(unsigned long);

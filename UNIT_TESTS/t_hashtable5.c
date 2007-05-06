@@ -34,7 +34,7 @@ int main(void)
 {
   struct hashtable ht;
 
-  set_alloc(count_malloc);
+  alloc_set_alloc(count_malloc);
 
   test_assert(ht_init(&ht));
   except1(&ht);
