@@ -261,3 +261,5 @@
 20070502 code: added array_index_ub() and array_size_ub() for io_poll
                library. second argument of array_cat() is now const.
 20070504 code: IRIX mipspro fixes.
+20070506 code: renamed set_alloc() functions to alloc_set_alloc() etc.
+20070506 version: corelib 0.54
