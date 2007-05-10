@@ -1,6 +1,10 @@
 fmt_double.o
 fmt_float.o
 fmt_nstr.o
+fmt_pad_uc.o
+fmt_pad_ui.o
+fmt_pad_ul.o
+fmt_pad_us.o
 fmt_str.o
 fmt_uchar.o
 fmt_ucharb.o

@@ -263,3 +263,4 @@
 20070504 code: IRIX mipspro fixes.
 20070506 code: renamed set_alloc() functions to alloc_set_alloc() etc.
 20070506 version: corelib 0.54
+20070510 code: added fmt_pad functions.

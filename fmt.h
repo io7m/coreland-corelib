@@ -47,4 +47,18 @@ unsigned int fmt_double(char *, double, unsigned int);
 unsigned long fmt_str(char *, const char *);
 unsigned long fmt_nstr(char *, const char *, unsigned long);
 
+unsigned int fmt_pad_ulong(char *, unsigned long, unsigned int, unsigned char, 
+                           unsigned int (*)(char *, unsigned long));
+unsigned int fmt_pad_uint(char *, unsigned int, unsigned int, unsigned char,
+                          unsigned int (*)(char *, unsigned int));
+unsigned int fmt_pad_ushort(char *, unsigned short, unsigned int, unsigned char,
+                            unsigned int (*)(char *, unsigned short));
+unsigned int fmt_pad_uchar(char *, unsigned char, unsigned int, unsigned char,
+                           unsigned int (*)(char *, unsigned char));
+
+#if defined(CORELIB_USE_LONGLONG)
+unsigned int fmt_pad_ullong(char *, unsigned long long, unsigned int, unsigned char,
+                            unsigned int (*)(char *, unsigned long long));
+#endif
+
 #endif
