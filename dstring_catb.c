@@ -15,13 +15,13 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
   ds = d->s;
 
   tmplen = dlen + len;
-  if (tmplen < dlen) return 0; /* check overflow */
+  if (tmplen < dlen) return 0; /* check wrap */
 
   if (tmplen >= da) {
     tmpadd = len + DSTRING_OVERALLOC;
-    if (tmpadd < len) return 0; /* check overflow */
+    if (tmpadd < len) return 0; /* check wrap */
     tmplen = da + tmpadd;
-    if (tmplen < da) return 0; /* check overflow */
+    if (tmplen < da) return 0; /* check wrap */
     if (!alloc_re((void **) &d->s, da, tmplen)) return 0;
     da = tmplen;
     ds = d->s;
