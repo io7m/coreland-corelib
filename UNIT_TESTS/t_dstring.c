@@ -18,11 +18,15 @@ void initfree_test(struct dstring *ds)
   num = 1 + DSTRING_OVERALLOC;
   test_assert(num == ds->a);
   test_assert(ds->len == 0);
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) != 0);
 
   dstring_free(ds);
   test_assert(ds->a == 0);
   test_assert(ds->len == 0);
   test_assert(ds->s == 0);
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) == 0);
 }
 
 void cat_test(struct dstring *ds)
@@ -30,15 +34,19 @@ void cat_test(struct dstring *ds)
   /* 223 + 32 == 255 */
   test_assert(dstring_init(ds, 223));
 
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) != 0);
   test_assert(ds->len == 0);
   test_assert(ds->a == 255);
-  test_assert(dstring_0(ds) == 0);
+  dstring_0(ds);
 
   /* 255 + 256 + 32 == 543 */
   test_assert(dstring_cats(ds, BIG_STRING));
   test_assert(ds->len == 256);
   test_assert(ds->a == 543);
-
+  test_assert(dstring_size(ds) == 256);
+  test_assert(dstring_data(ds) != 0);
+ 
   test_assert('A' ==  ds->s[0]);
   test_assert('B' ==  ds->s[1]);
   test_assert('C' ==  ds->s[2]);
@@ -66,20 +74,23 @@ void cat_test(struct dstring *ds)
   test_assert('7' ==  ds->s[254]);
   test_assert('8' ==  ds->s[255]);
 
-  test_assert(256 == dstring_0(ds));
+  dstring_0(ds);
 
   while (ds->len != 542)
     test_assert(dstring_catb(ds, "X", 1));
 
   test_assert(543 == ds->a);
   test_assert(542 == ds->len);
-
-  test_assert(dstring_cat0(ds));
+  test_assert(dstring_size(ds) == 542);
+  test_assert(dstring_data(ds) != 0);
+  test_assert(dstring_catb(ds, "\0", 1));
 
   /* 543 + 1 + 32 == 576 */
   test_assert(576 == ds->a);
   test_assert(543 == ds->len);
-
+  test_assert(dstring_size(ds) == 543);
+  test_assert(dstring_data(ds) != 0);
+ 
   dstring_free(ds);
 
   /* try integer overflow */
@@ -91,6 +102,9 @@ void cat_test(struct dstring *ds)
 
   test_assert(dstring_cats(ds, "ABCDEFGH12345678") == 0);
   dstring_free(ds);
+
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) == 0);
 }
 
 void copy_test(struct dstring *ds)
@@ -102,6 +116,9 @@ void copy_test(struct dstring *ds)
   test_assert(dstring_cpys(ds, BIG_STRING));
   test_assert(256 == ds->len);
   test_assert(289 == ds->a);
+  test_assert(dstring_size(ds) == 256);
+  test_assert(dstring_data(ds) != 0);
+
   /* ds->s[288] == ok, ds->s[289] == overflow */
 
   test_assert('1' ==  ds->s[248]);
@@ -131,11 +148,15 @@ void chop_test(struct dstring *ds)
   /* should do nothing */
   dstring_chop(ds, 300);
   test_assert(256 == ds->len);
+  test_assert(dstring_size(ds) == 256);
+  test_assert(dstring_data(ds) != 0);
 
   /* should work */
   dstring_chop(ds, 20);
   test_assert(20 == ds->len);
   test_assert(0 == ds->s[20]);
+  test_assert(dstring_size(ds) == 20);
+  test_assert(dstring_data(ds) != 0);
 
   /* edge case */
   test_assert(dstring_cpys(ds, BIG_STRING));
@@ -146,14 +167,24 @@ void chop_test(struct dstring *ds)
   dstring_chop(ds, ds->a);
   test_assert(288 == ds->len);
   test_assert(289 == ds->a);
+  test_assert(dstring_size(ds) == 288);
+  test_assert(dstring_data(ds) != 0);
 
   dstring_trunc(ds);
   test_assert(0 == ds->len);
   test_assert(289 == ds->a);
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) != 0);
 
   dstring_trunc(ds);
   test_assert(0 == ds->len);
   test_assert(289 == ds->a);
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) != 0);
+
+  dstring_free(ds);
+  test_assert(dstring_size(ds) == 0);
+  test_assert(dstring_data(ds) == 0);
 }
 
 int main(void)

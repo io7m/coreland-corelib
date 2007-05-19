@@ -249,21 +249,20 @@ dir_name.o:\
 	cc-compile dir_name.c bin.h dir_name.h str.h 
 	./cc-compile dir_name.c
 dstring.a:\
-	cc-slib dstring.sld dstring_cpyb.o dstring_cpys.o dstring_copy.o \
-	dstring_cat.o dstring_catb.o dstring_cats.o dstring_cat0.o \
-	dstring_0.o dstring_chop.o dstring_init.o dstring_trunc.o 
-	./cc-slib dstring dstring_cpyb.o dstring_cpys.o dstring_copy.o \
-	dstring_cat.o dstring_catb.o dstring_cats.o dstring_cat0.o \
-	dstring_0.o dstring_chop.o dstring_init.o dstring_trunc.o 
+	cc-slib dstring.sld dstring_0.o dstring_cat.o dstring_catb.o \
+	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
+	dstring_cpys.o dstring_data.o dstring_init.o dstring_size.o \
+	dstring_trunc.o 
+	./cc-slib dstring dstring_0.o dstring_cat.o dstring_catb.o \
+	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
+	dstring_cpys.o dstring_data.o dstring_init.o dstring_size.o \
+	dstring_trunc.o 
 dstring_0.o:\
 	cc-compile dstring_0.c dstring.h 
 	./cc-compile dstring_0.c
 dstring_cat.o:\
 	cc-compile dstring_cat.c dstring.h 
 	./cc-compile dstring_cat.c
-dstring_cat0.o:\
-	cc-compile dstring_cat0.c dstring.h 
-	./cc-compile dstring_cat0.c
 dstring_catb.o:\
 	cc-compile dstring_catb.c alloc.h bin.h dstring.h 
 	./cc-compile dstring_catb.c
@@ -282,9 +281,15 @@ dstring_cpyb.o:\
 dstring_cpys.o:\
 	cc-compile dstring_cpys.c dstring.h str.h 
 	./cc-compile dstring_cpys.c
+dstring_data.o:\
+	cc-compile dstring_data.c dstring.h 
+	./cc-compile dstring_data.c
 dstring_init.o:\
 	cc-compile dstring_init.c alloc.h dstring.h 
 	./cc-compile dstring_init.c
+dstring_size.o:\
+	cc-compile dstring_size.c dstring.h 
+	./cc-compile dstring_size.c
 dstring_trunc.o:\
 	cc-compile dstring_trunc.c dstring.h 
 	./cc-compile dstring_trunc.c
@@ -954,50 +959,50 @@ obj_clean:
 	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller \
 	deinstaller.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
 	dir_name.a dir_name.o dstring.a 
-	rm -f dstring_0.o dstring_cat.o dstring_cat0.o dstring_catb.o \
-	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
-	dstring_cpys.o dstring_init.o dstring_trunc.o env.a env.o env_get.o \
-	error.a error.o error_str.o fd.a fd_dup.o fd_move.o fd_reset.o \
-	fd_seek.a fd_seek_cur.o fd_seek_end.o fd_seek_pos.o fd_seek_start.o \
-	fmt.a fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_uc.o fmt_pad_ui.o \
-	fmt_pad_ul.o fmt_pad_us.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
-	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
-	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
-	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
-	fmt_ushorto.o fmt_ushortx.o get_opt.a get_opt.o hashtable.a \
-	ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o ht_checks.o ht_deleteb.o \
-	ht_deletes.o 
-	rm -f ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_iter.o \
-	ht_replaceb.o ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o \
-	iarray_chop.o iarray_copy.o iarray_free.o iarray_index.o \
-	iarray_init.o iarray_insert.o iarray_node.o iarray_remove.o \
-	iarray_size.o iarray_sort.o iarray_trunc.o iarray_zero.o inst-check \
-	inst-check.o inst-copy inst-copy.o inst-dir inst-dir.o inst-link \
-	inst-link.o install_core.o install_error.o installer installer.o \
-	instchk instchk.o insthier.o mk-ctxt mk-ctxt.o nonblock.a nonblock.o \
-	open.a open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
-	open_trunc.o open_wo.o sarray.a sarray_bytes.o sarray_cat.o \
-	sarray_chop.o sarray_data.o sarray_index.o sarray_init.o \
-	sarray_size.o sarray_trunc.o scan.a scan_charset.o scan_double.o \
-	scan_float.o scan_ncharset.o 
-	rm -f scan_newline.o scan_space.o scan_uchar.o scan_ucharb.o \
-	scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o scan_uinto.o \
-	scan_uintx.o scan_ullong.o scan_ullongb.o scan_ullongo.o \
-	scan_ullongx.o scan_ulong.o scan_ulongb.o scan_ulongo.o \
-	scan_ulongx.o scan_ushort.o scan_ushortb.o scan_ushorto.o \
-	scan_ushortx.o sgetline.a sgetline.o sgetline_chop.o sgetline_get.o \
-	sig.a sig.o sig_block.o sig_catch.o sig_pause.o squeue.a \
-	squeue_bytes.o squeue_data.o squeue_deq.o squeue_enq.o squeue_init.o \
-	squeue_peek.o squeue_size.o sstack.a sstack_bytes.o sstack_data.o \
-	sstack_init.o sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o \
-	sstring.a sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
-	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
-	str_ci_diff.o str_ci_ndiff.o 
-	rm -f str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
-	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
-	syserr.a syserr_die.o syserr_init.o uint.a uint_pack.o uint_unpack.o \
-	
+	rm -f dstring_0.o dstring_cat.o dstring_catb.o dstring_cats.o \
+	dstring_chop.o dstring_copy.o dstring_cpyb.o dstring_cpys.o \
+	dstring_data.o dstring_init.o dstring_size.o dstring_trunc.o env.a \
+	env.o env_get.o error.a error.o error_str.o fd.a fd_dup.o fd_move.o \
+	fd_reset.o fd_seek.a fd_seek_cur.o fd_seek_end.o fd_seek_pos.o \
+	fd_seek_start.o fmt.a fmt_double.o fmt_float.o fmt_nstr.o \
+	fmt_pad_uc.o fmt_pad_ui.o fmt_pad_ul.o fmt_pad_us.o fmt_str.o \
+	fmt_uchar.o fmt_ucharb.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o \
+	fmt_uintb.o fmt_uinto.o fmt_uintx.o fmt_ullong.o fmt_ullongo.o \
+	fmt_ullongx.o fmt_ulong.o fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o \
+	fmt_ushort.o fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o get_opt.a \
+	get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o \
+	ht_checks.o ht_deleteb.o 
+	rm -f ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o \
+	ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o iarray.a \
+	iarray_bytes.o iarray_cat.o iarray_chop.o iarray_copy.o \
+	iarray_free.o iarray_index.o iarray_init.o iarray_insert.o \
+	iarray_node.o iarray_remove.o iarray_size.o iarray_sort.o \
+	iarray_trunc.o iarray_zero.o inst-check inst-check.o inst-copy \
+	inst-copy.o inst-dir inst-dir.o inst-link inst-link.o install_core.o \
+	install_error.o installer installer.o instchk instchk.o insthier.o \
+	mk-ctxt mk-ctxt.o nonblock.a nonblock.o open.a open_append.o \
+	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	sarray.a sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
+	sarray_index.o sarray_init.o sarray_size.o sarray_trunc.o scan.a \
+	scan_charset.o scan_double.o scan_float.o 
+	rm -f scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
+	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
+	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
+	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
+	scan_ulongo.o scan_ulongx.o scan_ushort.o scan_ushortb.o \
+	scan_ushorto.o scan_ushortx.o sgetline.a sgetline.o sgetline_chop.o \
+	sgetline_get.o sig.a sig.o sig_block.o sig_catch.o sig_pause.o \
+	squeue.a squeue_bytes.o squeue_data.o squeue_deq.o squeue_enq.o \
+	squeue_init.o squeue_peek.o squeue_size.o sstack.a sstack_bytes.o \
+	sstack_data.o sstack_init.o sstack_peek.o sstack_pop.o sstack_push.o \
+	sstack_size.o sstring.a sstring_0.o sstring_cat.o sstring_catb.o \
+	sstring_cats.o sstring_chop.o sstring_copy.o sstring_cpyb.o \
+	sstring_cpys.o sstring_init.o stalloc.a stalloc.o str.a str_char.o \
+	str_chr.o str_ci_diff.o 
+	rm -f str_ci_ndiff.o str_diff.o str_dup.o str_ends.o str_len.o \
+	str_ndiff.o str_rchar.o str_rchr.o str_starts.o str_tolower.o \
+	str_toupper.o syserr.a syserr_die.o syserr_init.o uint.a uint_pack.o \
+	uint_unpack.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller
