@@ -265,3 +265,4 @@
 20070506 version: corelib 0.54
 20070510 code: added fmt_pad functions.
 20070519 code: removed dstring_cat0 and redundant if statement from dstring_0.
+20070519 version: corelib 0.541
