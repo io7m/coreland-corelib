@@ -27,4 +27,7 @@ void sgetline_chop(struct sgetline *, unsigned long);
 void sgetline_trunc(struct sgetline *);
 int sgetline_get(struct sgetline *);
 
+unsigned long sgetline_size(const struct sgetline *);
+const char *sgetline_data(const struct sgetline *);
+
 #endif

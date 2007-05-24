@@ -1,0 +1,9 @@
+t_dgetline.o
+../dgetline.a
+../dstring.a
+../buffer.a
+../error.a
+../alloc.a
+../bin.a
+../str.a
+t_assert.o

@@ -1,0 +1,15 @@
+line 01
+line 02
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+line 04
+line 05
+continued lines
+more lines
+more lines again
+
+a blank line skipped
+
+and again
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+more lines

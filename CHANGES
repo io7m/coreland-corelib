@@ -266,3 +266,5 @@
 20070510 code: added fmt_pad functions.
 20070519 code: removed dstring_cat0 and redundant if statement from dstring_0.
 20070519 version: corelib 0.541
+20070525 code: added dgetline.
+20070525 code: added sgetline_size and sgetline_data.
