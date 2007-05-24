@@ -1,3 +1,4 @@
+dgetline_chop.o
 dgetline_data.o
 dgetline_free.o
 dgetline_get.o
