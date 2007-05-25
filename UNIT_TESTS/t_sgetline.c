@@ -37,7 +37,10 @@ int main(void)
       toolong = 0;
       continue;
     } 
-    printf("%lu %lu %s\n", sg.line_nr, sgetline_size(&sg), sgetline_data(&sg));
+    printf("%lu %lu %s\n",
+            sgetline_linenum(&sg),
+            sgetline_size(&sg),
+            sgetline_data(&sg));
   }
 
   END:

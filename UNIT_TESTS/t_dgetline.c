@@ -26,7 +26,10 @@ int main(void)
       case -1: perror("read"); return 2; break;
       default: break;
     }
-    printf("%lu %lu %s\n", dg.line_nr, dgetline_size(&dg), dgetline_data(&dg));
+    printf("%lu %lu %s\n",
+            dgetline_linenum(&dg),
+            dgetline_size(&dg),
+            dgetline_data(&dg));
   }
 
   END:
