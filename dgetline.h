@@ -10,7 +10,8 @@ struct dgetline {
   unsigned long line_nr;
 };
 
-int dgetline_init(struct dgetline *, int fd, char *, unsigned long);
+int dgetline_init(struct dgetline *, long (*)(int, char *, unsigned long), int fd, char *, unsigned long);
+int dgetline_initbuf(struct dgetline *, struct buffer *);
 int dgetline_get(struct dgetline *);
 void dgetline_free(struct dgetline *);
 void dgetline_trunc(struct dgetline *);

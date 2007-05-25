@@ -16,7 +16,7 @@ int main(void)
 
   fd = open("./t_dgetline.txt", O_RDONLY);
   test_assert(fd != -1);
-  test_assert(dgetline_init(&dg, fd, fbuf, sizeof(fbuf)) != 0);
+  test_assert(dgetline_init(&dg, (buffer_op) read, fd, fbuf, sizeof(fbuf)) != 0);
 
   for (;;) {
     r = dgetline_get(&dg);
