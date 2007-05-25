@@ -28,6 +28,7 @@ void sgetline_trunc(struct sgetline *);
 int sgetline_get(struct sgetline *);
 
 unsigned long sgetline_size(const struct sgetline *);
+unsigned long sgetline_linenum(const struct sgetline *);
 const char *sgetline_data(const struct sgetline *);
 
 #endif

@@ -18,5 +18,6 @@ void dgetline_trunc(struct dgetline *);
 void dgetline_chop(struct dgetline *, unsigned long);
 const char *dgetline_data(const struct dgetline *);
 unsigned long dgetline_size(const struct dgetline *);
+unsigned long dgetline_linenum(const struct dgetline *);
 
 #endif
