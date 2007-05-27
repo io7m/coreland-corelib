@@ -1,4 +1,2 @@
 
--g -W -Wall -pedantic -std=c99
-
 These are passed to the C compiler.

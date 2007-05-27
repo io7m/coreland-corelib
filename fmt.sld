@@ -9,6 +9,7 @@ fmt_intb.o
 fmt_into.o
 fmt_intx.o
 fmt_llong.o
+fmt_llongb.o
 fmt_llongo.o
 fmt_llongx.o
 fmt_long.o

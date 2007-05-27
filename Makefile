@@ -370,16 +370,16 @@ fd_seek_start.o:\
 fmt.a:\
 	cc-slib fmt.sld fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o \
 	fmt_double.o fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o \
-	fmt_llong.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
-	fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o \
-	fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o \
-	fmt_shorto.o fmt_shortx.o fmt_str.o 
+	fmt_llong.o fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o \
+	fmt_longb.o fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o \
+	fmt_pad_i.o fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o \
+	fmt_shortb.o fmt_shorto.o fmt_shortx.o fmt_str.o 
 	./cc-slib fmt fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o \
 	fmt_double.o fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o \
-	fmt_llong.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
-	fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o \
-	fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o \
-	fmt_shorto.o fmt_shortx.o fmt_str.o 
+	fmt_llong.o fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o \
+	fmt_longb.o fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o \
+	fmt_pad_i.o fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o \
+	fmt_shortb.o fmt_shorto.o fmt_shortx.o fmt_str.o 
 fmt_char.o:\
 	cc-compile fmt_char.c fmt.h 
 	./cc-compile fmt_char.c
@@ -413,6 +413,9 @@ fmt_intx.o:\
 fmt_llong.o:\
 	cc-compile fmt_llong.c sd_longlong.h fmt.h 
 	./cc-compile fmt_llong.c
+fmt_llongb.o:\
+	cc-compile fmt_llongb.c sd_longlong.h fmt.h 
+	./cc-compile fmt_llongb.c
 fmt_llongo.o:\
 	cc-compile fmt_llongo.c sd_longlong.h fmt.h 
 	./cc-compile fmt_llongo.c
@@ -1006,22 +1009,22 @@ obj_clean:
 	fd_reset.o fd_seek.a fd_seek_cur.o fd_seek_end.o fd_seek_pos.o \
 	fd_seek_start.o fmt.a fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o \
 	fmt_double.o fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o \
-	fmt_llong.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
-	fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o \
-	fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o \
-	fmt_shorto.o fmt_shortx.o fmt_str.o get_opt.a get_opt.o 
-	rm -f hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o \
-	ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o \
-	ht_hash.o ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o iarray.a \
-	iarray_bytes.o iarray_cat.o iarray_chop.o iarray_copy.o \
-	iarray_free.o iarray_index.o iarray_init.o iarray_insert.o \
-	iarray_node.o iarray_remove.o iarray_size.o iarray_sort.o \
-	iarray_trunc.o iarray_zero.o inst-check inst-check.o inst-copy \
-	inst-copy.o inst-dir inst-dir.o inst-link inst-link.o install_core.o \
-	install_error.o installer installer.o instchk instchk.o insthier.o \
-	mk-ctxt.o nonblock.a nonblock.o open.a open_append.o open_creat.o \
-	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o sarray.a \
-	sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
+	fmt_llong.o fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o \
+	fmt_longb.o fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o \
+	fmt_pad_i.o fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o \
+	fmt_shortb.o fmt_shorto.o fmt_shortx.o fmt_str.o get_opt.a 
+	rm -f get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o \
+	ht_checkb.o ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o \
+	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_iter.o ht_replaceb.o \
+	ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o iarray_chop.o \
+	iarray_copy.o iarray_free.o iarray_index.o iarray_init.o \
+	iarray_insert.o iarray_node.o iarray_remove.o iarray_size.o \
+	iarray_sort.o iarray_trunc.o iarray_zero.o inst-check inst-check.o \
+	inst-copy inst-copy.o inst-dir inst-dir.o inst-link inst-link.o \
+	install_core.o install_error.o installer installer.o instchk \
+	instchk.o insthier.o nonblock.a nonblock.o open.a open_append.o \
+	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
+	sarray.a sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
 	sarray_index.o sarray_init.o 
 	rm -f sarray_size.o sarray_trunc.o scan.a scan_char.o scan_charb.o \
 	scan_charo.o scan_charset.o scan_charx.o scan_double.o scan_float.o \

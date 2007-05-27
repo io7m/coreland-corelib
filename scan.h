@@ -46,6 +46,11 @@ unsigned int scan_ulonglong(const char *, unsigned long long *);
 unsigned int scan_ulonglongx(const char *, unsigned long long *);
 unsigned int scan_ulonglongo(const char *, unsigned long long *);
 unsigned int scan_ulonglongb(const char *, unsigned long long *);
+
+unsigned int scan_longlong(const char *, long long *);
+unsigned int scan_longlongx(const char *, long long *);
+unsigned int scan_longlongo(const char *, long long *);
+unsigned int scan_longlongb(const char *, long long *);
 #endif
 
 unsigned int scan_float(const char *, float *);
