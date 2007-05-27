@@ -1,30 +1,19 @@
 #include "sd_longlong.h"
 #include "fmt.h"
+#include "fmt_pad.h"
 
 #if defined(HAVE_LONGLONG)
-unsigned int fmt_pad_ullong(char *buf, unsigned long long ull, unsigned int pad,
+unsigned int fmt_pad_ullong(char *buf, unsigned long long num, unsigned int pad,
                             unsigned char ch,
                             unsigned int (*fmt)(char *, unsigned long long))
 {
-  unsigned int num_len;
-  unsigned int len;
-  char *ptr;
+  FMT_PAD_CORE;
+}
 
-  len = 0;
-  ptr = buf;
-  num_len = fmt(FMT_LEN, ull);
-
-  if (pad > num_len) {
-    pad -= num_len;
-    for (;;) {
-      if (!pad) break;
-      if (ptr) *ptr++ = ch;
-      --pad;
-      ++len;
-    }
-  }
-
-  len += fmt(ptr, ull);
-  return len;
+unsigned int fmt_pad_llong(char *buf, long long num, unsigned int pad,
+                           unsigned char ch,
+                           unsigned int (*fmt)(char *, long long))
+{
+  FMT_PAD_CORE;
 }
 #endif

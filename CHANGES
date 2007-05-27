@@ -276,3 +276,5 @@
 20070527 code: added signed scan_* equivalents, as with fmt.
 20070527 code: rewrote all fmt tests.
 20070527 version: corelib 0.55
+20070528 code: signed variants of fmt_pad, using common macro core in
+               fmt_pad.h

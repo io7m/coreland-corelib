@@ -274,6 +274,8 @@ struct install_item insthier[] = {
   {INST_COPY, "fd_seek.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "fmt.h", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "fmt.h", 0, ctxt_incdir, 0, 0, 0644},
+  {INST_COPY, "fmt_pad.h", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "fmt_pad.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "get_opt.h", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "get_opt.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "hashtable.h", 0, ctxt_repos, 0, 0, 0644},

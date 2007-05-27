@@ -1,27 +1,16 @@
 #include "fmt.h"
+#include "fmt_pad.h"
 
-unsigned int fmt_pad_ulong(char *buf, unsigned long ul, unsigned int pad,
+unsigned int fmt_pad_ulong(char *buf, unsigned long num, unsigned int pad,
                            unsigned char ch,
                            unsigned int (*fmt)(char *, unsigned long))
 {
-  unsigned int num_len;
-  unsigned int len;
-  char *ptr;
+  FMT_PAD_CORE;
+}
 
-  len = 0;
-  ptr = buf;
-  num_len = fmt(FMT_LEN, ul);
-
-  if (pad > num_len) {
-    pad -= num_len;
-    for (;;) {
-      if (!pad) break;
-      if (ptr) *ptr++ = ch;
-      --pad;
-      ++len;
-    }
-  }
-
-  len += fmt(ptr, ul);
-  return len;
+unsigned int fmt_pad_long(char *buf, long num, unsigned int pad,
+                          unsigned char ch,
+                          unsigned int (*fmt)(char *, long))
+{
+  FMT_PAD_CORE;
 }
