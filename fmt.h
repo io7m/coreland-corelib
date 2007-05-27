@@ -14,6 +14,9 @@
   #define FMT_ULONGLONG FMT_ULONG
 #endif
 
+#define FMT_LONG FMT_ULONG
+#define FMT_LONGLONG FMT_ULONGLONG
+
 unsigned int fmt_ulong(char *, unsigned long);
 unsigned int fmt_ulongx(char *, unsigned long);
 unsigned int fmt_ulongo(char *, unsigned long);
