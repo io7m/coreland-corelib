@@ -273,3 +273,4 @@
                variants of functions reside in these new filenames. for
                example, fmt_ulong.c was renamed to fmt_long.c and now
                both fmt_ulong and fmt_long are defined in this file.
+20070527 code: added signed scan_* equivalents, as with fmt.
