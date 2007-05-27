@@ -20,4 +20,19 @@ unsigned int fmt_ulonglongo(char *str, unsigned long long ul)
   }
   return len;
 }
+
+unsigned int fmt_longlongo(char *str, long long llo)
+{
+  unsigned int len = 0;
+  unsigned long long ull;
+
+  if (llo < 0) {
+    if (str) *str++ = '-';
+    ++len;
+    ull = -llo;
+  } else
+    ull = llo;
+
+  return len + fmt_ulonglongo(str, ull);
+}
 #endif

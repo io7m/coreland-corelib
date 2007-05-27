@@ -1,0 +1,27 @@
+#include "scan.h"
+
+unsigned int scan_uchar(const char *s, unsigned char *up)
+{
+  unsigned long ul;
+  unsigned int len;
+  unsigned char uc;
+
+  len = scan_ulong(s, &ul);
+  if (!len) return 0;
+
+  uc = (unsigned char) ul; *up = uc;
+  return len;
+}
+
+unsigned int scan_char(const char *s, char *p)
+{
+  long lo;
+  unsigned int len;
+  char c;
+
+  len = scan_long(s, &lo);
+  if (!len) return 0;
+
+  c = (char) lo; *p = c;
+  return len;
+}

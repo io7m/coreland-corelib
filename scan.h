@@ -21,6 +21,26 @@ unsigned int scan_ucharx(const char *, unsigned char *);
 unsigned int scan_ucharo(const char *, unsigned char *);
 unsigned int scan_ucharb(const char *, unsigned char *);
 
+unsigned int scan_long(const char *, long *);
+unsigned int scan_longx(const char *, long *);
+unsigned int scan_longo(const char *, long *);
+unsigned int scan_longb(const char *, long *);
+
+unsigned int scan_int(const char *, int *);
+unsigned int scan_intx(const char *, int *);
+unsigned int scan_into(const char *, int *);
+unsigned int scan_intb(const char *, int *);
+
+unsigned int scan_short(const char *, short *);
+unsigned int scan_shortx(const char *, short *);
+unsigned int scan_shorto(const char *, short *);
+unsigned int scan_shortb(const char *, short *);
+
+unsigned int scan_char(const char *, char *);
+unsigned int scan_charx(const char *, char *);
+unsigned int scan_charo(const char *, char *);
+unsigned int scan_charb(const char *, char *);
+
 #if defined(CORELIB_USE_LONGLONG)
 unsigned int scan_ulonglong(const char *, unsigned long long *);
 unsigned int scan_ulonglongx(const char *, unsigned long long *);

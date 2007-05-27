@@ -7,12 +7,16 @@ all: local t_alloc t_array t_base_name t_bin t_buffer1 t_buffer2 \
 	t_fd_seek t_fmt t_fmt2 t_fmt3 t_fmt4 t_fmt5 t_fmt6 t_fmt7 t_get_opt \
 	t_hashtable1 t_hashtable2 t_hashtable3 t_hashtable4 t_hashtable5 \
 	t_hashtable6 t_hashtable7 t_hashtable8 t_iarray1 t_iarray2 t_iarray3 \
-	t_iarray4 t_iarray5 t_iarray6 t_iarray7 t_open t_sarray1 t_scan_doub \
-	t_scan_float t_scan_uc t_scan_ucb t_scan_uco t_scan_ucx t_scan_ui \
-	t_scan_uib t_scan_uio t_scan_uix t_scan_ul t_scan_ulb t_scan_ull \
-	t_scan_ullb t_scan_ullo t_scan_ullx t_scan_ulo t_scan_ulx t_scan_us \
-	t_scan_usb t_scan_uso t_scan_usx t_scanstr t_sgetline t_sig \
-	t_squeue1 t_sstack1 t_sstring t_stalloc t_str t_uint2 
+	t_iarray4 t_iarray5 t_iarray6 t_iarray7 t_open t_sarray1 t_scan_c \
+	t_scan_cb t_scan_co t_scan_cx t_scan_doub t_scan_float t_scan_i \
+	t_scan_ib t_scan_io t_scan_ix t_scan_l t_scan_lb t_scan_ll \
+	t_scan_llb t_scan_llo t_scan_llx t_scan_lo t_scan_lx t_scan_s \
+	t_scan_sb t_scan_so t_scan_sx t_scan_uc t_scan_ucb t_scan_uco \
+	t_scan_ucx t_scan_ui t_scan_uib t_scan_uio t_scan_uix t_scan_ul \
+	t_scan_ulb t_scan_ull t_scan_ullb t_scan_ullo t_scan_ullx t_scan_ulo \
+	t_scan_ulx t_scan_us t_scan_usb t_scan_uso t_scan_usx t_scanstr \
+	t_sgetline t_sig t_squeue1 t_sstack1 t_sstring t_stalloc t_str \
+	t_uint2 
 
 t_alloc:\
 	cc-link t_alloc.ld t_alloc.o t_assert.o ../alloc.a 
@@ -332,6 +336,30 @@ t_sarray1:\
 t_sarray1.o:\
 	cc-compile t_sarray1.c ../sarray.h t_assert.h 
 	./cc-compile t_sarray1.c
+t_scan_c:\
+	cc-link t_scan_c.ld t_scan_c.o ../scan.a t_assert.o 
+	./cc-link t_scan_c t_scan_c.o ../scan.a t_assert.o 
+t_scan_c.o:\
+	cc-compile t_scan_c.c ../scan.h 
+	./cc-compile t_scan_c.c
+t_scan_cb:\
+	cc-link t_scan_cb.ld t_scan_cb.o ../scan.a t_assert.o 
+	./cc-link t_scan_cb t_scan_cb.o ../scan.a t_assert.o 
+t_scan_cb.o:\
+	cc-compile t_scan_cb.c ../scan.h 
+	./cc-compile t_scan_cb.c
+t_scan_co:\
+	cc-link t_scan_co.ld t_scan_co.o ../scan.a t_assert.o 
+	./cc-link t_scan_co t_scan_co.o ../scan.a t_assert.o 
+t_scan_co.o:\
+	cc-compile t_scan_co.c ../scan.h 
+	./cc-compile t_scan_co.c
+t_scan_cx:\
+	cc-link t_scan_cx.ld t_scan_cx.o ../scan.a t_assert.o 
+	./cc-link t_scan_cx t_scan_cx.o ../scan.a t_assert.o 
+t_scan_cx.o:\
+	cc-compile t_scan_cx.c ../scan.h 
+	./cc-compile t_scan_cx.c
 t_scan_doub:\
 	cc-link t_scan_doub.ld t_scan_doub.o ../scan.a t_assert.o 
 	./cc-link t_scan_doub t_scan_doub.o ../scan.a t_assert.o 
@@ -344,6 +372,102 @@ t_scan_float:\
 t_scan_float.o:\
 	cc-compile t_scan_float.c ../scan.h 
 	./cc-compile t_scan_float.c
+t_scan_i:\
+	cc-link t_scan_i.ld t_scan_i.o ../scan.a t_assert.o 
+	./cc-link t_scan_i t_scan_i.o ../scan.a t_assert.o 
+t_scan_i.o:\
+	cc-compile t_scan_i.c ../scan.h 
+	./cc-compile t_scan_i.c
+t_scan_ib:\
+	cc-link t_scan_ib.ld t_scan_ib.o ../scan.a t_assert.o 
+	./cc-link t_scan_ib t_scan_ib.o ../scan.a t_assert.o 
+t_scan_ib.o:\
+	cc-compile t_scan_ib.c ../scan.h 
+	./cc-compile t_scan_ib.c
+t_scan_io:\
+	cc-link t_scan_io.ld t_scan_io.o ../scan.a t_assert.o 
+	./cc-link t_scan_io t_scan_io.o ../scan.a t_assert.o 
+t_scan_io.o:\
+	cc-compile t_scan_io.c ../scan.h 
+	./cc-compile t_scan_io.c
+t_scan_ix:\
+	cc-link t_scan_ix.ld t_scan_ix.o ../scan.a t_assert.o 
+	./cc-link t_scan_ix t_scan_ix.o ../scan.a t_assert.o 
+t_scan_ix.o:\
+	cc-compile t_scan_ix.c ../scan.h 
+	./cc-compile t_scan_ix.c
+t_scan_l:\
+	cc-link t_scan_l.ld t_scan_l.o ../scan.a t_assert.o 
+	./cc-link t_scan_l t_scan_l.o ../scan.a t_assert.o 
+t_scan_l.o:\
+	cc-compile t_scan_l.c ../scan.h 
+	./cc-compile t_scan_l.c
+t_scan_lb:\
+	cc-link t_scan_lb.ld t_scan_lb.o ../scan.a t_assert.o 
+	./cc-link t_scan_lb t_scan_lb.o ../scan.a t_assert.o 
+t_scan_lb.o:\
+	cc-compile t_scan_lb.c ../scan.h 
+	./cc-compile t_scan_lb.c
+t_scan_ll:\
+	cc-link t_scan_ll.ld t_scan_ll.o ../scan.a t_assert.o 
+	./cc-link t_scan_ll t_scan_ll.o ../scan.a t_assert.o 
+t_scan_ll.o:\
+	cc-compile t_scan_ll.c ../sd_longlong.h ../scan.h 
+	./cc-compile t_scan_ll.c
+t_scan_llb:\
+	cc-link t_scan_llb.ld t_scan_llb.o ../scan.a t_assert.o 
+	./cc-link t_scan_llb t_scan_llb.o ../scan.a t_assert.o 
+t_scan_llb.o:\
+	cc-compile t_scan_llb.c ../sd_longlong.h ../scan.h 
+	./cc-compile t_scan_llb.c
+t_scan_llo:\
+	cc-link t_scan_llo.ld t_scan_lo.o ../scan.a t_assert.o 
+	./cc-link t_scan_llo t_scan_lo.o ../scan.a t_assert.o 
+t_scan_llo.o:\
+	cc-compile t_scan_llo.c ../sd_longlong.h ../scan.h 
+	./cc-compile t_scan_llo.c
+t_scan_llx:\
+	cc-link t_scan_llx.ld t_scan_lx.o ../scan.a t_assert.o 
+	./cc-link t_scan_llx t_scan_lx.o ../scan.a t_assert.o 
+t_scan_llx.o:\
+	cc-compile t_scan_llx.c ../sd_longlong.h ../scan.h 
+	./cc-compile t_scan_llx.c
+t_scan_lo:\
+	cc-link t_scan_lo.ld t_scan_lo.o ../scan.a t_assert.o 
+	./cc-link t_scan_lo t_scan_lo.o ../scan.a t_assert.o 
+t_scan_lo.o:\
+	cc-compile t_scan_lo.c ../scan.h 
+	./cc-compile t_scan_lo.c
+t_scan_lx:\
+	cc-link t_scan_lx.ld t_scan_lx.o ../scan.a t_assert.o 
+	./cc-link t_scan_lx t_scan_lx.o ../scan.a t_assert.o 
+t_scan_lx.o:\
+	cc-compile t_scan_lx.c ../scan.h 
+	./cc-compile t_scan_lx.c
+t_scan_s:\
+	cc-link t_scan_s.ld t_scan_s.o ../scan.a t_assert.o 
+	./cc-link t_scan_s t_scan_s.o ../scan.a t_assert.o 
+t_scan_s.o:\
+	cc-compile t_scan_s.c ../scan.h 
+	./cc-compile t_scan_s.c
+t_scan_sb:\
+	cc-link t_scan_sb.ld t_scan_sb.o ../scan.a t_assert.o 
+	./cc-link t_scan_sb t_scan_sb.o ../scan.a t_assert.o 
+t_scan_sb.o:\
+	cc-compile t_scan_sb.c ../scan.h 
+	./cc-compile t_scan_sb.c
+t_scan_so:\
+	cc-link t_scan_so.ld t_scan_so.o ../scan.a t_assert.o 
+	./cc-link t_scan_so t_scan_so.o ../scan.a t_assert.o 
+t_scan_so.o:\
+	cc-compile t_scan_so.c ../scan.h 
+	./cc-compile t_scan_so.c
+t_scan_sx:\
+	cc-link t_scan_sx.ld t_scan_sx.o ../scan.a t_assert.o 
+	./cc-link t_scan_sx t_scan_sx.o ../scan.a t_assert.o 
+t_scan_sx.o:\
+	cc-compile t_scan_sx.c ../scan.h 
+	./cc-compile t_scan_sx.c
 t_scan_uc:\
 	cc-link t_scan_uc.ld t_scan_uc.o ../scan.a t_assert.o 
 	./cc-link t_scan_uc t_scan_uc.o ../scan.a t_assert.o 
@@ -541,17 +665,24 @@ obj_clean:
 	rm -f t_iarray1 t_iarray1.o t_iarray2 t_iarray2.o t_iarray3 \
 	t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 \
 	t_iarray6.o t_iarray7 t_iarray7.o t_iarray_util.o t_open t_open.o \
-	t_sarray1 t_sarray1.o t_scan_doub t_scan_doub.o t_scan_float \
-	t_scan_float.o t_scan_uc t_scan_uc.o t_scan_ucb t_scan_ucb.o \
-	t_scan_uco t_scan_uco.o t_scan_ucx t_scan_ucx.o t_scan_ui \
-	t_scan_ui.o t_scan_uib t_scan_uib.o t_scan_uio t_scan_uio.o \
-	t_scan_uix t_scan_uix.o t_scan_ul t_scan_ul.o t_scan_ulb \
-	t_scan_ulb.o t_scan_ull t_scan_ull.o t_scan_ullb t_scan_ullb.o \
-	t_scan_ullo t_scan_ullo.o t_scan_ullx t_scan_ullx.o t_scan_ulo \
-	t_scan_ulo.o t_scan_ulx t_scan_ulx.o t_scan_us t_scan_us.o \
-	t_scan_usb t_scan_usb.o t_scan_uso t_scan_uso.o t_scan_usx \
-	t_scan_usx.o t_scanstr 
-	rm -f t_scanstr.o t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 \
+	t_sarray1 t_sarray1.o t_scan_c t_scan_c.o t_scan_cb t_scan_cb.o \
+	t_scan_co t_scan_co.o t_scan_cx t_scan_cx.o t_scan_doub \
+	t_scan_doub.o t_scan_float t_scan_float.o t_scan_i t_scan_i.o \
+	t_scan_ib t_scan_ib.o t_scan_io t_scan_io.o t_scan_ix t_scan_ix.o \
+	t_scan_l t_scan_l.o t_scan_lb t_scan_lb.o t_scan_ll t_scan_ll.o \
+	t_scan_llb t_scan_llb.o t_scan_llo t_scan_llo.o t_scan_llx \
+	t_scan_llx.o t_scan_lo t_scan_lo.o t_scan_lx t_scan_lx.o t_scan_s \
+	t_scan_s.o t_scan_sb t_scan_sb.o t_scan_so t_scan_so.o t_scan_sx \
+	t_scan_sx.o t_scan_uc 
+	rm -f t_scan_uc.o t_scan_ucb t_scan_ucb.o t_scan_uco t_scan_uco.o \
+	t_scan_ucx t_scan_ucx.o t_scan_ui t_scan_ui.o t_scan_uib \
+	t_scan_uib.o t_scan_uio t_scan_uio.o t_scan_uix t_scan_uix.o \
+	t_scan_ul t_scan_ul.o t_scan_ulb t_scan_ulb.o t_scan_ull \
+	t_scan_ull.o t_scan_ullb t_scan_ullb.o t_scan_ullo t_scan_ullo.o \
+	t_scan_ullx t_scan_ullx.o t_scan_ulo t_scan_ulo.o t_scan_ulx \
+	t_scan_ulx.o t_scan_us t_scan_us.o t_scan_usb t_scan_usb.o \
+	t_scan_uso t_scan_uso.o t_scan_usx t_scan_usx.o t_scanstr \
+	t_scanstr.o t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 \
 	t_squeue1.o t_sstack1 t_sstack1.o t_sstring t_sstring.o t_stalloc \
 	t_stalloc.o t_str t_str.o t_uint2 t_uint2.o 
 

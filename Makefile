@@ -696,97 +696,95 @@ sarray_trunc.o:\
 	./cc-compile sarray_trunc.c
 scan.a:\
 	cc-slib scan.sld scan_charset.o scan_double.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
-	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
-	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
-	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
-	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushortb.o scan_ushorto.o scan_ushortx.o 
+	scan_ncharset.o scan_newline.o scan_space.o scan_char.o scan_charb.o \
+	scan_charo.o scan_charx.o scan_int.o scan_intb.o scan_into.o \
+	scan_intx.o scan_llong.o scan_llongb.o scan_llongo.o scan_llongx.o \
+	scan_long.o scan_longb.o scan_longb.o scan_longo.o scan_longx.o \
+	scan_short.o scan_shortb.o scan_shorto.o scan_shortx.o 
 	./cc-slib scan scan_charset.o scan_double.o scan_float.o \
-	scan_ncharset.o scan_newline.o scan_space.o scan_uchar.o \
-	scan_ucharb.o scan_ucharo.o scan_ucharx.o scan_uint.o scan_uintb.o \
-	scan_uinto.o scan_uintx.o scan_ullong.o scan_ullongb.o \
-	scan_ullongo.o scan_ullongx.o scan_ulong.o scan_ulongb.o \
-	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushortb.o scan_ushorto.o scan_ushortx.o 
+	scan_ncharset.o scan_newline.o scan_space.o scan_char.o scan_charb.o \
+	scan_charo.o scan_charx.o scan_int.o scan_intb.o scan_into.o \
+	scan_intx.o scan_llong.o scan_llongb.o scan_llongo.o scan_llongx.o \
+	scan_long.o scan_longb.o scan_longb.o scan_longo.o scan_longx.o \
+	scan_short.o scan_shortb.o scan_shorto.o scan_shortx.o 
+scan_char.o:\
+	cc-compile scan_char.c scan.h 
+	./cc-compile scan_char.c
+scan_charb.o:\
+	cc-compile scan_charb.c scan.h 
+	./cc-compile scan_charb.c
+scan_charo.o:\
+	cc-compile scan_charo.c scan.h 
+	./cc-compile scan_charo.c
 scan_charset.o:\
 	cc-compile scan_charset.c scan.h 
 	./cc-compile scan_charset.c
+scan_charx.o:\
+	cc-compile scan_charx.c scan.h 
+	./cc-compile scan_charx.c
 scan_double.o:\
 	cc-compile scan_double.c scan.h 
 	./cc-compile scan_double.c
 scan_float.o:\
 	cc-compile scan_float.c sd_math.h scan.h 
 	./cc-compile scan_float.c
+scan_int.o:\
+	cc-compile scan_int.c scan.h 
+	./cc-compile scan_int.c
+scan_intb.o:\
+	cc-compile scan_intb.c scan.h 
+	./cc-compile scan_intb.c
+scan_into.o:\
+	cc-compile scan_into.c scan.h 
+	./cc-compile scan_into.c
+scan_intx.o:\
+	cc-compile scan_intx.c scan.h 
+	./cc-compile scan_intx.c
+scan_llong.o:\
+	cc-compile scan_llong.c sd_longlong.h scan.h 
+	./cc-compile scan_llong.c
+scan_llongb.o:\
+	cc-compile scan_llongb.c scan.h sd_inline.h sd_longlong.h 
+	./cc-compile scan_llongb.c
+scan_llongo.o:\
+	cc-compile scan_llongo.c scan.h sd_longlong.h 
+	./cc-compile scan_llongo.c
+scan_llongx.o:\
+	cc-compile scan_llongx.c scan.h sd_longlong.h 
+	./cc-compile scan_llongx.c
+scan_long.o:\
+	cc-compile scan_long.c scan.h 
+	./cc-compile scan_long.c
+scan_longb.o:\
+	cc-compile scan_longb.c scan.h sd_inline.h 
+	./cc-compile scan_longb.c
+scan_longo.o:\
+	cc-compile scan_longo.c scan.h 
+	./cc-compile scan_longo.c
+scan_longx.o:\
+	cc-compile scan_longx.c scan.h 
+	./cc-compile scan_longx.c
 scan_ncharset.o:\
 	cc-compile scan_ncharset.c scan.h 
 	./cc-compile scan_ncharset.c
 scan_newline.o:\
 	cc-compile scan_newline.c scan.h 
 	./cc-compile scan_newline.c
+scan_short.o:\
+	cc-compile scan_short.c scan.h 
+	./cc-compile scan_short.c
+scan_shortb.o:\
+	cc-compile scan_shortb.c scan.h 
+	./cc-compile scan_shortb.c
+scan_shorto.o:\
+	cc-compile scan_shorto.c scan.h 
+	./cc-compile scan_shorto.c
+scan_shortx.o:\
+	cc-compile scan_shortx.c scan.h 
+	./cc-compile scan_shortx.c
 scan_space.o:\
 	cc-compile scan_space.c scan.h 
 	./cc-compile scan_space.c
-scan_uchar.o:\
-	cc-compile scan_uchar.c scan.h 
-	./cc-compile scan_uchar.c
-scan_ucharb.o:\
-	cc-compile scan_ucharb.c scan.h 
-	./cc-compile scan_ucharb.c
-scan_ucharo.o:\
-	cc-compile scan_ucharo.c scan.h 
-	./cc-compile scan_ucharo.c
-scan_ucharx.o:\
-	cc-compile scan_ucharx.c scan.h 
-	./cc-compile scan_ucharx.c
-scan_uint.o:\
-	cc-compile scan_uint.c scan.h 
-	./cc-compile scan_uint.c
-scan_uintb.o:\
-	cc-compile scan_uintb.c scan.h 
-	./cc-compile scan_uintb.c
-scan_uinto.o:\
-	cc-compile scan_uinto.c scan.h 
-	./cc-compile scan_uinto.c
-scan_uintx.o:\
-	cc-compile scan_uintx.c scan.h 
-	./cc-compile scan_uintx.c
-scan_ullong.o:\
-	cc-compile scan_ullong.c sd_longlong.h scan.h 
-	./cc-compile scan_ullong.c
-scan_ullongb.o:\
-	cc-compile scan_ullongb.c scan.h sd_inline.h sd_longlong.h 
-	./cc-compile scan_ullongb.c
-scan_ullongo.o:\
-	cc-compile scan_ullongo.c scan.h sd_longlong.h 
-	./cc-compile scan_ullongo.c
-scan_ullongx.o:\
-	cc-compile scan_ullongx.c scan.h sd_longlong.h 
-	./cc-compile scan_ullongx.c
-scan_ulong.o:\
-	cc-compile scan_ulong.c scan.h 
-	./cc-compile scan_ulong.c
-scan_ulongb.o:\
-	cc-compile scan_ulongb.c scan.h sd_inline.h 
-	./cc-compile scan_ulongb.c
-scan_ulongo.o:\
-	cc-compile scan_ulongo.c scan.h 
-	./cc-compile scan_ulongo.c
-scan_ulongx.o:\
-	cc-compile scan_ulongx.c scan.h 
-	./cc-compile scan_ulongx.c
-scan_ushort.o:\
-	cc-compile scan_ushort.c scan.h 
-	./cc-compile scan_ushort.c
-scan_ushortb.o:\
-	cc-compile scan_ushortb.c scan.h 
-	./cc-compile scan_ushortb.c
-scan_ushorto.o:\
-	cc-compile scan_ushorto.c scan.h 
-	./cc-compile scan_ushorto.c
-scan_ushortx.o:\
-	cc-compile scan_ushortx.c scan.h 
-	./cc-compile scan_ushortx.c
 sgetline.a:\
 	cc-slib sgetline.sld sgetline.o sgetline_chop.o sgetline_data.o \
 	sgetline_get.o sgetline_lnum.o sgetline_size.o 
@@ -1025,20 +1023,20 @@ obj_clean:
 	open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o sarray.a \
 	sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
 	sarray_index.o sarray_init.o 
-	rm -f sarray_size.o sarray_trunc.o scan.a scan_charset.o \
-	scan_double.o scan_float.o scan_ncharset.o scan_newline.o \
-	scan_space.o scan_uchar.o scan_ucharb.o scan_ucharo.o scan_ucharx.o \
-	scan_uint.o scan_uintb.o scan_uinto.o scan_uintx.o scan_ullong.o \
-	scan_ullongb.o scan_ullongo.o scan_ullongx.o scan_ulong.o \
-	scan_ulongb.o scan_ulongo.o scan_ulongx.o scan_ushort.o \
-	scan_ushortb.o scan_ushorto.o scan_ushortx.o sgetline.a sgetline.o \
-	sgetline_chop.o sgetline_data.o sgetline_get.o sgetline_lnum.o \
-	sgetline_size.o sig.a sig.o sig_block.o sig_catch.o sig_pause.o \
-	squeue.a squeue_bytes.o squeue_data.o squeue_deq.o squeue_enq.o \
-	squeue_init.o squeue_peek.o squeue_size.o sstack.a sstack_bytes.o \
-	sstack_data.o sstack_init.o sstack_peek.o sstack_pop.o sstack_push.o \
-	sstack_size.o sstring.a sstring_0.o sstring_cat.o sstring_catb.o \
-	sstring_cats.o sstring_chop.o sstring_copy.o 
+	rm -f sarray_size.o sarray_trunc.o scan.a scan_char.o scan_charb.o \
+	scan_charo.o scan_charset.o scan_charx.o scan_double.o scan_float.o \
+	scan_int.o scan_intb.o scan_into.o scan_intx.o scan_llong.o \
+	scan_llongb.o scan_llongo.o scan_llongx.o scan_long.o scan_longb.o \
+	scan_longo.o scan_longx.o scan_ncharset.o scan_newline.o \
+	scan_short.o scan_shortb.o scan_shorto.o scan_shortx.o scan_space.o \
+	sgetline.a sgetline.o sgetline_chop.o sgetline_data.o sgetline_get.o \
+	sgetline_lnum.o sgetline_size.o sig.a sig.o sig_block.o sig_catch.o \
+	sig_pause.o squeue.a squeue_bytes.o squeue_data.o squeue_deq.o \
+	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o sstack.a \
+	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
+	sstack_pop.o sstack_push.o sstack_size.o sstring.a sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o 
 	rm -f sstring_cpyb.o sstring_cpys.o sstring_init.o stalloc.a \
 	stalloc.o str.a str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o \
 	str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o \
