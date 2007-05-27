@@ -368,99 +368,99 @@ fd_seek_start.o:\
 	cc-compile fd_seek_start.c fd_seek.h 
 	./cc-compile fd_seek_start.c
 fmt.a:\
-	cc-slib fmt.sld fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_uc.o \
-	fmt_pad_ui.o fmt_pad_ul.o fmt_pad_us.o fmt_str.o fmt_uchar.o \
-	fmt_ucharb.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o \
-	fmt_uinto.o fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o \
-	fmt_ulong.o fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o \
-	fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o 
-	./cc-slib fmt fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_uc.o \
-	fmt_pad_ui.o fmt_pad_ul.o fmt_pad_us.o fmt_str.o fmt_uchar.o \
-	fmt_ucharb.o fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o \
-	fmt_uinto.o fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o \
-	fmt_ulong.o fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o \
-	fmt_ushortb.o fmt_ushorto.o fmt_ushortx.o 
+	cc-slib fmt.sld fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_c.o \
+	fmt_pad_i.o fmt_pad_l.o fmt_pad_s.o fmt_str.o fmt_char.o fmt_charb.o \
+	fmt_charo.o fmt_charx.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o \
+	fmt_llong.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
+	fmt_longo.o fmt_longx.o fmt_short.o fmt_shortb.o fmt_shorto.o \
+	fmt_shortx.o 
+	./cc-slib fmt fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_c.o \
+	fmt_pad_i.o fmt_pad_l.o fmt_pad_s.o fmt_str.o fmt_char.o fmt_charb.o \
+	fmt_charo.o fmt_charx.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o \
+	fmt_llong.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
+	fmt_longo.o fmt_longx.o fmt_short.o fmt_shortb.o fmt_shorto.o \
+	fmt_shortx.o 
+fmt_char.o:\
+	cc-compile fmt_char.c fmt.h 
+	./cc-compile fmt_char.c
+fmt_charb.o:\
+	cc-compile fmt_charb.c fmt.h 
+	./cc-compile fmt_charb.c
+fmt_charo.o:\
+	cc-compile fmt_charo.c fmt.h 
+	./cc-compile fmt_charo.c
+fmt_charx.o:\
+	cc-compile fmt_charx.c fmt.h 
+	./cc-compile fmt_charx.c
 fmt_double.o:\
 	cc-compile fmt_double.c sd_math.h sd_inline.h sd_longlong.h fmt.h 
 	./cc-compile fmt_double.c
 fmt_float.o:\
 	cc-compile fmt_float.c fmt.h sd_math.h sd_inline.h 
 	./cc-compile fmt_float.c
+fmt_int.o:\
+	cc-compile fmt_int.c fmt.h 
+	./cc-compile fmt_int.c
+fmt_intb.o:\
+	cc-compile fmt_intb.c fmt.h 
+	./cc-compile fmt_intb.c
+fmt_into.o:\
+	cc-compile fmt_into.c fmt.h 
+	./cc-compile fmt_into.c
+fmt_intx.o:\
+	cc-compile fmt_intx.c fmt.h 
+	./cc-compile fmt_intx.c
+fmt_llong.o:\
+	cc-compile fmt_llong.c sd_longlong.h fmt.h 
+	./cc-compile fmt_llong.c
+fmt_llongo.o:\
+	cc-compile fmt_llongo.c sd_longlong.h fmt.h 
+	./cc-compile fmt_llongo.c
+fmt_llongx.o:\
+	cc-compile fmt_llongx.c sd_longlong.h fmt.h 
+	./cc-compile fmt_llongx.c
+fmt_long.o:\
+	cc-compile fmt_long.c fmt.h 
+	./cc-compile fmt_long.c
+fmt_longb.o:\
+	cc-compile fmt_longb.c fmt.h 
+	./cc-compile fmt_longb.c
+fmt_longo.o:\
+	cc-compile fmt_longo.c fmt.h 
+	./cc-compile fmt_longo.c
+fmt_longx.o:\
+	cc-compile fmt_longx.c fmt.h 
+	./cc-compile fmt_longx.c
 fmt_nstr.o:\
 	cc-compile fmt_nstr.c fmt.h 
 	./cc-compile fmt_nstr.c
-fmt_pad_uc.o:\
-	cc-compile fmt_pad_uc.c fmt.h 
-	./cc-compile fmt_pad_uc.c
-fmt_pad_ui.o:\
-	cc-compile fmt_pad_ui.c fmt.h 
-	./cc-compile fmt_pad_ui.c
-fmt_pad_ul.o:\
-	cc-compile fmt_pad_ul.c fmt.h 
-	./cc-compile fmt_pad_ul.c
-fmt_pad_us.o:\
-	cc-compile fmt_pad_us.c fmt.h 
-	./cc-compile fmt_pad_us.c
+fmt_pad_c.o:\
+	cc-compile fmt_pad_c.c fmt.h 
+	./cc-compile fmt_pad_c.c
+fmt_pad_i.o:\
+	cc-compile fmt_pad_i.c fmt.h 
+	./cc-compile fmt_pad_i.c
+fmt_pad_l.o:\
+	cc-compile fmt_pad_l.c fmt.h 
+	./cc-compile fmt_pad_l.c
+fmt_pad_s.o:\
+	cc-compile fmt_pad_s.c fmt.h 
+	./cc-compile fmt_pad_s.c
+fmt_short.o:\
+	cc-compile fmt_short.c fmt.h 
+	./cc-compile fmt_short.c
+fmt_shortb.o:\
+	cc-compile fmt_shortb.c fmt.h 
+	./cc-compile fmt_shortb.c
+fmt_shorto.o:\
+	cc-compile fmt_shorto.c fmt.h 
+	./cc-compile fmt_shorto.c
+fmt_shortx.o:\
+	cc-compile fmt_shortx.c fmt.h 
+	./cc-compile fmt_shortx.c
 fmt_str.o:\
 	cc-compile fmt_str.c fmt.h 
 	./cc-compile fmt_str.c
-fmt_uchar.o:\
-	cc-compile fmt_uchar.c fmt.h 
-	./cc-compile fmt_uchar.c
-fmt_ucharb.o:\
-	cc-compile fmt_ucharb.c fmt.h 
-	./cc-compile fmt_ucharb.c
-fmt_ucharo.o:\
-	cc-compile fmt_ucharo.c fmt.h 
-	./cc-compile fmt_ucharo.c
-fmt_ucharx.o:\
-	cc-compile fmt_ucharx.c fmt.h 
-	./cc-compile fmt_ucharx.c
-fmt_uint.o:\
-	cc-compile fmt_uint.c fmt.h 
-	./cc-compile fmt_uint.c
-fmt_uintb.o:\
-	cc-compile fmt_uintb.c fmt.h 
-	./cc-compile fmt_uintb.c
-fmt_uinto.o:\
-	cc-compile fmt_uinto.c fmt.h 
-	./cc-compile fmt_uinto.c
-fmt_uintx.o:\
-	cc-compile fmt_uintx.c fmt.h 
-	./cc-compile fmt_uintx.c
-fmt_ullong.o:\
-	cc-compile fmt_ullong.c sd_longlong.h fmt.h 
-	./cc-compile fmt_ullong.c
-fmt_ullongo.o:\
-	cc-compile fmt_ullongo.c sd_longlong.h fmt.h 
-	./cc-compile fmt_ullongo.c
-fmt_ullongx.o:\
-	cc-compile fmt_ullongx.c sd_longlong.h fmt.h 
-	./cc-compile fmt_ullongx.c
-fmt_ulong.o:\
-	cc-compile fmt_ulong.c fmt.h 
-	./cc-compile fmt_ulong.c
-fmt_ulongb.o:\
-	cc-compile fmt_ulongb.c fmt.h 
-	./cc-compile fmt_ulongb.c
-fmt_ulongo.o:\
-	cc-compile fmt_ulongo.c fmt.h 
-	./cc-compile fmt_ulongo.c
-fmt_ulongx.o:\
-	cc-compile fmt_ulongx.c fmt.h 
-	./cc-compile fmt_ulongx.c
-fmt_ushort.o:\
-	cc-compile fmt_ushort.c fmt.h 
-	./cc-compile fmt_ushort.c
-fmt_ushortb.o:\
-	cc-compile fmt_ushortb.c fmt.h 
-	./cc-compile fmt_ushortb.c
-fmt_ushorto.o:\
-	cc-compile fmt_ushorto.c fmt.h 
-	./cc-compile fmt_ushorto.c
-fmt_ushortx.o:\
-	cc-compile fmt_ushortx.c fmt.h 
-	./cc-compile fmt_ushortx.c
 get_opt.a:\
 	cc-slib get_opt.sld get_opt.o 
 	./cc-slib get_opt get_opt.o 
@@ -1004,12 +1004,12 @@ obj_clean:
 	dstring_size.o dstring_trunc.o env.a env.o env_get.o error.a error.o \
 	error_str.o fd.a fd_dup.o fd_move.o fd_reset.o fd_seek.a \
 	fd_seek_cur.o fd_seek_end.o fd_seek_pos.o fd_seek_start.o fmt.a \
-	fmt_double.o fmt_float.o fmt_nstr.o fmt_pad_uc.o fmt_pad_ui.o \
-	fmt_pad_ul.o fmt_pad_us.o fmt_str.o fmt_uchar.o fmt_ucharb.o \
-	fmt_ucharo.o fmt_ucharx.o fmt_uint.o fmt_uintb.o fmt_uinto.o \
-	fmt_uintx.o fmt_ullong.o fmt_ullongo.o fmt_ullongx.o fmt_ulong.o \
-	fmt_ulongb.o fmt_ulongo.o fmt_ulongx.o fmt_ushort.o fmt_ushortb.o \
-	fmt_ushorto.o fmt_ushortx.o get_opt.a 
+	fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o fmt_double.o \
+	fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o fmt_llong.o \
+	fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o fmt_longo.o \
+	fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o fmt_pad_l.o \
+	fmt_pad_s.o fmt_short.o fmt_shortb.o fmt_shorto.o fmt_shortx.o \
+	fmt_str.o get_opt.a 
 	rm -f get_opt.o hashtable.a ht_addb.o ht_adds.o ht_bytes.o \
 	ht_checkb.o ht_checks.o ht_deleteb.o ht_deletes.o ht_free.o \
 	ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_iter.o ht_replaceb.o \
