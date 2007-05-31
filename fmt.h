@@ -17,6 +17,9 @@
 #define FMT_LONG FMT_ULONG
 #define FMT_LONGLONG FMT_ULONGLONG
 
+#define FMT_PAD_SIGN_POST 0x0000
+#define FMT_PAD_SIGN_PRE  0x0001
+
 unsigned int fmt_ulong(char *, unsigned long);
 unsigned int fmt_ulongx(char *, unsigned long);
 unsigned int fmt_ulongo(char *, unsigned long);
@@ -80,10 +83,10 @@ unsigned int fmt_pad_uint(char *, unsigned int, unsigned int, unsigned char, uns
 unsigned int fmt_pad_ushort(char *, unsigned short, unsigned int, unsigned char, unsigned int (*)(char *, unsigned short));
 unsigned int fmt_pad_uchar(char *, unsigned char, unsigned int, unsigned char, unsigned int (*)(char *, unsigned char));
 
-unsigned int fmt_pad_long(char *, long, unsigned int, unsigned char, unsigned int (*)(char *, long));
-unsigned int fmt_pad_int(char *, int, unsigned int, unsigned char, unsigned int (*)(char *, int));
-unsigned int fmt_pad_short(char *, short, unsigned int, unsigned char, unsigned int (*)(char *, short));
-unsigned int fmt_pad_char(char *, char, unsigned int, unsigned char, unsigned int (*)(char *, char));
+unsigned int fmt_pad_long(char *, long, unsigned int, unsigned char, unsigned int (*)(char *, long), unsigned int);
+unsigned int fmt_pad_int(char *, int, unsigned int, unsigned char, unsigned int (*)(char *, int), unsigned int);
+unsigned int fmt_pad_short(char *, short, unsigned int, unsigned char, unsigned int (*)(char *, short), unsigned int);
+unsigned int fmt_pad_char(char *, char, unsigned int, unsigned char, unsigned int (*)(char *, char), unsigned int);
 
 #if defined(CORELIB_USE_LONGLONG)
 unsigned int fmt_pad_ullong(char *, unsigned long long, unsigned int, unsigned char, unsigned int (*)(char *, unsigned long long));
