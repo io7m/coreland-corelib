@@ -57,7 +57,9 @@ unsigned int scan_float(const char *, float *);
 unsigned int scan_double(const char *, double *);
 
 unsigned long scan_charset(const char *, const char *);
+unsigned long scan_charsetn(const char *, const char *, unsigned long);
 unsigned long scan_notcharset(const char *, const char *);
+unsigned long scan_notcharsetn(const char *, const char *, unsigned long);
 unsigned long scan_whitespace(const char *);
 unsigned long scan_newline(const char *);
 

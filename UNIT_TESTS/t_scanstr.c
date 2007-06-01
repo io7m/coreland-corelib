@@ -9,12 +9,19 @@ int main(void)
   unsigned long num = 0;
 
   str = a;
+  num = scan_charsetn(str, "AB", 3);
+  test_assert(num == 3);
+ 
+  str = a;
   num = scan_charset(str, "AB");
   test_assert(num == 8);
 
   str += num;
   num = scan_charset(str, "D");
   test_assert(num == 0);
+
+  num = scan_notcharsetn(str, "D", 2);
+  test_assert(num == 2);
 
   num = scan_notcharset(str, "D");
   test_assert(num == 4);
