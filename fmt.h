@@ -89,7 +89,8 @@ unsigned int fmt_pad_short(char *, short, unsigned int, unsigned char, unsigned 
 unsigned int fmt_pad_char(char *, char, unsigned int, unsigned char, unsigned int (*)(char *, char), unsigned int);
 
 #if defined(CORELIB_USE_LONGLONG)
-unsigned int fmt_pad_ullong(char *, unsigned long long, unsigned int, unsigned char, unsigned int (*)(char *, unsigned long long));
+unsigned int fmt_pad_ulonglong(char *, unsigned long long, unsigned int, unsigned char, unsigned int (*)(char *, unsigned long long));
+unsigned int fmt_pad_longlong(char *, long long, unsigned int, unsigned char, unsigned int (*)(char *, long long));
 #endif
 
 #endif
