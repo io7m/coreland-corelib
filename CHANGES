@@ -279,3 +279,4 @@
 20070528 code: signed variants of fmt_pad, using common macro core in
                fmt_pad.h
 20070601 code: added scan_charsetn() and scan_notcharsetn().
+20070606 code: added rmkdir().

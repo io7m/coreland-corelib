@@ -6,9 +6,9 @@ all: sysdeps.out alloc.a array.a base_name.a bin.a buffer.a \
 	closeonexec.a corelib-conf ctxt/ctxt.a deinstaller dgetline.a \
 	dir_array.a dir_hash.a dir_name.a dstring.a env.a error.a fd.a \
 	fd_seek.a fmt.a get_opt.a hashtable.a iarray.a inst-check inst-copy \
-	inst-dir inst-link installer instchk nonblock.a open.a sarray.a \
-	scan.a sgetline.a sig.a squeue.a sstack.a sstring.a stalloc.a str.a \
-	syserr.a uint.a 
+	inst-dir inst-link installer instchk nonblock.a open.a rmkdir.a \
+	sarray.a scan.a sgetline.a sig.a squeue.a sstack.a sstring.a \
+	stalloc.a str.a syserr.a uint.a 
 
 sysdeps: sysdeps.out
 sysdeps.out:
@@ -666,6 +666,12 @@ open_trunc.o:\
 open_wo.o:\
 	cc-compile open_wo.c sd_fcntl.h open.h 
 	./cc-compile open_wo.c
+rmkdir.a:\
+	cc-slib rmkdir.sld rmkdir.o 
+	./cc-slib rmkdir rmkdir.o 
+rmkdir.o:\
+	cc-compile rmkdir.c bin.h error.h rmkdir.h str.h 
+	./cc-compile rmkdir.c
 sarray.a:\
 	cc-slib sarray.sld sarray_bytes.o sarray_cat.o sarray_chop.o \
 	sarray_data.o sarray_index.o sarray_init.o sarray_size.o \
@@ -1032,27 +1038,28 @@ obj_clean:
 	install_core.o install_error.o installer installer.o instchk \
 	instchk.o insthier.o nonblock.a nonblock.o open.a open_append.o \
 	open_creat.o open_excl.o open_ro.o open_rw.o open_trunc.o open_wo.o \
-	sarray.a sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
-	sarray_index.o sarray_init.o 
-	rm -f sarray_size.o sarray_trunc.o scan.a scan_char.o scan_charb.o \
-	scan_charo.o scan_chars.o scan_charsn.o scan_charx.o scan_double.o \
-	scan_float.o scan_int.o scan_intb.o scan_into.o scan_intx.o \
-	scan_llong.o scan_llongb.o scan_llongo.o scan_llongx.o scan_long.o \
-	scan_longb.o scan_longo.o scan_longx.o scan_nchars.o scan_ncharsn.o \
-	scan_newline.o scan_short.o scan_shortb.o scan_shorto.o \
-	scan_shortx.o scan_space.o sgetline.a sgetline.o sgetline_chop.o \
-	sgetline_data.o sgetline_get.o sgetline_lnum.o sgetline_size.o sig.a \
-	sig.o sig_block.o sig_catch.o sig_pause.o squeue.a squeue_bytes.o \
-	squeue_data.o squeue_deq.o squeue_enq.o squeue_init.o squeue_peek.o \
-	squeue_size.o sstack.a sstack_bytes.o sstack_data.o sstack_init.o \
-	sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o sstring.a \
-	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o 
-	rm -f sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
-	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
-	uint.a uint_pack.o uint_unpack.o 
+	rmkdir.a rmkdir.o sarray.a sarray_bytes.o sarray_cat.o sarray_chop.o \
+	sarray_data.o 
+	rm -f sarray_index.o sarray_init.o sarray_size.o sarray_trunc.o \
+	scan.a scan_char.o scan_charb.o scan_charo.o scan_chars.o \
+	scan_charsn.o scan_charx.o scan_double.o scan_float.o scan_int.o \
+	scan_intb.o scan_into.o scan_intx.o scan_llong.o scan_llongb.o \
+	scan_llongo.o scan_llongx.o scan_long.o scan_longb.o scan_longo.o \
+	scan_longx.o scan_nchars.o scan_ncharsn.o scan_newline.o \
+	scan_short.o scan_shortb.o scan_shorto.o scan_shortx.o scan_space.o \
+	sgetline.a sgetline.o sgetline_chop.o sgetline_data.o sgetline_get.o \
+	sgetline_lnum.o sgetline_size.o sig.a sig.o sig_block.o sig_catch.o \
+	sig_pause.o squeue.a squeue_bytes.o squeue_data.o squeue_deq.o \
+	squeue_enq.o squeue_init.o squeue_peek.o squeue_size.o sstack.a \
+	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
+	sstack_pop.o sstack_push.o sstack_size.o sstring.a sstring_0.o \
+	sstring_cat.o 
+	rm -f sstring_catb.o sstring_cats.o sstring_chop.o sstring_copy.o \
+	sstring_cpyb.o sstring_cpys.o sstring_init.o stalloc.a stalloc.o \
+	str.a str_char.o str_chr.o str_ci_diff.o str_ci_ndiff.o str_diff.o \
+	str_dup.o str_ends.o str_len.o str_ndiff.o str_rchar.o str_rchr.o \
+	str_starts.o str_tolower.o str_toupper.o syserr.a syserr_die.o \
+	syserr_init.o uint.a uint_pack.o uint_unpack.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller
