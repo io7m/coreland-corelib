@@ -280,3 +280,4 @@
                fmt_pad.h
 20070601 code: added scan_charsetn() and scan_notcharsetn().
 20070606 code: added rmkdir().
+20070607 code: added dgetline_setfd().
