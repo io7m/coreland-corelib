@@ -13,6 +13,7 @@ struct dgetline {
 int dgetline_init(struct dgetline *, long (*)(int, char *, unsigned long), int fd, char *, unsigned long);
 int dgetline_initbuf(struct dgetline *, struct buffer *);
 int dgetline_get(struct dgetline *);
+void dgetline_setfd(struct dgetline *, int);
 void dgetline_free(struct dgetline *);
 void dgetline_trunc(struct dgetline *);
 void dgetline_chop(struct dgetline *, unsigned long);

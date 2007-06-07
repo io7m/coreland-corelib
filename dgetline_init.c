@@ -14,3 +14,8 @@ int dgetline_initbuf(struct dgetline *dg, struct buffer *b)
 {
   return dgetline_init(dg, b->op, b->fd, b->buf, b->size);
 }
+
+void dgetline_setfd(struct dgetline *dg, int fd)
+{
+  dg->b.fd = fd;
+}
