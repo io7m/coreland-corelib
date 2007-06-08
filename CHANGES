@@ -282,3 +282,4 @@
 20070606 code: added rmkdir().
 20070607 code: added dgetline_setfd().
 20070608 version: corelib 0.56
+20070608 code: now using corelib-conf.c from common source.
