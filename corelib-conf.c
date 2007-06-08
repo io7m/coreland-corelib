@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "ctxt.h"
 
 static unsigned int flag;
@@ -112,8 +113,6 @@ static void parse_flags(int argc, char *argv[])
 static void call_flags(void)
 {
   unsigned int ind;
-  unsigned int jnd;
-
   for (ind = 0; ind < sizeof(flags) / sizeof(flags[0]); ++ind) {
     if (flag & flags[ind].val)
       if (flags[ind].func)
