@@ -208,6 +208,10 @@ conf-cctype:\
 conf-systype conf-cc mk-cctype 
 	./mk-cctype > conf-cctype
 
+conf-ldtype:\
+conf-systype conf-ld conf-cctype mk-ldtype 
+	./mk-ldtype > conf-ldtype
+
 conf-sosuffix:\
 mk-sosuffix 
 	./mk-sosuffix > conf-sosuffix
@@ -809,6 +813,9 @@ cc-compile mk-ctxt.c
 mk-ctxt:\
 cc-link mk-ctxt.o mk-ctxt.ld
 	./cc-link mk-ctxt mk-ctxt.o
+
+mk-ldtype:\
+conf-cctype conf-systype 
 
 mk-sosuffix:\
 conf-systype 
