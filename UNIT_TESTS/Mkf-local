@@ -1,19 +1,23 @@
 local:
 local_clean:
 	rm -f cc-compile cc-link conf-cc conf-cctype conf-systype \
-	conf-ld libs-math flags-math
+	conf-ld conf-ldtype libs-math flags-math
 
-cc-compile: ../cc-compile conf-cctype conf-cc
+cc-compile: ../cc-compile conf-cctype conf-cc conf-systype
 	rm -f cc-compile
 	ln -s ../cc-compile cc-compile
 
-cc-link: ../cc-link conf-ld conf-ldfflist libs-math
+cc-link: ../cc-link conf-ld conf-ldtype conf-ldfflist libs-math
 	rm -f cc-link
 	ln -s ../cc-link cc-link
 
 conf-cc: ../conf-cc
 	rm -f conf-cc
 	ln -s ../conf-cc conf-cc
+
+conf-ldtype: ../conf-ldtype
+	rm -f conf-ldtype
+	ln -s ../conf-ldtype conf-ldtype
 
 conf-cctype: ../conf-cctype
 	rm -f conf-cctype
