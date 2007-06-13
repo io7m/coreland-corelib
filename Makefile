@@ -206,19 +206,20 @@ cc-compile closeonexec.c closeonexec.h
 
 conf-cctype:\
 conf-systype conf-cc mk-cctype 
-	./mk-cctype > conf-cctype
+	./mk-cctype > conf-cctype.tmp && mv conf-cctype.tmp conf-cctype
 
 conf-ldtype:\
 conf-systype conf-ld conf-cctype mk-ldtype 
-	./mk-ldtype > conf-ldtype
+	./mk-ldtype > conf-ldtype.tmp && mv conf-ldtype.tmp conf-ldtype
 
 conf-sosuffix:\
 mk-sosuffix 
-	./mk-sosuffix > conf-sosuffix
+	./mk-sosuffix > conf-sosuffix.tmp && mv conf-sosuffix.tmp \
+	conf-sosuffix
 
 conf-systype:\
 mk-systype 
-	./mk-systype > conf-systype
+	./mk-systype > conf-systype.tmp && mv conf-systype.tmp conf-systype
 
 corelib-conf:\
 cc-link corelib-conf.ld corelib-conf.o ctxt/ctxt.a 
@@ -806,16 +807,15 @@ cc-compile insthier.c install.h ctxt.h
 mk-cctype:\
 conf-cc conf-systype 
 
-mk-ctxt.o:\
-cc-compile mk-ctxt.c
-	./cc-compile mk-ctxt.c
-
 mk-ctxt:\
-cc-link mk-ctxt.o mk-ctxt.ld
-	./cc-link mk-ctxt mk-ctxt.o
+mk-mk-ctxt 
+	./mk-mk-ctxt
 
 mk-ldtype:\
 conf-cctype conf-systype 
+
+mk-mk-ctxt:\
+conf-cc 
 
 mk-sosuffix:\
 conf-systype 
