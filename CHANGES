@@ -285,3 +285,5 @@
 20070608 code: now using corelib-conf.c from common source.
 20070612 code: compilation tools now produce dual architecture binaries on
                OS X by default.
+20070613 code: reverted previous change - new cpj tools provide explicit
+               cross compilation.
