@@ -287,3 +287,5 @@
                OS X by default.
 20070613 code: reverted previous change - new cpj tools provide explicit
                cross compilation.
+20070615 code: updated to new cpj tool and new sysdeps.
+20070615 version: 0.561

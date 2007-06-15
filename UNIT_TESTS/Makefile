@@ -285,6 +285,9 @@ t_get_opt.o:\
 cc-compile t_get_opt.c ../get_opt.h t_assert.h 
 	./cc-compile t_get_opt.c
 
+t_hashtable.h:\
+../hashtable.h 
+
 t_hashtable1:\
 cc-link t_hashtable1.ld t_hashtable1.o t_hashtable_d.o ../hashtable.a \
 ../error.a ../bin.a ../str.a ../alloc.a t_assert.o 
@@ -380,6 +383,9 @@ cc-compile t_hashtable_c.c t_hashtable.h ../hashtable.h ../bin.h ../str.h
 t_hashtable_d.o:\
 cc-compile t_hashtable_d.c 
 	./cc-compile t_hashtable_d.c
+
+t_iarray.h:\
+../iarray.h 
 
 t_iarray.o:\
 cc-compile t_iarray.c t_iarray.h ../iarray.h 

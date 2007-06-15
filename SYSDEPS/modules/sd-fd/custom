@@ -1,0 +1,23 @@
+#!/bin/sh
+
+fout="$1"
+sysdeps="$2"
+
+cat >> "${fout}" <<EOF
+#ifndef _FD_H
+#define _FD_H
+
+EOF
+
+${SYSDEP_CC} ${SYSDEP_CFLAGS} -c -o trydup2.o trydup2.c 1>/dev/null 2>&1
+${SYSDEP_LD} -o trydup2 trydup2.o ${SYSDEP_LDFLAGS} 1>/dev/null 2>&1
+if [ $? -eq 0 ]
+then
+  echo '#define HAVE_DUP2' >> "${fout}"
+  echo 'fd_dup2: dup2' >> "${sysdeps}"
+else
+  echo 'fd_dup2: none' >> "${sysdeps}"
+fi
+
+echo '#endif' >> "${fout}"
+rm -f trydup2 trydup2.o
