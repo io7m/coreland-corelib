@@ -290,3 +290,4 @@
 20070615 code: updated to new cpj tool and new sysdeps.
 20070617 code: strange bug related to large signed constants on IA64.
                -0xffffffff == 1, -0xffffffffL == -0xffffffff.
+20070617 code: fmt_char*() becomes signed char.

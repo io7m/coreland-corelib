@@ -55,10 +55,10 @@ unsigned int fmt_shortx(char *, short);
 unsigned int fmt_shorto(char *, short);
 unsigned int fmt_shortb(char *, short);
 
-unsigned int fmt_char(char *, char);
-unsigned int fmt_charx(char *, char);
-unsigned int fmt_charo(char *, char);
-unsigned int fmt_charb(char *, char);
+unsigned int fmt_char(char *, signed char);
+unsigned int fmt_charx(char *, signed char);
+unsigned int fmt_charo(char *, signed char);
+unsigned int fmt_charb(char *, signed char);
 
 #if defined(CORELIB_USE_LONGLONG)
 unsigned int fmt_ulonglong(char *, unsigned long long);
