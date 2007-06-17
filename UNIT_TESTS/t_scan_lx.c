@@ -29,8 +29,8 @@ static const struct {
   { 9, -0x12345678, "-12345678" },
   { 7, -0xabcdef, "-abcdef" },
   { 7, -0xabcdef, "-ABCDEF" },
-  { 9, -0xffffffff, "-ffffffff" },
-  { 9, -0xffffffff, "-FFFFFFFF" },
+  { 9, -0xffffffffL, "-ffffffff" },
+  { 9, -0xffffffffL, "-FFFFFFFF" },
   { 4, -0x123, "-123 456" },
  
   { 1, 0, "-" },
