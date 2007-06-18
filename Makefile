@@ -1404,27 +1404,27 @@ obj_clean:
 	bin_chr.o bin_copy.o bin_copyr.o bin_count.o bin_diff.o bin_rchar.o \
 	bin_rchr.o bin_set.o bin_tolower.o bin_toupper.o bin_zero.o buffer.a \
 	buffer0.o buffer1.o buffer2.o buffer_copy.o buffer_get.o \
-	buffer_init.o buffer_put.o closeonexec.a closeonexec.o conf-cctype \
-	conf-systype corelib-conf corelib-conf.o ctxt/bindir.c ctxt/bindir.o \
-	ctxt/ctxt.a ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c \
-	ctxt/incdir.o ctxt/repos.c ctxt/repos.o ctxt/slibdir.c \
-	ctxt/slibdir.o ctxt/version.c ctxt/version.o deinstaller \
-	deinstaller.o dgetline.a dgetline_chop.o dgetline_data.o \
-	dgetline_free.o dgetline_get.o dgetline_init.o dgetline_lnum.o 
-	rm -f dgetline_size.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
-	dir_name.a dir_name.o dstring.a dstring_0.o dstring_cat.o \
-	dstring_catb.o dstring_cats.o dstring_chop.o dstring_copy.o \
-	dstring_cpyb.o dstring_cpys.o dstring_data.o dstring_init.o \
-	dstring_size.o dstring_trunc.o env.a env.o env_get.o error.a error.o \
-	error_str.o fd.a fd_dup.o fd_move.o fd_reset.o fd_seek.a \
-	fd_seek_cur.o fd_seek_end.o fd_seek_pos.o fd_seek_start.o fmt.a \
-	fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o fmt_double.o \
-	fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o fmt_llong.o \
-	fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o \
-	fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o \
-	fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o \
-	fmt_shorto.o fmt_shortx.o 
-	rm -f fmt_str.o get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o \
+	buffer_init.o buffer_put.o closeonexec.a closeonexec.o conf-ldtype \
+	corelib-conf corelib-conf.o ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a \
+	ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c ctxt/incdir.o \
+	ctxt/repos.c ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o \
+	ctxt/version.c ctxt/version.o deinstaller deinstaller.o dgetline.a \
+	dgetline_chop.o dgetline_data.o dgetline_free.o dgetline_get.o \
+	dgetline_init.o dgetline_lnum.o dgetline_size.o 
+	rm -f dir_array.a dir_array.o dir_hash.a dir_hash.o dir_name.a \
+	dir_name.o dstring.a dstring_0.o dstring_cat.o dstring_catb.o \
+	dstring_cats.o dstring_chop.o dstring_copy.o dstring_cpyb.o \
+	dstring_cpys.o dstring_data.o dstring_init.o dstring_size.o \
+	dstring_trunc.o env.a env.o env_get.o error.a error.o error_str.o \
+	fd.a fd_dup.o fd_move.o fd_reset.o fd_seek.a fd_seek_cur.o \
+	fd_seek_end.o fd_seek_pos.o fd_seek_start.o fmt.a fmt_char.o \
+	fmt_charb.o fmt_charo.o fmt_charx.o fmt_double.o fmt_float.o \
+	fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o fmt_llong.o fmt_llongb.o \
+	fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o fmt_longo.o \
+	fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o fmt_pad_l.o \
+	fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o fmt_shorto.o \
+	fmt_shortx.o fmt_str.o 
+	rm -f get_opt.a get_opt.o hashtable.a ht_addb.o ht_adds.o \
 	ht_bytes.o ht_checkb.o ht_checks.o ht_deleteb.o ht_deletes.o \
 	ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o ht_iter.o \
 	ht_replaceb.o ht_replaces.o iarray.a iarray_bytes.o iarray_cat.o \
@@ -1433,7 +1433,7 @@ obj_clean:
 	iarray_size.o iarray_sort.o iarray_trunc.o iarray_zero.o inst-check \
 	inst-check.o inst-copy inst-copy.o inst-dir inst-dir.o inst-link \
 	inst-link.o install_core.o install_error.o installer installer.o \
-	instchk instchk.o insthier.o nonblock.a nonblock.o open.a \
+	instchk instchk.o insthier.o mk-ctxt nonblock.a nonblock.o open.a \
 	open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
 	open_trunc.o open_wo.o rmkdir.a rmkdir.o sarray.a sarray_bytes.o \
 	sarray_cat.o 
