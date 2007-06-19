@@ -293,5 +293,5 @@
                not affect any library code, it simply required an
                adjustment to the unit tests.
 20070617 code: fmt_char*() becomes signed char.
-20070619 code: incorrect memory copy on big endian hardware in
-               uint_convert() corrected.
+20070619 code: removed uint entirely. in practice, it is too difficult
+               to use correctly.

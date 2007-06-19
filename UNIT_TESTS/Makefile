@@ -16,8 +16,7 @@ t_scan_llx t_scan_lo t_scan_lx t_scan_s t_scan_sb t_scan_so t_scan_sx \
 t_scan_uc t_scan_ucb t_scan_uco t_scan_ucx t_scan_ui t_scan_uib t_scan_uio \
 t_scan_uix t_scan_ul t_scan_ulb t_scan_ull t_scan_ullb t_scan_ullo \
 t_scan_ullx t_scan_ulo t_scan_ulx t_scan_us t_scan_usb t_scan_uso t_scan_usx \
-t_scanstr t_sgetline t_sig t_squeue1 t_sstack1 t_sstring t_stalloc t_str \
-t_uint2 
+t_scanstr t_sgetline t_sig t_squeue1 t_sstack1 t_sstring t_stalloc t_str 
 
 t_alloc:\
 cc-link t_alloc.ld t_alloc.o t_assert.o ../alloc.a 
@@ -896,14 +895,6 @@ t_str.o:\
 cc-compile t_str.c ../error.h ../str.h t_assert.h 
 	./cc-compile t_str.c
 
-t_uint2:\
-cc-link t_uint2.ld t_uint2.o ../uint.a t_assert.o 
-	./cc-link t_uint2 t_uint2.o ../uint.a t_assert.o 
-
-t_uint2.o:\
-cc-compile t_uint2.c ../uint.h 
-	./cc-compile t_uint2.c
-
 clean-all: tests_clean local_clean obj_clean 
 clean: obj_clean
 obj_clean: 
@@ -945,7 +936,7 @@ obj_clean:
 	t_scanstr t_scanstr.o t_sgetline t_sgetline.o t_sig t_sig.o \
 	t_squeue1 
 	rm -f t_squeue1.o t_sstack1 t_sstack1.o t_sstring t_sstring.o \
-	t_stalloc t_stalloc.o t_str t_str.o t_uint2 t_uint2.o 
+	t_stalloc t_stalloc.o t_str t_str.o 
 
 tests: list_tests run_tests
 tests_clean:

@@ -8,7 +8,7 @@ ctxt/ctxt.a deinstaller dgetline.a dir_array.a dir_hash.a dir_name.a \
 dstring.a env.a error.a fd.a fd_seek.a fmt.a get_opt.a hashtable.a iarray.a \
 inst-check inst-copy inst-dir inst-link installer instchk nonblock.a open.a \
 rmkdir.a sarray.a scan.a sgetline.a sig.a squeue.a sstack.a sstring.a \
-stalloc.a str.a syserr.a sysinfo uint.a 
+stalloc.a str.a syserr.a sysinfo 
 
 # -- SYSDEPS start
 _byteorder.h:
@@ -1383,18 +1383,6 @@ sysinfo.o:\
 cc-compile sysinfo.c _sysinfo.h 
 	./cc-compile sysinfo.c
 
-uint.a:\
-cc-slib uint.sld uint_pack.o uint_unpack.o 
-	./cc-slib uint uint_pack.o uint_unpack.o 
-
-uint_pack.o:\
-cc-compile uint_pack.c uint.h 
-	./cc-compile uint_pack.c
-
-uint_unpack.o:\
-cc-compile uint_unpack.c uint.h 
-	./cc-compile uint_unpack.c
-
 clean-all: sysdeps_clean tests_clean obj_clean 
 clean: obj_clean
 obj_clean: 
@@ -1456,7 +1444,7 @@ obj_clean:
 	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
 	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
 	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
-	sysinfo sysinfo.o uint.a uint_pack.o uint_unpack.o 
+	sysinfo sysinfo.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller
