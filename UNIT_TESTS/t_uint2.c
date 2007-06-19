@@ -35,6 +35,8 @@ int test_uchar()
   uc = 170;
   uint_packb(buf, uc, sizeof(unsigned char));
   if (buf[0] != 170) return fail_pack("b", "uc", 0, 170, buf[0]);
+
+  uc = 0;
   uint_unpackb(buf, &uc, sizeof(unsigned char));
   if (uc != 170) return fail_unpack("b", "uc", uc, 170);
 
@@ -43,6 +45,8 @@ int test_uchar()
   uc = 170;
   uint_packl(buf, uc, sizeof(unsigned char));
   if (buf[0] != 170) return fail_pack("l", "uc", 0, 170, buf[0]);
+
+  uc = 0;
   uint_unpackl(buf, &uc, sizeof(unsigned char));
   if (uc != 170) return fail_unpack("l", "uc", uc, 170);
 
@@ -61,6 +65,8 @@ int test_ushort()
     return fail_pack("b", "us", sizeof(us) - 1, 170, buf[sizeof(us) - 1]);
   if (buf[sizeof(us) - 2] != 204)
     return fail_pack("b", "us", sizeof(us) - 2, 204, buf[sizeof(us) - 2]);
+
+  us = 0;
   uint_unpackb(buf, &us, sizeof(us));
   if (us != 52394) return fail_unpack("b", "us", us, 52394);
 
@@ -72,6 +78,8 @@ int test_ushort()
     return fail_pack("l", "us", 0, 170, buf[0]);
   if (buf[1] != 204)
     return fail_pack("l", "us", 1, 204, buf[1]);
+
+  us = 0;
   uint_unpackl(buf, &us, sizeof(us));
   if (us != 52394) return fail_unpack("b", "us", us, 52394);
 
@@ -90,6 +98,8 @@ int test_uint()
     return fail_pack("b", "ui", sizeof(ui) - 1, 170, buf[sizeof(ui) - 1]);
   if (buf[sizeof(ui) - 2] != 204)
     return fail_pack("b", "ui", sizeof(ui) - 2, 204, buf[sizeof(ui) - 2]);
+
+  ui = 0;
   uint_unpackb(buf, &ui, sizeof(ui));
   if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
 
@@ -101,6 +111,8 @@ int test_uint()
     return fail_pack("l", "ui", 0, 170, buf[0]);
   if (buf[1] != 204)
     return fail_pack("l", "ui", 1, 204, buf[1]);
+
+  ui = 0;
   uint_unpackl(buf, &ui, sizeof(ui));
   if (ui != 52394) return fail_unpack("b", "ui", ui, 52394);
 
@@ -124,6 +136,7 @@ int test_ulong()
   if (buf[sizeof(ul) - 4] != 204)
     return fail_pack("b", "ul", sizeof(ul) - 2, 204, buf[sizeof(ul) - 4]);
  
+  ul = 0;
   uint_unpackb(buf, &ul, sizeof(ul));
   if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
 
@@ -140,6 +153,7 @@ int test_ulong()
   if (buf[3] != 204)
     return fail_pack("l", "ul", 1, 204, buf[3]);
  
+  ul = 0;
   uint_unpackl(buf, &ul, sizeof(ul));
   if (ul != 3433745578U) return fail_unpack("b", "ul", ul, 3433745578U);
 

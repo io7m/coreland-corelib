@@ -8,11 +8,11 @@ static int uint_big_endian()
   return (c != i);
 }
 
-/* copy src_len bytes of data from src into dst_len bytes of data
- * at dst. this is necessary to take care of endianness and the fact
- * that 'unsigned long' is used internally to hold a temporary value
- * but client code may be requesting the unpacking of an 'unsigned
- * short', for example.
+/* simulate integer truncation. dst is dst_len bytes long and src
+ * is src_len bytes long. depending on endianness, a straight memory
+ * copy would result in different values on different platforms. this
+ * copy is careful to simulate integer truncation (a large value copied
+ * into a single byte would become 0xff).
  */
 
 static void uint_convert(const void *src, unsigned long src_len,
@@ -24,7 +24,7 @@ static void uint_convert(const void *src, unsigned long src_len,
 
   if (uint_big_endian())
     for (ind = 0; ind < dst_len; ++ind)
-      dst_p[dst_len - ind] = src_p[src_len - ind];
+      dst_p[dst_len - (ind + 1)] = src_p[src_len - (ind + 1)];
   else
     for (ind = 0; ind < dst_len; ++ind)
       dst_p[ind] = src_p[ind];
