@@ -295,3 +295,5 @@
 20070617 code: fmt_char*() becomes signed char.
 20070619 code: removed uint entirely. in practice, it is too difficult
                to use correctly.
+20070625 code: reimplementation of array, including array_catn with a
+               common core.

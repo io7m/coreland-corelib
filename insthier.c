@@ -13,6 +13,8 @@ struct install_item insthier[] = {
   {INST_COPY, "array.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "array_bytes.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "array_cat.c", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "array_catb.c", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "array_catn.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "array_chop.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "array_copy.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "array_data.c", 0, ctxt_repos, 0, 0, 0644},
@@ -229,6 +231,7 @@ struct install_item insthier[] = {
   {INST_COPY, "str_toupper.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "syserr_die.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "syserr_init.c", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "sysinfo.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "_direntry.h", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "_direntry.h", 0, ctxt_incdir, 0, 0, 0644},
   {INST_COPY, "_sig_action.h", 0, ctxt_repos, 0, 0, 0644},
@@ -383,5 +386,7 @@ struct install_item insthier[] = {
   {INST_COPY, "syserr.a", "libsyserr.a", ctxt_slibdir, 0, 0, 0644},
   {INST_COPY, "corelib-conf.ld", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "corelib-conf", 0, ctxt_bindir, 0, 0, 0755},
+  {INST_COPY, "sysinfo.ld", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "sysinfo", 0, ctxt_bindir, 0, 0, 0755},
 };
 unsigned long insthier_len = sizeof(insthier) / sizeof(struct install_item);
