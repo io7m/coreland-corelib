@@ -18,6 +18,7 @@ int array_catb(struct array *a, const void *dat, unsigned long dsize)
   /* need to reallocate? */
   new_alloc = cur_alloc + (a->es * ARRAY_OVERALLOC) + dsize;
   new_used = cur_used + dsize;
+  if (cur_alloc + dsize < cur_alloc) return 0; /* check wrap */
   if (new_alloc < cur_alloc) return 0; /* check wrap */
   if (new_used >= cur_alloc) {
     if (!alloc_re(&a->x, cur_alloc, new_alloc)) return 0;
