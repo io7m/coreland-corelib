@@ -15,6 +15,7 @@ int dqueue_enq(struct dqueue *, void *);
 int dqueue_deq(struct dqueue *, void **);
 int dqueue_peek(struct dqueue *, void **);
 void dqueue_free(struct dqueue *);
+void dqueue_zero(struct dqueue *);
 
 unsigned long dqueue_size(const struct dqueue *);
 unsigned long dqueue_bytes(const struct dqueue *);

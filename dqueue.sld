@@ -6,3 +6,4 @@ dqueue_free.o
 dqueue_init.o
 dqueue_peek.o
 dqueue_size.o
+dqueue_zero.o
