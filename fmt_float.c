@@ -103,7 +103,7 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
   union real real;
   fmt_func *fmt_func = fmt_ulong;
   float ftmp;
-  long exp;
+  long exp = 0;
 
   if (rnd > FLT_DIG) rnd = FLT_DIG;
   if (!rnd) return 0;
@@ -142,7 +142,6 @@ unsigned int fmt_float(char *str, float flo, unsigned int rnd)
 
   /* work out if scientific notation is required */
   ftmp = real.f;
-  exp = 0;
   while (ftmp >= 10.0) { ++exp; ftmp *= 0.1; }
   while (ftmp < 1.0) { --exp; ftmp *= 10.0; }
 

@@ -106,11 +106,11 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
 
 #if defined(HAVE_LONGLONG)
   unsigned long long num;
-  long long exp;
+  long long exp = 0;
   fmt_func *fmt_func = fmt_ulonglong;
 #else
   unsigned long num;
-  long exp;
+  long exp = 0;
   fmt_func *fmt_func = fmt_ulong;
 #endif
   double dtmp;
@@ -153,7 +153,6 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
 
   /* work out if scientific notation is required */
   dtmp = real.d;
-  exp = 0;
   while (dtmp >= 10.0) { ++exp; dtmp *= 0.1; }
   while (dtmp < 1.0) { --exp; dtmp *= 10.0; }
 

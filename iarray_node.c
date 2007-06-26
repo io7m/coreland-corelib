@@ -7,7 +7,7 @@ int iarray_newnodes(struct iarray_node **headptr, struct iarray_node **tailptr,
                     unsigned long num)
 {
   struct iarray_node *head;
-  struct iarray_node *in;
+  struct iarray_node *in = 0;
   struct iarray_node *in_prev;
   struct iarray_node *in_next;
   unsigned long ind;

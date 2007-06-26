@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "../fmt.h"
 #include "../str.h"
@@ -274,6 +275,11 @@ static const struct fmt_test tests[] = {
   { 1, 7, 0.00000001, "9.10e-9" },
 };
 
+void fail(void)
+{
+  exit(1);
+}
+
 int main(void)
 {
   char cnum[FMT_FLOAT];
@@ -282,19 +288,19 @@ int main(void)
 
   for (ind = 0; ind < sizeof(tests) / sizeof(struct fmt_test); ++ind) {
     len = fmt_float(cnum, tests[ind].num, tests[ind].sig);
+    cnum[len] = 0;
     if (len != tests[ind].len) {
       printf("[%u] fail: len %u != %u %s %s\n", ind, len, tests[ind].len, cnum, tests[ind].str);
-      return 1;
+      fail();
     }
     len = fmt_float(FMT_LEN, tests[ind].num, tests[ind].sig);
     if (len != tests[ind].len) {
       printf("[%u] fail: FMT_LEN len %u != %u\n", ind, len, tests[ind].len);
-      return 1;
+      fail();
     }
-    cnum[len] = 0;
     if (!str_same(cnum, tests[ind].str)) {
       printf("[%u] fail: %s != %s\n", ind, cnum, tests[ind].str);
-      return 1;
+      fail();
     }
     printf("[%u] pass: %s == %s\n", ind, tests[ind].str, cnum);
   }
