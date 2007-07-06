@@ -10,6 +10,9 @@ int main(void)
   int i;
   int *p;
 
+  array_zero(&arr);
+  array_zero(&arrc);
+
   test_assert(array_init(&arr, 10, sizeof(int)));
   test_assert(array_bytes(&arr) == 0);
   test_assert(array_size(&arr) == 0);
