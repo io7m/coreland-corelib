@@ -1,5 +1,7 @@
 t_dir_walk.o
 ../dir_walk.a
+../dir_array.a
+../alloc.a
 ../sstring.a
 ../bin.a
 ../str.a

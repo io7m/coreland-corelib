@@ -185,10 +185,10 @@ t_assert.h
 	./cc-compile t_dir_name.c
 
 t_dir_walk:\
-cc-link t_dir_walk.ld t_dir_walk.o ../dir_walk.a ../sstring.a ../bin.a \
-../str.a ../open.a ../error.a 
-	./cc-link t_dir_walk t_dir_walk.o ../dir_walk.a ../sstring.a \
-	../bin.a ../str.a ../open.a ../error.a 
+cc-link t_dir_walk.ld t_dir_walk.o ../dir_walk.a ../dir_array.a ../alloc.a \
+../sstring.a ../bin.a ../str.a ../open.a ../error.a 
+	./cc-link t_dir_walk t_dir_walk.o ../dir_walk.a ../dir_array.a \
+	../alloc.a ../sstring.a ../bin.a ../str.a ../open.a ../error.a 
 
 t_dir_walk.o:\
 cc-compile t_dir_walk.c ../error.h ../dir_walk.h 
