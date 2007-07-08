@@ -5,9 +5,9 @@ default: all
 all:\
 alloc.a array.a base_name.a bin.a buffer.a closeonexec.a corelib-conf \
 ctxt/ctxt.a deinstaller dgetline.a dir_array.a dir_hash.a dir_name.a \
-dqueue.a dstring.a env.a error.a fd.a fd_seek.a fmt.a get_opt.a hashtable.a \
-iarray.a inst-check inst-copy inst-dir inst-link installer instchk \
-nonblock.a open.a rmkdir.a sarray.a scan.a sgetline.a sig.a squeue.a \
+dir_walk.a dqueue.a dstring.a env.a error.a fd.a fd_seek.a fmt.a get_opt.a \
+hashtable.a iarray.a inst-check inst-copy inst-dir inst-link installer \
+instchk nonblock.a open.a rmkdir.a sarray.a scan.a sgetline.a sig.a squeue.a \
 sstack.a sstring.a stalloc.a str.a syserr.a sysinfo 
 
 # -- SYSDEPS start
@@ -422,6 +422,17 @@ cc-slib dir_name.sld dir_name.o
 dir_name.o:\
 cc-compile dir_name.c bin.h dir_name.h str.h 
 	./cc-compile dir_name.c
+
+dir_walk.a:\
+cc-slib dir_walk.sld dir_walk.o 
+	./cc-slib dir_walk dir_walk.o 
+
+dir_walk.h:\
+sstring.h 
+
+dir_walk.o:\
+cc-compile dir_walk.c bin.h direntry.h open.h str.h sstring.h dir_walk.h 
+	./cc-compile dir_walk.c
 
 direntry.h:\
 _direntry.h 
@@ -1444,61 +1455,59 @@ obj_clean:
 	bin_count.o bin_diff.o bin_rchar.o bin_rchr.o bin_set.o \
 	bin_tolower.o bin_toupper.o bin_zero.o buffer.a buffer0.o buffer1.o \
 	buffer2.o buffer_copy.o buffer_get.o buffer_init.o buffer_put.o \
-	closeonexec.a closeonexec.o conf-cctype conf-ldtype conf-systype \
-	corelib-conf corelib-conf.o ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a \
-	ctxt/dlibdir.c ctxt/dlibdir.o ctxt/incdir.c ctxt/incdir.o \
-	ctxt/repos.c ctxt/repos.o ctxt/slibdir.c ctxt/slibdir.o \
-	ctxt/version.c ctxt/version.o deinstaller deinstaller.o dgetline.a \
-	dgetline_chop.o dgetline_data.o dgetline_free.o 
-	rm -f dgetline_get.o dgetline_init.o dgetline_lnum.o \
-	dgetline_size.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
-	dir_name.a dir_name.o dqueue.a dqueue_bytes.o dqueue_data.o \
-	dqueue_deq.o dqueue_enq.o dqueue_free.o dqueue_init.o dqueue_peek.o \
-	dqueue_size.o dqueue_zero.o dstring.a dstring_0.o dstring_cat.o \
-	dstring_catb.o dstring_cats.o dstring_chop.o dstring_copy.o \
-	dstring_cpyb.o dstring_cpys.o dstring_data.o dstring_init.o \
-	dstring_size.o dstring_trunc.o env.a env.o env_get.o error.a error.o \
-	error_str.o fd.a fd_dup.o fd_move.o fd_reset.o fd_seek.a \
-	fd_seek_cur.o fd_seek_end.o fd_seek_pos.o fd_seek_start.o fmt.a \
-	fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o fmt_double.o \
+	closeonexec.a closeonexec.o corelib-conf corelib-conf.o \
+	ctxt/bindir.c ctxt/bindir.o ctxt/ctxt.a ctxt/dlibdir.c \
+	ctxt/dlibdir.o ctxt/incdir.c ctxt/incdir.o ctxt/repos.c ctxt/repos.o \
+	ctxt/slibdir.c ctxt/slibdir.o ctxt/version.c ctxt/version.o \
+	deinstaller deinstaller.o dgetline.a dgetline_chop.o dgetline_data.o \
+	dgetline_free.o dgetline_get.o dgetline_init.o dgetline_lnum.o 
+	rm -f dgetline_size.o dir_array.a dir_array.o dir_hash.a dir_hash.o \
+	dir_name.a dir_name.o dir_walk.a dir_walk.o dqueue.a dqueue_bytes.o \
+	dqueue_data.o dqueue_deq.o dqueue_enq.o dqueue_free.o dqueue_init.o \
+	dqueue_peek.o dqueue_size.o dqueue_zero.o dstring.a dstring_0.o \
+	dstring_cat.o dstring_catb.o dstring_cats.o dstring_chop.o \
+	dstring_copy.o dstring_cpyb.o dstring_cpys.o dstring_data.o \
+	dstring_init.o dstring_size.o dstring_trunc.o env.a env.o env_get.o \
+	error.a error.o error_str.o fd.a fd_dup.o fd_move.o fd_reset.o \
+	fd_seek.a fd_seek_cur.o fd_seek_end.o fd_seek_pos.o fd_seek_start.o \
+	fmt.a fmt_char.o fmt_charb.o fmt_charo.o fmt_charx.o fmt_double.o \
 	fmt_float.o fmt_int.o fmt_intb.o fmt_into.o fmt_intx.o fmt_llong.o \
-	fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o 
-	rm -f fmt_longb.o fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o \
-	fmt_pad_i.o fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o \
-	fmt_shortb.o fmt_shorto.o fmt_shortx.o fmt_str.o get_opt.a get_opt.o \
-	hashtable.a ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o ht_checks.o \
-	ht_deleteb.o ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o \
-	ht_init.o ht_iter.o ht_replaceb.o ht_replaces.o iarray.a \
-	iarray_bytes.o iarray_cat.o iarray_chop.o iarray_copy.o \
-	iarray_free.o iarray_index.o iarray_init.o iarray_insert.o \
-	iarray_node.o iarray_remove.o iarray_size.o iarray_sort.o \
-	iarray_trunc.o iarray_zero.o inst-check inst-check.o inst-copy \
-	inst-copy.o inst-dir inst-dir.o inst-link inst-link.o install_core.o \
-	install_error.o installer installer.o instchk instchk.o insthier.o \
-	mk-ctxt nonblock.a 
-	rm -f nonblock.o open.a open_append.o open_creat.o open_excl.o \
-	open_ro.o open_rw.o open_trunc.o open_wo.o rmkdir.a rmkdir.o \
-	sarray.a sarray_bytes.o sarray_cat.o sarray_chop.o sarray_data.o \
-	sarray_index.o sarray_init.o sarray_size.o sarray_trunc.o scan.a \
-	scan_char.o scan_charb.o scan_charo.o scan_chars.o scan_charsn.o \
-	scan_charx.o scan_double.o scan_float.o scan_int.o scan_intb.o \
-	scan_into.o scan_intx.o scan_llong.o scan_llongb.o scan_llongo.o \
-	scan_llongx.o scan_long.o scan_longb.o scan_longo.o scan_longx.o \
-	scan_nchars.o scan_ncharsn.o scan_newline.o scan_short.o \
-	scan_shortb.o scan_shorto.o scan_shortx.o scan_space.o sgetline.a \
-	sgetline.o sgetline_chop.o sgetline_data.o sgetline_get.o \
-	sgetline_lnum.o sgetline_size.o sig.a sig.o sig_block.o sig_catch.o \
-	sig_pause.o squeue.a squeue_bytes.o squeue_data.o 
-	rm -f squeue_deq.o squeue_enq.o squeue_init.o squeue_peek.o \
-	squeue_size.o sstack.a sstack_bytes.o sstack_data.o sstack_init.o \
-	sstack_peek.o sstack_pop.o sstack_push.o sstack_size.o sstring.a \
-	sstring_0.o sstring_cat.o sstring_catb.o sstring_cats.o \
-	sstring_chop.o sstring_copy.o sstring_cpyb.o sstring_cpys.o \
-	sstring_init.o stalloc.a stalloc.o str.a str_char.o str_chr.o \
-	str_ci_diff.o str_ci_ndiff.o str_diff.o str_dup.o str_ends.o \
-	str_len.o str_ndiff.o str_rchar.o str_rchr.o str_starts.o \
-	str_tolower.o str_toupper.o syserr.a syserr_die.o syserr_init.o \
-	sysinfo sysinfo.o 
+	fmt_llongb.o fmt_llongo.o fmt_llongx.o fmt_long.o fmt_longb.o 
+	rm -f fmt_longo.o fmt_longx.o fmt_nstr.o fmt_pad_c.o fmt_pad_i.o \
+	fmt_pad_l.o fmt_pad_ll.o fmt_pad_s.o fmt_short.o fmt_shortb.o \
+	fmt_shorto.o fmt_shortx.o fmt_str.o get_opt.a get_opt.o hashtable.a \
+	ht_addb.o ht_adds.o ht_bytes.o ht_checkb.o ht_checks.o ht_deleteb.o \
+	ht_deletes.o ht_free.o ht_getb.o ht_gets.o ht_hash.o ht_init.o \
+	ht_iter.o ht_replaceb.o ht_replaces.o iarray.a iarray_bytes.o \
+	iarray_cat.o iarray_chop.o iarray_copy.o iarray_free.o \
+	iarray_index.o iarray_init.o iarray_insert.o iarray_node.o \
+	iarray_remove.o iarray_size.o iarray_sort.o iarray_trunc.o \
+	iarray_zero.o inst-check inst-check.o inst-copy inst-copy.o inst-dir \
+	inst-dir.o inst-link inst-link.o install_core.o install_error.o \
+	installer installer.o instchk instchk.o insthier.o nonblock.a \
+	nonblock.o open.a 
+	rm -f open_append.o open_creat.o open_excl.o open_ro.o open_rw.o \
+	open_trunc.o open_wo.o rmkdir.a rmkdir.o sarray.a sarray_bytes.o \
+	sarray_cat.o sarray_chop.o sarray_data.o sarray_index.o \
+	sarray_init.o sarray_size.o sarray_trunc.o scan.a scan_char.o \
+	scan_charb.o scan_charo.o scan_chars.o scan_charsn.o scan_charx.o \
+	scan_double.o scan_float.o scan_int.o scan_intb.o scan_into.o \
+	scan_intx.o scan_llong.o scan_llongb.o scan_llongo.o scan_llongx.o \
+	scan_long.o scan_longb.o scan_longo.o scan_longx.o scan_nchars.o \
+	scan_ncharsn.o scan_newline.o scan_short.o scan_shortb.o \
+	scan_shorto.o scan_shortx.o scan_space.o sgetline.a sgetline.o \
+	sgetline_chop.o sgetline_data.o sgetline_get.o sgetline_lnum.o \
+	sgetline_size.o sig.a sig.o sig_block.o sig_catch.o sig_pause.o \
+	squeue.a squeue_bytes.o squeue_data.o squeue_deq.o squeue_enq.o 
+	rm -f squeue_init.o squeue_peek.o squeue_size.o sstack.a \
+	sstack_bytes.o sstack_data.o sstack_init.o sstack_peek.o \
+	sstack_pop.o sstack_push.o sstack_size.o sstring.a sstring_0.o \
+	sstring_cat.o sstring_catb.o sstring_cats.o sstring_chop.o \
+	sstring_copy.o sstring_cpyb.o sstring_cpys.o sstring_init.o \
+	stalloc.a stalloc.o str.a str_char.o str_chr.o str_ci_diff.o \
+	str_ci_ndiff.o str_diff.o str_dup.o str_ends.o str_len.o str_ndiff.o \
+	str_rchar.o str_rchr.o str_starts.o str_tolower.o str_toupper.o \
+	syserr.a syserr_die.o syserr_init.o sysinfo sysinfo.o 
 
 deinstall: deinstaller inst-check inst-copy inst-dir inst-link
 	./deinstaller

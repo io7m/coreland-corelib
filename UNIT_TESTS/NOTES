@@ -3,3 +3,4 @@ NOTES
   t_dir_array will fail when using a copy checked out from svn due to
   the '.svn' directory creating an extra entry in the parent directory.
 
+  t_dir_walk will fail for the same reasons.

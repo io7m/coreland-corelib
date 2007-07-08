@@ -9,7 +9,13 @@ echo '-- tests start --'
 for f in `cat testlist`;
 do
   lib_tests=`expr $lib_tests + 1` >/dev/null 2>&1
-  ./$f >/dev/null 2>&1
+  if [ -f $f.exp ]
+  then
+    ./$f >$f.out 2>&1
+    cmp $f.out $f.exp >/dev/null 2>&1
+  else
+    ./$f >/dev/null 2>&1
+  fi
   ret=$?
   case $ret in
     0)

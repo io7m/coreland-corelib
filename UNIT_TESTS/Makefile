@@ -5,20 +5,20 @@ default: all
 all:\
 local t_alloc t_array1 t_array2 t_array3 t_array4 t_array5 t_array6 t_array7 \
 t_array8 t_base_name t_bin t_buffer1 t_buffer2 t_dgetline t_dir_array \
-t_dir_hash t_dir_name t_dqueue1 t_dqueue2 t_dqueue3 t_dqueue4 t_dstring \
-t_env t_fd t_fd_seek t_fmt_c t_fmt_double t_fmt_float t_fmt_i t_fmt_l \
-t_fmt_ll t_fmt_pad_l t_fmt_pad_ul t_fmt_s t_fmt_str t_fmt_uc t_fmt_ui \
-t_fmt_ul t_fmt_ull t_fmt_us t_get_opt t_hashtable1 t_hashtable2 t_hashtable3 \
-t_hashtable4 t_hashtable5 t_hashtable6 t_hashtable7 t_hashtable8 t_iarray1 \
-t_iarray2 t_iarray3 t_iarray4 t_iarray5 t_iarray6 t_iarray7 t_open t_rmkdir \
-t_sarray1 t_scan_c t_scan_cb t_scan_co t_scan_cx t_scan_doub t_scan_float \
-t_scan_i t_scan_ib t_scan_io t_scan_ix t_scan_l t_scan_lb t_scan_ll \
-t_scan_llb t_scan_llo t_scan_llx t_scan_lo t_scan_lx t_scan_s t_scan_sb \
-t_scan_so t_scan_sx t_scan_uc t_scan_ucb t_scan_uco t_scan_ucx t_scan_ui \
-t_scan_uib t_scan_uio t_scan_uix t_scan_ul t_scan_ulb t_scan_ull t_scan_ullb \
-t_scan_ullo t_scan_ullx t_scan_ulo t_scan_ulx t_scan_us t_scan_usb \
-t_scan_uso t_scan_usx t_scanstr t_sgetline t_sig t_squeue1 t_squeue2 \
-t_sstack1 t_sstring t_stalloc t_str 
+t_dir_hash t_dir_name t_dir_walk t_dqueue1 t_dqueue2 t_dqueue3 t_dqueue4 \
+t_dstring t_env t_fd t_fd_seek t_fmt_c t_fmt_double t_fmt_float t_fmt_i \
+t_fmt_l t_fmt_ll t_fmt_pad_l t_fmt_pad_ul t_fmt_s t_fmt_str t_fmt_uc \
+t_fmt_ui t_fmt_ul t_fmt_ull t_fmt_us t_get_opt t_hashtable1 t_hashtable2 \
+t_hashtable3 t_hashtable4 t_hashtable5 t_hashtable6 t_hashtable7 \
+t_hashtable8 t_iarray1 t_iarray2 t_iarray3 t_iarray4 t_iarray5 t_iarray6 \
+t_iarray7 t_open t_rmkdir t_sarray1 t_scan_c t_scan_cb t_scan_co t_scan_cx \
+t_scan_doub t_scan_float t_scan_i t_scan_ib t_scan_io t_scan_ix t_scan_l \
+t_scan_lb t_scan_ll t_scan_llb t_scan_llo t_scan_llx t_scan_lo t_scan_lx \
+t_scan_s t_scan_sb t_scan_so t_scan_sx t_scan_uc t_scan_ucb t_scan_uco \
+t_scan_ucx t_scan_ui t_scan_uib t_scan_uio t_scan_uix t_scan_ul t_scan_ulb \
+t_scan_ull t_scan_ullb t_scan_ullo t_scan_ullx t_scan_ulo t_scan_ulx \
+t_scan_us t_scan_usb t_scan_uso t_scan_usx t_scanstr t_sgetline t_sig \
+t_squeue1 t_squeue2 t_sstack1 t_sstring t_stalloc t_str 
 
 t_alloc:\
 cc-link t_alloc.ld t_alloc.o t_assert.o ../alloc.a 
@@ -183,6 +183,16 @@ t_dir_name.o:\
 cc-compile t_dir_name.c ../buffer.h ../dir_name.h ../str.h ../syserr.h \
 t_assert.h 
 	./cc-compile t_dir_name.c
+
+t_dir_walk:\
+cc-link t_dir_walk.ld t_dir_walk.o ../dir_walk.a ../sstring.a ../bin.a \
+../str.a ../open.a ../error.a 
+	./cc-link t_dir_walk t_dir_walk.o ../dir_walk.a ../sstring.a \
+	../bin.a ../str.a ../open.a ../error.a 
+
+t_dir_walk.o:\
+cc-compile t_dir_walk.c ../error.h ../dir_walk.h 
+	./cc-compile t_dir_walk.c
 
 t_dqueue1:\
 cc-link t_dqueue1.ld t_dqueue1.o ../dqueue.a ../alloc.a ../bin.a t_assert.o 
@@ -1013,47 +1023,47 @@ obj_clean:
 	t_base_name t_base_name.o t_bin t_bin.o t_buffer1 t_buffer1.o \
 	t_buffer2 t_buffer2.o t_dgetline t_dgetline.o t_dir_array \
 	t_dir_array.o t_dir_hash t_dir_hash.o t_dir_name t_dir_name.o \
-	t_dqueue1 t_dqueue1.o t_dqueue2 t_dqueue2.o t_dqueue3 t_dqueue3.o \
-	t_dqueue4 t_dqueue4.o t_dstring t_dstring.o t_env t_env.o t_fd \
-	t_fd.o t_fd_seek t_fd_seek.o t_fmt_c t_fmt_c.o t_fmt_double \
-	t_fmt_double.o t_fmt_float t_fmt_float.o t_fmt_i t_fmt_i.o t_fmt_l \
-	t_fmt_l.o t_fmt_ll t_fmt_ll.o t_fmt_pad_l 
-	rm -f t_fmt_pad_l.o t_fmt_pad_ul t_fmt_pad_ul.o t_fmt_s t_fmt_s.o \
-	t_fmt_str t_fmt_str.o t_fmt_uc t_fmt_uc.o t_fmt_ui t_fmt_ui.o \
-	t_fmt_ul t_fmt_ul.o t_fmt_ull t_fmt_ull.o t_fmt_us t_fmt_us.o \
-	t_get_opt t_get_opt.o t_hashtable1 t_hashtable1.o t_hashtable2 \
-	t_hashtable2.o t_hashtable3 t_hashtable3.o t_hashtable4 \
-	t_hashtable4.o t_hashtable5 t_hashtable5.o t_hashtable6 \
-	t_hashtable6.o t_hashtable7 t_hashtable7.o t_hashtable8 \
-	t_hashtable8.o t_hashtable_c.o t_hashtable_d.o t_iarray.o t_iarray1 \
-	t_iarray1.o t_iarray2 t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 \
-	t_iarray4.o t_iarray5 t_iarray5.o t_iarray6 t_iarray6.o t_iarray7 \
-	t_iarray7.o t_iarray_util.o t_open t_open.o t_rmkdir t_rmkdir.o \
-	t_sarray1 t_sarray1.o t_scan_c t_scan_c.o t_scan_cb t_scan_cb.o \
-	t_scan_co 
-	rm -f t_scan_co.o t_scan_cx t_scan_cx.o t_scan_doub t_scan_doub.o \
-	t_scan_float t_scan_float.o t_scan_i t_scan_i.o t_scan_ib \
-	t_scan_ib.o t_scan_io t_scan_io.o t_scan_ix t_scan_ix.o t_scan_l \
-	t_scan_l.o t_scan_lb t_scan_lb.o t_scan_ll t_scan_ll.o t_scan_llb \
-	t_scan_llb.o t_scan_llo t_scan_llo.o t_scan_llx t_scan_llx.o \
-	t_scan_lo t_scan_lo.o t_scan_lx t_scan_lx.o t_scan_s t_scan_s.o \
-	t_scan_sb t_scan_sb.o t_scan_so t_scan_so.o t_scan_sx t_scan_sx.o \
-	t_scan_uc t_scan_uc.o t_scan_ucb t_scan_ucb.o t_scan_uco \
-	t_scan_uco.o t_scan_ucx t_scan_ucx.o t_scan_ui t_scan_ui.o \
-	t_scan_uib t_scan_uib.o t_scan_uio t_scan_uio.o t_scan_uix \
-	t_scan_uix.o t_scan_ul t_scan_ul.o t_scan_ulb t_scan_ulb.o \
-	t_scan_ull t_scan_ull.o t_scan_ullb t_scan_ullb.o t_scan_ullo 
-	rm -f t_scan_ullo.o t_scan_ullx t_scan_ullx.o t_scan_ulo \
-	t_scan_ulo.o t_scan_ulx t_scan_ulx.o t_scan_us t_scan_us.o \
-	t_scan_usb t_scan_usb.o t_scan_uso t_scan_uso.o t_scan_usx \
-	t_scan_usx.o t_scanstr t_scanstr.o t_sgetline t_sgetline.o t_sig \
-	t_sig.o t_squeue1 t_squeue1.o t_squeue2 t_squeue2.o t_sstack1 \
-	t_sstack1.o t_sstring t_sstring.o t_stalloc t_stalloc.o t_str \
-	t_str.o 
+	t_dir_walk t_dir_walk.o t_dqueue1 t_dqueue1.o t_dqueue2 t_dqueue2.o \
+	t_dqueue3 t_dqueue3.o t_dqueue4 t_dqueue4.o t_dstring t_dstring.o \
+	t_env t_env.o t_fd t_fd.o t_fd_seek t_fd_seek.o t_fmt_c t_fmt_c.o \
+	t_fmt_double t_fmt_double.o t_fmt_float t_fmt_float.o t_fmt_i \
+	t_fmt_i.o t_fmt_l t_fmt_l.o t_fmt_ll 
+	rm -f t_fmt_ll.o t_fmt_pad_l t_fmt_pad_l.o t_fmt_pad_ul \
+	t_fmt_pad_ul.o t_fmt_s t_fmt_s.o t_fmt_str t_fmt_str.o t_fmt_uc \
+	t_fmt_uc.o t_fmt_ui t_fmt_ui.o t_fmt_ul t_fmt_ul.o t_fmt_ull \
+	t_fmt_ull.o t_fmt_us t_fmt_us.o t_get_opt t_get_opt.o t_hashtable1 \
+	t_hashtable1.o t_hashtable2 t_hashtable2.o t_hashtable3 \
+	t_hashtable3.o t_hashtable4 t_hashtable4.o t_hashtable5 \
+	t_hashtable5.o t_hashtable6 t_hashtable6.o t_hashtable7 \
+	t_hashtable7.o t_hashtable8 t_hashtable8.o t_hashtable_c.o \
+	t_hashtable_d.o t_iarray.o t_iarray1 t_iarray1.o t_iarray2 \
+	t_iarray2.o t_iarray3 t_iarray3.o t_iarray4 t_iarray4.o t_iarray5 \
+	t_iarray5.o t_iarray6 t_iarray6.o t_iarray7 t_iarray7.o \
+	t_iarray_util.o t_open t_open.o t_rmkdir t_rmkdir.o t_sarray1 \
+	t_sarray1.o t_scan_c t_scan_c.o t_scan_cb 
+	rm -f t_scan_cb.o t_scan_co t_scan_co.o t_scan_cx t_scan_cx.o \
+	t_scan_doub t_scan_doub.o t_scan_float t_scan_float.o t_scan_i \
+	t_scan_i.o t_scan_ib t_scan_ib.o t_scan_io t_scan_io.o t_scan_ix \
+	t_scan_ix.o t_scan_l t_scan_l.o t_scan_lb t_scan_lb.o t_scan_ll \
+	t_scan_ll.o t_scan_llb t_scan_llb.o t_scan_llo t_scan_llo.o \
+	t_scan_llx t_scan_llx.o t_scan_lo t_scan_lo.o t_scan_lx t_scan_lx.o \
+	t_scan_s t_scan_s.o t_scan_sb t_scan_sb.o t_scan_so t_scan_so.o \
+	t_scan_sx t_scan_sx.o t_scan_uc t_scan_uc.o t_scan_ucb t_scan_ucb.o \
+	t_scan_uco t_scan_uco.o t_scan_ucx t_scan_ucx.o t_scan_ui \
+	t_scan_ui.o t_scan_uib t_scan_uib.o t_scan_uio t_scan_uio.o \
+	t_scan_uix t_scan_uix.o t_scan_ul t_scan_ul.o t_scan_ulb \
+	t_scan_ulb.o t_scan_ull t_scan_ull.o t_scan_ullb 
+	rm -f t_scan_ullb.o t_scan_ullo t_scan_ullo.o t_scan_ullx \
+	t_scan_ullx.o t_scan_ulo t_scan_ulo.o t_scan_ulx t_scan_ulx.o \
+	t_scan_us t_scan_us.o t_scan_usb t_scan_usb.o t_scan_uso \
+	t_scan_uso.o t_scan_usx t_scan_usx.o t_scanstr t_scanstr.o \
+	t_sgetline t_sgetline.o t_sig t_sig.o t_squeue1 t_squeue1.o \
+	t_squeue2 t_squeue2.o t_sstack1 t_sstack1.o t_sstring t_sstring.o \
+	t_stalloc t_stalloc.o t_str t_str.o 
 
 tests: list_tests run_tests
 tests_clean:
-	rm -f testlist
+	rm -f testlist *.out
 
 list_tests:
 	./list-tests > testlist

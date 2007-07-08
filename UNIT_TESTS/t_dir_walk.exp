@@ -1,0 +1,8 @@
+fifo testdata/dir_walk fifo
+directory testdata/dir_walk dir1
+regular testdata/dir_walk/dir1 file1
+directory testdata/dir_walk gdir2
+regular testdata/dir_walk/gdir2 file1
+symlink testdata/dir_walk dir1link
+regular testdata/dir_walk file1
+symlink testdata/dir_walk file1sym
