@@ -13,6 +13,9 @@ int main(void)
   test_assert(array_bytes(&arr) == 0);
   test_assert(array_size(&arr) == 0);
 
+  p = array_index(&arr, 0);
+  test_assert(p == 0);
+
   for (i = 0; i < 20; ++i)
     x[i] = i;
 

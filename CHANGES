@@ -299,3 +299,8 @@
                common core.
 20070626 code: added dqueue.
 20070708 code: added dir_walk.
+20070711 code: fixed bug in array_index. calling array_index(&a, 0) on
+               a zero length array will return a pointer to the first,
+               nonexistant element. this is not dangerous in the sense
+               that it does not access unallocated memory, but it is
+               obviously incorrect.
