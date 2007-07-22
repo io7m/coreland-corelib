@@ -7,7 +7,7 @@ static const struct {
   unsigned int len;
   char num;
   const char *str;
-  unsigned int (*fmt)(char *, char);
+  unsigned int (*fmt)(char *, signed char);
 } tests[] = {
   { 1, 0, "0", fmt_char },
   { 1, 0, "0", fmt_charo },

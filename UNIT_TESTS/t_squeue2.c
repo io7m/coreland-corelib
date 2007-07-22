@@ -41,7 +41,7 @@ int main(void)
     dump();
   }
   for (num = 0; num < QUEUE_SIZE / 2; ++num) {
-    test_assert(squeue_deq(&sq, &obp) == 1);
+    test_assert(squeue_deq(&sq, (void **) &obp) == 1);
     test_assert(obp->num == num % QUEUE_SIZE);
     dump();
   }
