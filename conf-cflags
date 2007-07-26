@@ -1,3 +1,2 @@
--g -O2 -W -Wall -pedantic -ansi -std=c99
 
-These are passed to the C compiler.
+The first line of this file is passed to the C compiler.

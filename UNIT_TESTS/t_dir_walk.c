@@ -41,12 +41,11 @@ int main()
 
   dw.base = "testdata/dir_walk";
 
-/*
   if (mkfifo("testdata/dir_walk/fifo", 0644) == -1) {
     printf("fail: mkfifo: %s\n", error_str(errno));
     return 1;
   }
-*/
+
   if (!dir_walk(&dw)) {
     printf("fail: dir_walk_start() returned 0: %s\n", error_str(errno));
     ret = 1;
