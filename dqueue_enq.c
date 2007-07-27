@@ -45,11 +45,6 @@ int dqueue_enq(struct dqueue *dq, void *p)
   dp = ((unsigned char *) dq->x) + (dq->tpos * es);
   sp = p;
  
-  for (;;) {
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-    if (!es) break; *dp++ = *sp++; --es;
-  }
+  bin_copy(sp, dp, es);
   return 1;
 }
