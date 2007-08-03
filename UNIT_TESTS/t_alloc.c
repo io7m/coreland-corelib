@@ -90,5 +90,7 @@ int main(void)
   for (ind = 0; ind < CHUNK; ++ind)
     test_assert(p1[ind] == 0);
 
+  dealloc_null(&p1);
+  test_assert(p1 == 0);
   return 0;
 }

@@ -84,3 +84,8 @@ void dealloc(void *ptr)
 {
   deallocfunc(ptr);
 }
+void dealloc_null(void **ptr)
+{
+  deallocfunc(*ptr);
+  *ptr = 0;
+}
