@@ -14,6 +14,8 @@ void *alloc(unsigned long);
 void *alloc_zero(unsigned long);
 int   alloc_re(void **, unsigned long, unsigned long);
 void  dealloc(void *);
-void  dealloc_null(void **);
+
+void  dealloc_null_core(void **);
+#define dealloc_null(p) dealloc_null_core((void **)(p))
 
 #endif
