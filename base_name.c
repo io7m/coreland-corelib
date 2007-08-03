@@ -4,7 +4,7 @@
 
 static char path[BASE_NAME_MAX];
 
-int base_name(const char *dir, char **out)
+int base_name_r(const char *dir, char *buf, unsigned long buf_len)
 {
   const char *s;
   const char *t;
@@ -15,21 +15,19 @@ int base_name(const char *dir, char **out)
   len = str_len(dir); 
 
   if (!len) {
-    path[0] = '.';
-    path[1] = 0;
-    *out = path;
+    buf[0] = '.';
+    buf[1] = 0;
     return 1;
   }
-  if (len >= BASE_NAME_MAX) return 0;
+  if (len >= buf_len) return 0;
 
   s = dir;
   t = s + (len - 1);
   while ((t > s) && (t[0] == '/')) --t;
 
   if ((t == s) && (t[0] == '/')) {
-    path[0] = '/';
-    path[1] = 0;
-    *out = path;
+    buf[0] = '/';
+    buf[1] = 0;
     return 1;
   }
 
@@ -37,9 +35,15 @@ int base_name(const char *dir, char **out)
   while ((u > s) && (*(u - 1) != '/')) --u;
 
   nlen = (t - u) + 1;
-  bin_copy(u, path, nlen);
-  path[nlen] = 0;
+  bin_copy(u, buf, nlen);
+  buf[nlen] = 0;
 
+  return 1;
+}
+
+int base_name(const char *dir, char **out)
+{
+  if (!base_name_r(dir, path, sizeof(path))) return 0;
   *out = path;
   return 1;
 }
