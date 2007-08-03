@@ -4,3 +4,8 @@ NOTES
   the '.svn' directory creating an extra entry in the parent directory.
 
   t_dir_walk will fail for the same reasons.
+
+  t_fmt_float is known to fail with GCC 3.4.* when
+  using high optimization levels. This is due to loss of floating point
+  precision when using these optimizations which in turn cause the tests
+  to produce slightly incorrect values.
