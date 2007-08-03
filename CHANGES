@@ -308,4 +308,5 @@
 20070727 code: correct dir_walk test.
 20070803 code: added dir_name_r and base_name_r. dir_name and base_name are
                now compatibility wrappers around these functions.
-20070703 code: added dealloc_null.
+20070803 code: added dealloc_null.
+20070803 code: added dstack.
