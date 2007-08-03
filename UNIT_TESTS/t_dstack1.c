@@ -25,7 +25,7 @@ int main(void)
   test_assert(dstack_SIZE(&st) == 0);
 
   /* check pop on empty is no-op */
-  test_assert(dstack_pop(&st, &obp) == 0);
+  test_assert(dstack_pop(&st, (void **) &obp) == 0);
 
   /* check push works */
   for (num = 0; num < STACK_SIZE; ++num) {
