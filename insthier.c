@@ -66,6 +66,7 @@ struct install_item insthier[] = {
   {INST_COPY, "dqueue_zero.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "dstack_bytes.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "dstack_data.c", 0, ctxt_repos, 0, 0, 0644},
+  {INST_COPY, "dstack_free.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "dstack_init.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "dstack_peek.c", 0, ctxt_repos, 0, 0, 0644},
   {INST_COPY, "dstack_pop.c", 0, ctxt_repos, 0, 0, 0644},
