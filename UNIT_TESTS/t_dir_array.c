@@ -3,7 +3,7 @@
 #include "../str.h"
 #include "t_assert.h"
 
-int cmp(const char *a, const char *b)
+int cmp(const char *a, const char *b, void *x)
 {
   return -str_diff(a, b);
 }

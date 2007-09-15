@@ -4,12 +4,20 @@
 #include "direntry.h"
 #include "str.h"
 
-void dir_array_rewind(struct dir_array *da) { da->p = 0; }
-void dir_array_setcmp(struct dir_array *da, int (*func)(const char *, const char *))
+static int
+dir_array_strdiff(const char *a, const char *b, void *x) { return str_diff(a, b); }
+
+void
+dir_array_rewind(struct dir_array *da) { da->p = 0; }
+
+void
+dir_array_setcmp(struct dir_array *da, int (*func)(const char *, const char *, void *))
 {
   da->cmp = func;
 }
-int dir_array_next(struct dir_array *da, char **p)
+
+int
+dir_array_next(struct dir_array *da, char **p)
 {
   unsigned long m;
   unsigned long n;
@@ -23,7 +31,9 @@ int dir_array_next(struct dir_array *da, char **p)
 
   return 1;
 }
-void dir_array_sort(struct dir_array *da)
+
+void
+dir_array_sort(struct dir_array *da)
 {
   unsigned long m;
   unsigned long n;
@@ -31,7 +41,7 @@ void dir_array_sort(struct dir_array *da)
   unsigned long y;
   char **arr;
   char *tmp;
-  int (*cmp)(const char *, const char *);
+  int (*cmp)(const char *, const char *, void *);
 
   n = da->n;
   m = (n >> 1);
@@ -54,8 +64,8 @@ void dir_array_sort(struct dir_array *da)
     y = (m << 1) + 1;
     
     while (y < n) {
-      if ((y + 1 < n) && (cmp(arr[y + 1], arr[y]) > 0)) ++y;
-      if (cmp(arr[y], tmp) > 0) {
+      if ((y + 1 < n) && (cmp(arr[y + 1], arr[y], da->data) > 0)) ++y;
+      if (cmp(arr[y], tmp, da->data) > 0) {
         arr[x] = arr[y];
         x = y;
         y = (x << 1) + 1;
@@ -66,7 +76,9 @@ void dir_array_sort(struct dir_array *da)
     arr[x] = tmp;
   } 
 }
-int dir_array_init(struct dir_array *da, const char *p)
+
+int
+dir_array_init(struct dir_array *da, const char *p)
 {
   DIR *dir;
   direntry *d_ent;
@@ -85,7 +97,7 @@ int dir_array_init(struct dir_array *da, const char *p)
   }
   rewinddir(dir);
 
-  da->cmp = str_diff;
+  da->cmp = dir_array_strdiff;
   da->p = 0;
   da->n = n;
   da->a = alloc(n * sizeof(char *));

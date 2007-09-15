@@ -8,9 +8,10 @@
 #include "sstring.h"
 #include "dir_walk.h"
 
-int dir_func(struct dir_walk *dw, const char *dn)
+int
+dir_func(struct dir_walk *dw, const char *dn)
 {
-  struct dir_array da = {0, 0, 0, 0};
+  struct dir_array da = {0, 0, 0, 0, 0};
   struct stat sb;
   unsigned long pos;
   char *name;
@@ -79,12 +80,15 @@ int dir_func(struct dir_walk *dw, const char *dn)
   return ret;
 }
 
-int dir_walk(struct dir_walk *dw)
+int
+dir_walk(struct dir_walk *dw)
 {
   sstring_trunc(&dw->path);
   return dir_func(dw, dw->base);
 }
-void dir_walk_init(struct dir_walk *dw)
+
+void
+dir_walk_init(struct dir_walk *dw)
 {
   bin_zero(dw, sizeof(struct dir_walk));
   sstring_init(&dw->path, dw->pbuf, sizeof(dw->pbuf));

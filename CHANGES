@@ -310,3 +310,6 @@
                now compatibility wrappers around these functions.
 20070803 code: added dealloc_null.
 20070803 code: added dstack.
+20070916 code: dir_array now takes void * argument to comparison function.
+               structure contains new void pointer for passing user data to
+               comparison functions.
