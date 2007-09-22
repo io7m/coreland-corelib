@@ -1,12 +1,11 @@
 #ifndef DIR_WALK_H
 #define DIR_WALK_H
 
-#include <limits.h>
 #include "sstring.h"
 
 struct dir_walk {
   struct sstring path;
-  char pbuf[PATH_MAX];
+  char pbuf[4096];
   char *base;
   void *data;
   int (*cb_dir)(const char *, const char *, void *);

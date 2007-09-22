@@ -313,3 +313,5 @@
 20070916 code: dir_array now takes void * argument to comparison function.
                structure contains new void pointer for passing user data to
                comparison functions.
+20070922 code: now using 4096 instead of PATH_MAX due to idiotic portability
+               problems associated with this constant.
