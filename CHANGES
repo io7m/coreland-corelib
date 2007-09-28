@@ -315,3 +315,5 @@
                comparison functions.
 20070922 code: now using 4096 instead of PATH_MAX due to idiotic portability
                problems associated with this constant.
+20070928 code: changed dir_array API to what it should have been right from
+               the beginning. backwards compat has been mercilessly killed.

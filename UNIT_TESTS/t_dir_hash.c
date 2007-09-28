@@ -5,7 +5,8 @@ int main(void)
 {
   struct dir_hash dh;
 
-  test_assert(dir_hash_init(&dh, "testdata/dir_hash"));
+  dir_hash_init(&dh);
+  test_assert(dir_hash_open(&dh, "testdata/dir_hash"));
   test_assert(dir_hash_check(&dh, "file001"));
 
   test_assert(dir_hash_check(&dh, "file001"));

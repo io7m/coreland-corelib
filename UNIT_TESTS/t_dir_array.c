@@ -3,17 +3,28 @@
 #include "../str.h"
 #include "t_assert.h"
 
-int cmp(const char *a, const char *b, void *x)
+static int
+cmp(const char *a, const char *b, void *x)
 {
   return -str_diff(a, b);
 }
 
-int main(void)
+/* just a hack to make this test pass in SVN */
+static int
+filt(const char *a, void *x)
+{
+  return !str_same(a, ".svn");
+}
+
+int
+main(void)
 {
   struct dir_array da;
   char *fname;
 
-  test_assert(dir_array_init(&da, "testdata/dir_array"));
+  dir_array_init(&da);
+  da.filter = filt;
+  test_assert(dir_array_open(&da, "testdata/dir_array"));
 
   dir_array_rewind(&da);
   for (;;) {
@@ -34,7 +45,7 @@ int main(void)
   test_assert(da.a[10][0] == '8');
   test_assert(da.a[11][0] == '9');
 
-  dir_array_setcmp(&da, cmp);
+  da.cmp = cmp;
   dir_array_sort(&da);
 
   dir_array_rewind(&da);

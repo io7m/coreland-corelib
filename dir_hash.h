@@ -12,7 +12,8 @@ struct dir_hash {
   struct dir_hash_tnode *tab[DIR_HASH_BUCKETS];
 };
 
-int dir_hash_init(struct dir_hash *, const char *);
+void dir_hash_init(struct dir_hash *);
+int dir_hash_open(struct dir_hash *, const char *);
 int dir_hash_check(struct dir_hash *, const char *);
 void dir_hash_free(struct dir_hash *);
 

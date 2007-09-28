@@ -4,7 +4,8 @@
 #include "dir_hash.h"
 #include "str.h"
 
-static unsigned int keyhash(const char *key)
+static unsigned int
+keyhash(const char *key)
 {
   unsigned int h = 5381;
   char c;
@@ -16,7 +17,16 @@ static unsigned int keyhash(const char *key)
     ++key;
   }
 }
-int dir_hash_init(struct dir_hash *dh, const char *path)
+
+void
+dir_hash_init(struct dir_hash *dh)
+{
+  dir_array_init(&dh->da);
+  bin_zero(&dh->tab, DIR_HASH_BUCKETS * sizeof(struct dir_hash_tnode *));
+}
+
+int
+dir_hash_open(struct dir_hash *dh, const char *path)
 {
   struct dir_array *da;
   struct dir_hash_tnode *tn;
@@ -25,9 +35,7 @@ int dir_hash_init(struct dir_hash *dh, const char *path)
   unsigned int hash;
 
   da = &dh->da;
-  if (!dir_array_init(da, path)) return 0;
-
-  bin_zero(&dh->tab, DIR_HASH_BUCKETS * sizeof(struct dir_hash_tnode *));
+  if (!dir_array_open(da, path)) return 0;
 
   for (;;) {
     if (!dir_array_next(da, &name)) break;
@@ -53,7 +61,9 @@ int dir_hash_init(struct dir_hash *dh, const char *path)
   dir_array_rewind(da);
   return 1;
 }
-int dir_hash_check(struct dir_hash *dh, const char *key)
+
+int
+dir_hash_check(struct dir_hash *dh, const char *key)
 {
   unsigned int hash;
   struct dir_hash_tnode *tn;
@@ -68,7 +78,9 @@ int dir_hash_check(struct dir_hash *dh, const char *key)
     tn = tn->next;
   }
 }
-void dir_hash_free(struct dir_hash *dh)
+
+void
+dir_hash_free(struct dir_hash *dh)
 {
   unsigned int i;
   struct dir_hash_tnode *tn;

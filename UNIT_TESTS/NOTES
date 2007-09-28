@@ -1,9 +1,7 @@
 NOTES
 
-  t_dir_array will fail when using a copy checked out from svn due to
-  the '.svn' directory creating an extra entry in the parent directory.
-
-  t_dir_walk will fail for the same reasons.
+  t_dir_walk will fail when using a copy checked out from svn due to
+  the '.svn' directories creating extra entries in the parent directories.
 
   t_fmt_float is known to fail with GCC 3.4.* when
   using high optimization levels. This is due to loss of floating point

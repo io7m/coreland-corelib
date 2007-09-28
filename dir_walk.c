@@ -11,7 +11,7 @@
 int
 dir_func(struct dir_walk *dw, const char *dn)
 {
-  struct dir_array da = {0, 0, 0, 0, 0};
+  struct dir_array da;
   struct stat sb;
   unsigned long pos;
   char *name;
@@ -22,7 +22,8 @@ dir_func(struct dir_walk *dw, const char *dn)
   sstring_cats(&dw->path, dn);
   sstring_0(&dw->path);
 
-  if (!dir_array_init(&da, dw->path.s)) { ret = 0; goto END; }
+  dir_array_init(&da);
+  if (!dir_array_open(&da, dw->path.s)) { ret = 0; goto END; }
 
   for (;;) {
     if (!dir_array_next(&da, &name)) break;
