@@ -4,6 +4,7 @@
 #include "dir_array.h"
 
 #define DIR_HASH_BUCKETS 256
+#define DIR_HASH_ZERO {DIR_ARRAY_ZERO,{0}}
 
 struct dir_hash_tnode { struct dir_hash_tnode *next; const char *name; };
 

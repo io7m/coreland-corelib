@@ -2,6 +2,7 @@
 #define CORELIB_HASHTABLE_H
 
 #define HT_HASH_BUCKETS 2048UL
+#define HT_ZERO {{0}}
 
 typedef int (ht_callback)(void *, unsigned long, void *, unsigned long, void *);
 

@@ -1,6 +1,8 @@
 #ifndef CORELIB_SSTRING_H
 #define CORELIB_SSTRING_H
 
+#define SSTRING_ZERO {0,0,0}
+
 struct sstring {
   char *s;
   unsigned long len; /* length of contents */

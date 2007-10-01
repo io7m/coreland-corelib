@@ -1,6 +1,8 @@
 #ifndef CORELIB_SQUEUE_H
 #define CORELIB_SQUEUE_H
 
+#define SQUEUE_ZERO {0,0,0,0,0,0}
+
 struct squeue {
   void *x;
   unsigned long hpos;

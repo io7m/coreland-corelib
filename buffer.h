@@ -3,6 +3,7 @@
 
 #define BUFFER_OUTSIZE 8192
 #define BUFFER_INSIZE 8192
+#define BUFFER_ZERO {0,0,0,0,0}
 
 struct buffer {
   char *buf;

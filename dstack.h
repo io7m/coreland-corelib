@@ -3,6 +3,8 @@
 
 #include "array.h"
 
+#define DSTACK_ZERO {ARRAY_ZERO}
+
 struct dstack {
   struct array x;
 };

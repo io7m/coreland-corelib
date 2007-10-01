@@ -2,6 +2,7 @@
 #define CORELIB_IARRAY_H
 
 #define IARRAY_OVERALLOC 8
+#define IARRAY_ZERO {0,0,0,0}
 
 struct iarray_node {
   unsigned long len;

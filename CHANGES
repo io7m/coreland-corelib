@@ -317,3 +317,4 @@
                problems associated with this constant.
 20070928 code: changed dir_array API to what it should have been right from
                the beginning. backwards compat has been mercilessly killed.
+20071001 code: added *_ZERO macros to all interfaces that appear to need them.

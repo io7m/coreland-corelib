@@ -1,6 +1,8 @@
 #ifndef CORELIB_SARRAY_H
 #define CORELIB_SARRAY_H
 
+#define SARRAY_ZERO {0,0,0,0}
+
 struct sarray {
   void *x;
   unsigned long a;

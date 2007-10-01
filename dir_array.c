@@ -36,6 +36,8 @@ dir_array_sort(struct dir_array *da)
   char *tmp;
   int (*cmp)(const char *, const char *, void *);
 
+  if (!da->n) return;
+
   n = da->n;
   m = (n >> 1);
   arr = da->a;

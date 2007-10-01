@@ -2,6 +2,7 @@
 #define CORELIB_ARRAY_H
 
 #define ARRAY_OVERALLOC 8
+#define ARRAY_ZERO {0,0,0,0}
 
 struct array {
   void *x;

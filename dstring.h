@@ -2,7 +2,8 @@
 #define CORELIB_DSTRING_H
 
 #define DSTRING_OVERALLOC 32
-#define dstring_INIT {0,0,0}
+#define DSTRING_ZERO {0,0,0}
+#define dstring_INIT DSTRING_ZERO /* compat */
 
 struct dstring {
   char *s;

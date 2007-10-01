@@ -1,6 +1,8 @@
 #ifndef CORELIB_DIR_ARRAY_H
 #define CORELIB_DIR_ARRAY_H
 
+#define DIR_ARRAY_ZERO {0,0,0,0,0,0}
+
 struct dir_array {
   char **a;
   unsigned long p;

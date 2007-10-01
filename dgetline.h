@@ -4,6 +4,8 @@
 #include "buffer.h"
 #include "dstring.h"
 
+#define DGETLINE_ZERO {BUFFER_ZERO,DSTRING_ZERO,0}
+
 struct dgetline {
   struct buffer b;
   struct dstring d; 

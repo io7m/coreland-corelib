@@ -1,6 +1,8 @@
 #ifndef CORELIB_DQUEUE_H
 #define CORELIB_DQUEUE_H
 
+#define DQUEUE_ZERO {0,0,0,0,0,0}
+
 struct dqueue {
   void *x;
   unsigned long hpos;

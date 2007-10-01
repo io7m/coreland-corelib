@@ -1,6 +1,8 @@
 #ifndef CORELIB_SSTACK_H
 #define CORELIB_SSTACK_H
 
+#define SSTACK_ZERO {0,0,0,0}
+
 struct sstack {
   void *x;
   unsigned long a;

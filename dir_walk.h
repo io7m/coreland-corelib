@@ -3,6 +3,8 @@
 
 #include "sstring.h"
 
+#define DIR_WALK_ZERO {SSTRING_ZERO,{0},0,0,0,0,0,0,0,0,0}
+
 struct dir_walk {
   struct sstring path;
   char pbuf[4096];

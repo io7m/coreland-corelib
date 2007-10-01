@@ -4,6 +4,7 @@
 #include "buffer.h"
 
 #define S_LINE_MAX 2048
+#define SGETLINE_ZERO {0,0,0,0,BUFFER_ZERO}
 
 struct sgetline {
   char *s;
