@@ -1,4 +1,4 @@
-t_dir_hash.o
+t_dir_hash1.o
 t_assert.o
 ../dir_hash.a
 ../dir_array.a
