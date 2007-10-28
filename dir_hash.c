@@ -36,6 +36,7 @@ dir_hash_open(struct dir_hash *dh, const char *path)
 
   da = &dh->da;
   if (!dir_array_open(da, path)) return 0;
+  if (da->n == 0) return 1;
 
   for (;;) {
     if (!dir_array_next(da, &name)) break;

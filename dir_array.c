@@ -15,6 +15,8 @@ dir_array_next(struct dir_array *da, char **p)
   unsigned long m;
   unsigned long n;
 
+  if (!da->n) return 0;
+
   m = da->p;
   n = da->n - 1;
 
@@ -104,6 +106,8 @@ dir_array_open(struct dir_array *da, const char *p)
     ++n;
   }
   rewinddir(dir);
+
+  if (!n) return 1;
 
   da->p = 0;
   da->n = n;
