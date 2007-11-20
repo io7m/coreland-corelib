@@ -106,12 +106,18 @@ int main(void)
 {
   double fd;
   unsigned int ind;
+  unsigned long len;
 
   for (ind = 0; ind < sizeof(tests) / sizeof(tests[0]); ++ind) {
     fd = 0;
-    scan_double(tests[ind].str, &fd);
+    len = scan_double(tests[ind].str, &fd);
     if (!approx_equald(fd, tests[ind].fd, MAX_ERROR)) {
       printf("fail: scan_double: [%u] %f != %f\n", ind, fd, tests[ind].fd);
+      return 1;
+    }
+    if (len != str_len(tests[ind].str)) {
+      printf("fail: scan_double: [%u] len %lu != %lu\n", ind, len,
+                                                         str_len(tests[ind].str));
       return 1;
     }
     printf("[%u] %s %f\n", ind, tests[ind].str, tests[ind].fd);

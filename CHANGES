@@ -318,3 +318,5 @@
 20070928 code: changed dir_array API to what it should have been right from
                the beginning. backwards compat has been mercilessly killed.
 20071001 code: added *_ZERO macros to all interfaces that appear to need them.
+20071120 code: scan_double and scan_float scanned one byte less than necessary
+               when scanning negative floating point numbers.

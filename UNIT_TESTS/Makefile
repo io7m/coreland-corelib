@@ -665,16 +665,16 @@ cc-compile t_scan_cx.c ../scan.h
 	./cc-compile t_scan_cx.c
 
 t_scan_doub:\
-cc-link t_scan_doub.ld t_scan_doub.o ../scan.a t_assert.o 
-	./cc-link t_scan_doub t_scan_doub.o ../scan.a t_assert.o 
+cc-link t_scan_doub.ld t_scan_doub.o ../scan.a ../str.a t_assert.o 
+	./cc-link t_scan_doub t_scan_doub.o ../scan.a ../str.a t_assert.o 
 
 t_scan_doub.o:\
 cc-compile t_scan_doub.c ../scan.h 
 	./cc-compile t_scan_doub.c
 
 t_scan_float:\
-cc-link t_scan_float.ld t_scan_float.o ../scan.a t_assert.o 
-	./cc-link t_scan_float t_scan_float.o ../scan.a t_assert.o 
+cc-link t_scan_float.ld t_scan_float.o ../scan.a ../str.a t_assert.o 
+	./cc-link t_scan_float t_scan_float.o ../scan.a ../str.a t_assert.o 
 
 t_scan_float.o:\
 cc-compile t_scan_float.c ../scan.h 

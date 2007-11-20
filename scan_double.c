@@ -21,7 +21,7 @@ unsigned int scan_double(const char *str, double *f)
   exp = 0;
   exp_sign = 0;
 
-  if (str[0] == '-') ++str;
+  if (str[0] == '-') ++pos;
 
   for (;;) {
     ch = str[pos];
