@@ -434,6 +434,8 @@ int instchk_copy(struct install_item *ins, unsigned int fl)
   int pid;
   int stat;
 
+  fl = 0; /* compiler pedantry */
+
   task_args[0] = EXT_INST_CHECK;
   task_args[1] = ins->dst;
   task_args[2] = uidbuf;
@@ -455,6 +457,8 @@ int instchk_link(struct install_item *ins, unsigned int fl)
   int pid;
   int stat;
 
+  fl = 0; /* compiler pedantry */
+
   task_args[0] = EXT_INST_CHECK;
   task_args[1] = ins->dst;
   task_args[2] = uidbuf;
@@ -475,6 +479,8 @@ int instchk_mkdir(struct install_item *ins, unsigned int fl)
 {
   int pid;
   int stat;
+
+  fl = 0; /* compiler pedantry */
 
   task_args[0] = EXT_INST_CHECK;
   task_args[1] = ins->dir;
