@@ -16,7 +16,7 @@ int dstring_cpyb(struct dstring *d, const char *s, unsigned long len)
   if (len >= da) {
     tmplen = len + 1 + DSTRING_OVERALLOC;
     if (tmplen < len) return 0;
-    if (!alloc_re((void **) &d->s, da, tmplen)) return 0;
+    if (!alloc_re((void *) &d->s, da, tmplen)) return 0;
     ds = d->s;
     da = tmplen;
   }

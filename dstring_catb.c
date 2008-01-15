@@ -22,7 +22,7 @@ int dstring_catb(struct dstring *d, const char *str, unsigned long len)
     if (tmpadd < len) return 0; /* check wrap */
     tmplen = da + tmpadd;
     if (tmplen < da) return 0; /* check wrap */
-    if (!alloc_re((void **) &d->s, da, tmplen)) return 0;
+    if (!alloc_re((void *) &d->s, da, tmplen)) return 0;
     da = tmplen;
     ds = d->s;
   }
