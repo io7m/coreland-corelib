@@ -22,8 +22,12 @@ main(void)
   struct dir_array da;
   char *fname;
 
+  rmdir("testdata/empty");
+  test_assert(mkdir("testdata/empty", 0755) == 0);
+
   dir_array_init(&da);
   da.filter = filt;
+
   test_assert(dir_array_open(&da, "testdata/empty"));
   test_assert(dir_array_next(&da, &fname) == 0);
   dir_array_free(&da);

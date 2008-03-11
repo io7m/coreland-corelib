@@ -13,6 +13,9 @@ main(void)
   struct dir_hash dh;
   struct dir_array *da;
 
+  rmdir("testdata/empty");
+  test_assert(mkdir("testdata/empty", 0755) == 0);
+
   dir_hash_init(&dh);
   da = dir_hash_array(&dh);
   da->filter = nodot;

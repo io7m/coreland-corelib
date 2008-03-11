@@ -1,5 +1,3 @@
--O2 -g
-
--O2 -g -W -Werror -Wall -pedantic-errors -D__USE_BSD -Wno-unused-parameter
+-O2 -g -W -Werror -Wall -std=c99 -pedantic-errors -D__USE_BSD -Wno-unused-parameter
 
 The first line of this file is passed to the C compiler.
