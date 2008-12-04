@@ -324,3 +324,4 @@
 20080115 code: updated inst-check.c
 20080223 code: removed sysinfo.c, included _sysinfo.h in corelib-conf.c
 20080311 code: updated dir related tests to create empty directories.
+20081204 code: updated installer.
