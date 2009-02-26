@@ -19,6 +19,7 @@ linux 2.6.15-23-powerpc gcc 3.4.3 ppc
 linux 2.6.17-11_1.bhsmp gcc 4.1.1 x86_64
 linux 2.6.18-5-686 gcc 4.1.2 x86
 linux 2.6.18-8.1.4.el5 intel 9.1.0 ia64
+linux 2.6.26-1-amd64 gcc 4.3.2 x86_64
 linux 2.6.5-7.257-smp gcc 4.0.0 x86
 linux 2.6.5-7.257-smp gcc 4.0.0 x86_64
 linux 2.6.8-3-mckinley-smp gcc 3.3.5 ia64
