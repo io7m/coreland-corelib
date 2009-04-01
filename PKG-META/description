@@ -1,0 +1,10 @@
+This library is developed with the intention of aiding the development
+of small, efficient, portable and secure software. It is aimed at POSIX
+compliant platforms but the majority of the library is platform
+independent.
+<p/>
+It is written to compile with any ISO C90 compiler, but will use C99
+features if they are available.
+<p/>
+Please note that the API is not expected to remain stable until a 1.0
+release.
