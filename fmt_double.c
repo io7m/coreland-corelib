@@ -56,12 +56,12 @@ static inline unsigned int is_negative(double d)
 
 #if defined(HAVE_MATH_SIGNBIT)
   return signbit(real.d);
-#endif
-
+#else
   if (sizeof(real.n) == sizeof(double) && sizeof(double) * CHAR_BIT == 64)
     return (real.n >> 63) & 1;    
   else
     return real.d != fabs(real.d);
+#endif
 }
 
 static inline unsigned int is_nan(double d)

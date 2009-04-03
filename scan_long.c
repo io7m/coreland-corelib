@@ -26,7 +26,6 @@ unsigned int scan_ulong(const char *str, unsigned long *ul)
         break;
       default:
         goto END;
-        break;
     }
   }
 

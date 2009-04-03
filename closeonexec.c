@@ -10,6 +10,7 @@ int closeonexec(int fd)
 {
 #ifdef F_SETFD
   return fcntl(fd, F_SETFD, FD_CLOEXEC);
-#endif
+#else
   return 0;
+#endif
 }

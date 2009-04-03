@@ -74,12 +74,12 @@ static inline unsigned int is_negative(float f)
 
 #if defined(HAVE_MATH_SIGNBIT)
   return signbit(real.f);
-#endif
-
+#else
   if (sizeof(real.n) == sizeof(float) && sizeof(float) * CHAR_BIT == 32)
     return (real.n >> 31) & 1;    
   else
     return real.f != fabsf(real.f);
+#endif
 }
 
 static inline unsigned int is_nan(float f)

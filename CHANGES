@@ -327,3 +327,6 @@
 20081204 code: updated installer.
 20090226 code: updated installer.
 20090226 code: updated sysdeps.
+20090403 code: removed semicolons from fmt_pad.h macros for Sun C's stricter
+               semantic checking ("statement not reached"). removed unreachable
+               statements.

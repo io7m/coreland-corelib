@@ -14,9 +14,9 @@ int fd_dup(int src, int dst)
     if (fcntl(src, F_GETFL, 0) == -1) return -1;
     close(dst);
     if (fcntl(src, F_DUPFD, dst) == -1) return -1;
+    return 1;
   #else
     #error "system does not support file descriptor duplication"
   #endif
 #endif
-  return 1;
 }

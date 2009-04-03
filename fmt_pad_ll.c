@@ -7,7 +7,7 @@ unsigned int fmt_pad_ulonglong(char *buf, unsigned long long num, unsigned int p
                                unsigned char ch,
                                unsigned int (*fmt)(char *, unsigned long long))
 {
-  FMT_PAD_CORE_UNSIGNED;
+  FMT_PAD_CORE_UNSIGNED
 }
 
 unsigned int fmt_pad_longlong(char *buf, long long num, unsigned int pad,
@@ -15,6 +15,6 @@ unsigned int fmt_pad_longlong(char *buf, long long num, unsigned int pad,
                               unsigned int (*fmt)(char *, long long),
                               unsigned int flags)
 {
-  FMT_PAD_CORE_SIGNED;
+  FMT_PAD_CORE_SIGNED
 }
 #endif

@@ -33,10 +33,8 @@ unsigned int scan_float(const char *str, float *f)
     switch (ch) {
       case 0:
         goto END;
-        break;
       case '.':
         goto DECIMAL_POINT;
-        break;
       case '0':
       case '1':
       case '2':

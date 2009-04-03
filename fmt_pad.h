@@ -25,7 +25,7 @@
   unsigned int len = 0;                                      \
   char *ptr = buf;                                           \
                                                              \
-  FMT_PAD_CORE;                                              \
+  FMT_PAD_CORE                                               \
 }
 
 #define FMT_PAD_CORE_SIGNED \
@@ -43,7 +43,7 @@
     }                                                        \
   }                                                          \
                                                              \
-  FMT_PAD_CORE;                                              \
+  FMT_PAD_CORE                                               \
 }
 
 #endif

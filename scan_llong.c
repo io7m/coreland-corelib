@@ -28,7 +28,6 @@ unsigned int scan_ulonglong(const char *str, unsigned long long *ull)
         break;
       default:
         goto END;
-        break;
     }
   }
 
