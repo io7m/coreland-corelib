@@ -78,84 +78,80 @@ tests:
 tests_clean:
 	(cd UNIT_TESTS && make clean-all)
 
-# -- SYSDEPS start
-_byteorder.h:
-	@echo SYSDEPS byteorder run create _byteorder.h 
-	@(cd SYSDEPS/modules/byteorder && ./run)
-_direntry.h:
-	@echo SYSDEPS direntry run create _direntry.h 
-	@(cd SYSDEPS/modules/direntry && ./run)
+#----------------------------------------------------------------------
+# SYSDEPS start
+
+_sd_direntry.h:
+	@echo SYSDEPS sd-direntry run create _sd_direntry.h 
+	@(cd SYSDEPS && ./sd-run modules/sd-direntry)
+_sd_dup2.h:
+	@echo SYSDEPS sd-dup2 run create _sd_dup2.h 
+	@(cd SYSDEPS && ./sd-run modules/sd-dup2)
 _sd_fcntl.h:
 	@echo SYSDEPS sd-fcntl run create libs-fcntl flags-fcntl _sd_fcntl.h 
-	@(cd SYSDEPS/modules/sd-fcntl && ./run)
+	@(cd SYSDEPS && ./sd-run modules/sd-fcntl)
 flags-fcntl: _sd_fcntl.h
 libs-fcntl: _sd_fcntl.h
-_sd_fd.h:
-	@echo SYSDEPS sd-fd run create _sd_fd.h 
-	@(cd SYSDEPS/modules/sd-fd && ./run)
 _sd_inline.h:
 	@echo SYSDEPS sd-inline run create _sd_inline.h 
-	@(cd SYSDEPS/modules/sd-inline && ./run)
+	@(cd SYSDEPS && ./sd-run modules/sd-inline)
 _sd_longlong.h:
 	@echo SYSDEPS sd-longlong run create _sd_longlong.h 
-	@(cd SYSDEPS/modules/sd-longlong && ./run)
+	@(cd SYSDEPS && ./sd-run modules/sd-longlong)
 libs-math:
 	@echo SYSDEPS sd-math run create _sd_math.h flags-math libs-math 
-	@(cd SYSDEPS/modules/sd-math && ./run)
+	@(cd SYSDEPS && ./sd-run modules/sd-math)
 flags-math: libs-math
 _sd_math.h: libs-math
-_sig_action.h:
-	@echo SYSDEPS sd-signal run create _sig_pmask.h _sig_action.h 
-	@(cd SYSDEPS/modules/sd-signal && ./run)
-_sig_pmask.h: _sig_action.h
-_sysinfo.h:
-	@echo SYSDEPS sysinfo run create _sysinfo.h 
-	@(cd SYSDEPS/modules/sysinfo && ./run)
+_sd_sig_action.h:
+	@echo SYSDEPS sd-signal run create _sd_sig_pmask.h _sd_sig_action.h 
+	@(cd SYSDEPS && ./sd-run modules/sd-signal)
+_sd_sig_pmask.h: _sd_sig_action.h
+_sd_sysinfo.h:
+	@echo SYSDEPS sd-sysinfo run create _sd_sysinfo.h 
+	@(cd SYSDEPS && ./sd-run modules/sd-sysinfo)
 
 
-byteorder_clean:
-	@echo SYSDEPS byteorder clean _byteorder.h 
-	@(cd SYSDEPS/modules/byteorder && ./clean)
-direntry_clean:
-	@echo SYSDEPS direntry clean _direntry.h 
-	@(cd SYSDEPS/modules/direntry && ./clean)
+sd-direntry_clean:
+	@echo SYSDEPS sd-direntry clean _sd_direntry.h 
+	@(cd SYSDEPS && ./sd-clean modules/sd-direntry)
+sd-dup2_clean:
+	@echo SYSDEPS sd-dup2 clean _sd_dup2.h 
+	@(cd SYSDEPS && ./sd-clean modules/sd-dup2)
 sd-fcntl_clean:
 	@echo SYSDEPS sd-fcntl clean libs-fcntl flags-fcntl _sd_fcntl.h 
-	@(cd SYSDEPS/modules/sd-fcntl && ./clean)
-sd-fd_clean:
-	@echo SYSDEPS sd-fd clean _sd_fd.h 
-	@(cd SYSDEPS/modules/sd-fd && ./clean)
+	@(cd SYSDEPS && ./sd-clean modules/sd-fcntl)
 sd-inline_clean:
 	@echo SYSDEPS sd-inline clean _sd_inline.h 
-	@(cd SYSDEPS/modules/sd-inline && ./clean)
+	@(cd SYSDEPS && ./sd-clean modules/sd-inline)
 sd-longlong_clean:
 	@echo SYSDEPS sd-longlong clean _sd_longlong.h 
-	@(cd SYSDEPS/modules/sd-longlong && ./clean)
+	@(cd SYSDEPS && ./sd-clean modules/sd-longlong)
 sd-math_clean:
 	@echo SYSDEPS sd-math clean _sd_math.h flags-math libs-math 
-	@(cd SYSDEPS/modules/sd-math && ./clean)
+	@(cd SYSDEPS && ./sd-clean modules/sd-math)
 sd-signal_clean:
-	@echo SYSDEPS sd-signal clean _sig_pmask.h _sig_action.h 
-	@(cd SYSDEPS/modules/sd-signal && ./clean)
-sysinfo_clean:
-	@echo SYSDEPS sysinfo clean _sysinfo.h 
-	@(cd SYSDEPS/modules/sysinfo && ./clean)
+	@echo SYSDEPS sd-signal clean _sd_sig_pmask.h _sd_sig_action.h 
+	@(cd SYSDEPS && ./sd-clean modules/sd-signal)
+sd-sysinfo_clean:
+	@echo SYSDEPS sd-sysinfo clean _sd_sysinfo.h 
+	@(cd SYSDEPS && ./sd-clean modules/sd-sysinfo)
 
 
 sysdeps_clean:\
-byteorder_clean \
-direntry_clean \
+sd-direntry_clean \
+sd-dup2_clean \
 sd-fcntl_clean \
-sd-fd_clean \
 sd-inline_clean \
 sd-longlong_clean \
 sd-math_clean \
 sd-signal_clean \
-sysinfo_clean \
+sd-sysinfo_clean \
 
 
-# -- SYSDEPS end
 
+# SYSDEPS end
+#----------------------------------------------------------------------
 
 alloc.a:\
 cc-slib alloc.sld alloc.o
@@ -318,9 +314,6 @@ cc-compile buffer_init.c buffer.h
 buffer_put.o:\
 cc-compile buffer_put.c bin.h buffer.h error.h str.h
 	./cc-compile buffer_put.c
-
-byteorder.h:\
-_byteorder.h
 
 cc-compile:\
 conf-cc conf-cctype conf-systype conf-cflags conf-ccfflist flags-math
@@ -507,7 +500,7 @@ cc-compile dir_walk.c bin.h dir_array.h open.h str.h sstring.h dir_walk.h
 	./cc-compile dir_walk.c
 
 direntry.h:\
-_direntry.h
+_sd_direntry.h
 
 dqueue.a:\
 cc-slib dqueue.sld dqueue_bytes.o dqueue_data.o dqueue_deq.o dqueue_enq.o \
