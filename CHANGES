@@ -330,3 +330,5 @@
 20090403 code: removed semicolons from fmt_pad.h macros for Sun C's stricter
                semantic checking ("statement not reached"). removed unreachable
                statements.
+20091005 code: moved to sysdeps 3.0
+20091005 code: removed byteorder.h
