@@ -332,3 +332,6 @@
                statements.
 20091005 code: moved to sysdeps 3.0
 20091005 code: removed byteorder.h
+20091005 code: updated direntry to use _sd_direntry.h
+20091005 code: all uses of HAVE_* changed to SD_HAVE_*
+20091005 code: fd_dup uses _sd_dup2.h
