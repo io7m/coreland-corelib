@@ -5,20 +5,20 @@
 #include "sd_inline.h"
 #include "sd_longlong.h"
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
   #define CORELIB_USE_LONGLONG
 #endif
 
 #include "fmt.h"
 
-#if defined(HAVE_LONGLONG)
-  #if defined(HAVE_MATH_LLRINT)
+#if defined(SD_HAVE_LONGLONG)
+  #if defined(SD_HAVE_MATH_LLRINT)
     #define DOUBLE_CAST(n) llrint((n))
   #else
     #define DOUBLE_CAST(n) (long long)(n)
   #endif
 #else
-  #if defined(HAVE_MATH_LRINT)
+  #if defined(SD_HAVE_MATH_LRINT)
     #define DOUBLE_CAST(n) lrint((n))
   #else
     #define DOUBLE_CAST(n) (long)(n)
@@ -26,7 +26,7 @@
 #endif
 
 /* try and get the largest available integer type for double */
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
 union real {
   double d;
   unsigned long long n;
@@ -40,7 +40,7 @@ union real {
 typedef unsigned int (fmt_func)(char *, unsigned long);
 #endif
 
-#if !defined(HAVE_MATH_ROUND)
+#if !defined(SD_HAVE_MATH_ROUND)
 static inline double round(double x)
 {
   return floor(x + 0.5);
@@ -54,7 +54,7 @@ static inline unsigned int is_negative(double d)
   union real real;
   real.d = d;
 
-#if defined(HAVE_MATH_SIGNBIT)
+#if defined(SD_HAVE_MATH_SIGNBIT)
   return signbit(real.d);
 #else
   if (sizeof(real.n) == sizeof(double) && sizeof(double) * CHAR_BIT == 64)
@@ -69,7 +69,7 @@ static inline unsigned int is_nan(double d)
   return isnan(d);
 }
 
-#if defined(HAVE_MATH_FINITE)
+#if defined(SD_HAVE_MATH_FINITE)
   #include <ieeefp.h>
 #endif
 
@@ -78,13 +78,13 @@ static inline unsigned int is_infinite(double d)
   union real real;
   real.d = d;
 
-#if defined(HAVE_MATH_ISINF)
+#if defined(SD_HAVE_MATH_ISINF)
   return isinf(d);
 #else
-  #if defined(HAVE_MATH_ISFINITE)
+  #if defined(SD_HAVE_MATH_ISFINITE)
     return !isfinite(d);
   #else
-    #if defined(HAVE_MATH_FINITE)
+    #if defined(SD_HAVE_MATH_FINITE)
       return !finite(d);
     #else
       return real.n == 0x7FF0000000000000;
@@ -104,7 +104,7 @@ unsigned int fmt_double(char *str, double dou, unsigned int rnd)
   unsigned int pos = 0;
   unsigned int sci = 0;
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
   unsigned long long num;
   long long exp = 0;
   fmt_func *fmt_func = fmt_ulonglong;

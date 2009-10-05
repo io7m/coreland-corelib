@@ -2,7 +2,7 @@
 #include "sd_math.h"
 #include "scan.h"
 
-#if !defined(HAVE_MATH_POWF)
+#if !defined(SD_HAVE_MATH_POWF)
 static float powf(float x, float y) { return pow(x, y); }
 #endif
 

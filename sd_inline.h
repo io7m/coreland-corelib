@@ -3,7 +3,7 @@
 
 #include "_sd_inline.h"
 
-#if !defined(HAVE_INLINE)
+#if !defined(SD_HAVE_INLINE)
   #define inline
 #endif
 

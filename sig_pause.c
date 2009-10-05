@@ -4,7 +4,7 @@
 
 void sig_pause(void)
 {
-#ifdef HAVE_SIGPROCMASK
+#ifdef SD_HAVE_SIGPROCMASK
   sigset_t ss;
   sigemptyset(&ss);
   sigsuspend(&ss);

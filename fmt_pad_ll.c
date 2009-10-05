@@ -2,7 +2,7 @@
 #include "fmt.h"
 #include "fmt_pad.h"
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
 unsigned int fmt_pad_ulonglong(char *buf, unsigned long long num, unsigned int pad,
                                unsigned char ch,
                                unsigned int (*fmt)(char *, unsigned long long))

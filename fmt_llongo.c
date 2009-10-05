@@ -1,7 +1,7 @@
 #include "sd_longlong.h"
 #include "fmt.h"
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
 unsigned int fmt_ulonglongo(char *str, unsigned long long ul)
 {
   unsigned long long quo;

@@ -3,7 +3,7 @@
 #include "sd_inline.h"
 #include "sd_longlong.h"
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
 static inline unsigned long long power2(unsigned long long p)
 {
   register unsigned long long x = 1;

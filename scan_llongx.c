@@ -1,7 +1,7 @@
 #include "scan.h"
 #include "sd_longlong.h"
 
-#if defined(HAVE_LONGLONG)
+#if defined(SD_HAVE_LONGLONG)
 unsigned int scan_ulonglongx(const char *s, unsigned long long *ull)
 {
   register unsigned long long res;

@@ -5,23 +5,23 @@
 #include "sd_math.h"
 #include "sd_inline.h"
 
-#if !defined(HAVE_MATH_FABSF)
+#if !defined(SD_HAVE_MATH_FABSF)
 static inline float fabsf(float x) { return (float) fabs(x); }
 #endif
-#if !defined(HAVE_MATH_FLOORF)
+#if !defined(SD_HAVE_MATH_FLOORF)
 static inline float floorf(float x) { return (float) floor(x); }
 #endif
-#if !defined(HAVE_MATH_CEILF)
+#if !defined(SD_HAVE_MATH_CEILF)
 static inline float ceilf(float x) { return (float) ceil(x); }
 #endif
-#if !defined(HAVE_MATH_FMODF)
+#if !defined(SD_HAVE_MATH_FMODF)
 static inline float fmodf(float x, float y) { return (float) fmod(x, y); }
 #endif
-#if !defined(HAVE_MATH_POWF)
+#if !defined(SD_HAVE_MATH_POWF)
 static inline float powf(float x, float y) { return (float) pow(x, y); }
 #endif
-#if !defined(HAVE_MATH_ROUNDF)
-  #if defined(HAVE_MATH_ROUND)
+#if !defined(SD_HAVE_MATH_ROUNDF)
+  #if defined(SD_HAVE_MATH_ROUND)
   static inline float roundf(float x) { return (float) round(x); }
   #else
   static inline float roundf(float x)
@@ -31,7 +31,7 @@ static inline float powf(float x, float y) { return (float) pow(x, y); }
   #endif
 #endif
 
-#if defined(HAVE_MATH_LRINTF)
+#if defined(SD_HAVE_MATH_LRINTF)
   #define FLOAT_CAST(n) lrintf((n))
 #else
   #define FLOAT_CAST(n) (long)(n)
@@ -43,7 +43,7 @@ union real {
 } real;
 typedef unsigned int fmt_func(char *, unsigned long);
 
-#if defined(HAVE_MATH_FINITE)
+#if defined(SD_HAVE_MATH_FINITE)
   #include <ieeefp.h>
 #endif
 
@@ -52,13 +52,13 @@ static inline unsigned int is_infinite(float f)
   union real real;
   real.f = f;
 
-#if defined(HAVE_MATH_ISINF)
+#if defined(SD_HAVE_MATH_ISINF)
   return isinf(f);
 #else
-  #if defined(HAVE_MATH_ISFINITE)
+  #if defined(SD_HAVE_MATH_ISFINITE)
     return !isfinite(f);
   #else
-    #if defined(HAVE_MATH_FINITE)
+    #if defined(SD_HAVE_MATH_FINITE)
       return !finite(f);
     #else
       return real.n == 0x7F800000;
@@ -72,7 +72,7 @@ static inline unsigned int is_negative(float f)
   union real real;
   real.f = f;
 
-#if defined(HAVE_MATH_SIGNBIT)
+#if defined(SD_HAVE_MATH_SIGNBIT)
   return signbit(real.f);
 #else
   if (sizeof(real.n) == sizeof(float) && sizeof(float) * CHAR_BIT == 32)
