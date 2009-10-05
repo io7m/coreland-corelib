@@ -3,7 +3,7 @@
 
 int fd_reset(int fd)
 {
-#if defined(HAVE_FCNTL)
+#if defined(SD_HAVE_FCNTL)
   return fcntl(fd, F_SETFD, 0);
 #else
   #error "system does not support file descriptor reset"
