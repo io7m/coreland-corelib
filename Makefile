@@ -353,7 +353,7 @@ cc-link corelib-conf.ld corelib-conf.o ctxt/ctxt.a
 	./cc-link corelib-conf corelib-conf.o ctxt/ctxt.a
 
 corelib-conf.o:\
-cc-compile corelib-conf.c ctxt.h _sysinfo.h
+cc-compile corelib-conf.c ctxt.h _sd_sysinfo.h
 	./cc-compile corelib-conf.c
 
 # ctxt/bindir.c.mff
@@ -670,7 +670,7 @@ cc-slib fd.sld fd_dup.o fd_move.o fd_reset.o
 	./cc-slib fd fd_dup.o fd_move.o fd_reset.o
 
 fd_dup.o:\
-cc-compile fd_dup.c sd_fd.h sd_fcntl.h close.h fd.h
+cc-compile fd_dup.c sd_dup2.h sd_fcntl.h close.h fd.h
 	./cc-compile fd_dup.c
 
 fd_move.o:\
@@ -1247,11 +1247,11 @@ scan_space.o:\
 cc-compile scan_space.c scan.h
 	./cc-compile scan_space.c
 
+sd_dup2.h:\
+_sd_dup2.h
+
 sd_fcntl.h:\
 _sd_fcntl.h
-
-sd_fd.h:\
-_sd_fd.h
 
 sd_inline.h:\
 _sd_inline.h
@@ -1304,7 +1304,7 @@ cc-compile sig.c sig.h
 	./cc-compile sig.c
 
 sig_action.h:\
-_sig_action.h
+_sd_sig_action.h
 
 sig_block.o:\
 cc-compile sig_block.c sig.h sig_pmask.h
@@ -1319,7 +1319,7 @@ cc-compile sig_pause.c sig.h sig_pmask.h
 	./cc-compile sig_pause.c
 
 sig_pmask.h:\
-_sig_pmask.h
+_sd_sig_pmask.h
 
 squeue.a:\
 cc-slib squeue.sld squeue_bytes.o squeue_data.o squeue_deq.o squeue_enq.o \
