@@ -1,0 +1,30 @@
+#!/bin/sh
+
+. "${SYSDEP_SUBS_FILE}" || exit 1
+
+fout="$1"
+sdout="$2"
+
+cleanup()
+{
+  ${SYSDEP_UTIL_RM} -f trylonglong trylonglong.o
+  ${SYSDEP_UTIL_EXIT} 0
+}
+
+${SYSDEP_UTIL_CAT} >> "${fout}" <<EOF
+#ifndef _SD_LONGLONG_H
+#define _SD_LONGLONG_H
+EOF
+
+${SYSDEP_CC} ${SYSDEP_CFLAGS} -c -o trylonglong.o trylonglong.c 1>/dev/null 2>&1
+${SYSDEP_LD} -o trylonglong trylonglong.o ${SYSDEP_LDFLAGS} 1>/dev/null 2>&1
+if [ $? -eq 0 ]
+then
+  ${SYSDEP_UTIL_ECHO} '#define SD_HAVE_LONGLONG 1' >> "${fout}"
+  ${SYSDEP_UTIL_ECHO} 'sd-longlong: yes' >> "${sdout}"
+else
+  ${SYSDEP_UTIL_ECHO} 'sd-longlong: no' >> "${sdout}"
+fi
+
+${SYSDEP_UTIL_ECHO} '#endif' >> "${fout}"
+cleanup
