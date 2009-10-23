@@ -8,3 +8,37 @@ features if they are available.
 <p/>
 Please note that the API is not expected to remain stable until a 1.0
 release.
+<h5>features</h5>
+<ul>
+  <li>Binary buffer operations</li>
+  <li>Dynamic FIFO queue structure</li>
+  <li>Dynamic LIFO stack structure</li>
+  <li>Dynamic array structure</li>
+  <li>Dynamic doubly-linked list structure (with sorting)</li>
+  <li>Dynamic hash table structure</li>
+  <li>Dynamic line reading functions</li>
+  <li>Dynamic string structure</li>
+  <li>Efficient number formatting functions</li>
+  <li>Efficient number scanning/parsing</li>
+  <li>Fast, easy to use, buffered I/O operations</li>
+  <li>Portable 'basename' implementation</li>
+  <li>Portable 'dirname' implementation</li>
+  <li>Portable directory hashing</li>
+  <li>Portable directory listing</li>
+  <li>Portable environment variable functions</li>
+  <li>Portable error string and error value functions</li>
+  <li>Portable file descriptor functions</li>
+  <li>Recursive directory creation</li>
+  <li>Recursive directory walking functions</li>
+  <li>Static (bounded) FIFO queue structure</li>
+  <li>Static (bounded) LIFO stack structure</li>
+  <li>Static (bounded) array structure</li>
+  <li>Static (bounded) line reading functions</li>
+  <li>Static (bounded) string structure</li>
+  <li>Static memory allocation API</li>
+  <li>String operations</li>
+</ul>
+<p>
+  APIs are built to be extremely difficult to use incorrectly and
+  all API entry points are protected by assertions (preconditions).
+</p>
